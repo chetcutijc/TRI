@@ -40,6 +40,7 @@ jobs:
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
-          git add data/activities.json docs/index.html
+          git add data/activities.json data/wellness.json docs/index.html
           git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull --rebase origin main
           git push
