@@ -54,6 +54,42 @@ def fetch_recent_activities(client, days_back=14, limit=50):
     return recent
 
 
+def fetch_daily_wellness(client, days_back=14):
+    """Pulls sleep and body battery for each of the last `days_back` days."""
+    wellness = {}
+    today = dt.date.today()
+    for i in range(days_back):
+        day = today - dt.timedelta(days=i)
+        day_str = day.isoformat()
+        entry = {}
+
+        try:
+            sleep = client.get_sleep_data(day_str)
+            daily_sleep = sleep.get("dailySleepDTO", {}) if sleep else {}
+            sleep_seconds = daily_sleep.get("sleepTimeSeconds")
+            entry["sleep_duration_min"] = round(sleep_seconds / 60, 1) if sleep_seconds else None
+            entry["sleep_score"] = (sleep.get("sleepScores", {}) or {}).get("overall", {}).get("value") if sleep else None
+        except Exception:
+            entry["sleep_duration_min"] = None
+            entry["sleep_score"] = None
+
+        try:
+            bb = client.get_body_battery(day_str, day_str)
+            if bb and isinstance(bb, list) and len(bb) > 0:
+                entry["body_battery_max"] = bb[0].get("charged") if isinstance(bb[0], dict) else None
+                entry["body_battery_min"] = bb[0].get("drained") if isinstance(bb[0], dict) else None
+            else:
+                entry["body_battery_max"] = None
+                entry["body_battery_min"] = None
+        except Exception:
+            entry["body_battery_max"] = None
+            entry["body_battery_min"] = None
+
+        wellness[day_str] = entry
+
+    return wellness
+
+
 def normalize(act):
     """Pull out the fields we actually care about for the dashboard."""
     return {
@@ -75,6 +111,13 @@ def normalize(act):
     }
 
 
+def load_existing_wellness():
+    wfile = DATA_DIR / "wellness.json"
+    if wfile.exists():
+        return json.loads(wfile.read_text())
+    return {}
+
+
 def main():
     DATA_DIR.mkdir(exist_ok=True)
     client = get_client()
@@ -91,7 +134,14 @@ def main():
         store[key] = norm
 
     DATA_FILE.write_text(json.dumps(store, indent=2, default=str))
-    print(f"Synced. {new_count} new activities. {len(store)} total stored.")
+
+    wellness_store = load_existing_wellness()
+    fresh_wellness = fetch_daily_wellness(client, days_back=14)
+    wellness_store.update(fresh_wellness)
+    (DATA_DIR / "wellness.json").write_text(json.dumps(wellness_store, indent=2, default=str))
+
+    print(f"Synced. {new_count} new activities. {len(store)} total stored. "
+          f"Wellness updated for {len(fresh_wellness)} days.")
 
 
 if __name__ == "__main__":
