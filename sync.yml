@@ -1,0 +1,45 @@
+name: Sync Garmin Data and Build Dashboard
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours
+  workflow_dispatch: {}       # lets you trigger manually from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore cached Garmin session
+        uses: actions/cache@v4
+        with:
+          path: .garmin_tokens
+          key: garmin-tokens
+
+      - name: Fetch Garmin activities
+        env:
+          GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
+          GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+        run: python scripts/fetch_garmin.py
+
+      - name: Build dashboard
+        run: python scripts/build_dashboard.py
+
+      - name: Commit updated data and dashboard
+        run: |
+          git config user.name "garmin-bot"
+          git config user.email "actions@github.com"
+          git add data/activities.json docs/index.html
+          git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
