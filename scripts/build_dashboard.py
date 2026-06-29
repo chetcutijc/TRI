@@ -16,6 +16,7 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 
 DATA_FILE = Path("data/activities.json")
+WELLNESS_FILE = Path("data/wellness.json")
 PLAN_FILE = Path("data/plan.json")
 OUT_FILE = Path("docs/index.html")
 
@@ -29,6 +30,23 @@ def load_activities():
     df["duration_min"] = df["duration_s"] / 60
     df["distance_km"] = df["distance_m"] / 1000
     df = df.sort_values("start")
+    return df
+
+
+def load_wellness():
+    if not WELLNESS_FILE.exists():
+        return pd.DataFrame()
+    store = json.loads(WELLNESS_FILE.read_text())
+    rows = []
+    for day, vals in store.items():
+        row = {"date": day}
+        row.update(vals)
+        rows.append(row)
+    df = pd.DataFrame(rows)
+    if df.empty:
+        return df
+    df["date"] = pd.to_datetime(df["date"])
+    df = df.sort_values("date")
     return df
 
 
@@ -66,7 +84,7 @@ def on_target_pct(actual_weekly, plan):
     return pd.DataFrame(rows)
 
 
-def build_html(df, plan):
+def build_html(df, plan, wellness):
     if df.empty:
         OUT_FILE.parent.mkdir(exist_ok=True)
         OUT_FILE.write_text("<h1>No activity data yet</h1>")
@@ -106,6 +124,48 @@ def build_html(df, plan):
         fig4.update_layout(title="On-Target % vs Plan", yaxis_range=[0, 110],
                             template="plotly_white")
 
+    fig5 = None  # sleep duration trend
+    fig6 = None  # body battery trend
+    fig7 = None  # combined readiness: load vs sleep vs body battery
+    if not wellness.empty:
+        if "sleep_duration_min" in wellness.columns and wellness["sleep_duration_min"].notna().any():
+            fig5 = go.Figure()
+            sw = wellness.dropna(subset=["sleep_duration_min"])
+            fig5.add_trace(go.Scatter(x=sw["date"], y=sw["sleep_duration_min"] / 60,
+                                       mode="lines+markers", name="Sleep (hrs)"))
+            fig5.add_hline(y=7, line_dash="dot", annotation_text="7h target", line_color="gray")
+            fig5.update_layout(title="Sleep Duration Trend", yaxis_title="Hours",
+                                template="plotly_white")
+
+        if "body_battery_max" in wellness.columns and wellness["body_battery_max"].notna().any():
+            fig6 = go.Figure()
+            bw = wellness.dropna(subset=["body_battery_max"])
+            fig6.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"],
+                                       mode="lines+markers", name="Body Battery (charged)"))
+            if "body_battery_min" in bw.columns:
+                fig6.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_min"],
+                                           mode="lines+markers", name="Body Battery (drained)"))
+            fig6.update_layout(title="Body Battery Trend", yaxis_title="Level",
+                                template="plotly_white")
+
+        # readiness combo: weekly training load vs avg sleep vs avg body battery drain
+        if "sleep_duration_min" in wellness.columns:
+            ww = wellness.copy()
+            ww["week"] = ww["date"].dt.to_period("W").apply(lambda r: r.start_time)
+            sleep_weekly = ww.groupby("week")["sleep_duration_min"].mean().reset_index()
+            bb_weekly = ww.groupby("week")["body_battery_min"].mean().reset_index() \
+                if "body_battery_min" in ww.columns else None
+
+            fig7 = make_subplots(specs=[[{"secondary_y": True}]])
+            fig7.add_trace(go.Bar(x=load_by_week["week"], y=load_by_week["training_load"],
+                                   name="Training Load"), secondary_y=False)
+            fig7.add_trace(go.Scatter(x=sleep_weekly["week"], y=sleep_weekly["sleep_duration_min"] / 60,
+                                       mode="lines+markers", name="Avg Sleep (hrs)"), secondary_y=True)
+            fig7.update_layout(title="Weekly Readiness: Training Load vs Avg Sleep",
+                                template="plotly_white")
+            fig7.update_yaxes(title_text="Training Load", secondary_y=False)
+            fig7.update_yaxes(title_text="Avg Sleep (hrs)", secondary_y=True)
+
     recent = df.tail(5)[["start", "name", "type", "distance_km", "duration_min", "avg_hr", "training_load"]]
     recent_html = recent.to_html(index=False, classes="table", border=0)
 
@@ -115,9 +175,19 @@ def build_html(df, plan):
     total_km = round(last_30["distance_km"].sum(), 1)
     avg_load = round(last_30["training_load"].mean(), 1) if "training_load" in last_30 else "n/a"
 
+    avg_sleep_hrs = "n/a"
+    avg_bb = "n/a"
+    if not wellness.empty:
+        recent_wellness = wellness[wellness["date"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+        if "sleep_duration_min" in recent_wellness.columns and recent_wellness["sleep_duration_min"].notna().any():
+            avg_sleep_hrs = round(recent_wellness["sleep_duration_min"].mean() / 60, 1)
+        if "body_battery_max" in recent_wellness.columns and recent_wellness["body_battery_max"].notna().any():
+            avg_bb = round(recent_wellness["body_battery_max"].mean(), 0)
+
+    all_figs = [f for f in [fig1, fig2, fig3, fig4, fig5, fig6, fig7] if f is not None]
     charts_html = "".join([
         pio.to_html(f, full_html=False, include_plotlyjs=(i == 0))
-        for i, f in enumerate([fig1, fig2, fig3] + ([fig4] if fig4 is not None else []))
+        for i, f in enumerate(all_figs)
     ])
 
     html = f"""
@@ -127,7 +197,7 @@ def build_html(df, plan):
         <style>
             body {{ font-family: -apple-system, sans-serif; max-width: 1000px; margin: 40px auto; padding: 0 20px; background:#fafafa; }}
             h1 {{ font-size: 1.8em; }}
-            .stats {{ display:flex; gap:20px; margin:20px 0; }}
+            .stats {{ display:flex; gap:20px; margin:20px 0; flex-wrap: wrap; }}
             .card {{ background:white; border-radius:12px; padding:16px 24px; box-shadow:0 1px 4px rgba(0,0,0,0.1); }}
             .card .num {{ font-size:1.6em; font-weight:600; }}
             .table {{ width:100%; border-collapse: collapse; }}
@@ -144,6 +214,8 @@ def build_html(df, plan):
             <div class="card"><div class="num">{total_hours}h</div>Volume (30d)</div>
             <div class="card"><div class="num">{total_km}km</div>Distance (30d)</div>
             <div class="card"><div class="num">{avg_load}</div>Avg Load</div>
+            <div class="card"><div class="num">{avg_sleep_hrs}h</div>Avg Sleep (30d)</div>
+            <div class="card"><div class="num">{avg_bb}</div>Avg Body Battery</div>
         </div>
 
         {charts_html}
@@ -161,7 +233,8 @@ def build_html(df, plan):
 def main():
     df = load_activities()
     plan = load_plan()
-    build_html(df, plan)
+    wellness = load_wellness()
+    build_html(df, plan, wellness)
     print("Dashboard built at docs/index.html")
 
 
