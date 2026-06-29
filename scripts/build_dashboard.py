@@ -381,28 +381,28 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
 
     swim_stats_html = ""
     if swims is not None and not swims.empty:
-        avg_dist = round(swims["distance_m"].mean(), 0)
-        avg_pace_str = fmt_pace(avg_pace_100m * 10) if avg_pace_100m else "n/a"  # rough /km equivalent display
+        avg_dist = round(swims["distance_m"].mean())
         avg_pace_per_100 = f"{int(avg_pace_100m // 60)}:{int(avg_pace_100m % 60):02d}/100m" if avg_pace_100m else "n/a"
         swim_stats_html = f"""
-        <div class="stats">
-            <div class="card"><div class="num">{len(swims)}</div>Total Swims</div>
-            <div class="card"><div class="num">{avg_dist}m</div>Avg Distance</div>
-            <div class="card"><div class="num">{avg_pace_per_100}</div>Avg Pace</div>
+        <div class="stats" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card"><div class="num">{len(swims)}</div><div class="label">Total Swims</div></div>
+            <div class="card"><div class="num">{avg_dist}m</div><div class="label">Avg Distance</div></div>
+            <div class="card"><div class="num">{avg_pace_per_100}</div><div class="label">Avg Pace</div></div>
         </div>
         """
 
     manual_strength_html = """
-    <p style="color:#888; font-size:0.85em;">
+    <p class="subtext">
     Strength sessions can't be auto-verified the same way as cardio (Garmin doesn't reliably log gym work).
     To track these manually: edit <code>data/manual_log.json</code> in your repo, add a line like
     <code>"2026-06-22": true</code> (using the Monday date of the week) for each week you completed your strength session,
     then this section will reflect it on the next sync.
     </p>
     """
-    if manual_log:
+    clean_log = {k: v for k, v in manual_log.items() if not k.startswith("_")}
+    if clean_log:
         rows = "".join(f"<tr><td>{wk}</td><td>{'✅ Completed' if done else '❌ Missed'}</td></tr>"
-                        for wk, done in sorted(manual_log.items(), reverse=True)[:8])
+                        for wk, done in sorted(clean_log.items(), reverse=True)[:8])
         manual_strength_html += f"""
         <table class="table">
             <tr><th>Week</th><th>Strength Session</th></tr>
@@ -412,9 +412,9 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
 
     last_30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last_30)
-    total_hours = round(last_30["duration_min"].sum() / 60, 1)
-    total_km = round(last_30["distance_km"].sum(), 1)
-    avg_load = round(last_30["training_load"].mean(), 1) if "training_load" in last_30 else "n/a"
+    total_hours = round(last_30["duration_min"].sum() / 60)
+    total_km = round(last_30["distance_km"].sum())
+    avg_load = round(last_30["training_load"].mean()) if "training_load" in last_30 and last_30["training_load"].notna().any() else "n/a"
 
     avg_sleep_hrs = "n/a"
     avg_bb = "n/a"
@@ -423,7 +423,7 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
         if "sleep_duration_min" in recent_wellness.columns and recent_wellness["sleep_duration_min"].notna().any():
             avg_sleep_hrs = round(recent_wellness["sleep_duration_min"].mean() / 60, 1)
         if "body_battery_max" in recent_wellness.columns and recent_wellness["body_battery_max"].notna().any():
-            avg_bb = round(recent_wellness["body_battery_max"].mean(), 0)
+            avg_bb = round(recent_wellness["body_battery_max"].mean())
 
     fig8 = None  # swim distance trend
     fig9 = None  # swim pace trend
@@ -440,8 +440,26 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
         fig9.update_layout(title="Swim Pace Trend (sec per 100m, lower = faster)", template="plotly_white")
 
     all_figs = [f for f in [fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9] if f is not None]
+
+    PALETTE = ["#5B6EF5", "#00C2A8", "#FF7A59", "#FFC75A", "#9B7DFF", "#36C5F0"]
+    for f in all_figs:
+        f.update_layout(
+            height=300,
+            margin=dict(l=40, r=20, t=48, b=36),
+            font=dict(family="-apple-system, Helvetica, Arial, sans-serif", size=12, color="#2c2c34"),
+            title_font=dict(size=14, color="#1a1a22"),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0,
+                        font=dict(size=10)),
+            plot_bgcolor="white",
+            paper_bgcolor="white",
+            colorway=PALETTE,
+            hovermode="x unified",
+        )
+        f.update_xaxes(showgrid=False, linecolor="#e3e3ea")
+        f.update_yaxes(showgrid=True, gridcolor="#f0f0f5", linecolor="#e3e3ea")
+
     charts_html = "".join([
-        pio.to_html(f, full_html=False, include_plotlyjs=(i == 0))
+        f'<div class="chart-cell">{pio.to_html(f, full_html=False, include_plotlyjs=(i == 0), config={"displayModeBar": False, "responsive": True})}</div>'
         for i, f in enumerate(all_figs)
     ])
 
@@ -449,48 +467,94 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
     <html>
     <head>
         <title>Training Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {{ font-family: -apple-system, sans-serif; max-width: 1000px; margin: 40px auto; padding: 0 20px; background:#fafafa; }}
-            h1 {{ font-size: 1.8em; }}
-            .stats {{ display:flex; gap:20px; margin:20px 0; flex-wrap: wrap; }}
-            .card {{ background:white; border-radius:12px; padding:16px 24px; box-shadow:0 1px 4px rgba(0,0,0,0.1); }}
-            .card .num {{ font-size:1.6em; font-weight:600; }}
-            .table {{ width:100%; border-collapse: collapse; }}
-            .table th, .table td {{ padding:8px; border-bottom:1px solid #eee; text-align:left; }}
-            .updated {{ color:#888; font-size:0.85em; }}
+            * {{ box-sizing: border-box; }}
+            body {{
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                max-width: 1100px; margin: 0 auto; padding: 32px 24px 60px;
+                background: #f6f7fb; color: #1a1a22;
+            }}
+            .topbar {{
+                display: flex; justify-content: space-between; align-items: center;
+                margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+            }}
+            h1 {{ font-size: 1.6em; margin: 0; font-weight: 700; letter-spacing: -0.3px; }}
+            .updated {{ color: #8a8a96; font-size: 0.82em; margin: 2px 0 0; }}
+            .btn {{
+                background: #5B6EF5; color: white; border: none; padding: 10px 18px;
+                border-radius: 8px; font-size: 0.85em; font-weight: 600; cursor: pointer;
+                box-shadow: 0 2px 6px rgba(91,110,245,0.35);
+            }}
+            .btn:hover {{ background: #4757d8; }}
+            h2 {{ font-size: 1.15em; margin: 36px 0 6px; font-weight: 700; color: #1a1a22; }}
+            .subtext {{ color: #8a8a96; font-size: 0.82em; margin: 0 0 14px; line-height: 1.4; }}
+            .stats {{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin: 18px 0 8px; }}
+            .card {{
+                background: white; border-radius: 14px; padding: 16px 14px;
+                box-shadow: 0 1px 3px rgba(20,20,40,0.06); text-align: center;
+            }}
+            .card .num {{ font-size: 1.5em; font-weight: 700; color: #1a1a22; }}
+            .card .label {{ font-size: 0.72em; color: #8a8a96; margin-top: 2px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }}
+            .chart-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }}
+            .chart-cell {{
+                background: white; border-radius: 14px; padding: 8px 12px;
+                box-shadow: 0 1px 3px rgba(20,20,40,0.06); overflow: hidden;
+            }}
+            .table {{ width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(20,20,40,0.06); }}
+            .table th {{ background: #f0f1f8; font-size: 0.78em; text-transform: uppercase; letter-spacing: 0.3px; color: #6b6b78; padding: 10px 12px; text-align: left; }}
+            .table td {{ padding: 10px 12px; border-bottom: 1px solid #f0f0f5; font-size: 0.88em; }}
+            .table tr:last-child td {{ border-bottom: none; }}
+            @media (max-width: 700px) {{
+                .chart-grid {{ grid-template-columns: 1fr; }}
+                .stats {{ grid-template-columns: repeat(2, 1fr); }}
+            }}
+            @media print {{
+                .btn {{ display: none; }}
+                body {{ background: white; }}
+                .chart-grid {{ grid-template-columns: 1fr 1fr; }}
+                .card, .chart-cell, .table {{ box-shadow: none; border: 1px solid #eee; }}
+            }}
         </style>
     </head>
     <body>
-        <h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
-        <p class="updated">Last updated: {dt.datetime.now().strftime("%Y-%m-%d %H:%M")} UTC</p>
-
-        <div class="stats">
-            <div class="card"><div class="num">{total_sessions}</div>Sessions (30d)</div>
-            <div class="card"><div class="num">{total_hours}h</div>Volume (30d)</div>
-            <div class="card"><div class="num">{total_km}km</div>Distance (30d)</div>
-            <div class="card"><div class="num">{avg_load}</div>Avg Load</div>
-            <div class="card"><div class="num">{avg_sleep_hrs}h</div>Avg Sleep (30d)</div>
-            <div class="card"><div class="num">{avg_bb}</div>Avg Body Battery</div>
+        <div class="topbar">
+            <div>
+                <h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
+                <p class="updated">Last updated: {dt.datetime.now().strftime("%Y-%m-%d %H:%M")} UTC</p>
+            </div>
+            <button class="btn" onclick="window.print()">Export as PDF</button>
         </div>
 
+        <div class="stats">
+            <div class="card"><div class="num">{total_sessions}</div><div class="label">Sessions (30d)</div></div>
+            <div class="card"><div class="num">{total_hours}h</div><div class="label">Volume (30d)</div></div>
+            <div class="card"><div class="num">{total_km}km</div><div class="label">Distance (30d)</div></div>
+            <div class="card"><div class="num">{avg_load}</div><div class="label">Avg Load</div></div>
+            <div class="card"><div class="num">{avg_sleep_hrs}h</div><div class="label">Avg Sleep (30d)</div></div>
+            <div class="card"><div class="num">{avg_bb}</div><div class="label">Avg Body Battery</div></div>
+        </div>
+
+        <div class="chart-grid">
         {charts_html}
+        </div>
 
         <h2>Planned vs Completed (last 8 weeks)</h2>
-        <p style="color:#888; font-size:0.85em;">Planned minutes are aggregated per discipline per week from your training plan. Completed sessions counts how many actual Garmin activities of that type were logged that week — note this compares session count against planned volume, not a 1:1 match, since the plan stores total minutes rather than individual session counts.</p>
-        {plan_table_html if plan_table_html else "<p>No plan data matched to recent weeks yet.</p>"}
+        <p class="subtext">Planned minutes are aggregated per discipline per week from your training plan. Completed sessions counts how many actual Garmin activities of that type were logged that week — this compares session count against planned volume, not a 1:1 match.</p>
+        {plan_table_html if plan_table_html else "<p class='subtext'>No plan data matched to recent weeks yet.</p>"}
 
         <h2>Running: Target Pace vs Actual</h2>
-        <p style="color:#888; font-size:0.85em;">Matches each run to the closest planned session (same day, ±1 day) that has a pace target, and compares your actual average pace to it. Positive % means slower than target.</p>
-        {f'<div class="stats"><div class="card"><div class="num">{run_avg_pct_off}%</div>Avg Off Target (Running)</div></div>' if run_avg_pct_off is not None else ""}
-        {run_compare_html if run_compare_html else "<p>No matched running sessions with pace targets yet.</p>"}
+        <p class="subtext">Matches each run to the closest planned session (±1 day) with a pace target. Positive % means slower than target.</p>
+        {f'<div class="stats" style="grid-template-columns: 1fr;"><div class="card"><div class="num">{run_avg_pct_off}%</div><div class="label">Avg Off Target — Running</div></div></div>' if run_avg_pct_off is not None else ""}
+        {run_compare_html if run_compare_html else "<p class='subtext'>No matched running sessions with pace targets yet.</p>"}
 
         <h2>Cycling: Target Power vs Actual</h2>
-        <p style="color:#888; font-size:0.85em;">Same logic as running, comparing actual average power to the planned power target range.</p>
-        {f'<div class="stats"><div class="card"><div class="num">{bike_avg_pct_off}%</div>Avg Off Target (Cycling)</div></div>' if bike_avg_pct_off is not None else ""}
-        {bike_compare_html if bike_compare_html else "<p>No matched cycling sessions with power targets yet.</p>"}
+        <p class="subtext">Same logic as running, comparing actual average power to the planned power target range.</p>
+        {f'<div class="stats" style="grid-template-columns: 1fr;"><div class="card"><div class="num">{bike_avg_pct_off}%</div><div class="label">Avg Off Target — Cycling</div></div></div>' if bike_avg_pct_off is not None else ""}
+        {bike_compare_html if bike_compare_html else "<p class='subtext'>No matched cycling sessions with power targets yet.</p>"}
 
         <h2>Swimming Overview</h2>
-        {swim_stats_html if swim_stats_html else "<p>No swim data yet.</p>"}
+        {swim_stats_html if swim_stats_html else "<p class='subtext'>No swim data yet.</p>"}
 
         <h2>Strength Sessions (Manual Tracking)</h2>
         {manual_strength_html}
