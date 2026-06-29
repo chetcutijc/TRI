@@ -50,10 +50,126 @@ def load_wellness():
     return df
 
 
+PLAN_SESSIONS_FILE = Path("data/plan_sessions.json")
+MANUAL_LOG_FILE = Path("data/manual_log.json")
+
+
 def load_plan():
     if PLAN_FILE.exists():
         return json.loads(PLAN_FILE.read_text())
     return {}
+
+
+def load_plan_sessions():
+    if PLAN_SESSIONS_FILE.exists():
+        return json.loads(PLAN_SESSIONS_FILE.read_text())
+    return []
+
+
+def load_manual_log():
+    if MANUAL_LOG_FILE.exists():
+        return json.loads(MANUAL_LOG_FILE.read_text())
+    return {}
+
+
+def sec_per_km_from_speed(speed_m_s):
+    """Garmin avg_pace field is avg_speed in m/s. Convert to sec/km."""
+    if not speed_m_s or speed_m_s <= 0:
+        return None
+    return 1000 / speed_m_s
+
+
+def fmt_pace(sec_per_km):
+    if sec_per_km is None:
+        return "n/a"
+    m = int(sec_per_km // 60)
+    s = int(sec_per_km % 60)
+    return f"{m}:{s:02d}/km"
+
+
+def running_target_vs_actual(df, plan_sessions):
+    """Matches each actual run to the closest planned run session (same date, +/-1 day)
+    that has a pace target, and computes how far off target the actual pace was."""
+    run_sessions = [s for s in plan_sessions if s["discipline"] == "running" and s["pace_low_sec_km"]]
+    if not run_sessions or df.empty:
+        return pd.DataFrame()
+
+    runs = df[df["type"].apply(normalize_type) == "running"].copy()
+    if runs.empty:
+        return pd.DataFrame()
+
+    rows = []
+    for _, act in runs.iterrows():
+        act_date = act["start"].date()
+        candidates = [s for s in run_sessions if abs((dt.date.fromisoformat(s["date"]) - act_date).days) <= 1]
+        if not candidates:
+            continue
+        target = min(candidates, key=lambda s: abs((dt.date.fromisoformat(s["date"]) - act_date).days))
+
+        actual_pace = sec_per_km_from_speed(act.get("avg_pace"))
+        target_mid = (target["pace_low_sec_km"] + target["pace_high_sec_km"]) / 2
+        if actual_pace is None:
+            continue
+        diff_sec = actual_pace - target_mid  # positive = slower than target
+        pct_off = round(100 * diff_sec / target_mid, 1)
+
+        rows.append({
+            "date": act["start"].strftime("%Y-%m-%d"),
+            "session": target["summary"],
+            "target_pace": f"{fmt_pace(target['pace_low_sec_km'])}-{fmt_pace(target['pace_high_sec_km'])}",
+            "actual_pace": fmt_pace(actual_pace),
+            "diff_sec_per_km": round(diff_sec, 0),
+            "pct_off_target": pct_off,
+        })
+
+    return pd.DataFrame(rows)
+
+
+def cycling_target_vs_actual(df, plan_sessions):
+    """Same as running but for power targets on rides."""
+    bike_sessions = [s for s in plan_sessions if s["discipline"] == "cycling" and s["power_low_w"]]
+    if not bike_sessions or df.empty:
+        return pd.DataFrame()
+
+    rides = df[df["type"].apply(normalize_type) == "cycling"].copy()
+    if rides.empty:
+        return pd.DataFrame()
+
+    rows = []
+    for _, act in rides.iterrows():
+        act_date = act["start"].date()
+        candidates = [s for s in bike_sessions if abs((dt.date.fromisoformat(s["date"]) - act_date).days) <= 1]
+        if not candidates:
+            continue
+        target = min(candidates, key=lambda s: abs((dt.date.fromisoformat(s["date"]) - act_date).days))
+
+        actual_power = act.get("avg_power")
+        if not actual_power:
+            continue
+        target_mid = (target["power_low_w"] + target["power_high_w"]) / 2
+        diff_w = actual_power - target_mid
+        pct_off = round(100 * diff_w / target_mid, 1)
+
+        rows.append({
+            "date": act["start"].strftime("%Y-%m-%d"),
+            "session": target["summary"],
+            "target_power": f"{target['power_low_w']}-{target['power_high_w']}W",
+            "actual_power": f"{round(actual_power)}W",
+            "diff_w": round(diff_w, 0),
+            "pct_off_target": pct_off,
+        })
+
+    return pd.DataFrame(rows)
+
+
+def swim_summary_stats(df):
+    swims = df[df["type"].apply(normalize_type) == "swimming"].copy()
+    if swims.empty:
+        return pd.DataFrame(), None
+    swims["pace_per_100m_sec"] = swims.apply(
+        lambda r: (r["duration_s"] / (r["distance_m"] / 100)) if r["distance_m"] else None, axis=1
+    )
+    return swims, swims["pace_per_100m_sec"].mean()
 
 
 def weekly_summary(df):
@@ -143,7 +259,7 @@ def planned_vs_completed_table(df, plan):
     return out
 
 
-def build_html(df, plan, wellness):
+def build_html(df, plan, wellness, plan_sessions, manual_log):
     if df.empty:
         OUT_FILE.parent.mkdir(exist_ok=True)
         OUT_FILE.write_text("<h1>No activity data yet</h1>")
@@ -152,6 +268,9 @@ def build_html(df, plan, wellness):
     weekly = weekly_summary(df)
     ontarget = on_target_pct(weekly, plan)
     plan_vs_actual = planned_vs_completed_table(df, plan)
+    run_compare = running_target_vs_actual(df, plan_sessions)
+    bike_compare = cycling_target_vs_actual(df, plan_sessions)
+    swims, avg_pace_100m = swim_summary_stats(df)
 
     fig1 = go.Figure()
     for atype in weekly["type"].unique():
@@ -240,6 +359,57 @@ def build_html(df, plan, wellness):
         })
         plan_table_html = pv.to_html(index=False, classes="table", border=0)
 
+    run_compare_html = ""
+    run_avg_pct_off = None
+    if not run_compare.empty:
+        run_avg_pct_off = round(run_compare["pct_off_target"].mean(), 1)
+        rc = run_compare.tail(10).rename(columns={
+            "date": "Date", "session": "Planned Session", "target_pace": "Target Pace",
+            "actual_pace": "Actual Pace", "diff_sec_per_km": "Diff (sec/km)", "pct_off_target": "% Off Target"
+        })
+        run_compare_html = rc.to_html(index=False, classes="table", border=0)
+
+    bike_compare_html = ""
+    bike_avg_pct_off = None
+    if not bike_compare.empty:
+        bike_avg_pct_off = round(bike_compare["pct_off_target"].mean(), 1)
+        bc = bike_compare.tail(10).rename(columns={
+            "date": "Date", "session": "Planned Session", "target_power": "Target Power",
+            "actual_power": "Actual Power", "diff_w": "Diff (W)", "pct_off_target": "% Off Target"
+        })
+        bike_compare_html = bc.to_html(index=False, classes="table", border=0)
+
+    swim_stats_html = ""
+    if swims is not None and not swims.empty:
+        avg_dist = round(swims["distance_m"].mean(), 0)
+        avg_pace_str = fmt_pace(avg_pace_100m * 10) if avg_pace_100m else "n/a"  # rough /km equivalent display
+        avg_pace_per_100 = f"{int(avg_pace_100m // 60)}:{int(avg_pace_100m % 60):02d}/100m" if avg_pace_100m else "n/a"
+        swim_stats_html = f"""
+        <div class="stats">
+            <div class="card"><div class="num">{len(swims)}</div>Total Swims</div>
+            <div class="card"><div class="num">{avg_dist}m</div>Avg Distance</div>
+            <div class="card"><div class="num">{avg_pace_per_100}</div>Avg Pace</div>
+        </div>
+        """
+
+    manual_strength_html = """
+    <p style="color:#888; font-size:0.85em;">
+    Strength sessions can't be auto-verified the same way as cardio (Garmin doesn't reliably log gym work).
+    To track these manually: edit <code>data/manual_log.json</code> in your repo, add a line like
+    <code>"2026-06-22": true</code> (using the Monday date of the week) for each week you completed your strength session,
+    then this section will reflect it on the next sync.
+    </p>
+    """
+    if manual_log:
+        rows = "".join(f"<tr><td>{wk}</td><td>{'✅ Completed' if done else '❌ Missed'}</td></tr>"
+                        for wk, done in sorted(manual_log.items(), reverse=True)[:8])
+        manual_strength_html += f"""
+        <table class="table">
+            <tr><th>Week</th><th>Strength Session</th></tr>
+            {rows}
+        </table>
+        """
+
     last_30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last_30)
     total_hours = round(last_30["duration_min"].sum() / 60, 1)
@@ -255,7 +425,21 @@ def build_html(df, plan, wellness):
         if "body_battery_max" in recent_wellness.columns and recent_wellness["body_battery_max"].notna().any():
             avg_bb = round(recent_wellness["body_battery_max"].mean(), 0)
 
-    all_figs = [f for f in [fig1, fig2, fig3, fig4, fig5, fig6, fig7] if f is not None]
+    fig8 = None  # swim distance trend
+    fig9 = None  # swim pace trend
+    if swims is not None and not swims.empty:
+        fig8 = go.Figure()
+        fig8.add_trace(go.Scatter(x=swims["start"], y=swims["distance_m"], mode="lines+markers",
+                                   name="Distance (m)"))
+        fig8.update_layout(title="Swim Distance Trend", yaxis_title="meters", template="plotly_white")
+
+        fig9 = go.Figure()
+        pace_df = swims.dropna(subset=["pace_per_100m_sec"])
+        fig9.add_trace(go.Scatter(x=pace_df["start"], y=pace_df["pace_per_100m_sec"], mode="lines+markers",
+                                   name="Pace /100m (sec)"))
+        fig9.update_layout(title="Swim Pace Trend (sec per 100m, lower = faster)", template="plotly_white")
+
+    all_figs = [f for f in [fig1, fig2, fig3, fig4, fig5, fig6, fig7, fig8, fig9] if f is not None]
     charts_html = "".join([
         pio.to_html(f, full_html=False, include_plotlyjs=(i == 0))
         for i, f in enumerate(all_figs)
@@ -295,6 +479,22 @@ def build_html(df, plan, wellness):
         <p style="color:#888; font-size:0.85em;">Planned minutes are aggregated per discipline per week from your training plan. Completed sessions counts how many actual Garmin activities of that type were logged that week — note this compares session count against planned volume, not a 1:1 match, since the plan stores total minutes rather than individual session counts.</p>
         {plan_table_html if plan_table_html else "<p>No plan data matched to recent weeks yet.</p>"}
 
+        <h2>Running: Target Pace vs Actual</h2>
+        <p style="color:#888; font-size:0.85em;">Matches each run to the closest planned session (same day, ±1 day) that has a pace target, and compares your actual average pace to it. Positive % means slower than target.</p>
+        {f'<div class="stats"><div class="card"><div class="num">{run_avg_pct_off}%</div>Avg Off Target (Running)</div></div>' if run_avg_pct_off is not None else ""}
+        {run_compare_html if run_compare_html else "<p>No matched running sessions with pace targets yet.</p>"}
+
+        <h2>Cycling: Target Power vs Actual</h2>
+        <p style="color:#888; font-size:0.85em;">Same logic as running, comparing actual average power to the planned power target range.</p>
+        {f'<div class="stats"><div class="card"><div class="num">{bike_avg_pct_off}%</div>Avg Off Target (Cycling)</div></div>' if bike_avg_pct_off is not None else ""}
+        {bike_compare_html if bike_compare_html else "<p>No matched cycling sessions with power targets yet.</p>"}
+
+        <h2>Swimming Overview</h2>
+        {swim_stats_html if swim_stats_html else "<p>No swim data yet.</p>"}
+
+        <h2>Strength Sessions (Manual Tracking)</h2>
+        {manual_strength_html}
+
         <h2>Recent Sessions</h2>
         {recent_html}
     </body>
@@ -309,7 +509,9 @@ def main():
     df = load_activities()
     plan = load_plan()
     wellness = load_wellness()
-    build_html(df, plan, wellness)
+    plan_sessions = load_plan_sessions()
+    manual_log = load_manual_log()
+    build_html(df, plan, wellness, plan_sessions, manual_log)
     print("Dashboard built at docs/index.html")
 
 
