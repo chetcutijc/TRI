@@ -1,0 +1,1702 @@
+[
+  {
+    "date": "2026-06-25",
+    "discipline": "running",
+    "summary": "Wk1 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-06-27",
+    "discipline": "cycling",
+    "summary": "Wk1 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 64.0
+  },
+  {
+    "date": "2026-06-28",
+    "discipline": "running",
+    "summary": "Wk1 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 16.4
+  },
+  {
+    "date": "2026-06-30",
+    "discipline": "running",
+    "summary": "Wk2 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-07-04",
+    "discipline": "cycling",
+    "summary": "Wk2 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 68.0
+  },
+  {
+    "date": "2026-07-05",
+    "discipline": "running",
+    "summary": "Wk2 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 16.8
+  },
+  {
+    "date": "2026-07-07",
+    "discipline": "cycling",
+    "summary": "Wk3 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-07-09",
+    "discipline": "running",
+    "summary": "Wk3 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-07-11",
+    "discipline": "cycling",
+    "summary": "Wk3 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 72.0
+  },
+  {
+    "date": "2026-07-12",
+    "discipline": "running",
+    "summary": "Wk3 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 17.2
+  },
+  {
+    "date": "2026-07-14",
+    "discipline": "running",
+    "summary": "Wk4 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-07-16",
+    "discipline": "cycling",
+    "summary": "Wk4 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-07-18",
+    "discipline": "cycling",
+    "summary": "Wk4 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 76.0
+  },
+  {
+    "date": "2026-07-19",
+    "discipline": "running",
+    "summary": "Wk4 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 17.6
+  },
+  {
+    "date": "2026-07-23",
+    "discipline": "running",
+    "summary": "Wk5 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-07-25",
+    "discipline": "cycling",
+    "summary": "Wk5 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 80.0
+  },
+  {
+    "date": "2026-07-26",
+    "discipline": "running",
+    "summary": "Wk5 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.0
+  },
+  {
+    "date": "2026-07-28",
+    "discipline": "running",
+    "summary": "Wk6 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-01",
+    "discipline": "cycling",
+    "summary": "Wk6 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 84.0
+  },
+  {
+    "date": "2026-08-02",
+    "discipline": "running",
+    "summary": "Wk6 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.4
+  },
+  {
+    "date": "2026-08-06",
+    "discipline": "running",
+    "summary": "Wk7 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-08",
+    "discipline": "cycling",
+    "summary": "Wk7 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 88.0
+  },
+  {
+    "date": "2026-08-09",
+    "discipline": "running",
+    "summary": "Wk7 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.8
+  },
+  {
+    "date": "2026-08-11",
+    "discipline": "running",
+    "summary": "Wk8 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-15",
+    "discipline": "cycling",
+    "summary": "Wk8 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 92.0
+  },
+  {
+    "date": "2026-08-16",
+    "discipline": "running",
+    "summary": "Wk8 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 19.2
+  },
+  {
+    "date": "2026-08-18",
+    "discipline": "cycling",
+    "summary": "Wk9 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-20",
+    "discipline": "running",
+    "summary": "Wk9 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-22",
+    "discipline": "cycling",
+    "summary": "Wk9 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 95.0
+  },
+  {
+    "date": "2026-08-23",
+    "discipline": "running",
+    "summary": "Wk9 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.5
+  },
+  {
+    "date": "2026-08-25",
+    "discipline": "running",
+    "summary": "Wk10 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-27",
+    "discipline": "cycling",
+    "summary": "Wk10 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-08-29",
+    "discipline": "cycling",
+    "summary": "Wk10 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 100.0
+  },
+  {
+    "date": "2026-08-30",
+    "discipline": "running",
+    "summary": "Wk10 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 19.0
+  },
+  {
+    "date": "2026-09-03",
+    "discipline": "running",
+    "summary": "Wk11 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-09-05",
+    "discipline": "cycling",
+    "summary": "Wk11 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 105.0
+  },
+  {
+    "date": "2026-09-06",
+    "discipline": "running",
+    "summary": "Wk11 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 19.5
+  },
+  {
+    "date": "2026-09-08",
+    "discipline": "running",
+    "summary": "Wk12 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-09-12",
+    "discipline": "cycling",
+    "summary": "Wk12 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 110.0
+  },
+  {
+    "date": "2026-09-13",
+    "discipline": "running",
+    "summary": "Wk12 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 20.0
+  },
+  {
+    "date": "2026-09-17",
+    "discipline": "running",
+    "summary": "Wk13 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-09-19",
+    "discipline": "cycling",
+    "summary": "Wk13 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 115.0
+  },
+  {
+    "date": "2026-09-20",
+    "discipline": "running",
+    "summary": "Wk13 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 20.5
+  },
+  {
+    "date": "2026-09-22",
+    "discipline": "running",
+    "summary": "Wk14 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-09-26",
+    "discipline": "cycling",
+    "summary": "Wk14 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 120.0
+  },
+  {
+    "date": "2026-09-27",
+    "discipline": "running",
+    "summary": "Wk14 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 21.0
+  },
+  {
+    "date": "2026-09-29",
+    "discipline": "cycling",
+    "summary": "Wk15 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-01",
+    "discipline": "running",
+    "summary": "Wk15 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-03",
+    "discipline": "cycling",
+    "summary": "Wk15 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 125.0
+  },
+  {
+    "date": "2026-10-04",
+    "discipline": "running",
+    "summary": "Wk15 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 21.5
+  },
+  {
+    "date": "2026-10-06",
+    "discipline": "running",
+    "summary": "Wk16 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-08",
+    "discipline": "cycling",
+    "summary": "Wk16 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-10",
+    "discipline": "cycling",
+    "summary": "Wk16 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 75.0
+  },
+  {
+    "date": "2026-10-11",
+    "discipline": "running",
+    "summary": "Wk16 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 17.0
+  },
+  {
+    "date": "2026-10-13",
+    "discipline": "cycling",
+    "summary": "Wk17 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-15",
+    "discipline": "running",
+    "summary": "Wk17 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-17",
+    "discipline": "cycling",
+    "summary": "Wk17 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 80.0
+  },
+  {
+    "date": "2026-10-18",
+    "discipline": "running",
+    "summary": "Wk17 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 17.6
+  },
+  {
+    "date": "2026-10-20",
+    "discipline": "running",
+    "summary": "Wk18 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-22",
+    "discipline": "cycling",
+    "summary": "Wk18 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-24",
+    "discipline": "cycling",
+    "summary": "Wk18 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 60.0
+  },
+  {
+    "date": "2026-10-27",
+    "discipline": "cycling",
+    "summary": "Wk19 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-10-31",
+    "discipline": "cycling",
+    "summary": "Wk19 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 90.0
+  },
+  {
+    "date": "2026-11-01",
+    "discipline": "running",
+    "summary": "Wk19 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.8
+  },
+  {
+    "date": "2026-11-03",
+    "discipline": "running",
+    "summary": "Wk20 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-07",
+    "discipline": "cycling",
+    "summary": "Wk20 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 60.0
+  },
+  {
+    "date": "2026-11-08",
+    "discipline": "running",
+    "summary": "Wk20 *** RACE DAY: 10K Run Race (Oct 10-11) ***",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-10",
+    "discipline": "cycling",
+    "summary": "Wk21 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-12",
+    "discipline": "running",
+    "summary": "Wk21 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-14",
+    "discipline": "cycling",
+    "summary": "Wk21 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 100.0
+  },
+  {
+    "date": "2026-11-15",
+    "discipline": "running",
+    "summary": "Wk21 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 20.0
+  },
+  {
+    "date": "2026-11-17",
+    "discipline": "running",
+    "summary": "Wk22 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-19",
+    "discipline": "cycling",
+    "summary": "Wk22 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-21",
+    "discipline": "cycling",
+    "summary": "Wk22 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 105.0
+  },
+  {
+    "date": "2026-11-22",
+    "discipline": "running",
+    "summary": "Wk22 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 20.6
+  },
+  {
+    "date": "2026-11-26",
+    "discipline": "running",
+    "summary": "Wk23 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-11-28",
+    "discipline": "cycling",
+    "summary": "Wk23 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 110.0
+  },
+  {
+    "date": "2026-11-29",
+    "discipline": "running",
+    "summary": "Wk23 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 21.2
+  },
+  {
+    "date": "2026-12-01",
+    "discipline": "running",
+    "summary": "Wk24 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-05",
+    "discipline": "cycling",
+    "summary": "Wk24 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 115.0
+  },
+  {
+    "date": "2026-12-06",
+    "discipline": "running",
+    "summary": "Wk24 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 21.8
+  },
+  {
+    "date": "2026-12-10",
+    "discipline": "running",
+    "summary": "Wk25 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-12",
+    "discipline": "cycling",
+    "summary": "Wk25 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 120.0
+  },
+  {
+    "date": "2026-12-13",
+    "discipline": "running",
+    "summary": "Wk25 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 22.4
+  },
+  {
+    "date": "2026-12-15",
+    "discipline": "running",
+    "summary": "Wk26 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-17",
+    "discipline": "cycling",
+    "summary": "Wk26 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-19",
+    "discipline": "cycling",
+    "summary": "Wk26 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 125.0
+  },
+  {
+    "date": "2026-12-20",
+    "discipline": "running",
+    "summary": "Wk26 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 23.0
+  },
+  {
+    "date": "2026-12-22",
+    "discipline": "cycling",
+    "summary": "Wk27 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-24",
+    "discipline": "running",
+    "summary": "Wk27 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-26",
+    "discipline": "cycling",
+    "summary": "Wk27 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 60.0
+  },
+  {
+    "date": "2026-12-27",
+    "discipline": "running",
+    "summary": "Wk27 *** RACE DAY: 18K Run Race (Dec 23) ***",
+    "pace_low_sec_km": 360,
+    "pace_high_sec_km": 380,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-29",
+    "discipline": "running",
+    "summary": "Wk28 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2026-12-31",
+    "discipline": "cycling",
+    "summary": "Wk28 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-01-02",
+    "discipline": "cycling",
+    "summary": "Wk28 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 26.0
+  },
+  {
+    "date": "2027-01-03",
+    "discipline": "running",
+    "summary": "Wk28 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 24.0
+  },
+  {
+    "date": "2027-01-05",
+    "discipline": "cycling",
+    "summary": "Wk29 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-01-09",
+    "discipline": "cycling",
+    "summary": "Wk29 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 70.0
+  },
+  {
+    "date": "2027-01-10",
+    "discipline": "running",
+    "summary": "Wk29 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 25.6
+  },
+  {
+    "date": "2027-01-14",
+    "discipline": "cycling",
+    "summary": "Wk30 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-01-16",
+    "discipline": "cycling",
+    "summary": "Wk30 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 70.0
+  },
+  {
+    "date": "2027-01-17",
+    "discipline": "running",
+    "summary": "Wk30 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 27.2
+  },
+  {
+    "date": "2027-01-19",
+    "discipline": "cycling",
+    "summary": "Wk31 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-01-23",
+    "discipline": "cycling",
+    "summary": "Wk31 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 70.0
+  },
+  {
+    "date": "2027-01-24",
+    "discipline": "running",
+    "summary": "Wk31 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 28.8
+  },
+  {
+    "date": "2027-01-28",
+    "discipline": "cycling",
+    "summary": "Wk32 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-01-30",
+    "discipline": "cycling",
+    "summary": "Wk32 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 70.0
+  },
+  {
+    "date": "2027-01-31",
+    "discipline": "running",
+    "summary": "Wk32 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 30.4
+  },
+  {
+    "date": "2027-02-04",
+    "discipline": "running",
+    "summary": "Wk33 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-02-06",
+    "discipline": "cycling",
+    "summary": "Wk33 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 60.0
+  },
+  {
+    "date": "2027-02-11",
+    "discipline": "cycling",
+    "summary": "Wk34 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-02-13",
+    "discipline": "cycling",
+    "summary": "Wk34 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 50.0
+  },
+  {
+    "date": "2027-02-14",
+    "discipline": "running",
+    "summary": "Wk34 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 8.0
+  },
+  {
+    "date": "2027-02-16",
+    "discipline": "cycling",
+    "summary": "Wk35 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-02-20",
+    "discipline": "cycling",
+    "summary": "Wk35 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 50.0
+  },
+  {
+    "date": "2027-02-21",
+    "discipline": "running",
+    "summary": "Wk35 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 8.0
+  },
+  {
+    "date": "2027-02-23",
+    "discipline": "running",
+    "summary": "Wk36 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-02-27",
+    "discipline": "cycling",
+    "summary": "Wk36 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 90.0
+  },
+  {
+    "date": "2027-02-28",
+    "discipline": "running",
+    "summary": "Wk36 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 14.0
+  },
+  {
+    "date": "2027-03-04",
+    "discipline": "running",
+    "summary": "Wk37 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-03-06",
+    "discipline": "cycling",
+    "summary": "Wk37 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 98.0
+  },
+  {
+    "date": "2027-03-07",
+    "discipline": "running",
+    "summary": "Wk37 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 14.6
+  },
+  {
+    "date": "2027-03-09",
+    "discipline": "running",
+    "summary": "Wk38 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-03-13",
+    "discipline": "cycling",
+    "summary": "Wk38 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 106.0
+  },
+  {
+    "date": "2027-03-14",
+    "discipline": "running",
+    "summary": "Wk38 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 15.2
+  },
+  {
+    "date": "2027-03-16",
+    "discipline": "cycling",
+    "summary": "Wk39 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-03-18",
+    "discipline": "running",
+    "summary": "Wk39 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-03-20",
+    "discipline": "cycling",
+    "summary": "Wk39 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 114.0
+  },
+  {
+    "date": "2027-03-21",
+    "discipline": "running",
+    "summary": "Wk39 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 15.8
+  },
+  {
+    "date": "2027-03-23",
+    "discipline": "running",
+    "summary": "Wk40 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-03-25",
+    "discipline": "cycling",
+    "summary": "Wk40 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-03-27",
+    "discipline": "cycling",
+    "summary": "Wk40 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 122.0
+  },
+  {
+    "date": "2027-03-28",
+    "discipline": "running",
+    "summary": "Wk40 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 16.4
+  },
+  {
+    "date": "2027-04-01",
+    "discipline": "running",
+    "summary": "Wk41 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-04-03",
+    "discipline": "cycling",
+    "summary": "Wk41 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 130.0
+  },
+  {
+    "date": "2027-04-04",
+    "discipline": "running",
+    "summary": "Wk41 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 17.0
+  },
+  {
+    "date": "2027-04-06",
+    "discipline": "running",
+    "summary": "Wk42 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-04-10",
+    "discipline": "cycling",
+    "summary": "Wk42 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 138.0
+  },
+  {
+    "date": "2027-04-11",
+    "discipline": "running",
+    "summary": "Wk42 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 17.6
+  },
+  {
+    "date": "2027-04-15",
+    "discipline": "running",
+    "summary": "Wk43 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-04-17",
+    "discipline": "cycling",
+    "summary": "Wk43 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 146.0
+  },
+  {
+    "date": "2027-04-18",
+    "discipline": "running",
+    "summary": "Wk43 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.2
+  },
+  {
+    "date": "2027-04-20",
+    "discipline": "running",
+    "summary": "Wk44 Evening session",
+    "pace_low_sec_km": 390,
+    "pace_high_sec_km": 410,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-04-24",
+    "discipline": "cycling",
+    "summary": "Wk44 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 154.0
+  },
+  {
+    "date": "2027-04-25",
+    "discipline": "running",
+    "summary": "Wk44 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.8
+  },
+  {
+    "date": "2027-04-27",
+    "discipline": "cycling",
+    "summary": "Wk45 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-04-29",
+    "discipline": "running",
+    "summary": "Wk45 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-05-01",
+    "discipline": "cycling",
+    "summary": "Wk45 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 140.0
+  },
+  {
+    "date": "2027-05-02",
+    "discipline": "running",
+    "summary": "Wk45 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.0
+  },
+  {
+    "date": "2027-05-04",
+    "discipline": "running",
+    "summary": "Wk46 Evening session",
+    "pace_low_sec_km": 295,
+    "pace_high_sec_km": 310,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-05-06",
+    "discipline": "cycling",
+    "summary": "Wk46 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-05-08",
+    "discipline": "cycling",
+    "summary": "Wk46 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 150.0
+  },
+  {
+    "date": "2027-05-09",
+    "discipline": "running",
+    "summary": "Wk46 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.0
+  },
+  {
+    "date": "2027-05-13",
+    "discipline": "running",
+    "summary": "Wk47 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-05-15",
+    "discipline": "cycling",
+    "summary": "Wk47 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 160.0
+  },
+  {
+    "date": "2027-05-16",
+    "discipline": "running",
+    "summary": "Wk47 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.0
+  },
+  {
+    "date": "2027-05-18",
+    "discipline": "running",
+    "summary": "Wk48 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-05-22",
+    "discipline": "cycling",
+    "summary": "Wk48 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 170.0
+  },
+  {
+    "date": "2027-05-23",
+    "discipline": "running",
+    "summary": "Wk48 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 18.0
+  },
+  {
+    "date": "2027-05-25",
+    "discipline": "cycling",
+    "summary": "Wk49 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-05-29",
+    "discipline": "cycling",
+    "summary": "Wk49 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 80.0
+  },
+  {
+    "date": "2027-05-30",
+    "discipline": "running",
+    "summary": "Wk49 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 12.0
+  },
+  {
+    "date": "2027-06-03",
+    "discipline": "cycling",
+    "summary": "Wk50 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-06-05",
+    "discipline": "cycling",
+    "summary": "Wk50 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 80.0
+  },
+  {
+    "date": "2027-06-06",
+    "discipline": "running",
+    "summary": "Wk50 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 12.0
+  },
+  {
+    "date": "2027-06-08",
+    "discipline": "cycling",
+    "summary": "Wk51 Evening session",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 128,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-06-12",
+    "discipline": "cycling",
+    "summary": "Wk51 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 80.0
+  },
+  {
+    "date": "2027-06-13",
+    "discipline": "running",
+    "summary": "Wk51 Long Run",
+    "pace_low_sec_km": 375,
+    "pace_high_sec_km": 405,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": 12.0
+  },
+  {
+    "date": "2027-06-15",
+    "discipline": "running",
+    "summary": "Wk52 Evening session",
+    "pace_low_sec_km": 335,
+    "pace_high_sec_km": 350,
+    "power_low_w": null,
+    "power_high_w": null,
+    "target_distance_km": null
+  },
+  {
+    "date": "2027-06-19",
+    "discipline": "cycling",
+    "summary": "Wk52 Long Ride",
+    "pace_low_sec_km": null,
+    "pace_high_sec_km": null,
+    "power_low_w": 128,
+    "power_high_w": 177,
+    "target_distance_km": 180.0
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "_instructions": "Tick off strength sessions you completed but that Garmin didn't auto-log (e.g. logged as a generic workout, or not started as an activity). Add an entry per date in YYYY-MM-DD format with true/false. Edit this file directly on GitHub (pencil icon) and commit - no app needed.",
+  "2026-06-25": true,
+  "2026-06-26": false
+}
