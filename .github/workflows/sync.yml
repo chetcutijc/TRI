@@ -44,3 +44,16 @@ jobs:
           git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
           git pull --rebase origin main
           git push
+
+      - name: Email dashboard
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Training Dashboard Update"
+          to: ${{ secrets.EMAIL_USERNAME }}
+          from: Garmin Dashboard Bot
+          body: "Your training dashboard has been refreshed. See attached HTML file (open in any browser) or view the latest version in your GitHub repo under docs/index.html."
+          attachments: docs/index.html
