@@ -59,6 +59,7 @@ def load_plan():
 def weekly_summary(df):
     df = df.copy()
     df["week"] = df["start"].dt.to_period("W").apply(lambda r: r.start_time)
+    df["type"] = df["type"].apply(normalize_type)
     summary = df.groupby(["week", "type"]).agg(
         sessions=("id", "count"),
         duration_min=("duration_min", "sum"),
@@ -66,6 +67,31 @@ def weekly_summary(df):
         load=("training_load", "sum"),
     ).reset_index()
     return summary
+
+
+GARMIN_TYPE_MAP = {
+    "lap_swimming": "swimming",
+    "open_water_swimming": "swimming",
+    "swimming": "swimming",
+    "road_biking": "cycling",
+    "cycling": "cycling",
+    "indoor_cycling": "cycling",
+    "virtual_ride": "cycling",
+    "gravel_cycling": "cycling",
+    "mountain_biking": "cycling",
+    "running": "running",
+    "treadmill_running": "running",
+    "trail_running": "running",
+    "indoor_running": "running",
+    "strength_training": "strength_training",
+    "fitness_equipment": "strength_training",
+}
+
+
+def normalize_type(garmin_type):
+    if not garmin_type:
+        return garmin_type
+    return GARMIN_TYPE_MAP.get(garmin_type, garmin_type)
 
 
 def on_target_pct(actual_weekly, plan):
@@ -77,11 +103,44 @@ def on_target_pct(actual_weekly, plan):
         week_key = week.strftime("%Y-%m-%d")
         planned = plan.get(week_key, {})
         for _, row in group.iterrows():
-            planned_min = planned.get(row["type"], {}).get("duration_min")
+            disc = normalize_type(row["type"])
+            planned_min = planned.get(disc, {}).get("duration_min")
             if planned_min:
                 pct = min(100, round(100 * row["duration_min"] / planned_min))
-                rows.append({"week": week, "type": row["type"], "pct_on_target": pct})
+                rows.append({"week": week, "type": disc, "pct_on_target": pct})
     return pd.DataFrame(rows)
+
+
+def planned_vs_completed_table(df, plan):
+    """Builds a week-by-week table: planned session count vs completed session count, per discipline."""
+    if not plan or df.empty:
+        return pd.DataFrame()
+
+    df = df.copy()
+    df["week"] = df["start"].dt.to_period("W").apply(lambda r: r.start_time)
+    df["norm_type"] = df["type"].apply(normalize_type)
+    actual_counts = df.groupby(["week", "norm_type"]).size().reset_index(name="completed")
+
+    rows = []
+    for week_str, disciplines in plan.items():
+        week_dt = pd.Timestamp(week_str)
+        for disc, vals in disciplines.items():
+            planned_min = vals.get("duration_min", 0)
+            match = actual_counts[(actual_counts["week"] == week_dt) & (actual_counts["norm_type"] == disc)]
+            completed = int(match["completed"].iloc[0]) if not match.empty else 0
+            rows.append({
+                "week": week_dt,
+                "discipline": disc,
+                "planned_min": planned_min,
+                "completed_sessions": completed,
+            })
+
+    out = pd.DataFrame(rows)
+    if out.empty:
+        return out
+    cutoff = dt.datetime.now() - dt.timedelta(weeks=8)
+    out = out[out["week"] >= cutoff].sort_values(["week", "discipline"])
+    return out
 
 
 def build_html(df, plan, wellness):
@@ -92,6 +151,7 @@ def build_html(df, plan, wellness):
 
     weekly = weekly_summary(df)
     ontarget = on_target_pct(weekly, plan)
+    plan_vs_actual = planned_vs_completed_table(df, plan)
 
     fig1 = go.Figure()
     for atype in weekly["type"].unique():
@@ -169,6 +229,17 @@ def build_html(df, plan, wellness):
     recent = df.tail(5)[["start", "name", "type", "distance_km", "duration_min", "avg_hr", "training_load"]]
     recent_html = recent.to_html(index=False, classes="table", border=0)
 
+    plan_table_html = ""
+    if not plan_vs_actual.empty:
+        pv = plan_vs_actual.copy()
+        pv["week"] = pv["week"].dt.strftime("%Y-%m-%d")
+        pv["planned_min"] = pv["planned_min"].round(0).astype(int)
+        pv = pv.rename(columns={
+            "week": "Week", "discipline": "Discipline",
+            "planned_min": "Planned (min)", "completed_sessions": "Completed Sessions"
+        })
+        plan_table_html = pv.to_html(index=False, classes="table", border=0)
+
     last_30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last_30)
     total_hours = round(last_30["duration_min"].sum() / 60, 1)
@@ -219,6 +290,10 @@ def build_html(df, plan, wellness):
         </div>
 
         {charts_html}
+
+        <h2>Planned vs Completed (last 8 weeks)</h2>
+        <p style="color:#888; font-size:0.85em;">Planned minutes are aggregated per discipline per week from your training plan. Completed sessions counts how many actual Garmin activities of that type were logged that week — note this compares session count against planned volume, not a 1:1 match, since the plan stores total minutes rather than individual session counts.</p>
+        {plan_table_html if plan_table_html else "<p>No plan data matched to recent weeks yet.</p>"}
 
         <h2>Recent Sessions</h2>
         {recent_html}
