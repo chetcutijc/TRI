@@ -1,0 +1,86 @@
+{
+  "2026-06-29": {
+    "sleep_duration_min": 280.0,
+    "sleep_score": null,
+    "body_battery_max": 49,
+    "body_battery_min": 12
+  },
+  "2026-06-28": {
+    "sleep_duration_min": null,
+    "sleep_score": null,
+    "body_battery_max": 0,
+    "body_battery_min": 57
+  },
+  "2026-06-27": {
+    "sleep_duration_min": null,
+    "sleep_score": null,
+    "body_battery_max": 0,
+    "body_battery_min": 0
+  },
+  "2026-06-26": {
+    "sleep_duration_min": 317.0,
+    "sleep_score": null,
+    "body_battery_max": 51,
+    "body_battery_min": 56
+  },
+  "2026-06-25": {
+    "sleep_duration_min": 334.0,
+    "sleep_score": null,
+    "body_battery_max": 67,
+    "body_battery_min": 70
+  },
+  "2026-06-24": {
+    "sleep_duration_min": 265.0,
+    "sleep_score": null,
+    "body_battery_max": 44,
+    "body_battery_min": 36
+  },
+  "2026-06-23": {
+    "sleep_duration_min": 239.0,
+    "sleep_score": null,
+    "body_battery_max": 39,
+    "body_battery_min": 57
+  },
+  "2026-06-22": {
+    "sleep_duration_min": 424.0,
+    "sleep_score": null,
+    "body_battery_max": 72,
+    "body_battery_min": 56
+  },
+  "2026-06-21": {
+    "sleep_duration_min": 321.0,
+    "sleep_score": null,
+    "body_battery_max": 45,
+    "body_battery_min": 77
+  },
+  "2026-06-20": {
+    "sleep_duration_min": 625.0,
+    "sleep_score": null,
+    "body_battery_max": 97,
+    "body_battery_min": 69
+  },
+  "2026-06-19": {
+    "sleep_duration_min": 296.4,
+    "sleep_score": null,
+    "body_battery_max": 32,
+    "body_battery_min": 31
+  },
+  "2026-06-18": {
+    "sleep_duration_min": 345.0,
+    "sleep_score": null,
+    "body_battery_max": 42,
+    "body_battery_min": 43
+  },
+  "2026-06-17": {
+    "sleep_duration_min": 351.0,
+    "sleep_score": null,
+    "body_battery_max": 50,
+    "body_battery_min": 44
+  },
+  "2026-06-16": {
+    "sleep_duration_min": 265.0,
+    "sleep_score": null,
+    "body_battery_max": 47,
+    "body_battery_min": 63
+  }
+}
