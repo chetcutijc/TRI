@@ -569,6 +569,169 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
     OUT_FILE.write_text(html)
 
 
+def build_pdf(df, plan, wellness, plan_sessions, manual_log):
+    """Builds a condensed, print-friendly PDF version of the dashboard.
+    Charts are rendered as static PNGs (via kaleido) since PDF can't run the
+    interactive JS that the HTML dashboard uses."""
+    import base64
+    from io import BytesIO
+
+    try:
+        from weasyprint import HTML
+    except ImportError:
+        print("weasyprint not installed, skipping PDF generation")
+        return
+
+    OUT_PDF = Path("docs/dashboard.pdf")
+    OUT_PDF.parent.mkdir(exist_ok=True)
+
+    if df.empty:
+        HTML(string="<h1>No activity data yet</h1>").write_pdf(str(OUT_PDF))
+        return
+
+    weekly = weekly_summary(df)
+
+    last_30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+    total_sessions = len(last_30)
+    total_hours = round(last_30["duration_min"].sum() / 60)
+    total_km = round(last_30["distance_km"].sum())
+    avg_load = round(last_30["training_load"].mean()) if "training_load" in last_30 and last_30["training_load"].notna().any() else "n/a"
+
+    avg_sleep_hrs = "n/a"
+    avg_bb = "n/a"
+    if not wellness.empty:
+        recent_wellness = wellness[wellness["date"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+        if "sleep_duration_min" in recent_wellness.columns and recent_wellness["sleep_duration_min"].notna().any():
+            avg_sleep_hrs = round(recent_wellness["sleep_duration_min"].mean() / 60, 1)
+        if "body_battery_max" in recent_wellness.columns and recent_wellness["body_battery_max"].notna().any():
+            avg_bb = round(recent_wellness["body_battery_max"].mean())
+
+    PALETTE = ["#5B6EF5", "#00C2A8", "#FF7A59", "#FFC75A", "#9B7DFF", "#36C5F0"]
+
+    def fig_to_data_uri(fig):
+        fig.update_layout(
+            height=320, width=480,
+            margin=dict(l=40, r=20, t=44, b=36),
+            font=dict(family="Helvetica, Arial, sans-serif", size=11, color="#2c2c34"),
+            title_font=dict(size=13, color="#1a1a22"),
+            plot_bgcolor="white", paper_bgcolor="white",
+            colorway=PALETTE, showlegend=True,
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=9)),
+        )
+        try:
+            img_bytes = fig.to_image(format="png", scale=2)
+        except Exception as e:
+            print(f"Chart image render failed: {e}")
+            return None
+        b64 = base64.b64encode(img_bytes).decode()
+        return f"data:image/png;base64,{b64}"
+
+    # Weekly volume chart
+    fig1 = go.Figure()
+    for atype in weekly["type"].unique():
+        sub = weekly[weekly["type"] == atype]
+        fig1.add_trace(go.Bar(x=sub["week"], y=sub["duration_min"], name=atype))
+    fig1.update_layout(barmode="stack", title="Weekly Volume (min)")
+    img1 = fig_to_data_uri(fig1)
+
+    # Training load
+    load_weekly = df.copy()
+    load_weekly["week"] = load_weekly["start"].dt.to_period("W").apply(lambda r: r.start_time)
+    load_by_week = load_weekly.groupby("week")["training_load"].sum().reset_index()
+    fig2 = go.Figure()
+    fig2.add_trace(go.Scatter(x=load_by_week["week"], y=load_by_week["training_load"], mode="lines+markers"))
+    fig2.update_layout(title="Training Load Trend")
+    img2 = fig_to_data_uri(fig2)
+
+    # Sleep
+    img3 = None
+    if not wellness.empty and "sleep_duration_min" in wellness.columns and wellness["sleep_duration_min"].notna().any():
+        sw = wellness.dropna(subset=["sleep_duration_min"])
+        fig3 = go.Figure()
+        fig3.add_trace(go.Scatter(x=sw["date"], y=sw["sleep_duration_min"] / 60, mode="lines+markers"))
+        fig3.update_layout(title="Sleep Duration (hrs)")
+        img3 = fig_to_data_uri(fig3)
+
+    # Body battery
+    img4 = None
+    if not wellness.empty and "body_battery_max" in wellness.columns and wellness["body_battery_max"].notna().any():
+        bw = wellness.dropna(subset=["body_battery_max"])
+        fig4 = go.Figure()
+        fig4.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"], mode="lines+markers"))
+        fig4.update_layout(title="Body Battery")
+        img4 = fig_to_data_uri(fig4)
+
+    charts_html = "".join(
+        f'<div class="chart-cell"><img src="{img}" style="width:100%;"/></div>'
+        for img in [img1, img2, img3, img4] if img
+    )
+
+    recent = df.tail(8)[["start", "name", "type", "distance_km", "duration_min", "avg_hr"]].copy()
+    recent["start"] = recent["start"].dt.strftime("%b %d")
+    recent["distance_km"] = recent["distance_km"].round(1)
+    recent["duration_min"] = recent["duration_min"].round(0).astype(int)
+    recent_html = recent.to_html(index=False, classes="table", border=0)
+
+    clean_log = {k: v for k, v in manual_log.items() if not k.startswith("_")}
+    strength_html = ""
+    if clean_log:
+        rows = "".join(f"<tr><td>{wk}</td><td>{'Completed' if done else 'Missed'}</td></tr>"
+                        for wk, done in sorted(clean_log.items(), reverse=True)[:6])
+        strength_html = f'<table class="table"><tr><th>Week</th><th>Strength</th></tr>{rows}</table>'
+
+    html = f"""
+    <html>
+    <head>
+        <style>
+            @page {{ size: A4; margin: 16mm; }}
+            body {{ font-family: Helvetica, Arial, sans-serif; color: #1a1a22; }}
+            h1 {{ font-size: 20pt; margin-bottom: 2pt; }}
+            h2 {{ font-size: 13pt; margin-top: 18pt; margin-bottom: 4pt; border-bottom: 1px solid #eee; padding-bottom: 3pt; }}
+            .updated {{ color: #888; font-size: 9pt; margin-top: 0; }}
+            .stats {{ display: flex; gap: 10pt; margin: 10pt 0; flex-wrap: wrap; }}
+            .card {{ border: 1px solid #eee; border-radius: 6pt; padding: 8pt 12pt; text-align: center; flex: 1; min-width: 70pt; }}
+            .card .num {{ font-size: 14pt; font-weight: 700; }}
+            .card .label {{ font-size: 7pt; color: #888; text-transform: uppercase; }}
+            .chart-grid {{ display: flex; flex-wrap: wrap; gap: 8pt; }}
+            .chart-cell {{ width: 48%; border: 1px solid #eee; border-radius: 6pt; padding: 4pt; }}
+            .table {{ width: 100%; border-collapse: collapse; font-size: 8.5pt; }}
+            .table th {{ background: #f5f5fa; padding: 5pt; text-align: left; }}
+            .table td {{ padding: 5pt; border-bottom: 1px solid #f0f0f5; }}
+        </style>
+    </head>
+    <body>
+        <h1>Training Dashboard</h1>
+        <p class="updated">Generated {dt.datetime.now().strftime("%Y-%m-%d %H:%M")} UTC</p>
+
+        <div class="stats">
+            <div class="card"><div class="num">{total_sessions}</div><div class="label">Sessions (30d)</div></div>
+            <div class="card"><div class="num">{total_hours}h</div><div class="label">Volume (30d)</div></div>
+            <div class="card"><div class="num">{total_km}km</div><div class="label">Distance (30d)</div></div>
+            <div class="card"><div class="num">{avg_load}</div><div class="label">Avg Load</div></div>
+            <div class="card"><div class="num">{avg_sleep_hrs}h</div><div class="label">Avg Sleep</div></div>
+            <div class="card"><div class="num">{avg_bb}</div><div class="label">Body Battery</div></div>
+        </div>
+
+        <h2>Trends</h2>
+        <div class="chart-grid">{charts_html}</div>
+
+        <h2>Recent Sessions</h2>
+        {recent_html}
+
+        <h2>Strength Sessions</h2>
+        {strength_html if strength_html else "<p>No manual entries yet.</p>"}
+
+        <p style="color:#aaa; font-size:7pt; margin-top:14pt;">
+        Full interactive dashboard with all charts and plan-vs-actual comparisons available at docs/index.html in your repo.
+        </p>
+    </body>
+    </html>
+    """
+
+    HTML(string=html).write_pdf(str(OUT_PDF))
+    print(f"PDF built at {OUT_PDF}")
+
+
 def main():
     df = load_activities()
     plan = load_plan()
@@ -577,6 +740,7 @@ def main():
     manual_log = load_manual_log()
     build_html(df, plan, wellness, plan_sessions, manual_log)
     print("Dashboard built at docs/index.html")
+    build_pdf(df, plan, wellness, plan_sessions, manual_log)
 
 
 if __name__ == "__main__":
