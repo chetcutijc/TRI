@@ -66,5 +66,22 @@
     "elevation_gain": null,
     "avg_pace": 0.7080000042915344,
     "vo2max_estimate": null
+  },
+  "23425897703": {
+    "id": 23425897703,
+    "name": "Pool Swim",
+    "type": "lap_swimming",
+    "start": "2026-06-30 07:09:42",
+    "duration_s": 3539.06103515625,
+    "distance_m": 2075.0,
+    "calories": 681.0,
+    "avg_hr": 144.0,
+    "max_hr": 164.0,
+    "training_load": 134.1798553466797,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.6660000085830688,
+    "vo2max_estimate": null
   }
 }
