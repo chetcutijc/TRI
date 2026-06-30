@@ -51,14 +51,14 @@ jobs:
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
-          git add data/activities.json data/wellness.json docs/index.html
+          git add data/activities.json data/wellness.json docs/index.html docs/dashboard.pdf
           git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
-          # docs/index.html is fully regenerated every run, so if main moved while we
-          # were running, always keep our freshly-built version rather than merging diffs.
+          # docs/index.html and docs/dashboard.pdf are fully regenerated every run, so if
+          # main moved while we were running, always keep our freshly-built version.
           git pull origin main --no-rebase -X ours
           git push
 
-      - name: Email dashboard
+      - name: Email dashboard PDF
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -68,5 +68,5 @@ jobs:
           subject: "Training Dashboard Update"
           to: ${{ secrets.EMAIL_USERNAME }}
           from: Garmin Dashboard Bot
-          body: "Your training dashboard has been refreshed. See attached HTML file (open in any browser) or view the latest version in your GitHub repo under docs/index.html."
-          attachments: docs/index.html
+          body: "Your training dashboard PDF is attached — built to be easy to read on a phone. The full interactive version with all charts and plan-vs-actual tables is in your GitHub repo under docs/index.html."
+          attachments: docs/dashboard.pdf
