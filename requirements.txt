@@ -1,3 +1,5 @@
 garminconnect
 pandas
 plotly
+kaleido
+weasyprint
