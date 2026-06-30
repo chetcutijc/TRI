@@ -570,11 +570,12 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
 
 
 def build_pdf(df, plan, wellness, plan_sessions, manual_log):
-    """Builds a condensed, print-friendly PDF version of the dashboard.
+    """Builds a full print-friendly PDF version of the dashboard, mirroring every
+    section of the HTML dashboard (per-discipline averages, on-target %, plan vs
+    completed, run/bike target comparisons, swim stats, strength tracking).
     Charts are rendered as static PNGs (via kaleido) since PDF can't run the
     interactive JS that the HTML dashboard uses."""
     import base64
-    from io import BytesIO
 
     try:
         from weasyprint import HTML
@@ -590,6 +591,14 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
         return
 
     weekly = weekly_summary(df)
+    ontarget = on_target_pct(weekly, plan)
+    plan_vs_actual = planned_vs_completed_table(df, plan)
+    run_compare = running_target_vs_actual(df, plan_sessions)
+    bike_compare = cycling_target_vs_actual(df, plan_sessions)
+    swims, avg_pace_100m = swim_summary_stats(df)
+
+    run_avg_pct_off = round(run_compare["pct_off_target"].mean(), 1) if not run_compare.empty else None
+    bike_avg_pct_off = round(bike_compare["pct_off_target"].mean(), 1) if not bike_compare.empty else None
 
     last_30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last_30)
@@ -606,11 +615,32 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
         if "body_battery_max" in recent_wellness.columns and recent_wellness["body_battery_max"].notna().any():
             avg_bb = round(recent_wellness["body_battery_max"].mean())
 
+    # ---- Per-discipline averages (last 30 days) ----
+    disc_stats_html = ""
+    if not last_30.empty:
+        last_30 = last_30.copy()
+        last_30["norm_type"] = last_30["type"].apply(normalize_type)
+        per_disc = last_30.groupby("norm_type").agg(
+            sessions=("id", "count"),
+            avg_duration_min=("duration_min", "mean"),
+            avg_distance_km=("distance_km", "mean"),
+            avg_hr=("avg_hr", "mean"),
+        ).reset_index()
+        per_disc["avg_duration_min"] = per_disc["avg_duration_min"].round(0).astype(int)
+        per_disc["avg_distance_km"] = per_disc["avg_distance_km"].round(1)
+        per_disc["avg_hr"] = per_disc["avg_hr"].round(0)
+        per_disc = per_disc.rename(columns={
+            "norm_type": "Discipline", "sessions": "Sessions (30d)",
+            "avg_duration_min": "Avg Duration (min)", "avg_distance_km": "Avg Distance (km)",
+            "avg_hr": "Avg HR"
+        })
+        disc_stats_html = per_disc.to_html(index=False, classes="table", border=0)
+
     PALETTE = ["#5B6EF5", "#00C2A8", "#FF7A59", "#FFC75A", "#9B7DFF", "#36C5F0"]
 
     def fig_to_data_uri(fig):
         fig.update_layout(
-            height=320, width=480,
+            height=300, width=460,
             margin=dict(l=40, r=20, t=44, b=36),
             font=dict(family="Helvetica, Arial, sans-serif", size=11, color="#2c2c34"),
             title_font=dict(size=13, color="#1a1a22"),
@@ -626,24 +656,22 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
         b64 = base64.b64encode(img_bytes).decode()
         return f"data:image/png;base64,{b64}"
 
-    # Weekly volume chart
+    # ---- Charts ----
     fig1 = go.Figure()
     for atype in weekly["type"].unique():
         sub = weekly[weekly["type"] == atype]
         fig1.add_trace(go.Bar(x=sub["week"], y=sub["duration_min"], name=atype))
-    fig1.update_layout(barmode="stack", title="Weekly Volume (min)")
+    fig1.update_layout(barmode="stack", title="Weekly Volume (min) by Discipline")
     img1 = fig_to_data_uri(fig1)
 
-    # Training load
     load_weekly = df.copy()
     load_weekly["week"] = load_weekly["start"].dt.to_period("W").apply(lambda r: r.start_time)
     load_by_week = load_weekly.groupby("week")["training_load"].sum().reset_index()
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=load_by_week["week"], y=load_by_week["training_load"], mode="lines+markers"))
-    fig2.update_layout(title="Training Load Trend")
+    fig2.update_layout(title="Weekly Training Load")
     img2 = fig_to_data_uri(fig2)
 
-    # Sleep
     img3 = None
     if not wellness.empty and "sleep_duration_min" in wellness.columns and wellness["sleep_duration_min"].notna().any():
         sw = wellness.dropna(subset=["sleep_duration_min"])
@@ -652,19 +680,91 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
         fig3.update_layout(title="Sleep Duration (hrs)")
         img3 = fig_to_data_uri(fig3)
 
-    # Body battery
     img4 = None
     if not wellness.empty and "body_battery_max" in wellness.columns and wellness["body_battery_max"].notna().any():
         bw = wellness.dropna(subset=["body_battery_max"])
         fig4 = go.Figure()
-        fig4.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"], mode="lines+markers"))
+        fig4.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"], mode="lines+markers", name="Charged"))
+        if "body_battery_min" in bw.columns:
+            fig4.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_min"], mode="lines+markers", name="Drained"))
         fig4.update_layout(title="Body Battery")
         img4 = fig_to_data_uri(fig4)
 
+    img5 = None  # on-target %
+    if ontarget is not None and not ontarget.empty:
+        fig5 = go.Figure()
+        for atype in ontarget["type"].unique():
+            sub = ontarget[ontarget["type"] == atype]
+            fig5.add_trace(go.Scatter(x=sub["week"], y=sub["pct_on_target"], mode="lines+markers", name=atype))
+        fig5.update_layout(title="On-Target % vs Plan", yaxis_range=[0, 110])
+        img5 = fig_to_data_uri(fig5)
+
+    img6 = None  # swim distance trend
+    img7 = None  # swim pace trend
+    if swims is not None and not swims.empty:
+        fig6 = go.Figure()
+        fig6.add_trace(go.Scatter(x=swims["start"], y=swims["distance_m"], mode="lines+markers"))
+        fig6.update_layout(title="Swim Distance Trend (m)")
+        img6 = fig_to_data_uri(fig6)
+
+        pace_df = swims.dropna(subset=["pace_per_100m_sec"])
+        if not pace_df.empty:
+            fig7 = go.Figure()
+            fig7.add_trace(go.Scatter(x=pace_df["start"], y=pace_df["pace_per_100m_sec"], mode="lines+markers"))
+            fig7.update_layout(title="Swim Pace Trend (sec/100m)")
+            img7 = fig_to_data_uri(fig7)
+
     charts_html = "".join(
         f'<div class="chart-cell"><img src="{img}" style="width:100%;"/></div>'
-        for img in [img1, img2, img3, img4] if img
+        for img in [img1, img2, img5, img3, img4, img6, img7] if img
     )
+
+    # ---- Tables ----
+    plan_table_html = ""
+    if not plan_vs_actual.empty:
+        pv = plan_vs_actual.copy()
+        pv["week"] = pv["week"].dt.strftime("%Y-%m-%d")
+        pv["planned_min"] = pv["planned_min"].round(0).astype(int)
+        pv = pv.rename(columns={
+            "week": "Week", "discipline": "Discipline",
+            "planned_min": "Planned (min)", "completed_sessions": "Completed Sessions"
+        })
+        plan_table_html = pv.to_html(index=False, classes="table", border=0)
+
+    run_compare_html = ""
+    if not run_compare.empty:
+        rc = run_compare.tail(10).rename(columns={
+            "date": "Date", "session": "Session", "target_pace": "Target Pace",
+            "actual_pace": "Actual Pace", "diff_sec_per_km": "Diff (sec/km)", "pct_off_target": "% Off"
+        })
+        run_compare_html = rc.to_html(index=False, classes="table", border=0)
+
+    bike_compare_html = ""
+    if not bike_compare.empty:
+        bc = bike_compare.tail(10).rename(columns={
+            "date": "Date", "session": "Session", "target_power": "Target Power",
+            "actual_power": "Actual Power", "diff_w": "Diff (W)", "pct_off_target": "% Off"
+        })
+        bike_compare_html = bc.to_html(index=False, classes="table", border=0)
+
+    swim_stats_html = ""
+    if swims is not None and not swims.empty:
+        avg_dist = round(swims["distance_m"].mean())
+        avg_pace_str = f"{int(avg_pace_100m // 60)}:{int(avg_pace_100m % 60):02d}/100m" if avg_pace_100m else "n/a"
+        swim_stats_html = f"""
+        <div class="stats">
+            <div class="card"><div class="num">{len(swims)}</div><div class="label">Total Swims</div></div>
+            <div class="card"><div class="num">{avg_dist}m</div><div class="label">Avg Distance</div></div>
+            <div class="card"><div class="num">{avg_pace_str}</div><div class="label">Avg Pace</div></div>
+        </div>
+        """
+
+    clean_log = {k: v for k, v in manual_log.items() if not k.startswith("_")}
+    strength_html = ""
+    if clean_log:
+        rows = "".join(f"<tr><td>{wk}</td><td>{'Completed' if done else 'Missed'}</td></tr>"
+                        for wk, done in sorted(clean_log.items(), reverse=True)[:8])
+        strength_html = f'<table class="table"><tr><th>Week</th><th>Strength</th></tr>{rows}</table>'
 
     recent = df.tail(8)[["start", "name", "type", "distance_km", "duration_min", "avg_hr"]].copy()
     recent["start"] = recent["start"].dt.strftime("%b %d")
@@ -672,31 +772,26 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
     recent["duration_min"] = recent["duration_min"].round(0).astype(int)
     recent_html = recent.to_html(index=False, classes="table", border=0)
 
-    clean_log = {k: v for k, v in manual_log.items() if not k.startswith("_")}
-    strength_html = ""
-    if clean_log:
-        rows = "".join(f"<tr><td>{wk}</td><td>{'Completed' if done else 'Missed'}</td></tr>"
-                        for wk, done in sorted(clean_log.items(), reverse=True)[:6])
-        strength_html = f'<table class="table"><tr><th>Week</th><th>Strength</th></tr>{rows}</table>'
-
     html = f"""
     <html>
     <head>
         <style>
-            @page {{ size: A4; margin: 16mm; }}
+            @page {{ size: A4; margin: 14mm; }}
             body {{ font-family: Helvetica, Arial, sans-serif; color: #1a1a22; }}
-            h1 {{ font-size: 20pt; margin-bottom: 2pt; }}
-            h2 {{ font-size: 13pt; margin-top: 18pt; margin-bottom: 4pt; border-bottom: 1px solid #eee; padding-bottom: 3pt; }}
-            .updated {{ color: #888; font-size: 9pt; margin-top: 0; }}
-            .stats {{ display: flex; gap: 10pt; margin: 10pt 0; flex-wrap: wrap; }}
-            .card {{ border: 1px solid #eee; border-radius: 6pt; padding: 8pt 12pt; text-align: center; flex: 1; min-width: 70pt; }}
-            .card .num {{ font-size: 14pt; font-weight: 700; }}
-            .card .label {{ font-size: 7pt; color: #888; text-transform: uppercase; }}
-            .chart-grid {{ display: flex; flex-wrap: wrap; gap: 8pt; }}
-            .chart-cell {{ width: 48%; border: 1px solid #eee; border-radius: 6pt; padding: 4pt; }}
-            .table {{ width: 100%; border-collapse: collapse; font-size: 8.5pt; }}
-            .table th {{ background: #f5f5fa; padding: 5pt; text-align: left; }}
-            .table td {{ padding: 5pt; border-bottom: 1px solid #f0f0f5; }}
+            h1 {{ font-size: 19pt; margin-bottom: 2pt; }}
+            h2 {{ font-size: 12.5pt; margin-top: 16pt; margin-bottom: 4pt; border-bottom: 1px solid #eee; padding-bottom: 3pt; }}
+            .updated {{ color: #888; font-size: 8.5pt; margin-top: 0; }}
+            .subtext {{ color: #999; font-size: 7.5pt; margin: 2pt 0 6pt; line-height: 1.3; }}
+            .stats {{ display: flex; gap: 8pt; margin: 8pt 0; flex-wrap: wrap; }}
+            .card {{ border: 1px solid #eee; border-radius: 5pt; padding: 7pt 10pt; text-align: center; flex: 1; min-width: 65pt; }}
+            .card .num {{ font-size: 13pt; font-weight: 700; }}
+            .card .label {{ font-size: 6.5pt; color: #888; text-transform: uppercase; }}
+            .chart-grid {{ display: flex; flex-wrap: wrap; gap: 6pt; }}
+            .chart-cell {{ width: 48%; border: 1px solid #eee; border-radius: 5pt; padding: 3pt; }}
+            .table {{ width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-bottom: 4pt; }}
+            .table th {{ background: #f5f5fa; padding: 4pt; text-align: left; }}
+            .table td {{ padding: 4pt; border-bottom: 1px solid #f0f0f5; }}
+            .page-break {{ page-break-before: always; }}
         </style>
     </head>
     <body>
@@ -712,26 +807,40 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
             <div class="card"><div class="num">{avg_bb}</div><div class="label">Body Battery</div></div>
         </div>
 
+        <h2>Per-Discipline Averages (last 30 days)</h2>
+        {disc_stats_html if disc_stats_html else "<p class='subtext'>No data yet.</p>"}
+
         <h2>Trends</h2>
         <div class="chart-grid">{charts_html}</div>
 
+        <div class="page-break"></div>
+
+        <h2>Planned vs Completed (last 8 weeks)</h2>
+        <p class="subtext">Planned minutes are aggregated per discipline per week from your training plan; completed sessions counts actual Garmin activities logged that week.</p>
+        {plan_table_html if plan_table_html else "<p class='subtext'>No plan data matched to recent weeks.</p>"}
+
+        <h2>Running: Target Pace vs Actual</h2>
+        {f'<div class="stats" style="max-width:200pt;"><div class="card"><div class="num">{run_avg_pct_off}%</div><div class="label">Avg Off Target</div></div></div>' if run_avg_pct_off is not None else ""}
+        {run_compare_html if run_compare_html else "<p class='subtext'>No matched running sessions with pace targets yet.</p>"}
+
+        <h2>Cycling: Target Power vs Actual</h2>
+        {f'<div class="stats" style="max-width:200pt;"><div class="card"><div class="num">{bike_avg_pct_off}%</div><div class="label">Avg Off Target</div></div></div>' if bike_avg_pct_off is not None else ""}
+        {bike_compare_html if bike_compare_html else "<p class='subtext'>No matched cycling sessions with power targets yet.</p>"}
+
+        <h2>Swimming Overview</h2>
+        {swim_stats_html if swim_stats_html else "<p class='subtext'>No swim data yet.</p>"}
+
+        <h2>Strength Sessions (Manual Tracking)</h2>
+        {strength_html if strength_html else "<p class='subtext'>No manual entries yet.</p>"}
+
         <h2>Recent Sessions</h2>
         {recent_html}
-
-        <h2>Strength Sessions</h2>
-        {strength_html if strength_html else "<p>No manual entries yet.</p>"}
-
-        <p style="color:#aaa; font-size:7pt; margin-top:14pt;">
-        Full interactive dashboard with all charts and plan-vs-actual comparisons available at docs/index.html in your repo.
-        </p>
     </body>
     </html>
     """
 
     HTML(string=html).write_pdf(str(OUT_PDF))
     print(f"PDF built at {OUT_PDF}")
-
-
 def main():
     df = load_activities()
     plan = load_plan()
