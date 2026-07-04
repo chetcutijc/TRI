@@ -83,5 +83,22 @@
     "elevation_gain": null,
     "avg_pace": 0.6660000085830688,
     "vo2max_estimate": null
+  },
+  "23473130974": {
+    "id": 23473130974,
+    "name": "Ghajnsielem Open Water Swimming",
+    "type": "open_water_swimming",
+    "start": "2026-07-04 10:10:54",
+    "duration_s": 219.093994140625,
+    "distance_m": 138.57000732421875,
+    "calories": 26.0,
+    "avg_hr": 106.0,
+    "max_hr": 120.0,
+    "training_load": 3.22796630859375,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.6320000290870667,
+    "vo2max_estimate": null
   }
 }
