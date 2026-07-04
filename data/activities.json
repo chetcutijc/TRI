@@ -100,5 +100,22 @@
     "elevation_gain": null,
     "avg_pace": 0.6320000290870667,
     "vo2max_estimate": null
+  },
+  "23477811505": {
+    "id": 23477811505,
+    "name": "Nadur Open Water Swimming",
+    "type": "open_water_swimming",
+    "start": "2026-07-04 13:20:27",
+    "duration_s": 477.8210144042969,
+    "distance_m": 279.6199951171875,
+    "calories": 53.0,
+    "avg_hr": 105.0,
+    "max_hr": 114.0,
+    "training_load": 5.3915252685546875,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.5849999785423279,
+    "vo2max_estimate": null
   }
 }
