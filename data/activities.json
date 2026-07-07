@@ -117,5 +117,22 @@
     "elevation_gain": null,
     "avg_pace": 0.5849999785423279,
     "vo2max_estimate": null
+  },
+  "23512869375": {
+    "id": 23512869375,
+    "name": "Hamburg Running",
+    "type": "running",
+    "start": "2026-07-07 17:37:51",
+    "duration_s": 2715.8369140625,
+    "distance_m": 6258.080078125,
+    "calories": 567.0,
+    "avg_hr": 152.0,
+    "max_hr": 183.0,
+    "training_load": 103.56950378417969,
+    "avg_power": 296.0,
+    "normalized_power": 318.0,
+    "elevation_gain": 84.0,
+    "avg_pace": 2.303999900817871,
+    "vo2max_estimate": 45.0
   }
 }
