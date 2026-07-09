@@ -227,36 +227,238 @@ def on_target_pct(actual_weekly, plan):
     return pd.DataFrame(rows)
 
 
-def planned_vs_completed_table(df, plan):
-    """Builds a week-by-week table: planned session count vs completed session count, per discipline."""
-    if not plan or df.empty:
-        return pd.DataFrame()
+def session_compliance_table(df, plan_sessions, weeks_back=8):
+    """
+    For each planned session (from plan_sessions.json), finds the closest matching
+    actual Garmin activity (same discipline, within ±1 day).
 
-    df = df.copy()
-    df["week"] = df["start"].dt.to_period("W").apply(lambda r: r.start_time)
-    df["norm_type"] = df["type"].apply(normalize_type)
-    actual_counts = df.groupby(["week", "norm_type"]).size().reset_index(name="completed")
+    For each pair it computes:
+      - Duration: actual vs planned (% diff)
+      - Pace (running) or Power (cycling): actual vs target range
+      - Overall status: ✅ On Target / ⚠️ Slightly Off / ❌ Off Target / ⬜ Missed
+
+    Returns a list of dicts grouped by ISO week, covering the last `weeks_back` weeks.
+    """
+    if not plan_sessions or df.empty:
+        return []
+
+    cutoff = dt.date.today() - dt.timedelta(weeks=weeks_back)
+    recent_sessions = [s for s in plan_sessions if dt.date.fromisoformat(s["date"]) >= cutoff]
+    if not recent_sessions:
+        return []
+
+    acts = df.copy()
+    acts["norm_type"] = acts["type"].apply(normalize_type)
+    acts["date"] = acts["start"].dt.date
 
     rows = []
-    for week_str, disciplines in plan.items():
-        week_dt = pd.Timestamp(week_str)
-        for disc, vals in disciplines.items():
-            planned_min = vals.get("duration_min", 0)
-            match = actual_counts[(actual_counts["week"] == week_dt) & (actual_counts["norm_type"] == disc)]
-            completed = int(match["completed"].iloc[0]) if not match.empty else 0
-            rows.append({
-                "week": week_dt,
-                "discipline": disc,
-                "planned_min": planned_min,
-                "completed_sessions": completed,
-            })
+    for ps in recent_sessions:
+        plan_date = dt.date.fromisoformat(ps["date"])
+        disc = ps["discipline"]
 
-    out = pd.DataFrame(rows)
-    if out.empty:
-        return out
-    cutoff = dt.datetime.now() - dt.timedelta(weeks=8)
-    out = out[out["week"] >= cutoff].sort_values(["week", "discipline"])
-    return out
+        # find actual activity of matching discipline within ±1 day
+        candidates = acts[
+            (acts["norm_type"] == disc) &
+            (abs((acts["date"] - plan_date).apply(lambda x: x.days)) <= 1)
+        ]
+
+        plan_dur_min = None
+        # infer planned duration from plan_sessions if not present — use ICS event duration
+        # (not stored in plan_sessions.json currently, so we skip duration target for now)
+
+        if candidates.empty:
+            rows.append({
+                "week": plan_date - dt.timedelta(days=plan_date.weekday()),
+                "date": plan_date.isoformat(),
+                "discipline": disc,
+                "session": ps.get("summary", ""),
+                "planned": _describe_target(ps),
+                "actual": "—",
+                "duration_status": "missed",
+                "target_status": "missed",
+                "status": "⬜ Missed",
+            })
+            continue
+
+        act = candidates.sort_values("start").iloc[0]
+        actual_dur = round(act["duration_min"])
+        actual_pace = sec_per_km_from_speed(act.get("avg_pace")) if disc == "running" else None
+        actual_power = act.get("avg_power") if disc == "cycling" else None
+        actual_dist = round(act["distance_km"], 1) if act["distance_km"] else None
+
+        # --- evaluate duration ---
+        dur_status = None
+        planned_dur = ps.get("planned_duration_min")
+        if planned_dur:
+            dur_pct = actual_dur / planned_dur
+            if dur_pct >= 0.90:        # within 10% short — fine
+                dur_status = "on"
+            elif dur_pct >= 0.75:      # 10–25% short
+                dur_status = "slight"
+            else:                       # more than 25% short
+                dur_status = "off"
+
+        # --- evaluate pace target (running) ---
+        pace_status = None
+        if disc == "running" and ps.get("pace_low_sec_km") and actual_pace:
+            lo, hi = ps["pace_low_sec_km"], ps["pace_high_sec_km"]
+            if lo <= actual_pace <= hi:
+                pace_status = "on"
+            elif actual_pace < lo * 0.95:   # faster than target — fine
+                pace_status = "on"
+            elif actual_pace <= hi * 1.08:
+                pace_status = "slight"
+            else:
+                pace_status = "off"
+
+        # --- evaluate power target (cycling) ---
+        power_status = None
+        if disc == "cycling" and ps.get("power_low_w") and actual_power:
+            lo, hi = ps["power_low_w"], ps["power_high_w"]
+            if lo <= actual_power <= hi:
+                power_status = "on"
+            elif actual_power > hi * 1.05:  # pushed harder — fine
+                power_status = "on"
+            elif actual_power >= lo * 0.92:
+                power_status = "slight"
+            else:
+                power_status = "off"
+
+        # --- overall status: worst of duration + metric ---
+        STATUS_RANK = {"off": 2, "slight": 1, "on": 0, None: -1}
+        metric_status = pace_status or power_status
+        worst = max(
+            [dur_status, metric_status],
+            key=lambda s: STATUS_RANK.get(s, -1)
+        )
+
+        if worst == "off":
+            status = "❌ Off Target"
+        elif worst == "slight":
+            status = "⚠️ Slightly Off"
+        elif worst == "on":
+            status = "✅ On Target"
+        else:
+            status = "✅ Completed"  # swim/strength with no metric target
+
+        # build human-readable actual string
+        actual_parts = []
+        if actual_dur:
+            if planned_dur:
+                diff = actual_dur - planned_dur
+                sign = "+" if diff > 0 else ""
+                actual_parts.append(f"{actual_dur}min ({sign}{diff}min vs plan)")
+            else:
+                actual_parts.append(f"{actual_dur}min")
+        if actual_dist:
+            actual_parts.append(f"{actual_dist}km")
+        if actual_pace and disc == "running":
+            pace_str = fmt_pace(actual_pace)
+            if ps.get("pace_low_sec_km"):
+                target_mid = (ps["pace_low_sec_km"] + ps["pace_high_sec_km"]) / 2
+                diff_s = round(actual_pace - target_mid)
+                sign = "+" if diff_s > 0 else ""
+                pace_str += f" ({sign}{diff_s}s vs target)"
+            actual_parts.append(pace_str)
+        if actual_power and disc == "cycling":
+            pwr_str = f"{round(actual_power)}W"
+            if ps.get("power_low_w"):
+                target_mid = (ps["power_low_w"] + ps["power_high_w"]) / 2
+                diff_w = round(actual_power - target_mid)
+                sign = "+" if diff_w > 0 else ""
+                pwr_str += f" ({sign}{diff_w}W vs target)"
+            actual_parts.append(pwr_str)
+        actual_str = " · ".join(actual_parts) or "logged"
+
+        rows.append({
+            "week": plan_date - dt.timedelta(days=plan_date.weekday()),
+            "date": plan_date.isoformat(),
+            "discipline": disc,
+            "session": ps.get("summary", ""),
+            "planned": _describe_target(ps),
+            "actual": actual_str,
+            "status": status,
+        })
+
+    # group by week
+    rows.sort(key=lambda r: r["date"])
+    weeks = {}
+    for row in rows:
+        wk = row["week"].isoformat()
+        weeks.setdefault(wk, []).append(row)
+
+    return weeks
+
+
+def _describe_target(ps):
+    """Human-readable planned session target string."""
+    parts = []
+    if ps.get("planned_duration_min"):
+        parts.append(f"{ps['planned_duration_min']}min")
+    if ps.get("target_distance_km"):
+        parts.append(f"{ps['target_distance_km']}km")
+    if ps.get("pace_low_sec_km"):
+        lo = fmt_pace(ps["pace_low_sec_km"])
+        hi = fmt_pace(ps["pace_high_sec_km"])
+        parts.append(f"{lo}–{hi}/km" if lo != hi else f"{lo}/km")
+    if ps.get("power_low_w"):
+        lo, hi = ps["power_low_w"], ps["power_high_w"]
+        parts.append(f"{lo}–{hi}W" if lo != hi else f"{lo}W")
+    return " · ".join(parts) if parts else ps.get("summary", "")
+
+
+def session_compliance_html(weeks_data):
+    """Renders the session compliance table as styled HTML, grouped by week."""
+    if not weeks_data:
+        return "<p class='subtext'>No matched sessions in the last 8 weeks yet.</p>"
+
+    html = ""
+    for wk, sessions in sorted(weeks_data.items(), reverse=True):
+        wk_label = dt.date.fromisoformat(wk).strftime("Week of %b %d, %Y")
+        on = sum(1 for s in sessions if "✅" in s["status"])
+        slight = sum(1 for s in sessions if "⚠️" in s["status"])
+        off = sum(1 for s in sessions if "❌" in s["status"])
+        missed = sum(1 for s in sessions if "⬜" in s["status"])
+        total = len(sessions)
+        pct = round(100 * on / total) if total else 0
+        badge_color = "#00C2A8" if pct >= 80 else "#FFC75A" if pct >= 50 else "#FF7A59"
+
+        summary_chips = f"""
+            <span style="background:#e8f9f5;color:#00C2A8;border-radius:10px;padding:2px 9px;font-size:0.75em;font-weight:600;">✅ {on} on target</span>
+            {"<span style='background:#fff8e8;color:#e6a800;border-radius:10px;padding:2px 9px;font-size:0.75em;font-weight:600;margin-left:4px;'>⚠️ " + str(slight) + " slightly off</span>" if slight else ""}
+            {"<span style='background:#ffeae8;color:#d94f3a;border-radius:10px;padding:2px 9px;font-size:0.75em;font-weight:600;margin-left:4px;'>❌ " + str(off) + " off target</span>" if off else ""}
+            {"<span style='background:#f3f3f5;color:#888;border-radius:10px;padding:2px 9px;font-size:0.75em;font-weight:600;margin-left:4px;'>⬜ " + str(missed) + " missed</span>" if missed else ""}
+        """
+
+        rows = "".join(f"""
+            <tr>
+                <td style="color:#888;white-space:nowrap">{s['date']}</td>
+                <td style="text-transform:capitalize;font-weight:600">{s['discipline']}</td>
+                <td style="color:#555;font-size:0.85em">{s['session']}</td>
+                <td style="font-size:0.85em;color:#5B6EF5">{s['planned']}</td>
+                <td style="font-size:0.85em">{s['actual']}</td>
+                <td style="white-space:nowrap">{s['status']}</td>
+            </tr>""" for s in sessions)
+
+        html += f"""
+        <div style="margin-bottom:28px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+                <strong style="font-size:0.95em">{wk_label}</strong>
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                    {summary_chips}
+                    <span style="background:{badge_color}; color:white; border-radius:20px;
+                                 padding:3px 12px; font-size:0.78em; font-weight:700;">{pct}% on target</span>
+                </div>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Date</th><th>Discipline</th><th>Session</th>
+                    <th>Target</th><th>Actual</th><th>Status</th>
+                </tr>
+                {rows}
+            </table>
+        </div>"""
+    return html
 
 
 def build_html(df, plan, wellness, plan_sessions, manual_log):
@@ -267,7 +469,7 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
 
     weekly = weekly_summary(df)
     ontarget = on_target_pct(weekly, plan)
-    plan_vs_actual = planned_vs_completed_table(df, plan)
+    plan_vs_actual = session_compliance_table(df, plan_sessions)
     run_compare = running_target_vs_actual(df, plan_sessions)
     bike_compare = cycling_target_vs_actual(df, plan_sessions)
     swims, avg_pace_100m = swim_summary_stats(df)
@@ -348,16 +550,7 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
     recent = df.tail(5)[["start", "name", "type", "distance_km", "duration_min", "avg_hr", "training_load"]]
     recent_html = recent.to_html(index=False, classes="table", border=0)
 
-    plan_table_html = ""
-    if not plan_vs_actual.empty:
-        pv = plan_vs_actual.copy()
-        pv["week"] = pv["week"].dt.strftime("%Y-%m-%d")
-        pv["planned_min"] = pv["planned_min"].round(0).astype(int)
-        pv = pv.rename(columns={
-            "week": "Week", "discipline": "Discipline",
-            "planned_min": "Planned (min)", "completed_sessions": "Completed Sessions"
-        })
-        plan_table_html = pv.to_html(index=False, classes="table", border=0)
+    plan_table_html = session_compliance_html(plan_vs_actual)
 
     run_compare_html = ""
     run_avg_pct_off = None
@@ -539,7 +732,7 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
         {charts_html}
         </div>
 
-        <h2>Planned vs Completed (last 8 weeks)</h2>
+        <h2>Session Compliance — Planned vs Actual (last 8 weeks)</h2>
         <p class="subtext">Planned minutes are aggregated per discipline per week from your training plan. Completed sessions counts how many actual Garmin activities of that type were logged that week — this compares session count against planned volume, not a 1:1 match.</p>
         {plan_table_html if plan_table_html else "<p class='subtext'>No plan data matched to recent weeks yet.</p>"}
 
@@ -592,7 +785,7 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
 
     weekly = weekly_summary(df)
     ontarget = on_target_pct(weekly, plan)
-    plan_vs_actual = planned_vs_completed_table(df, plan)
+    plan_vs_actual = session_compliance_table(df, plan_sessions)
     run_compare = running_target_vs_actual(df, plan_sessions)
     bike_compare = cycling_target_vs_actual(df, plan_sessions)
     swims, avg_pace_100m = swim_summary_stats(df)
@@ -720,16 +913,7 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
     )
 
     # ---- Tables ----
-    plan_table_html = ""
-    if not plan_vs_actual.empty:
-        pv = plan_vs_actual.copy()
-        pv["week"] = pv["week"].dt.strftime("%Y-%m-%d")
-        pv["planned_min"] = pv["planned_min"].round(0).astype(int)
-        pv = pv.rename(columns={
-            "week": "Week", "discipline": "Discipline",
-            "planned_min": "Planned (min)", "completed_sessions": "Completed Sessions"
-        })
-        plan_table_html = pv.to_html(index=False, classes="table", border=0)
+    plan_table_html = session_compliance_html(plan_vs_actual)
 
     run_compare_html = ""
     if not run_compare.empty:
@@ -815,7 +999,7 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
 
         <div class="page-break"></div>
 
-        <h2>Planned vs Completed (last 8 weeks)</h2>
+        <h2>Session Compliance — Planned vs Actual (last 8 weeks)</h2>
         <p class="subtext">Planned minutes are aggregated per discipline per week from your training plan; completed sessions counts actual Garmin activities logged that week.</p>
         {plan_table_html if plan_table_html else "<p class='subtext'>No plan data matched to recent weeks.</p>"}
 
