@@ -801,14 +801,14 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
             p = paces.mean() / 10
             avg_swim_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
 
-    def to_img(fig, w=460, h=240):
+    def to_img(fig, w=446, h=210):
         fig.update_layout(
             height=h, width=w,
-            margin=dict(l=36, r=16, t=38, b=28),
-            font=dict(family="Helvetica,Arial,sans-serif", size=10, color="#2c2c34"),
-            title_font=dict(size=12, color="#1a1a22"),
+            margin=dict(l=32, r=12, t=34, b=24),
+            font=dict(family="Helvetica,Arial,sans-serif", size=9.5, color="#2c2c34"),
+            title_font=dict(size=11, color="#1a1a22"),
             plot_bgcolor="white", paper_bgcolor="white",
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=8)),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=7.5)),
         )
         try:
             b64 = base64.b64encode(fig.to_image(format="png", scale=2)).decode()
@@ -881,27 +881,31 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
     recent_html = recent.to_html(index=False, classes="table", border=0)
 
     HTML(string=f"""<html><head><style>
-@page{{size:A4;margin:12mm 14mm;}}
-body{{font-family:Helvetica,Arial,sans-serif;color:#1a1a22;font-size:9pt;}}
-h1{{font-size:16pt;margin:0 0 2pt;font-weight:800;}}
-h2{{font-size:10.5pt;margin:12pt 0 4pt;border-bottom:1px solid #eee;padding-bottom:2pt;font-weight:700;}}
-.updated{{color:#999;font-size:7.5pt;margin:0 0 10pt;}}
+@page{{size:A4;margin:11mm 13mm;}}
+body{{font-family:Helvetica,Arial,sans-serif;color:#1a1a22;font-size:8.5pt;}}
+h1{{font-size:15pt;margin:0 0 1pt;font-weight:800;}}
+h2{{font-size:10pt;margin:9pt 0 3pt;border-bottom:1px solid #eee;padding-bottom:2pt;font-weight:700;}}
+.updated{{color:#999;font-size:7pt;margin:0 0 7pt;}}
 /* stat grid */
-.stats{{display:flex;flex-wrap:wrap;gap:6pt;margin:6pt 0;}}
-.card{{border:1px solid #eee;border-radius:5pt;padding:6pt 8pt;text-align:center;flex:1;min-width:55pt;}}
-.card .num{{font-size:12pt;font-weight:800;}}
-.card .label{{font-size:6pt;color:#999;text-transform:uppercase;}}
+.stats{{display:flex;flex-wrap:wrap;gap:5pt;margin:5pt 0;}}
+.card{{border:1px solid #eee;border-radius:4pt;padding:5pt 7pt;text-align:center;flex:1;min-width:50pt;}}
+.card .num{{font-size:11pt;font-weight:800;}}
+.card .label{{font-size:5.5pt;color:#999;text-transform:uppercase;}}
 /* race cards */
-.races{{display:flex;gap:8pt;margin:6pt 0;}}
-.rcard{{border:1px solid #eee;border-radius:5pt;padding:8pt 10pt;flex:1;}}
-/* charts */
-.charts{{display:flex;flex-wrap:wrap;gap:5pt;}}
-.ci{{width:48%;border:1px solid #eee;border-radius:4pt;padding:2pt;}}
+.races{{display:flex;gap:6pt;margin:5pt 0;}}
+.rcard{{border:1px solid #eee;border-radius:4pt;padding:7pt 9pt;flex:1;}}
+/* charts — 3 columns so 6 fit neatly in 2 rows */
+.charts{{display:flex;flex-wrap:wrap;gap:4pt;margin:4pt 0;}}
+.ci{{width:32%;border:1px solid #eee;border-radius:3pt;padding:2pt;}}
 /* tables */
-.table{{width:100%;border-collapse:collapse;font-size:7.5pt;margin-bottom:4pt;}}
-.table th{{background:#f5f5fa;padding:4pt 5pt;text-align:left;font-size:6.8pt;text-transform:uppercase;}}
-.table td{{padding:4pt 5pt;border-bottom:1px solid #f0f0f5;}}
-.page-break{{page-break-before:always;}}
+.table{{width:100%;border-collapse:collapse;font-size:7pt;margin-bottom:3pt;
+        page-break-inside:avoid;}}
+.table th{{background:#f5f5fa;padding:3.5pt 5pt;text-align:left;
+           font-size:6.2pt;text-transform:uppercase;}}
+.table td{{padding:3.5pt 5pt;border-bottom:1px solid #f0f0f5;}}
+/* week blocks — keep each week together on same page */
+.wblock{{margin-bottom:7pt;page-break-inside:avoid;}}
+.wlabel{{font-weight:700;font-size:8.5pt;margin-bottom:3pt;}}
 </style></head><body>
 <h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
 <p class="updated">Generated {dt.datetime.now().strftime('%Y-%m-%d %H:%M')} UTC</p>
@@ -923,8 +927,6 @@ h2{{font-size:10.5pt;margin:12pt 0 4pt;border-bottom:1px solid #eee;padding-bott
 
 <h2>Trends</h2>
 <div class="charts">{figs_html}</div>
-
-<div class="page-break"></div>
 
 <h2>Session Compliance — Last 4 Weeks</h2>
 <table class="table">
