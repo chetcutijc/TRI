@@ -589,7 +589,6 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
     last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last30)
     total_hours    = round(last30["duration_min"].sum() / 60)
-    total_km       = round(last30["distance_km"].sum())
     avg_load       = round(last30["training_load"].mean()) if last30["training_load"].notna().any() else "n/a"
 
     avg_sleep = avg_bb = "n/a"
@@ -600,14 +599,45 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
         if "body_battery_max" in rw.columns and rw["body_battery_max"].notna().any():
             avg_bb = round(rw["body_battery_max"].mean())
 
-    swim_df = df[df["type"] == "swimming"].copy()
-    avg_swim_dist = avg_swim_pace = "n/a"
-    if not swim_df.empty:
-        avg_swim_dist = f"{round(swim_df['distance_m'].mean())}m"
-        paces = swim_df["avg_pace"].dropna().apply(speed_to_pace)
-        if not paces.empty:
-            p = paces.mean() / 10
-            avg_swim_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
+    def disc30(disc):
+        return last30[last30["type"] == disc].copy()
+
+    # Swimming
+    sw30 = disc30("swimming")
+    swim_sessions  = len(sw30)
+    swim_total_km  = f"{round(sw30['distance_m'].sum()/1000,1)}km" if not sw30.empty else "n/a"
+    swim_avg_dist  = f"{round(sw30['distance_m'].mean())}m" if not sw30.empty else "n/a"
+    swim_avg_pace  = "n/a"
+    if not sw30.empty:
+        raw = sw30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            p = raw.mean() / 10
+            swim_avg_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
+
+    # Running
+    ru30 = disc30("running")
+    run_sessions   = len(ru30)
+    run_total_km   = f"{round(ru30['distance_km'].sum())}km" if not ru30.empty else "n/a"
+    run_avg_dist   = f"{round(ru30['distance_km'].mean(),1)}km" if not ru30.empty else "n/a"
+    run_avg_pace   = "n/a"
+    if not ru30.empty:
+        raw = ru30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            run_avg_pace = fmt_pace(raw.mean())
+
+    # Cycling
+    cy30 = disc30("cycling")
+    bike_sessions  = len(cy30)
+    bike_total_km  = f"{round(cy30['distance_km'].sum())}km" if not cy30.empty else "n/a"
+    bike_avg_speed = "n/a"
+    bike_avg_watts = "n/a"
+    if not cy30.empty:
+        speeds = cy30["avg_pace"].dropna()
+        if not speeds.empty:
+            bike_avg_speed = f"{round(speeds.mean()*3.6,1)} km/h"
+        watts = cy30["avg_power"].dropna()
+        if not watts.empty:
+            bike_avg_watts = f"{round(watts.mean())}W"
 
     figs = [
         chart_volume(weekly),
@@ -669,8 +699,17 @@ h1{{font-size:1.55em;margin:0;font-weight:800;letter-spacing:-.3px;}}
 .race-days{{font-size:1.3em;font-weight:800;margin:6px 0 4px;}}
 .race-targets{{font-size:.78em;color:#5B6EF5;font-weight:600;}}
 .race-note{{font-size:.72em;color:#9a9aaa;margin-top:2px;}}
-/* charts */
-.chart-grid{{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}}
+/* discipline grid */
+.disc-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}}
+.disc-block{{background:#fff;border-radius:12px;padding:14px 14px 12px;
+             box-shadow:0 1px 3px rgba(20,20,40,.06);}}
+.disc-title{{font-weight:800;font-size:.9em;margin-bottom:10px;}}
+.disc-count{{font-weight:400;color:#9a9aaa;font-size:.82em;margin-left:6px;}}
+.disc-stats{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}}
+.disc-stats .card{{box-shadow:none;background:#f8f8fc;padding:10px 6px;}}
+@media(max-width:700px){{
+  .disc-grid{{grid-template-columns:1fr;}}
+}}
 .chart-cell{{background:#fff;border-radius:12px;padding:6px 10px;
              box-shadow:0 1px 3px rgba(20,20,40,.06);overflow:hidden;}}
 /* tables */
@@ -724,18 +763,40 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 <h2>Race Targets</h2>
 <div class="races">{race_cards_html()}</div>
 
-<h2>Last 30 Days</h2>
+<h2>Last 30 Days — Overview</h2>
 <div class="stats">
-  <div class="card"><div class="num">{total_sessions}</div><div class="label">Sessions</div></div>
-  <div class="card"><div class="num">{total_hours}h</div><div class="label">Volume</div></div>
-  <div class="card"><div class="num">{total_km}km</div><div class="label">Distance</div></div>
+  <div class="card"><div class="num">{total_sessions}</div><div class="label">Total Sessions</div></div>
+  <div class="card"><div class="num">{total_hours}h</div><div class="label">Total Volume</div></div>
   <div class="card"><div class="num">{avg_load}</div><div class="label">Avg Load</div></div>
   <div class="card"><div class="num">{avg_sleep}h</div><div class="label">Avg Sleep</div></div>
   <div class="card"><div class="num">{avg_bb}</div><div class="label">Body Battery</div></div>
 </div>
-<div class="stats" style="grid-template-columns:repeat(3,1fr)">
-  <div class="card"><div class="num">{avg_swim_dist}</div><div class="label">Avg Swim Dist</div></div>
-  <div class="card"><div class="num">{avg_swim_pace}</div><div class="label">Avg Swim Pace</div></div>
+
+<div class="disc-grid">
+  <div class="disc-block" style="border-top:3px solid {PALETTE['swimming']}">
+    <div class="disc-title">🏊 Swimming <span class="disc-count">{swim_sessions} sessions</span></div>
+    <div class="disc-stats">
+      <div class="card"><div class="num">{swim_total_km}</div><div class="label">Total Distance</div></div>
+      <div class="card"><div class="num">{swim_avg_dist}</div><div class="label">Avg per Session</div></div>
+      <div class="card"><div class="num">{swim_avg_pace}</div><div class="label">Avg Pace</div></div>
+    </div>
+  </div>
+  <div class="disc-block" style="border-top:3px solid {PALETTE['running']}">
+    <div class="disc-title">🏃 Running <span class="disc-count">{run_sessions} sessions</span></div>
+    <div class="disc-stats">
+      <div class="card"><div class="num">{run_total_km}</div><div class="label">Total Distance</div></div>
+      <div class="card"><div class="num">{run_avg_dist}</div><div class="label">Avg per Session</div></div>
+      <div class="card"><div class="num">{run_avg_pace}</div><div class="label">Avg Pace</div></div>
+    </div>
+  </div>
+  <div class="disc-block" style="border-top:3px solid {PALETTE['cycling']}">
+    <div class="disc-title">🚴 Cycling <span class="disc-count">{bike_sessions} sessions</span></div>
+    <div class="disc-stats">
+      <div class="card"><div class="num">{bike_total_km}</div><div class="label">Total Distance</div></div>
+      <div class="card"><div class="num">{bike_avg_speed}</div><div class="label">Avg Speed</div></div>
+      <div class="card"><div class="num">{bike_avg_watts}</div><div class="label">Avg Power</div></div>
+    </div>
+  </div>
 </div>
 
 <h2>Trends</h2>
@@ -781,7 +842,6 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
     last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last30)
     total_hours    = round(last30["duration_min"].sum() / 60)
-    total_km       = round(last30["distance_km"].sum())
     avg_load       = round(last30["training_load"].mean()) if last30["training_load"].notna().any() else "n/a"
 
     avg_sleep = avg_bb = "n/a"
@@ -792,14 +852,42 @@ def build_pdf(df, plan, wellness, plan_sessions, manual_log):
         if "body_battery_max" in rw.columns and rw["body_battery_max"].notna().any():
             avg_bb = round(rw["body_battery_max"].mean())
 
-    swim_df = df[df["type"] == "swimming"].copy()
-    avg_swim_dist = avg_swim_pace = "n/a"
-    if not swim_df.empty:
-        avg_swim_dist = f"{round(swim_df['distance_m'].mean())}m"
-        paces = swim_df["avg_pace"].dropna().apply(speed_to_pace)
-        if not paces.empty:
-            p = paces.mean() / 10
-            avg_swim_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
+    def disc30(disc):
+        return last30[last30["type"] == disc].copy()
+
+    sw30 = disc30("swimming")
+    swim_sessions  = len(sw30)
+    swim_total_km  = f"{round(sw30['distance_m'].sum()/1000,1)}km" if not sw30.empty else "n/a"
+    swim_avg_dist  = f"{round(sw30['distance_m'].mean())}m" if not sw30.empty else "n/a"
+    swim_avg_pace  = "n/a"
+    if not sw30.empty:
+        raw = sw30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            p = raw.mean() / 10
+            swim_avg_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
+
+    ru30 = disc30("running")
+    run_sessions   = len(ru30)
+    run_total_km   = f"{round(ru30['distance_km'].sum())}km" if not ru30.empty else "n/a"
+    run_avg_dist   = f"{round(ru30['distance_km'].mean(),1)}km" if not ru30.empty else "n/a"
+    run_avg_pace   = "n/a"
+    if not ru30.empty:
+        raw = ru30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            run_avg_pace = fmt_pace(raw.mean())
+
+    cy30 = disc30("cycling")
+    bike_sessions  = len(cy30)
+    bike_total_km  = f"{round(cy30['distance_km'].sum())}km" if not cy30.empty else "n/a"
+    bike_avg_speed = "n/a"
+    bike_avg_watts = "n/a"
+    if not cy30.empty:
+        speeds = cy30["avg_pace"].dropna()
+        if not speeds.empty:
+            bike_avg_speed = f"{round(speeds.mean()*3.6,1)} km/h"
+        watts = cy30["avg_power"].dropna()
+        if not watts.empty:
+            bike_avg_watts = f"{round(watts.mean())}W"
 
     def to_img(fig, w=446, h=210):
         fig.update_layout(
@@ -897,6 +985,13 @@ h2{{font-size:10pt;margin:9pt 0 3pt;border-bottom:1px solid #eee;padding-bottom:
 /* charts — 3 columns so 6 fit neatly in 2 rows */
 .charts{{display:flex;flex-wrap:wrap;gap:4pt;margin:4pt 0;}}
 .ci{{width:32%;border:1px solid #eee;border-radius:3pt;padding:2pt;}}
+/* discipline grid */
+.dg{{display:flex;gap:5pt;margin:5pt 0;}}
+.db{{border:1px solid #eee;border-radius:4pt;padding:6pt 8pt;flex:1;}}
+.dt{{font-weight:700;font-size:8.5pt;margin-bottom:4pt;}}
+.dc{{font-weight:400;color:#999;font-size:7.5pt;}}
+.db .stats{{gap:3pt;margin:0;}}
+.db .card{{padding:4pt 5pt;min-width:0;}}
 /* tables */
 .table{{width:100%;border-collapse:collapse;font-size:7pt;margin-bottom:3pt;
         page-break-inside:avoid;}}
@@ -913,16 +1008,39 @@ h2{{font-size:10pt;margin:9pt 0 3pt;border-bottom:1px solid #eee;padding-bottom:
 <h2>Race Targets</h2>
 <div class="races">{race_html}</div>
 
-<h2>Last 30 Days</h2>
+<h2>Last 30 Days — Overview</h2>
 <div class="stats">
   <div class="card"><div class="num">{total_sessions}</div><div class="label">Sessions</div></div>
   <div class="card"><div class="num">{total_hours}h</div><div class="label">Volume</div></div>
-  <div class="card"><div class="num">{total_km}km</div><div class="label">Distance</div></div>
   <div class="card"><div class="num">{avg_load}</div><div class="label">Avg Load</div></div>
   <div class="card"><div class="num">{avg_sleep}h</div><div class="label">Avg Sleep</div></div>
   <div class="card"><div class="num">{avg_bb}</div><div class="label">Body Battery</div></div>
-  <div class="card"><div class="num">{avg_swim_dist}</div><div class="label">Avg Swim</div></div>
-  <div class="card"><div class="num">{avg_swim_pace}</div><div class="label">Swim Pace</div></div>
+</div>
+<div class="dg">
+  <div class="db" style="border-top:2.5pt solid #36C5F0">
+    <div class="dt">🏊 Swimming <span class="dc">({swim_sessions})</span></div>
+    <div class="stats">
+      <div class="card"><div class="num">{swim_total_km}</div><div class="label">Total Dist</div></div>
+      <div class="card"><div class="num">{swim_avg_dist}</div><div class="label">Avg/Session</div></div>
+      <div class="card"><div class="num">{swim_avg_pace}</div><div class="label">Avg Pace</div></div>
+    </div>
+  </div>
+  <div class="db" style="border-top:2.5pt solid #5B6EF5">
+    <div class="dt">🏃 Running <span class="dc">({run_sessions})</span></div>
+    <div class="stats">
+      <div class="card"><div class="num">{run_total_km}</div><div class="label">Total Dist</div></div>
+      <div class="card"><div class="num">{run_avg_dist}</div><div class="label">Avg/Session</div></div>
+      <div class="card"><div class="num">{run_avg_pace}</div><div class="label">Avg Pace</div></div>
+    </div>
+  </div>
+  <div class="db" style="border-top:2.5pt solid #00C2A8">
+    <div class="dt">🚴 Cycling <span class="dc">({bike_sessions})</span></div>
+    <div class="stats">
+      <div class="card"><div class="num">{bike_total_km}</div><div class="label">Total Dist</div></div>
+      <div class="card"><div class="num">{bike_avg_speed}</div><div class="label">Avg Speed</div></div>
+      <div class="card"><div class="num">{bike_avg_watts}</div><div class="label">Avg Power</div></div>
+    </div>
+  </div>
 </div>
 
 <h2>Trends</h2>
