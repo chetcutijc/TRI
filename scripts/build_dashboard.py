@@ -229,15 +229,10 @@ def session_compliance(df, plan_sessions, weeks_back=8):
 
 def _target_str(ps):
     parts = []
-    disc = ps.get("discipline", "")
     if ps.get("planned_duration_min"):
         parts.append(f"{ps['planned_duration_min']}min")
     if ps.get("target_distance_km"):
         parts.append(f"{ps['target_distance_km']}km")
-    elif disc == "cycling" and not ps.get("target_distance_km"):
-        # Indoor/power-only session — note it explicitly
-        if ps.get("power_low_w"):
-            parts.append("Indoor / Power-based")
     if ps.get("pace_low_sec_km"):
         lo, hi = fmt_pace(ps["pace_low_sec_km"]), fmt_pace(ps["pace_high_sec_km"])
         parts.append(f"{lo}–{hi}/km" if lo != hi else f"{lo}/km")
@@ -415,50 +410,49 @@ def chart_load_and_hr(weekly, df):
 
 
 def chart_pace_trends(trends):
-    """Run pace + swim pace on left axis (formatted M:SS), bike power on right axis."""
+    """Run pace + swim pace on left axis (as decimal min, e.g. 6:30 = 6.5),
+    bike power OR speed on right axis. Avoids custom tickvals that can blank the chart."""
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     added = False
+    right_label = "Power (W)"
 
-    # Build custom tick labels for pace axis (sec → M:SS)
-    pace_vals = []
+    def sec_to_decmin(sec):
+        """Convert sec/km to decimal minutes for clean axis (6:30 → 6.5)."""
+        return round(sec / 60, 2) if sec else None
+
+    def decmin_label(val):
+        """Decimal minutes → M:SS string for hover."""
+        mins = int(val)
+        secs = round((val - mins) * 60)
+        return f"{mins}:{secs:02d}"
 
     if "running" in trends:
         rd = trends["running"].dropna(subset=["pace_sec_km"])
         if not rd.empty:
+            y = rd["pace_sec_km"].apply(sec_to_decmin)
+            labels = y.apply(lambda v: f"{decmin_label(v)}/km" if v else "n/a")
             fig.add_trace(go.Scatter(
-                x=rd["week"], y=rd["pace_sec_km"].round(),
+                x=rd["week"], y=y,
                 mode="lines+markers", name="Run Pace",
                 marker_color=PALETTE["running"],
-                hovertemplate="%{x}<br>Run: %{customdata}<extra></extra>",
-                customdata=[fmt_pace(v) for v in rd["pace_sec_km"]],
+                customdata=labels,
+                hovertemplate="%{x|%b %d}<br>Run: %{customdata}<extra></extra>",
             ), secondary_y=False)
-            pace_vals.extend(rd["pace_sec_km"].dropna().tolist())
             added = True
 
     if "swimming" in trends:
         sd = trends["swimming"].dropna(subset=["pace_sec_100m"])
         if not sd.empty:
+            y = sd["pace_sec_100m"].apply(sec_to_decmin)
+            labels = y.apply(lambda v: f"{decmin_label(v)}/100m" if v else "n/a")
             fig.add_trace(go.Scatter(
-                x=sd["week"], y=sd["pace_sec_100m"].round(),
+                x=sd["week"], y=y,
                 mode="lines+markers", name="Swim Pace (/100m)",
                 line=dict(dash="dot"), marker_color=PALETTE["swimming"],
-                hovertemplate="%{x}<br>Swim: %{customdata}/100m<extra></extra>",
-                customdata=[f"{int(v)//60}:{int(v)%60:02d}" for v in sd["pace_sec_100m"]],
+                customdata=labels,
+                hovertemplate="%{x|%b %d}<br>Swim: %{customdata}<extra></extra>",
             ), secondary_y=False)
-            pace_vals.extend(sd["pace_sec_100m"].dropna().tolist())
             added = True
-
-    if pace_vals:
-        lo, hi = min(pace_vals), max(pace_vals)
-        pad = (hi - lo) * 0.15 or 15
-        tick_range = range(int(lo - pad), int(hi + pad + 1), max(10, int((hi - lo) / 6)))
-        fig.update_yaxes(
-            tickvals=list(tick_range),
-            ticktext=[fmt_pace(v).replace("/km", "") for v in tick_range],
-            title_text="Pace (M:SS)",
-            secondary_y=False, showgrid=True, gridcolor="#f0f0f5",
-            autorange="reversed",
-        )
 
     if "cycling" in trends:
         cd_power = trends["cycling"].dropna(subset=["avg_power"])
@@ -468,24 +462,29 @@ def chart_pace_trends(trends):
                 x=cd_power["week"], y=cd_power["avg_power"].round(),
                 mode="lines+markers", name="Bike Power (W)",
                 marker_color=PALETTE["cycling"],
+                hovertemplate="%{x|%b %d}<br>Power: %{y}W<extra></extra>",
             ), secondary_y=True)
+            right_label = "Power (W)"
             added = True
         elif not cd_speed.empty:
-            # No power meter — fall back to speed on right axis
             fig.add_trace(go.Scatter(
                 x=cd_speed["week"], y=cd_speed["speed_kmh"],
                 mode="lines+markers", name="Bike Speed (km/h)",
                 marker_color=PALETTE["cycling"],
+                hovertemplate="%{x|%b %d}<br>Speed: %{y} km/h<extra></extra>",
             ), secondary_y=True)
+            right_label = "Speed (km/h)"
             added = True
 
+    # Race target lines
     for race in RACES:
         race_dt = pd.Timestamp(race["date"])
         t = race["targets"]
         if "run_pace_sec_km" in t:
             fig.add_vline(x=race_dt, line_dash="dash", line_color="#FF7A59", opacity=0.4)
-            fig.add_annotation(x=race_dt, y=t["run_pace_sec_km"], yref="y",
-                                text=f"{race['emoji']} {fmt_pace(t['run_pace_sec_km'])}",
+            target_decmin = sec_to_decmin(t["run_pace_sec_km"])
+            fig.add_annotation(x=race_dt, y=target_decmin, yref="y",
+                                text=f"{race['emoji']} {decmin_label(target_decmin)}/km",
                                 showarrow=False, font=dict(size=9, color="#FF7A59"),
                                 bgcolor="white", bordercolor="#FF7A59", borderwidth=1)
         if "bike_power_w" in t:
@@ -497,11 +496,13 @@ def chart_pace_trends(trends):
     if not added:
         return None
 
-    # Right axis label depends on whether we're showing power or speed
-    has_power = "cycling" in trends and not trends["cycling"].dropna(subset=["avg_power"]).empty
-    right_label = "Power (W)" if has_power else "Speed (km/h)"
-
     fig.update_layout(title="Pace & Power Trends", **STYLE())
+    fig.update_yaxes(
+        title_text="Pace (min/km or min/100m — lower is faster)",
+        secondary_y=False, showgrid=True, gridcolor="#f0f0f5",
+        autorange="reversed",
+        tickformat=".2f",
+    )
     fig.update_yaxes(title_text=right_label, secondary_y=True, showgrid=False)
     fig.update_xaxes(showgrid=False)
     return fig
@@ -902,13 +903,6 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 <p class="subtext">Each planned session matched to a Garmin activity (±1 day). Status reflects both duration completion and pace/power adherence.</p>
 {compliance_html(compliance)}
 
-<h2>Strength Sessions (Manual)</h2>
-<p class="subtext">Edit <code>data/manual_log.json</code> to tick off gym sessions — add <code>"2026-06-22": true</code> (Monday of the week).</p>
-<table class="table">
-  <tr><th>Week</th><th>Strength Session</th></tr>
-  {strength_rows}
-</table>
-
 <h2>Recent Sessions</h2>
 {recent_html}
 </body>
@@ -1151,11 +1145,6 @@ h2{{font-size:10pt;margin:9pt 0 3pt;border-bottom:1px solid #eee;padding-bottom:
   </colgroup>
   <tr><th>Date</th><th>Discipline</th><th>Target</th><th>Actual</th><th>Status</th></tr>
   {compliance_rows if compliance_rows else '<tr><td colspan="5">No matched sessions yet</td></tr>'}
-</table>
-
-<h2>Strength (Manual)</h2>
-<table class="table">
-  <tr><th>Week</th><th>Status</th></tr>{strength_rows}
 </table>
 
 <h2>Recent Sessions</h2>
