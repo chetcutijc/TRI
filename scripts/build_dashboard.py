@@ -138,7 +138,7 @@ def weekly_by_discipline(df):
 
 
 def discipline_trends(df):
-    """Per-discipline weekly averages for pace (run/swim) and power (bike)."""
+    """Per-discipline weekly averages for pace (run/swim) and power/speed (bike)."""
     df = df.copy()
     df["week"] = df["start"].dt.to_period("W").apply(lambda r: r.start_time)
     trends = {}
@@ -152,10 +152,24 @@ def discipline_trends(df):
             avg_hr=("avg_hr", "mean"),
             distance_km=("distance_km", "mean"),
         ).reset_index()
-        wk["pace_sec_km"] = wk["avg_pace"].apply(speed_to_pace)
-        if disc == "swimming" and "pace_sec_km" in wk:
+
+        # Convert m/s → sec/km, filtering out zero/null values
+        wk["pace_sec_km"] = wk["avg_pace"].apply(
+            lambda v: speed_to_pace(v) if v and v > 0.1 else None
+        )
+
+        if disc == "swimming":
+            # Pool swim pace: sec/km ÷ 10 = sec/100m
             wk["pace_sec_100m"] = wk["pace_sec_km"].apply(
-                lambda x: x / 10 if x else None)
+                lambda x: round(x / 10, 1) if x and x > 0 else None
+            )
+
+        if disc == "cycling":
+            # Speed fallback for when no power meter is fitted
+            wk["speed_kmh"] = wk["avg_pace"].apply(
+                lambda v: round(v * 3.6, 1) if v and v > 0.1 else None
+            )
+
         trends[disc] = wk
     return trends
 
@@ -215,10 +229,15 @@ def session_compliance(df, plan_sessions, weeks_back=8):
 
 def _target_str(ps):
     parts = []
+    disc = ps.get("discipline", "")
     if ps.get("planned_duration_min"):
         parts.append(f"{ps['planned_duration_min']}min")
     if ps.get("target_distance_km"):
         parts.append(f"{ps['target_distance_km']}km")
+    elif disc == "cycling" and not ps.get("target_distance_km"):
+        # Indoor/power-only session — note it explicitly
+        if ps.get("power_low_w"):
+            parts.append("Indoor / Power-based")
     if ps.get("pace_low_sec_km"):
         lo, hi = fmt_pace(ps["pace_low_sec_km"]), fmt_pace(ps["pace_high_sec_km"])
         parts.append(f"{lo}–{hi}/km" if lo != hi else f"{lo}/km")
@@ -442,11 +461,20 @@ def chart_pace_trends(trends):
         )
 
     if "cycling" in trends:
-        cd = trends["cycling"].dropna(subset=["avg_power"])
-        if not cd.empty:
+        cd_power = trends["cycling"].dropna(subset=["avg_power"])
+        cd_speed = trends["cycling"].dropna(subset=["speed_kmh"])
+        if not cd_power.empty:
             fig.add_trace(go.Scatter(
-                x=cd["week"], y=cd["avg_power"].round(),
+                x=cd_power["week"], y=cd_power["avg_power"].round(),
                 mode="lines+markers", name="Bike Power (W)",
+                marker_color=PALETTE["cycling"],
+            ), secondary_y=True)
+            added = True
+        elif not cd_speed.empty:
+            # No power meter — fall back to speed on right axis
+            fig.add_trace(go.Scatter(
+                x=cd_speed["week"], y=cd_speed["speed_kmh"],
+                mode="lines+markers", name="Bike Speed (km/h)",
                 marker_color=PALETTE["cycling"],
             ), secondary_y=True)
             added = True
@@ -469,8 +497,12 @@ def chart_pace_trends(trends):
     if not added:
         return None
 
+    # Right axis label depends on whether we're showing power or speed
+    has_power = "cycling" in trends and not trends["cycling"].dropna(subset=["avg_power"]).empty
+    right_label = "Power (W)" if has_power else "Speed (km/h)"
+
     fig.update_layout(title="Pace & Power Trends", **STYLE())
-    fig.update_yaxes(title_text="Power (W)", secondary_y=True, showgrid=False)
+    fig.update_yaxes(title_text=right_label, secondary_y=True, showgrid=False)
     fig.update_xaxes(showgrid=False)
     return fig
 
@@ -1058,10 +1090,11 @@ h2{{font-size:10pt;margin:9pt 0 3pt;border-bottom:1px solid #eee;padding-bottom:
 .db .card{{padding:4pt 5pt;min-width:0;}}
 /* tables */
 .table{{width:100%;border-collapse:collapse;font-size:7pt;margin-bottom:3pt;
-        page-break-inside:avoid;}}
-.table th{{background:#f5f5fa;padding:3.5pt 5pt;text-align:left;
-           font-size:6.2pt;text-transform:uppercase;}}
-.table td{{padding:3.5pt 5pt;border-bottom:1px solid #f0f0f5;}}
+        page-break-inside:avoid;table-layout:fixed;}}
+.table th{{background:#f5f5fa;padding:3.5pt 4pt;text-align:left;
+           font-size:6.2pt;text-transform:uppercase;overflow:hidden;}}
+.table td{{padding:3.5pt 4pt;border-bottom:1px solid #f0f0f5;
+           word-wrap:break-word;overflow-wrap:break-word;}}
 /* week blocks — keep each week together on same page */
 .wblock{{margin-bottom:7pt;page-break-inside:avoid;}}
 .wlabel{{font-weight:700;font-size:8.5pt;margin-bottom:3pt;}}
@@ -1112,6 +1145,10 @@ h2{{font-size:10pt;margin:9pt 0 3pt;border-bottom:1px solid #eee;padding-bottom:
 
 <h2>Session Compliance — Last 4 Weeks</h2>
 <table class="table">
+  <colgroup>
+    <col style="width:13%"/><col style="width:12%"/><col style="width:25%"/>
+    <col style="width:25%"/><col style="width:25%"/>
+  </colgroup>
   <tr><th>Date</th><th>Discipline</th><th>Target</th><th>Actual</th><th>Status</th></tr>
   {compliance_rows if compliance_rows else '<tr><td colspan="5">No matched sessions yet</td></tr>'}
 </table>
