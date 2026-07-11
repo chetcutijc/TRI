@@ -217,9 +217,11 @@ def _target_str(ps):
     parts = []
     if ps.get("planned_duration_min"):
         parts.append(f"{ps['planned_duration_min']}min")
+    if ps.get("target_distance_km"):
+        parts.append(f"{ps['target_distance_km']}km")
     if ps.get("pace_low_sec_km"):
         lo, hi = fmt_pace(ps["pace_low_sec_km"]), fmt_pace(ps["pace_high_sec_km"])
-        parts.append(f"{lo}–{hi}" if lo != hi else lo)
+        parts.append(f"{lo}–{hi}/km" if lo != hi else f"{lo}/km")
     if ps.get("power_low_w"):
         lo, hi = ps["power_low_w"], ps["power_high_w"]
         parts.append(f"{lo}–{hi}W" if lo != hi else f"{lo}W")
@@ -228,15 +230,24 @@ def _target_str(ps):
 
 def _evaluate(ps, act, disc):
     actual_dur = round(act["duration_min"])
+    actual_dist_km = round(act["distance_km"], 1) if act.get("distance_km") else None
     actual_pace = speed_to_pace(act.get("avg_pace")) if disc in ("running", "swimming") else None
     actual_power = act.get("avg_power") if disc == "cycling" else None
+    actual_speed_kmh = round(act.get("avg_pace", 0) * 3.6, 1) if disc == "cycling" and act.get("avg_pace") else None
     planned_dur = ps.get("planned_duration_min")
+    planned_dist = ps.get("target_distance_km")
 
     # Duration adherence
     dur_ok = None
     if planned_dur:
         ratio = actual_dur / planned_dur
         dur_ok = "on" if ratio >= 0.90 else "slight" if ratio >= 0.75 else "off"
+
+    # Distance adherence (if target specified)
+    dist_ok = None
+    if planned_dist and actual_dist_km:
+        ratio = actual_dist_km / planned_dist
+        dist_ok = "on" if ratio >= 0.90 else "slight" if ratio >= 0.75 else "off"
 
     # Pace adherence (running)
     pace_ok = None
@@ -261,34 +272,57 @@ def _evaluate(ps, act, disc):
             power_ok = "off"
 
     RANK = {"off": 2, "slight": 1, "on": 0, None: -1}
-    worst = max([dur_ok, pace_ok or power_ok], key=lambda s: RANK.get(s, -1))
+    worst = max(
+        [dur_ok, dist_ok, pace_ok or power_ok],
+        key=lambda s: RANK.get(s, -1)
+    )
     status = (
         "❌ Off Target" if worst == "off" else
         "⚠️ Slightly Off" if worst == "slight" else
         "✅ On Target"
     )
 
-    # Build actual string with diffs
+    # Build actual string with diffs vs plan
     parts = []
+
+    # Duration
     if planned_dur:
         diff = actual_dur - planned_dur
-        parts.append(f"{actual_dur}min ({'+' if diff>0 else ''}{diff}min)")
+        parts.append(f"{actual_dur}min ({'+' if diff>0 else ''}{diff}min vs plan)")
     else:
         parts.append(f"{actual_dur}min")
-    if actual_pace and disc == "running":
+
+    # Distance
+    if actual_dist_km:
+        if planned_dist:
+            diff = round(actual_dist_km - planned_dist, 1)
+            parts.append(f"{actual_dist_km}km ({'+' if diff>0 else ''}{diff}km vs plan)")
+        else:
+            parts.append(f"{actual_dist_km}km")
+
+    # Pace (running) or Speed+Power (cycling)
+    if disc == "running" and actual_pace:
         pace_str = fmt_pace(actual_pace)
         if ps.get("pace_low_sec_km"):
             mid = (ps["pace_low_sec_km"] + ps["pace_high_sec_km"]) / 2
             d = round(actual_pace - mid)
-            pace_str += f" ({'+' if d>0 else ''}{d}s)"
+            pace_str += f" ({'+' if d>0 else ''}{d}s vs target)"
         parts.append(pace_str)
-    if actual_power and disc == "cycling":
-        pwr = f"{round(actual_power)}W"
-        if ps.get("power_low_w"):
-            mid = (ps["power_low_w"] + ps["power_high_w"]) / 2
-            d = round(actual_power - mid)
-            pwr += f" ({'+' if d>0 else ''}{d}W)"
-        parts.append(pwr)
+
+    if disc == "cycling":
+        if actual_speed_kmh:
+            parts.append(f"{actual_speed_kmh} km/h")
+        if actual_power:
+            pwr = f"{round(actual_power)}W"
+            if ps.get("power_low_w"):
+                mid = (ps["power_low_w"] + ps["power_high_w"]) / 2
+                d = round(actual_power - mid)
+                pwr += f" ({'+' if d>0 else ''}{d}W vs target)"
+            parts.append(pwr)
+
+    if disc == "swimming" and actual_pace:
+        p100 = actual_pace / 10
+        parts.append(f"{int(p100)//60}:{int(p100)%60:02d}/100m")
 
     return {
         "date": act["start"].date().isoformat(),
@@ -314,6 +348,7 @@ def STYLE():
 
 def chart_volume(weekly):
     fig = go.Figure()
+    added = False
     for disc in ["running", "cycling", "swimming", "strength_training"]:
         sub = weekly[weekly["type"] == disc]
         if sub.empty:
@@ -321,6 +356,9 @@ def chart_volume(weekly):
         fig.add_trace(go.Bar(x=sub["week"], y=sub["duration_min"].round(),
                              name=disc.replace("_", " ").title(),
                              marker_color=PALETTE.get(disc, "#ccc")))
+        added = True
+    if not added:
+        return None
     fig.update_layout(barmode="stack", title="Weekly Volume (min)", **STYLE())
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5")
@@ -332,66 +370,94 @@ def chart_load_and_hr(weekly, df):
     df = df.copy()
     df["week"] = df["start"].dt.to_period("W").apply(lambda r: r.start_time)
     load_wk = df.groupby("week")["training_load"].sum().reset_index()
+    if load_wk.empty or load_wk["training_load"].isna().all():
+        return None
 
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     fig.add_trace(go.Bar(x=load_wk["week"], y=load_wk["training_load"].round(),
                           name="Training Load", marker_color=PALETTE["load"], opacity=0.7),
                   secondary_y=False)
+    hr_added = False
     for disc in ["running", "cycling", "swimming"]:
         sub = df[df["type"] == disc].groupby("week")["avg_hr"].mean().reset_index()
-        if sub.empty:
+        if sub.empty or sub["avg_hr"].isna().all():
             continue
         fig.add_trace(go.Scatter(x=sub["week"], y=sub["avg_hr"].round(),
                                   mode="lines+markers", name=f"HR {disc}",
                                   marker_color=PALETTE.get(disc)),
                       secondary_y=True)
+        hr_added = True
     fig.update_layout(title="Training Load & Avg HR by Discipline", **STYLE())
     fig.update_yaxes(title_text="Load", secondary_y=False, showgrid=True, gridcolor="#f0f0f5")
-    fig.update_yaxes(title_text="Avg HR (bpm)", secondary_y=True, showgrid=False)
+    if hr_added:
+        fig.update_yaxes(title_text="Avg HR (bpm)", secondary_y=True, showgrid=False)
     fig.update_xaxes(showgrid=False)
     return fig
 
 
 def chart_pace_trends(trends):
-    """Run pace + swim pace (sec/100m) on left axis, bike power on right axis."""
+    """Run pace + swim pace on left axis (formatted M:SS), bike power on right axis."""
     fig = make_subplots(specs=[[{"secondary_y": True}]])
     added = False
+
+    # Build custom tick labels for pace axis (sec → M:SS)
+    pace_vals = []
 
     if "running" in trends:
         rd = trends["running"].dropna(subset=["pace_sec_km"])
         if not rd.empty:
-            fig.add_trace(go.Scatter(x=rd["week"], y=rd["pace_sec_km"].round(),
-                                      mode="lines+markers", name="Run Pace (sec/km)",
-                                      marker_color=PALETTE["running"]),
-                          secondary_y=False)
+            fig.add_trace(go.Scatter(
+                x=rd["week"], y=rd["pace_sec_km"].round(),
+                mode="lines+markers", name="Run Pace",
+                marker_color=PALETTE["running"],
+                hovertemplate="%{x}<br>Run: %{customdata}<extra></extra>",
+                customdata=[fmt_pace(v) for v in rd["pace_sec_km"]],
+            ), secondary_y=False)
+            pace_vals.extend(rd["pace_sec_km"].dropna().tolist())
             added = True
 
     if "swimming" in trends:
         sd = trends["swimming"].dropna(subset=["pace_sec_100m"])
         if not sd.empty:
-            fig.add_trace(go.Scatter(x=sd["week"], y=sd["pace_sec_100m"].round(),
-                                      mode="lines+markers", name="Swim Pace (sec/100m)",
-                                      line=dict(dash="dot"), marker_color=PALETTE["swimming"]),
-                          secondary_y=False)
+            fig.add_trace(go.Scatter(
+                x=sd["week"], y=sd["pace_sec_100m"].round(),
+                mode="lines+markers", name="Swim Pace (/100m)",
+                line=dict(dash="dot"), marker_color=PALETTE["swimming"],
+                hovertemplate="%{x}<br>Swim: %{customdata}/100m<extra></extra>",
+                customdata=[f"{int(v)//60}:{int(v)%60:02d}" for v in sd["pace_sec_100m"]],
+            ), secondary_y=False)
+            pace_vals.extend(sd["pace_sec_100m"].dropna().tolist())
             added = True
+
+    if pace_vals:
+        lo, hi = min(pace_vals), max(pace_vals)
+        pad = (hi - lo) * 0.15 or 15
+        tick_range = range(int(lo - pad), int(hi + pad + 1), max(10, int((hi - lo) / 6)))
+        fig.update_yaxes(
+            tickvals=list(tick_range),
+            ticktext=[fmt_pace(v).replace("/km", "") for v in tick_range],
+            title_text="Pace (M:SS)",
+            secondary_y=False, showgrid=True, gridcolor="#f0f0f5",
+            autorange="reversed",
+        )
 
     if "cycling" in trends:
         cd = trends["cycling"].dropna(subset=["avg_power"])
         if not cd.empty:
-            fig.add_trace(go.Scatter(x=cd["week"], y=cd["avg_power"].round(),
-                                      mode="lines+markers", name="Bike Power (W)",
-                                      marker_color=PALETTE["cycling"]),
-                          secondary_y=True)
+            fig.add_trace(go.Scatter(
+                x=cd["week"], y=cd["avg_power"].round(),
+                mode="lines+markers", name="Bike Power (W)",
+                marker_color=PALETTE["cycling"],
+            ), secondary_y=True)
             added = True
 
-    # Race target lines
     for race in RACES:
         race_dt = pd.Timestamp(race["date"])
         t = race["targets"]
         if "run_pace_sec_km" in t:
-            fig.add_vline(x=race_dt, line_dash="dash", line_color="#FF7A59", opacity=0.5)
+            fig.add_vline(x=race_dt, line_dash="dash", line_color="#FF7A59", opacity=0.4)
             fig.add_annotation(x=race_dt, y=t["run_pace_sec_km"], yref="y",
-                                text=f"{race['emoji']} {t['run_pace_sec_km']//60}:{t['run_pace_sec_km']%60:02d}/km",
+                                text=f"{race['emoji']} {fmt_pace(t['run_pace_sec_km'])}",
                                 showarrow=False, font=dict(size=9, color="#FF7A59"),
                                 bgcolor="white", bordercolor="#FF7A59", borderwidth=1)
         if "bike_power_w" in t:
@@ -403,9 +469,7 @@ def chart_pace_trends(trends):
     if not added:
         return None
 
-    fig.update_layout(title="Pace & Power Trends (all disciplines)", **STYLE())
-    fig.update_yaxes(title_text="Pace (sec — lower = faster)", secondary_y=False,
-                     showgrid=True, gridcolor="#f0f0f5", autorange="reversed")
+    fig.update_layout(title="Pace & Power Trends", **STYLE())
     fig.update_yaxes(title_text="Power (W)", secondary_y=True, showgrid=False)
     fig.update_xaxes(showgrid=False)
     return fig
