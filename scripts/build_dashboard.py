@@ -316,12 +316,14 @@ def on_target_pct(weekly, plan):
 
 
 def session_compliance(df, plan_sessions, weeks_back=8):
-    """Match planned sessions to actual Garmin sessions by date ±1 day."""
+    """Match planned sessions to actual Garmin sessions by date ±1 day.
+    Only includes sessions between (today - weeks_back) and today."""
     if not plan_sessions or df.empty:
         return {}
-    cutoff = dt.date.today() - dt.timedelta(weeks=weeks_back)
+    today = dt.date.today()
+    cutoff = today - dt.timedelta(weeks=weeks_back)
     recent_ps = [ps for ps in plan_sessions
-                 if dt.date.fromisoformat(ps["date"]) >= cutoff]
+                 if cutoff <= dt.date.fromisoformat(ps["date"]) <= today]
 
     result = {}
     for ps in recent_ps:
