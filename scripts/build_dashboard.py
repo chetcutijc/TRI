@@ -1037,14 +1037,13 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 # ── PDF dashboard ─────────────────────────────────────────────────────────────
 
 # ── Main ──────────────────────────────────────────────────────────────────────
+
 def build_print_html(df, plan, wellness, plan_sessions, manual_log):
     """
-    Builds docs/print.html — a single-column, print/mobile-optimised page
-    specifically for Chrome headless PDF export.
-    - No dual-axis charts (Chrome PDF handles these poorly)
-    - Single column layout, A4-friendly
-    - Compliance limited to last 4 weeks
-    - Charts use plotly with explicit fixed pixel sizes and no JS dependencies on ordering
+    Builds docs/print.html — mobile/print-optimised for Chrome headless PDF export.
+    Charts are rendered as static SVG via kaleido (server-side), so Chrome gets
+    plain markup with no JS timing issues — charts are always visible in the PDF.
+    Compliance limited to last 4 weeks, past sessions only.
     """
     OUT_PRINT = Path("docs/print.html")
     OUT_PRINT.parent.mkdir(exist_ok=True)
@@ -1053,9 +1052,10 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         OUT_PRINT.write_text("<h1>No activity data yet</h1>")
         return
 
-    weekly   = weekly_by_discipline(df)
-    trends   = discipline_trends(df)
-    ontarget = on_target_pct(weekly, plan)
+    # ── Data ────────────────────────────────────────────────────────────────
+    weekly    = weekly_by_discipline(df)
+    trends    = discipline_trends(df)
+    ontarget  = on_target_pct(weekly, plan)
     compliance = session_compliance(df, plan_sessions, weeks_back=4)
 
     last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
@@ -1107,144 +1107,193 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         if not wp.empty:
             bike_watts = f"{round(wp.mean())}W"
 
+    # ── Chart style ──────────────────────────────────────────────────────────
+    PRINT_W, PRINT_H = 500, 220
     PRINT_STYLE = dict(
-        height=260, width=680,
-        margin=dict(l=48, r=20, t=42, b=32),
-        font=dict(family="Helvetica,Arial,sans-serif", size=11, color="#1a1a22"),
-        title_font=dict(size=12, color="#1a1a22"),
+        height=PRINT_H, width=PRINT_W,
+        margin=dict(l=52, r=16, t=36, b=32),
+        font=dict(family="Helvetica,Arial,sans-serif", size=10, color="#1a1a22"),
+        title_font=dict(size=11, color="#1a1a22"),
         plot_bgcolor="white", paper_bgcolor="white",
         colorway=[PALETTE["running"], PALETTE["cycling"], PALETTE["swimming"],
                   PALETTE["load"], PALETTE["sleep"], PALETTE["battery"]],
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=9)),
-        hovermode=False,
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=8)),
+        showlegend=True,
     )
 
-    def pchart(fig):
-        """Apply print style and return full standalone HTML div."""
+    def svg(fig):
+        """Render figure as inline SVG string via kaleido. Falls back to empty string."""
         fig.update_layout(**PRINT_STYLE)
         fig.update_xaxes(showgrid=False, linecolor="#e3e3ea")
         fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5", linecolor="#e3e3ea")
-        return pio.to_html(fig, full_html=False, include_plotlyjs=False,
-                           config={"staticPlot": True, "displayModeBar": False})
+        try:
+            raw = fig.to_image(format="svg")
+            return raw.decode("utf-8")
+        except Exception as e:
+            print(f"  SVG render failed: {e}")
+            return ""
 
-    # ── Charts — all single-axis to avoid Chrome PDF dual-axis issues ──────
-    charts = []
+    # ── Build charts ─────────────────────────────────────────────────────────
+    charts = []   # list of (title, svg_string)
 
     # 1. Weekly volume
     fig = go.Figure()
     for disc in ["swimming", "running", "cycling", "strength_training"]:
         sub = weekly[weekly["type"] == disc]
         if not sub.empty:
-            fig.add_trace(go.Bar(x=sub["week"], y=sub["duration_min"].round(),
-                                  name=disc.replace("_"," ").title(),
-                                  marker_color=PALETTE.get(disc, "#ccc")))
+            fig.add_trace(go.Bar(
+                x=sub["week"], y=sub["duration_min"].round(),
+                name=disc.replace("_", " ").title(),
+                marker_color=PALETTE.get(disc, "#ccc"),
+            ))
     fig.update_layout(barmode="stack")
-    charts.append(("Weekly Volume (min)", pchart(fig)))
+    s = svg(fig)
+    if s:
+        charts.append(("Weekly Volume (min)", s))
 
-    # 2. Training load
+    # 2. Weekly training load
     df2 = df.copy()
     df2["week"] = df2["start"].dt.to_period("W").apply(lambda r: r.start_time)
     lw = df2.groupby("week")["training_load"].sum().reset_index()
     if not lw.empty and lw["training_load"].notna().any():
         fig = go.Figure()
-        fig.add_trace(go.Bar(x=lw["week"], y=lw["training_load"].round(),
-                              marker_color=PALETTE["load"]))
-        charts.append(("Weekly Training Load", pchart(fig)))
+        fig.add_trace(go.Bar(
+            x=lw["week"], y=lw["training_load"].round(),
+            marker_color=PALETTE["load"],
+        ))
+        s = svg(fig)
+        if s:
+            charts.append(("Weekly Training Load", s))
 
-    # 3. Run pace trend (separate, single axis)
+    # 3. Run pace trend
     if "running" in trends:
         rd = trends["running"].dropna(subset=["pace_sec_km"])
         if not rd.empty:
             fig = go.Figure()
-            y = rd["pace_sec_km"].apply(lambda s: round(s/60, 2) if s else None)
-            fig.add_trace(go.Scatter(x=rd["week"], y=y, mode="lines+markers",
-                                      name="Run Pace", marker_color=PALETTE["running"]))
+            y = rd["pace_sec_km"].apply(lambda x: round(x/60, 2) if x else None)
+            fig.add_trace(go.Scatter(
+                x=rd["week"], y=y, mode="lines+markers",
+                name="Run Pace", marker_color=PALETTE["running"],
+            ))
             fig.update_yaxes(autorange="reversed", title_text="min/km")
-            charts.append(("Running Pace Trend", pchart(fig)))
+            s = svg(fig)
+            if s:
+                charts.append(("Run Pace Trend", s))
 
-    # 4. Swim pace trend (separate, single axis)
+    # 4. Swim pace trend
     if "swimming" in trends:
         sd = trends["swimming"].dropna(subset=["pace_sec_100m"])
         if not sd.empty:
             fig = go.Figure()
-            y = sd["pace_sec_100m"].apply(lambda s: round(s/60, 2) if s else None)
-            fig.add_trace(go.Scatter(x=sd["week"], y=y, mode="lines+markers",
-                                      name="Swim Pace", marker_color=PALETTE["swimming"]))
+            y = sd["pace_sec_100m"].apply(lambda x: round(x/60, 2) if x else None)
+            fig.add_trace(go.Scatter(
+                x=sd["week"], y=y, mode="lines+markers",
+                name="Swim Pace", marker_color=PALETTE["swimming"],
+            ))
             fig.update_yaxes(autorange="reversed", title_text="min/100m")
-            charts.append(("Swim Pace Trend", pchart(fig)))
+            s = svg(fig)
+            if s:
+                charts.append(("Swim Pace Trend", s))
 
-    # 5. Cycling speed/power trend (separate, single axis)
+    # 5. Cycling power or speed
     if "cycling" in trends:
         cd = trends["cycling"]
         pw = cd.dropna(subset=["avg_power"])
         sp = cd.dropna(subset=["speed_kmh"])
+        fig = go.Figure()
         if not pw.empty:
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x=pw["week"], y=pw["avg_power"].round(),
-                                      mode="lines+markers", name="Avg Power (W)",
-                                      marker_color=PALETTE["cycling"]))
+            fig.add_trace(go.Scatter(
+                x=pw["week"], y=pw["avg_power"].round(),
+                mode="lines+markers", name="Power (W)",
+                marker_color=PALETTE["cycling"],
+            ))
             fig.update_yaxes(title_text="Watts")
-            charts.append(("Cycling Power Trend", pchart(fig)))
+            s = svg(fig)
+            if s:
+                charts.append(("Cycling Power Trend", s))
         elif not sp.empty:
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x=sp["week"], y=sp["speed_kmh"],
-                                      mode="lines+markers", name="Avg Speed (km/h)",
-                                      marker_color=PALETTE["cycling"]))
+            fig.add_trace(go.Scatter(
+                x=sp["week"], y=sp["speed_kmh"],
+                mode="lines+markers", name="Speed (km/h)",
+                marker_color=PALETTE["cycling"],
+            ))
             fig.update_yaxes(title_text="km/h")
-            charts.append(("Cycling Speed Trend", pchart(fig)))
+            s = svg(fig)
+            if s:
+                charts.append(("Cycling Speed Trend", s))
 
     # 6. On-target %
     if not ontarget.empty:
         fig = go.Figure()
         for disc in ontarget["type"].unique():
             sub = ontarget[ontarget["type"] == disc]
-            fig.add_trace(go.Scatter(x=sub["week"], y=sub["pct"], mode="lines+markers",
-                                      name=disc.replace("_"," ").title(),
-                                      marker_color=PALETTE.get(disc, "#ccc")))
-        fig.add_hline(y=80, line_dash="dot", line_color="#aaa")
+            fig.add_trace(go.Scatter(
+                x=sub["week"], y=sub["pct"],
+                mode="lines+markers",
+                name=disc.replace("_", " ").title(),
+                marker_color=PALETTE.get(disc, "#ccc"),
+            ))
+        fig.add_hline(y=80, line_dash="dot", line_color="#bbb",
+                      annotation_text="80% target", annotation_font_size=9)
         fig.update_yaxes(range=[0, 110], title_text="%")
-        charts.append(("On-Target % vs Plan", pchart(fig)))
+        s = svg(fig)
+        if s:
+            charts.append(("On-Target % vs Plan", s))
 
-    # 7. Sleep
+    # 7. Sleep duration
     if not wellness.empty and "sleep_duration_min" in wellness.columns:
         sw = wellness.dropna(subset=["sleep_duration_min"])
         if not sw.empty:
             fig = go.Figure()
-            fig.add_trace(go.Scatter(x=sw["date"], y=(sw["sleep_duration_min"]/60).round(1),
-                                      mode="lines+markers", marker_color=PALETTE["sleep"]))
-            fig.add_hline(y=7, line_dash="dot", line_color="#aaa")
+            fig.add_trace(go.Scatter(
+                x=sw["date"],
+                y=(sw["sleep_duration_min"]/60).round(1),
+                mode="lines+markers", marker_color=PALETTE["sleep"],
+            ))
+            fig.add_hline(y=7, line_dash="dot", line_color="#bbb",
+                          annotation_text="7h", annotation_font_size=9)
             fig.update_yaxes(title_text="Hours")
-            charts.append(("Sleep Duration", pchart(fig)))
+            s = svg(fig)
+            if s:
+                charts.append(("Sleep Duration", s))
 
     # 8. Body battery
     if not wellness.empty and "body_battery_max" in wellness.columns:
         bw = wellness.dropna(subset=["body_battery_max"])
         if not bw.empty:
             fig = go.Figure()
-            fig.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"].round(),
-                                      mode="lines+markers", name="Charged",
-                                      marker_color=PALETTE["battery"]))
+            fig.add_trace(go.Scatter(
+                x=bw["date"], y=bw["body_battery_max"].round(),
+                mode="lines+markers", name="Charged",
+                marker_color=PALETTE["battery"],
+            ))
             if "body_battery_min" in bw.columns:
-                fig.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_min"].round(),
-                                          mode="lines", name="Drained",
-                                          line=dict(dash="dot"), marker_color="#FFC75A"))
-            charts.append(("Body Battery", pchart(fig)))
+                fig.add_trace(go.Scatter(
+                    x=bw["date"], y=bw["body_battery_min"].round(),
+                    mode="lines", name="Drained",
+                    line=dict(dash="dot"), marker_color="#FFC75A",
+                ))
+            s = svg(fig)
+            if s:
+                charts.append(("Body Battery", s))
 
-    # ── Pair charts into two columns ────────────────────────────────────────
+    # ── Pair charts into 2-col table rows ────────────────────────────────────
     chart_rows = ""
     for i in range(0, len(charts), 2):
-        left_title, left_html = charts[i]
-        if i+1 < len(charts):
-            right_title, right_html = charts[i+1]
-            right_cell = f'<td style="width:50%;padding:4px"><div class="ctitle">{right_title}</div>{right_html}</td>'
+        ltitle, lsvg = charts[i]
+        if i + 1 < len(charts):
+            rtitle, rsvg = charts[i+1]
+            rcell = f'<td style="width:50%;padding:3px 3px 8px;vertical-align:top"><div class="ctitle">{rtitle}</div>{rsvg}</td>'
         else:
-            right_cell = '<td style="width:50%"></td>'
-        chart_rows += f'''<tr>
-            <td style="width:50%;padding:4px"><div class="ctitle">{left_title}</div>{left_html}</td>
-            {right_cell}
-        </tr>'''
+            rcell = '<td style="width:50%"></td>'
+        chart_rows += f"""<tr>
+            <td style="width:50%;padding:3px 3px 8px;vertical-align:top">
+                <div class="ctitle">{ltitle}</div>{lsvg}
+            </td>
+            {rcell}
+        </tr>"""
 
-    # ── Race countdown ──────────────────────────────────────────────────────
+    # ── Race countdown ───────────────────────────────────────────────────────
     race_rows = ""
     for r in RACES:
         days = days_until(r["date"])
@@ -1259,32 +1308,36 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             p = t["swim_pace_100m_sec"]
             tgt.append(f"Swim {p//60}:{p%60:02d}/100m")
         days_str = f"In {days} days" if days > 0 else "RACE DAY!"
-        color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
+        col = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
         race_rows += f"""<tr>
             <td>{r['emoji']} <strong>{r['name']}</strong></td>
             <td>{r['date'].strftime('%b %d, %Y')}</td>
-            <td style="color:{color};font-weight:700">{days_str}</td>
+            <td style="color:{col};font-weight:700">{days_str}</td>
             <td style="color:#5B6EF5;font-size:.85em">{' · '.join(tgt)}</td>
         </tr>"""
 
-    # ── Compliance table (last 4 weeks) ────────────────────────────────────
+    # ── Session compliance (last 4 weeks, past only) ─────────────────────────
     comp_rows = ""
     for wk, sessions in sorted(compliance.items(), reverse=True):
         label = dt.date.fromisoformat(wk).strftime("Week of %b %d")
         on  = sum(1 for s in sessions if "✅" in s["status"])
-        pct = round(100*on/len(sessions)) if sessions else 0
-        col = "#00C2A8" if pct>=80 else "#FFC75A" if pct>=50 else "#FF7A59"
-        comp_rows += f'<tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">{label} <span style="color:{col}">— {pct}% on target</span></td></tr>'
+        pct = round(100 * on / len(sessions)) if sessions else 0
+        col = "#00C2A8" if pct >= 80 else "#FFC75A" if pct >= 50 else "#FF7A59"
+        comp_rows += (
+            f'<tr><td colspan="5" style="background:#f5f5fa;font-weight:700;'
+            f'padding:5px 6px;font-size:.82em">'
+            f'{label} <span style="color:{col}">— {pct}% on target</span></td></tr>'
+        )
         for s in sessions:
             comp_rows += f"""<tr>
                 <td>{s['date']}</td>
                 <td style="font-weight:600">{s['discipline'].replace('_',' ').title()}</td>
-                <td style="color:#5B6EF5;font-size:.8em">{s['planned']}</td>
-                <td style="font-size:.8em">{s['actual']}</td>
-                <td>{s['status']}</td>
+                <td style="color:#5B6EF5;font-size:.82em">{s['planned']}</td>
+                <td style="font-size:.82em">{s['actual']}</td>
+                <td style="white-space:nowrap">{s['status']}</td>
             </tr>"""
 
-    # ── Recent sessions (last 8) ───────────────────────────────────────────
+    # ── Recent sessions ──────────────────────────────────────────────────────
     recent_rows = ""
     for _, row in df.tail(8).iloc[::-1].iterrows():
         pace_str = session_avg_pace_str(row)
@@ -1295,13 +1348,10 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             <td>{round(row['distance_km'],1) if row.get('distance_km') else '—'}km</td>
             <td>{round(row['duration_min'])}min</td>
             <td style="font-weight:600">{pace_str}</td>
-            <td><span style="color:{bcol};font-weight:600">{benefit}</span></td>
+            <td style="color:{bcol};font-weight:600;font-size:.85em">{benefit}</td>
         </tr>"""
 
-    # Include Plotly once at the top
-    plotly_js = pio.to_html(go.Figure(), full_html=False,
-                             include_plotlyjs=True).split("<div")[0]
-
+    # ── Write HTML ───────────────────────────────────────────────────────────
     OUT_PRINT.write_text(f"""<!DOCTYPE html>
 <html>
 <head>
@@ -1309,95 +1359,113 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Training Dashboard</title>
 <style>
-@page {{ size: A4; margin: 12mm 14mm; }}
-*{{ box-sizing:border-box; }}
-body{{ font-family:Helvetica,Arial,sans-serif; color:#1a1a22; font-size:9.5pt;
-      max-width:700px; margin:0 auto; padding:12px; }}
-h1{{ font-size:16pt; margin:0 0 2pt; font-weight:800; }}
-h2{{ font-size:10.5pt; margin:14pt 0 5pt; border-bottom:2px solid #f0f0f5;
-     padding-bottom:3pt; font-weight:700; color:#1a1a22; }}
-.updated{{ color:#999; font-size:7.5pt; margin:0 0 10pt; }}
-.stats{{ display:flex; flex-wrap:wrap; gap:6pt; margin:6pt 0 10pt; }}
-.card{{ border:1px solid #eee; border-radius:5pt; padding:6pt 8pt;
-        text-align:center; flex:1; min-width:55pt; }}
-.card .num{{ font-size:12pt; font-weight:800; }}
-.card .label{{ font-size:6pt; color:#999; text-transform:uppercase; letter-spacing:.3px; }}
-.dg{{ display:flex; gap:6pt; margin:6pt 0 10pt; }}
-.db{{ border:1px solid #eee; border-radius:5pt; padding:7pt 9pt; flex:1; }}
-.db .dt{{ font-weight:700; font-size:8.5pt; margin-bottom:4pt; }}
-.db .stats{{ gap:3pt; margin:0; }}
-.db .card{{ padding:4pt 5pt; min-width:0; background:#f8f8fc; border:none; }}
-.ctitle{{ font-size:8pt; font-weight:700; color:#5B6EF5; margin-bottom:2pt;
-          text-transform:uppercase; letter-spacing:.3px; }}
-table.t{{ width:100%; border-collapse:collapse; font-size:8pt; margin-bottom:6pt; }}
-table.t th{{ background:#f0f1f8; padding:4pt 5pt; text-align:left;
-             font-size:6.5pt; text-transform:uppercase; letter-spacing:.3px; color:#6b6b78; }}
-table.t td{{ padding:4pt 5pt; border-bottom:1px solid #f5f5f8; }}
-.race-days{{ font-weight:800; }}
-@media print{{
-  body{{ padding:0; }}
-  h2{{ page-break-after:avoid; }}
-  table.t{{ page-break-inside:avoid; }}
+@page {{ size: A4; margin: 11mm 13mm; }}
+* {{ box-sizing: border-box; margin: 0; padding: 0; }}
+body {{
+    font-family: Helvetica, Arial, sans-serif;
+    color: #1a1a22; font-size: 9pt;
+    max-width: 720px; margin: 0 auto; padding: 10px;
+}}
+h1 {{ font-size: 15pt; font-weight: 800; margin-bottom: 2pt; }}
+h2 {{
+    font-size: 10pt; font-weight: 700; margin: 12pt 0 5pt;
+    border-bottom: 2px solid #f0f0f5; padding-bottom: 2pt; color: #1a1a22;
+}}
+.updated {{ color: #999; font-size: 7pt; margin-bottom: 8pt; }}
+/* stat cards */
+.stats {{ display: flex; flex-wrap: wrap; gap: 5pt; margin: 5pt 0 8pt; }}
+.card {{
+    border: 1px solid #eee; border-radius: 5pt;
+    padding: 5pt 7pt; text-align: center; flex: 1; min-width: 50pt;
+}}
+.card .num {{ font-size: 11pt; font-weight: 800; }}
+.card .lbl {{ font-size: 5.5pt; color: #999; text-transform: uppercase; letter-spacing: .3px; }}
+/* discipline grid */
+.dg {{ display: flex; gap: 5pt; margin: 5pt 0 10pt; }}
+.db {{ border: 1px solid #eee; border-radius: 5pt; padding: 6pt 8pt; flex: 1; }}
+.db .dt {{ font-weight: 700; font-size: 8pt; margin-bottom: 4pt; }}
+.db .stats {{ gap: 3pt; margin: 0; }}
+.db .card {{ padding: 4pt 4pt; min-width: 0; background: #f8f8fc; border: none; }}
+/* charts */
+.ctitle {{
+    font-size: 7.5pt; font-weight: 700; color: #5B6EF5;
+    text-transform: uppercase; letter-spacing: .4px; margin-bottom: 2pt;
+}}
+.chart-table {{ width: 100%; border-collapse: collapse; margin-bottom: 4pt; }}
+.chart-table td svg {{ width: 100% !important; height: auto !important; }}
+/* tables */
+table.t {{ width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-bottom: 5pt; }}
+table.t th {{
+    background: #f0f1f8; padding: 4pt 5pt; text-align: left;
+    font-size: 6.5pt; text-transform: uppercase; letter-spacing: .3px; color: #6b6b78;
+}}
+table.t td {{ padding: 4pt 5pt; border-bottom: 1px solid #f5f5f8; }}
+table.t colgroup col {{ overflow: hidden; }}
+@media print {{
+    body {{ padding: 0; }}
+    h2 {{ page-break-after: avoid; }}
+    table.t {{ page-break-inside: avoid; }}
+    .chart-table tr {{ page-break-inside: avoid; }}
 }}
 </style>
-{plotly_js}
 </head>
 <body>
+
 <h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
 <p class="updated">Generated {dt.datetime.now().strftime('%Y-%m-%d %H:%M')} UTC</p>
 
-<h2>Races</h2>
+<h2>Race Targets</h2>
 <table class="t">
   <tr><th>Race</th><th>Date</th><th>Countdown</th><th>Targets</th></tr>
   {race_rows}
 </table>
 
-<h2>Last 30 Days</h2>
+<h2>Last 30 Days — Overview</h2>
 <div class="stats">
-  <div class="card"><div class="num">{total_sessions}</div><div class="label">Sessions</div></div>
-  <div class="card"><div class="num">{total_hours}h</div><div class="label">Volume</div></div>
-  <div class="card"><div class="num">{avg_load}</div><div class="label">Avg Load</div></div>
-  <div class="card"><div class="num">{avg_sleep}h</div><div class="label">Avg Sleep</div></div>
-  <div class="card"><div class="num">{avg_bb}</div><div class="label">Body Battery</div></div>
+  <div class="card"><div class="num">{total_sessions}</div><div class="lbl">Sessions</div></div>
+  <div class="card"><div class="num">{total_hours}h</div><div class="lbl">Volume</div></div>
+  <div class="card"><div class="num">{avg_load}</div><div class="lbl">Avg Load</div></div>
+  <div class="card"><div class="num">{avg_sleep}h</div><div class="lbl">Avg Sleep</div></div>
+  <div class="card"><div class="num">{avg_bb}</div><div class="lbl">Body Battery</div></div>
 </div>
 <div class="dg">
   <div class="db" style="border-top:2.5pt solid {PALETTE['swimming']}">
     <div class="dt">🏊 Swimming ({swim_sessions})</div>
     <div class="stats">
-      <div class="card"><div class="num">{swim_total}</div><div class="label">Total</div></div>
-      <div class="card"><div class="num">{swim_avg_dist}</div><div class="label">Avg</div></div>
-      <div class="card"><div class="num">{swim_pace}</div><div class="label">Pace</div></div>
+      <div class="card"><div class="num">{swim_total}</div><div class="lbl">Total</div></div>
+      <div class="card"><div class="num">{swim_avg_dist}</div><div class="lbl">Avg</div></div>
+      <div class="card"><div class="num">{swim_pace}</div><div class="lbl">Pace</div></div>
     </div>
   </div>
   <div class="db" style="border-top:2.5pt solid {PALETTE['running']}">
     <div class="dt">🏃 Running ({run_sessions})</div>
     <div class="stats">
-      <div class="card"><div class="num">{run_total}</div><div class="label">Total</div></div>
-      <div class="card"><div class="num">{run_avg_dist}</div><div class="label">Avg</div></div>
-      <div class="card"><div class="num">{run_pace}</div><div class="label">Pace</div></div>
+      <div class="card"><div class="num">{run_total}</div><div class="lbl">Total</div></div>
+      <div class="card"><div class="num">{run_avg_dist}</div><div class="lbl">Avg</div></div>
+      <div class="card"><div class="num">{run_pace}</div><div class="lbl">Pace</div></div>
     </div>
   </div>
   <div class="db" style="border-top:2.5pt solid {PALETTE['cycling']}">
     <div class="dt">🚴 Cycling ({bike_sessions})</div>
     <div class="stats">
-      <div class="card"><div class="num">{bike_total}</div><div class="label">Total</div></div>
-      <div class="card"><div class="num">{bike_speed}</div><div class="label">Speed</div></div>
-      <div class="card"><div class="num">{bike_watts}</div><div class="label">Power</div></div>
+      <div class="card"><div class="num">{bike_total}</div><div class="lbl">Total</div></div>
+      <div class="card"><div class="num">{bike_speed}</div><div class="lbl">Speed</div></div>
+      <div class="card"><div class="num">{bike_watts}</div><div class="lbl">Power</div></div>
     </div>
   </div>
 </div>
 
 <h2>Trends</h2>
-<table style="width:100%;border-collapse:collapse">{chart_rows}</table>
+<table class="chart-table">{chart_rows}</table>
 
 <h2>Session Compliance — Last 4 Weeks</h2>
 <table class="t">
   <colgroup>
-    <col style="width:12%"/><col style="width:13%"/>
-    <col style="width:25%"/><col style="width:30%"/><col style="width:20%"/>
+    <col style="width:11%"/><col style="width:13%"/>
+    <col style="width:24%"/><col style="width:30%"/><col style="width:22%"/>
   </colgroup>
   <tr><th>Date</th><th>Discipline</th><th>Target</th><th>Actual</th><th>Status</th></tr>
-  {comp_rows if comp_rows else '<tr><td colspan="5">No matched sessions yet</td></tr>'}
+  {comp_rows if comp_rows else '<tr><td colspan="5" style="color:#999;padding:8pt">No sessions matched in the last 4 weeks yet.</td></tr>'}
 </table>
 
 <h2>Recent Sessions</h2>
@@ -1405,10 +1473,10 @@ table.t td{{ padding:4pt 5pt; border-bottom:1px solid #f5f5f8; }}
   <tr><th>Date</th><th>Type</th><th>Distance</th><th>Duration</th><th>Pace</th><th>Benefit</th></tr>
   {recent_rows}
 </table>
+
 </body>
 </html>""")
-    print(f"Print HTML built at {OUT_PRINT}")
-
+    print(f"Print HTML built at {OUT_PRINT} ({len(charts)} charts rendered as SVG)")
 
 def main():
     df            = load_activities()
