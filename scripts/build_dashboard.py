@@ -1035,6 +1035,379 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 # ── PDF dashboard ─────────────────────────────────────────────────────────────
 
 # ── Main ──────────────────────────────────────────────────────────────────────
+def build_print_html(df, plan, wellness, plan_sessions, manual_log):
+    """
+    Builds docs/print.html — a single-column, print/mobile-optimised page
+    specifically for Chrome headless PDF export.
+    - No dual-axis charts (Chrome PDF handles these poorly)
+    - Single column layout, A4-friendly
+    - Compliance limited to last 4 weeks
+    - Charts use plotly with explicit fixed pixel sizes and no JS dependencies on ordering
+    """
+    OUT_PRINT = Path("docs/print.html")
+    OUT_PRINT.parent.mkdir(exist_ok=True)
+
+    if df.empty:
+        OUT_PRINT.write_text("<h1>No activity data yet</h1>")
+        return
+
+    weekly   = weekly_by_discipline(df)
+    trends   = discipline_trends(df)
+    ontarget = on_target_pct(weekly, plan)
+    compliance = session_compliance(df, plan_sessions, weeks_back=4)
+
+    last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+    total_sessions = len(last30)
+    total_hours    = round(last30["duration_min"].sum() / 60)
+    avg_load       = round(last30["training_load"].mean()) if last30["training_load"].notna().any() else "n/a"
+    avg_sleep = avg_bb = "n/a"
+    if not wellness.empty:
+        rw = wellness[wellness["date"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+        if "sleep_duration_min" in rw.columns and rw["sleep_duration_min"].notna().any():
+            avg_sleep = round(rw["sleep_duration_min"].mean() / 60, 1)
+        if "body_battery_max" in rw.columns and rw["body_battery_max"].notna().any():
+            avg_bb = round(rw["body_battery_max"].mean())
+
+    def d30(disc):
+        return last30[last30["type"] == disc]
+
+    sw30 = d30("swimming")
+    swim_sessions = len(sw30)
+    swim_total    = f"{round(sw30['distance_m'].sum()/1000,1)}km" if not sw30.empty else "n/a"
+    swim_avg_dist = f"{round(sw30['distance_m'].mean())}m" if not sw30.empty else "n/a"
+    swim_pace     = "n/a"
+    if not sw30.empty:
+        raw = sw30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            p = raw.mean() / 10
+            swim_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
+
+    ru30 = d30("running")
+    run_sessions  = len(ru30)
+    run_total     = f"{round(ru30['distance_km'].sum())}km" if not ru30.empty else "n/a"
+    run_avg_dist  = f"{round(ru30['distance_km'].mean(),1)}km" if not ru30.empty else "n/a"
+    run_pace      = "n/a"
+    if not ru30.empty:
+        raw = ru30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            run_pace = fmt_pace(raw.mean())
+
+    cy30 = d30("cycling")
+    bike_sessions  = len(cy30)
+    bike_total     = f"{round(cy30['distance_km'].sum())}km" if not cy30.empty else "n/a"
+    bike_speed     = "n/a"
+    bike_watts     = "n/a"
+    if not cy30.empty:
+        sp = cy30["avg_pace"].dropna()
+        if not sp.empty:
+            bike_speed = f"{round(sp.mean()*3.6,1)} km/h"
+        wp = cy30["avg_power"].dropna()
+        if not wp.empty:
+            bike_watts = f"{round(wp.mean())}W"
+
+    PRINT_STYLE = dict(
+        height=260, width=680,
+        margin=dict(l=48, r=20, t=42, b=32),
+        font=dict(family="Helvetica,Arial,sans-serif", size=11, color="#1a1a22"),
+        title_font=dict(size=12, color="#1a1a22"),
+        plot_bgcolor="white", paper_bgcolor="white",
+        colorway=[PALETTE["running"], PALETTE["cycling"], PALETTE["swimming"],
+                  PALETTE["load"], PALETTE["sleep"], PALETTE["battery"]],
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=9)),
+        hovermode=False,
+    )
+
+    def pchart(fig):
+        """Apply print style and return full standalone HTML div."""
+        fig.update_layout(**PRINT_STYLE)
+        fig.update_xaxes(showgrid=False, linecolor="#e3e3ea")
+        fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5", linecolor="#e3e3ea")
+        return pio.to_html(fig, full_html=False, include_plotlyjs=False,
+                           config={"staticPlot": True, "displayModeBar": False})
+
+    # ── Charts — all single-axis to avoid Chrome PDF dual-axis issues ──────
+    charts = []
+
+    # 1. Weekly volume
+    fig = go.Figure()
+    for disc in ["swimming", "running", "cycling", "strength_training"]:
+        sub = weekly[weekly["type"] == disc]
+        if not sub.empty:
+            fig.add_trace(go.Bar(x=sub["week"], y=sub["duration_min"].round(),
+                                  name=disc.replace("_"," ").title(),
+                                  marker_color=PALETTE.get(disc, "#ccc")))
+    fig.update_layout(barmode="stack")
+    charts.append(("Weekly Volume (min)", pchart(fig)))
+
+    # 2. Training load
+    df2 = df.copy()
+    df2["week"] = df2["start"].dt.to_period("W").apply(lambda r: r.start_time)
+    lw = df2.groupby("week")["training_load"].sum().reset_index()
+    if not lw.empty and lw["training_load"].notna().any():
+        fig = go.Figure()
+        fig.add_trace(go.Bar(x=lw["week"], y=lw["training_load"].round(),
+                              marker_color=PALETTE["load"]))
+        charts.append(("Weekly Training Load", pchart(fig)))
+
+    # 3. Run pace trend (separate, single axis)
+    if "running" in trends:
+        rd = trends["running"].dropna(subset=["pace_sec_km"])
+        if not rd.empty:
+            fig = go.Figure()
+            y = rd["pace_sec_km"].apply(lambda s: round(s/60, 2) if s else None)
+            fig.add_trace(go.Scatter(x=rd["week"], y=y, mode="lines+markers",
+                                      name="Run Pace", marker_color=PALETTE["running"]))
+            fig.update_yaxes(autorange="reversed", title_text="min/km")
+            charts.append(("Running Pace Trend", pchart(fig)))
+
+    # 4. Swim pace trend (separate, single axis)
+    if "swimming" in trends:
+        sd = trends["swimming"].dropna(subset=["pace_sec_100m"])
+        if not sd.empty:
+            fig = go.Figure()
+            y = sd["pace_sec_100m"].apply(lambda s: round(s/60, 2) if s else None)
+            fig.add_trace(go.Scatter(x=sd["week"], y=y, mode="lines+markers",
+                                      name="Swim Pace", marker_color=PALETTE["swimming"]))
+            fig.update_yaxes(autorange="reversed", title_text="min/100m")
+            charts.append(("Swim Pace Trend", pchart(fig)))
+
+    # 5. Cycling speed/power trend (separate, single axis)
+    if "cycling" in trends:
+        cd = trends["cycling"]
+        pw = cd.dropna(subset=["avg_power"])
+        sp = cd.dropna(subset=["speed_kmh"])
+        if not pw.empty:
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=pw["week"], y=pw["avg_power"].round(),
+                                      mode="lines+markers", name="Avg Power (W)",
+                                      marker_color=PALETTE["cycling"]))
+            fig.update_yaxes(title_text="Watts")
+            charts.append(("Cycling Power Trend", pchart(fig)))
+        elif not sp.empty:
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=sp["week"], y=sp["speed_kmh"],
+                                      mode="lines+markers", name="Avg Speed (km/h)",
+                                      marker_color=PALETTE["cycling"]))
+            fig.update_yaxes(title_text="km/h")
+            charts.append(("Cycling Speed Trend", pchart(fig)))
+
+    # 6. On-target %
+    if not ontarget.empty:
+        fig = go.Figure()
+        for disc in ontarget["type"].unique():
+            sub = ontarget[ontarget["type"] == disc]
+            fig.add_trace(go.Scatter(x=sub["week"], y=sub["pct"], mode="lines+markers",
+                                      name=disc.replace("_"," ").title(),
+                                      marker_color=PALETTE.get(disc, "#ccc")))
+        fig.add_hline(y=80, line_dash="dot", line_color="#aaa")
+        fig.update_yaxes(range=[0, 110], title_text="%")
+        charts.append(("On-Target % vs Plan", pchart(fig)))
+
+    # 7. Sleep
+    if not wellness.empty and "sleep_duration_min" in wellness.columns:
+        sw = wellness.dropna(subset=["sleep_duration_min"])
+        if not sw.empty:
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=sw["date"], y=(sw["sleep_duration_min"]/60).round(1),
+                                      mode="lines+markers", marker_color=PALETTE["sleep"]))
+            fig.add_hline(y=7, line_dash="dot", line_color="#aaa")
+            fig.update_yaxes(title_text="Hours")
+            charts.append(("Sleep Duration", pchart(fig)))
+
+    # 8. Body battery
+    if not wellness.empty and "body_battery_max" in wellness.columns:
+        bw = wellness.dropna(subset=["body_battery_max"])
+        if not bw.empty:
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"].round(),
+                                      mode="lines+markers", name="Charged",
+                                      marker_color=PALETTE["battery"]))
+            if "body_battery_min" in bw.columns:
+                fig.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_min"].round(),
+                                          mode="lines", name="Drained",
+                                          line=dict(dash="dot"), marker_color="#FFC75A"))
+            charts.append(("Body Battery", pchart(fig)))
+
+    # ── Pair charts into two columns ────────────────────────────────────────
+    chart_rows = ""
+    for i in range(0, len(charts), 2):
+        left_title, left_html = charts[i]
+        if i+1 < len(charts):
+            right_title, right_html = charts[i+1]
+            right_cell = f'<td style="width:50%;padding:4px"><div class="ctitle">{right_title}</div>{right_html}</td>'
+        else:
+            right_cell = '<td style="width:50%"></td>'
+        chart_rows += f'''<tr>
+            <td style="width:50%;padding:4px"><div class="ctitle">{left_title}</div>{left_html}</td>
+            {right_cell}
+        </tr>'''
+
+    # ── Race countdown ──────────────────────────────────────────────────────
+    race_rows = ""
+    for r in RACES:
+        days = days_until(r["date"])
+        t = r["targets"]
+        tgt = []
+        if "run_pace_sec_km" in t:
+            p = t["run_pace_sec_km"]
+            tgt.append(f"Run {p//60}:{p%60:02d}/km")
+        if "bike_power_w" in t:
+            tgt.append(f"Bike {t['bike_power_w']}W")
+        if "swim_pace_100m_sec" in t:
+            p = t["swim_pace_100m_sec"]
+            tgt.append(f"Swim {p//60}:{p%60:02d}/100m")
+        days_str = f"In {days} days" if days > 0 else "RACE DAY!"
+        color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
+        race_rows += f"""<tr>
+            <td>{r['emoji']} <strong>{r['name']}</strong></td>
+            <td>{r['date'].strftime('%b %d, %Y')}</td>
+            <td style="color:{color};font-weight:700">{days_str}</td>
+            <td style="color:#5B6EF5;font-size:.85em">{' · '.join(tgt)}</td>
+        </tr>"""
+
+    # ── Compliance table (last 4 weeks) ────────────────────────────────────
+    comp_rows = ""
+    for wk, sessions in sorted(compliance.items(), reverse=True):
+        label = dt.date.fromisoformat(wk).strftime("Week of %b %d")
+        on  = sum(1 for s in sessions if "✅" in s["status"])
+        pct = round(100*on/len(sessions)) if sessions else 0
+        col = "#00C2A8" if pct>=80 else "#FFC75A" if pct>=50 else "#FF7A59"
+        comp_rows += f'<tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">{label} <span style="color:{col}">— {pct}% on target</span></td></tr>'
+        for s in sessions:
+            comp_rows += f"""<tr>
+                <td>{s['date']}</td>
+                <td style="font-weight:600">{s['discipline'].replace('_',' ').title()}</td>
+                <td style="color:#5B6EF5;font-size:.8em">{s['planned']}</td>
+                <td style="font-size:.8em">{s['actual']}</td>
+                <td>{s['status']}</td>
+            </tr>"""
+
+    # ── Recent sessions (last 8) ───────────────────────────────────────────
+    recent_rows = ""
+    for _, row in df.tail(8).iloc[::-1].iterrows():
+        pace_str = session_avg_pace_str(row)
+        benefit, bcol = session_benefit(row)
+        recent_rows += f"""<tr>
+            <td>{row['start'].strftime('%b %d')}</td>
+            <td style="font-weight:600">{str(row.get('type','') or '').replace('_',' ').title()}</td>
+            <td>{round(row['distance_km'],1) if row.get('distance_km') else '—'}km</td>
+            <td>{round(row['duration_min'])}min</td>
+            <td style="font-weight:600">{pace_str}</td>
+            <td><span style="color:{bcol};font-weight:600">{benefit}</span></td>
+        </tr>"""
+
+    # Include Plotly once at the top
+    plotly_js = pio.to_html(go.Figure(), full_html=False,
+                             include_plotlyjs=True).split("<div")[0]
+
+    OUT_PRINT.write_text(f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Training Dashboard</title>
+<style>
+@page {{ size: A4; margin: 12mm 14mm; }}
+*{{ box-sizing:border-box; }}
+body{{ font-family:Helvetica,Arial,sans-serif; color:#1a1a22; font-size:9.5pt;
+      max-width:700px; margin:0 auto; padding:12px; }}
+h1{{ font-size:16pt; margin:0 0 2pt; font-weight:800; }}
+h2{{ font-size:10.5pt; margin:14pt 0 5pt; border-bottom:2px solid #f0f0f5;
+     padding-bottom:3pt; font-weight:700; color:#1a1a22; }}
+.updated{{ color:#999; font-size:7.5pt; margin:0 0 10pt; }}
+.stats{{ display:flex; flex-wrap:wrap; gap:6pt; margin:6pt 0 10pt; }}
+.card{{ border:1px solid #eee; border-radius:5pt; padding:6pt 8pt;
+        text-align:center; flex:1; min-width:55pt; }}
+.card .num{{ font-size:12pt; font-weight:800; }}
+.card .label{{ font-size:6pt; color:#999; text-transform:uppercase; letter-spacing:.3px; }}
+.dg{{ display:flex; gap:6pt; margin:6pt 0 10pt; }}
+.db{{ border:1px solid #eee; border-radius:5pt; padding:7pt 9pt; flex:1; }}
+.db .dt{{ font-weight:700; font-size:8.5pt; margin-bottom:4pt; }}
+.db .stats{{ gap:3pt; margin:0; }}
+.db .card{{ padding:4pt 5pt; min-width:0; background:#f8f8fc; border:none; }}
+.ctitle{{ font-size:8pt; font-weight:700; color:#5B6EF5; margin-bottom:2pt;
+          text-transform:uppercase; letter-spacing:.3px; }}
+table.t{{ width:100%; border-collapse:collapse; font-size:8pt; margin-bottom:6pt; }}
+table.t th{{ background:#f0f1f8; padding:4pt 5pt; text-align:left;
+             font-size:6.5pt; text-transform:uppercase; letter-spacing:.3px; color:#6b6b78; }}
+table.t td{{ padding:4pt 5pt; border-bottom:1px solid #f5f5f8; }}
+.race-days{{ font-weight:800; }}
+@media print{{
+  body{{ padding:0; }}
+  h2{{ page-break-after:avoid; }}
+  table.t{{ page-break-inside:avoid; }}
+}}
+</style>
+{plotly_js}
+</head>
+<body>
+<h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
+<p class="updated">Generated {dt.datetime.now().strftime('%Y-%m-%d %H:%M')} UTC</p>
+
+<h2>Races</h2>
+<table class="t">
+  <tr><th>Race</th><th>Date</th><th>Countdown</th><th>Targets</th></tr>
+  {race_rows}
+</table>
+
+<h2>Last 30 Days</h2>
+<div class="stats">
+  <div class="card"><div class="num">{total_sessions}</div><div class="label">Sessions</div></div>
+  <div class="card"><div class="num">{total_hours}h</div><div class="label">Volume</div></div>
+  <div class="card"><div class="num">{avg_load}</div><div class="label">Avg Load</div></div>
+  <div class="card"><div class="num">{avg_sleep}h</div><div class="label">Avg Sleep</div></div>
+  <div class="card"><div class="num">{avg_bb}</div><div class="label">Body Battery</div></div>
+</div>
+<div class="dg">
+  <div class="db" style="border-top:2.5pt solid {PALETTE['swimming']}">
+    <div class="dt">🏊 Swimming ({swim_sessions})</div>
+    <div class="stats">
+      <div class="card"><div class="num">{swim_total}</div><div class="label">Total</div></div>
+      <div class="card"><div class="num">{swim_avg_dist}</div><div class="label">Avg</div></div>
+      <div class="card"><div class="num">{swim_pace}</div><div class="label">Pace</div></div>
+    </div>
+  </div>
+  <div class="db" style="border-top:2.5pt solid {PALETTE['running']}">
+    <div class="dt">🏃 Running ({run_sessions})</div>
+    <div class="stats">
+      <div class="card"><div class="num">{run_total}</div><div class="label">Total</div></div>
+      <div class="card"><div class="num">{run_avg_dist}</div><div class="label">Avg</div></div>
+      <div class="card"><div class="num">{run_pace}</div><div class="label">Pace</div></div>
+    </div>
+  </div>
+  <div class="db" style="border-top:2.5pt solid {PALETTE['cycling']}">
+    <div class="dt">🚴 Cycling ({bike_sessions})</div>
+    <div class="stats">
+      <div class="card"><div class="num">{bike_total}</div><div class="label">Total</div></div>
+      <div class="card"><div class="num">{bike_speed}</div><div class="label">Speed</div></div>
+      <div class="card"><div class="num">{bike_watts}</div><div class="label">Power</div></div>
+    </div>
+  </div>
+</div>
+
+<h2>Trends</h2>
+<table style="width:100%;border-collapse:collapse">{chart_rows}</table>
+
+<h2>Session Compliance — Last 4 Weeks</h2>
+<table class="t">
+  <colgroup>
+    <col style="width:12%"/><col style="width:13%"/>
+    <col style="width:25%"/><col style="width:30%"/><col style="width:20%"/>
+  </colgroup>
+  <tr><th>Date</th><th>Discipline</th><th>Target</th><th>Actual</th><th>Status</th></tr>
+  {comp_rows if comp_rows else '<tr><td colspan="5">No matched sessions yet</td></tr>'}
+</table>
+
+<h2>Recent Sessions</h2>
+<table class="t">
+  <tr><th>Date</th><th>Type</th><th>Distance</th><th>Duration</th><th>Pace</th><th>Benefit</th></tr>
+  {recent_rows}
+</table>
+</body>
+</html>""")
+    print(f"Print HTML built at {OUT_PRINT}")
+
+
 def main():
     df            = load_activities()
     plan          = load_plan()
@@ -1042,6 +1415,7 @@ def main():
     plan_sessions = load_plan_sessions()
     manual_log    = load_manual_log()
     build_html(df, plan, wellness, plan_sessions, manual_log)
+    build_print_html(df, plan, wellness, plan_sessions, manual_log)
 
 
 if __name__ == "__main__":
