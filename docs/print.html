@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Training Dashboard</title>
+<style>
+@page { size: A4; margin: 12mm 14mm; }
+*{ box-sizing:border-box; }
+body{ font-family:Helvetica,Arial,sans-serif; color:#1a1a22; font-size:9.5pt;
+      max-width:700px; margin:0 auto; padding:12px; }
+h1{ font-size:16pt; margin:0 0 2pt; font-weight:800; }
+h2{ font-size:10.5pt; margin:14pt 0 5pt; border-bottom:2px solid #f0f0f5;
+     padding-bottom:3pt; font-weight:700; color:#1a1a22; }
+.updated{ color:#999; font-size:7.5pt; margin:0 0 10pt; }
+.stats{ display:flex; flex-wrap:wrap; gap:6pt; margin:6pt 0 10pt; }
+.card{ border:1px solid #eee; border-radius:5pt; padding:6pt 8pt;
+        text-align:center; flex:1; min-width:55pt; }
+.card .num{ font-size:12pt; font-weight:800; }
+.card .label{ font-size:6pt; color:#999; text-transform:uppercase; letter-spacing:.3px; }
+.dg{ display:flex; gap:6pt; margin:6pt 0 10pt; }
+.db{ border:1px solid #eee; border-radius:5pt; padding:7pt 9pt; flex:1; }
+.db .dt{ font-weight:700; font-size:8.5pt; margin-bottom:4pt; }
+.db .stats{ gap:3pt; margin:0; }
+.db .card{ padding:4pt 5pt; min-width:0; background:#f8f8fc; border:none; }
+.ctitle{ font-size:8pt; font-weight:700; color:#5B6EF5; margin-bottom:2pt;
+          text-transform:uppercase; letter-spacing:.3px; }
+table.t{ width:100%; border-collapse:collapse; font-size:8pt; margin-bottom:6pt; }
+table.t th{ background:#f0f1f8; padding:4pt 5pt; text-align:left;
+             font-size:6.5pt; text-transform:uppercase; letter-spacing:.3px; color:#6b6b78; }
+table.t td{ padding:4pt 5pt; border-bottom:1px solid #f5f5f8; }
+.race-days{ font-weight:800; }
+@media print{
+  body{ padding:0; }
+  h2{ page-break-after:avoid; }
+  table.t{ page-break-inside:avoid; }
+}
+</style>
+
+</head>
+<body>
+<h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
+<p class="updated">Generated 2026-07-12 08:10 UTC</p>
+
+<h2>Races</h2>
+<table class="t">
+  <tr><th>Race</th><th>Date</th><th>Countdown</th><th>Targets</th></tr>
+  <tr>
+            <td>🏃 <strong>Marathon</strong></td>
+            <td>Feb 07, 2027</td>
+            <td style="color:#00C2A8;font-weight:700">In 210 days</td>
+            <td style="color:#5B6EF5;font-size:.85em">Run 5:45/km</td>
+        </tr><tr>
+            <td>🏊🚴🏃 <strong>Ironman Italy Cervia</strong></td>
+            <td>Jun 20, 2027</td>
+            <td style="color:#00C2A8;font-weight:700">In 343 days</td>
+            <td style="color:#5B6EF5;font-size:.85em">Run 6:30/km · Bike 190W · Swim 1:50/100m</td>
+        </tr>
+</table>
+
+<h2>Last 30 Days</h2>
+<div class="stats">
+  <div class="card"><div class="num">9</div><div class="label">Sessions</div></div>
+  <div class="card"><div class="num">6h</div><div class="label">Volume</div></div>
+  <div class="card"><div class="num">96</div><div class="label">Avg Load</div></div>
+  <div class="card"><div class="num">5.8h</div><div class="label">Avg Sleep</div></div>
+  <div class="card"><div class="num">45</div><div class="label">Body Battery</div></div>
+</div>
+<div class="dg">
+  <div class="db" style="border-top:2.5pt solid #36C5F0">
+    <div class="dt">🏊 Swimming (8)</div>
+    <div class="stats">
+      <div class="card"><div class="num">11.5km</div><div class="label">Total</div></div>
+      <div class="card"><div class="num">1443m</div><div class="label">Avg</div></div>
+      <div class="card"><div class="num">2:25/100m</div><div class="label">Pace</div></div>
+    </div>
+  </div>
+  <div class="db" style="border-top:2.5pt solid #5B6EF5">
+    <div class="dt">🏃 Running (1)</div>
+    <div class="stats">
+      <div class="card"><div class="num">6km</div><div class="label">Total</div></div>
+      <div class="card"><div class="num">6.3km</div><div class="label">Avg</div></div>
+      <div class="card"><div class="num">7:14/km</div><div class="label">Pace</div></div>
+    </div>
+  </div>
+  <div class="db" style="border-top:2.5pt solid #00C2A8">
+    <div class="dt">🚴 Cycling (0)</div>
+    <div class="stats">
+      <div class="card"><div class="num">n/a</div><div class="label">Total</div></div>
+      <div class="card"><div class="num">n/a</div><div class="label">Speed</div></div>
+      <div class="card"><div class="num">n/a</div><div class="label">Power</div></div>
+    </div>
+  </div>
+</div>
+
+<h2>Trends</h2>
+<table style="width:100%;border-collapse:collapse"><tr>
+            <td style="width:50%;padding:4px"><div class="ctitle">Weekly Volume (min)</div><div style="height:260px; width:680px;">                            <div id="3a5aace4-0a97-4f0d-b690-bc3fecca5088" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("3a5aace4-0a97-4f0d-b690-bc3fecca5088")) {                    Plotly.newPlot(                        "3a5aace4-0a97-4f0d-b690-bc3fecca5088",                        [{"marker":{"color":"#36C5F0"},"name":"Swimming","x":["2026-06-15T00:00:00.000000","2026-06-22T00:00:00.000000","2026-06-29T00:00:00.000000","2026-07-06T00:00:00.000000"],"y":{"dtype":"f8","bdata":"AAAAAAAAWUAAAAAAAMBfQAAAAAAAwFFAAAAAAAAAO0A="},"type":"bar"},{"marker":{"color":"#5B6EF5"},"name":"Running","x":["2026-07-06T00:00:00.000000"],"y":{"dtype":"f8","bdata":"AAAAAACARkA="},"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"barmode":"stack","margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"},"yaxis":{"showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+            <td style="width:50%;padding:4px"><div class="ctitle">Weekly Training Load</div><div style="height:260px; width:680px;">                            <div id="51316c01-8d89-449c-9fc4-8cdfe2acaeb9" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("51316c01-8d89-449c-9fc4-8cdfe2acaeb9")) {                    Plotly.newPlot(                        "51316c01-8d89-449c-9fc4-8cdfe2acaeb9",                        [{"marker":{"color":"#FFC75A"},"x":["2026-06-15T00:00:00.000000","2026-06-22T00:00:00.000000","2026-06-29T00:00:00.000000","2026-07-06T00:00:00.000000"],"y":{"dtype":"f8","bdata":"AAAAAABwcEAAAAAAAEBzQAAAAAAA4GFAAAAAAADAYkA="},"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"},"yaxis":{"showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+        </tr><tr>
+            <td style="width:50%;padding:4px"><div class="ctitle">Running Pace Trend</div><div style="height:260px; width:680px;">                            <div id="2c31deaa-5eb6-43ba-81c0-8cbcee69440f" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("2c31deaa-5eb6-43ba-81c0-8cbcee69440f")) {                    Plotly.newPlot(                        "2c31deaa-5eb6-43ba-81c0-8cbcee69440f",                        [{"marker":{"color":"#5B6EF5"},"mode":"lines+markers","name":"Run Pace","x":["2026-07-06T00:00:00.000000"],"y":{"dtype":"f8","bdata":"7FG4HoXrHEA="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"yaxis":{"title":{"text":"min\u002fkm"},"autorange":"reversed","showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"},"margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+            <td style="width:50%;padding:4px"><div class="ctitle">Swim Pace Trend</div><div style="height:260px; width:680px;">                            <div id="48a079b0-aa53-4f42-9315-11a2fbcaf3f1" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("48a079b0-aa53-4f42-9315-11a2fbcaf3f1")) {                    Plotly.newPlot(                        "48a079b0-aa53-4f42-9315-11a2fbcaf3f1",                        [{"marker":{"color":"#36C5F0"},"mode":"lines+markers","name":"Swim Pace","x":["2026-06-15T00:00:00.000000","2026-06-22T00:00:00.000000","2026-06-29T00:00:00.000000","2026-07-06T00:00:00.000000"],"y":{"dtype":"f8","bdata":"ZmZmZmZmAkAK16NwPQoBQEjhehSuRwVA16NwPQrXA0A="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"yaxis":{"title":{"text":"min\u002f100m"},"autorange":"reversed","showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"},"margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+        </tr><tr>
+            <td style="width:50%;padding:4px"><div class="ctitle">On-Target % vs Plan</div><div style="height:260px; width:680px;">                            <div id="e5abc1f6-e1d4-4c14-910a-290924873c2a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("e5abc1f6-e1d4-4c14-910a-290924873c2a")) {                    Plotly.newPlot(                        "e5abc1f6-e1d4-4c14-910a-290924873c2a",                        [{"marker":{"color":"#36C5F0"},"mode":"lines+markers","name":"Swimming","x":["2026-06-22T00:00:00.000000","2026-06-29T00:00:00.000000","2026-07-06T00:00:00.000000"],"y":{"dtype":"i1","bdata":"ZDsW"},"type":"scatter"},{"marker":{"color":"#5B6EF5"},"mode":"lines+markers","name":"Running","x":["2026-07-06T00:00:00.000000"],"y":{"dtype":"i1","bdata":"EQ=="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"shapes":[{"line":{"color":"#aaa","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":80,"y1":80,"yref":"y"}],"yaxis":{"title":{"text":"%"},"range":[0,110],"showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"},"margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+            <td style="width:50%;padding:4px"><div class="ctitle">Sleep Duration</div><div style="height:260px; width:680px;">                            <div id="82f890fe-63d2-417a-a0a1-6ea94c3d089a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("82f890fe-63d2-417a-a0a1-6ea94c3d089a")) {                    Plotly.newPlot(                        "82f890fe-63d2-417a-a0a1-6ea94c3d089a",                        [{"marker":{"color":"#9B7DFF"},"mode":"lines+markers","x":["2026-06-16T00:00:00.000000","2026-06-17T00:00:00.000000","2026-06-18T00:00:00.000000","2026-06-19T00:00:00.000000","2026-06-20T00:00:00.000000","2026-06-21T00:00:00.000000","2026-06-22T00:00:00.000000","2026-06-23T00:00:00.000000","2026-06-24T00:00:00.000000","2026-06-25T00:00:00.000000","2026-06-26T00:00:00.000000","2026-06-29T00:00:00.000000","2026-07-01T00:00:00.000000","2026-07-02T00:00:00.000000","2026-07-03T00:00:00.000000","2026-07-05T00:00:00.000000","2026-07-07T00:00:00.000000","2026-07-08T00:00:00.000000","2026-07-09T00:00:00.000000","2026-07-10T00:00:00.000000","2026-07-11T00:00:00.000000","2026-07-12T00:00:00.000000"],"y":{"dtype":"f8","bdata":"mpmZmZmZEUAzMzMzMzMXQDMzMzMzMxdAmpmZmZmZE0DNzMzMzMwkQJqZmZmZmRVAZmZmZmZmHEAAAAAAAAAQQJqZmZmZmRFAZmZmZmZmFkAzMzMzMzMVQM3MzMzMzBJAZmZmZmZmGEDNzMzMzMwQQJqZmZmZmRNAAAAAAAAAI0DNzMzMzMwcQGZmZmZmZhBAzczMzMzMEEAzMzMzMzMhQJqZmZmZmQVAMzMzMzMzIUA="},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"shapes":[{"line":{"color":"#aaa","dash":"dot"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":7,"y1":7,"yref":"y"}],"yaxis":{"title":{"text":"Hours"},"showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"},"margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+        </tr><tr>
+            <td style="width:50%;padding:4px"><div class="ctitle">Body Battery</div><div style="height:260px; width:680px;">                            <div id="5cc0aa93-42fb-46d2-8c1f-0c02ef717e5c" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("5cc0aa93-42fb-46d2-8c1f-0c02ef717e5c")) {                    Plotly.newPlot(                        "5cc0aa93-42fb-46d2-8c1f-0c02ef717e5c",                        [{"marker":{"color":"#00C2A8"},"mode":"lines+markers","name":"Charged","x":["2026-06-16T00:00:00.000000","2026-06-17T00:00:00.000000","2026-06-18T00:00:00.000000","2026-06-19T00:00:00.000000","2026-06-20T00:00:00.000000","2026-06-21T00:00:00.000000","2026-06-22T00:00:00.000000","2026-06-23T00:00:00.000000","2026-06-24T00:00:00.000000","2026-06-25T00:00:00.000000","2026-06-26T00:00:00.000000","2026-06-27T00:00:00.000000","2026-06-28T00:00:00.000000","2026-06-29T00:00:00.000000","2026-06-30T00:00:00.000000","2026-07-01T00:00:00.000000","2026-07-02T00:00:00.000000","2026-07-03T00:00:00.000000","2026-07-04T00:00:00.000000","2026-07-05T00:00:00.000000","2026-07-06T00:00:00.000000","2026-07-07T00:00:00.000000","2026-07-08T00:00:00.000000","2026-07-09T00:00:00.000000","2026-07-10T00:00:00.000000","2026-07-11T00:00:00.000000","2026-07-12T00:00:00.000000"],"y":{"dtype":"i1","bdata":"LzIqIGEtSCcsQzMAADEARiE\u002fDEwAOR4xTBZV"},"type":"scatter"},{"line":{"dash":"dot"},"marker":{"color":"#FFC75A"},"mode":"lines","name":"Drained","x":["2026-06-16T00:00:00.000000","2026-06-17T00:00:00.000000","2026-06-18T00:00:00.000000","2026-06-19T00:00:00.000000","2026-06-20T00:00:00.000000","2026-06-21T00:00:00.000000","2026-06-22T00:00:00.000000","2026-06-23T00:00:00.000000","2026-06-24T00:00:00.000000","2026-06-25T00:00:00.000000","2026-06-26T00:00:00.000000","2026-06-27T00:00:00.000000","2026-06-28T00:00:00.000000","2026-06-29T00:00:00.000000","2026-06-30T00:00:00.000000","2026-07-01T00:00:00.000000","2026-07-02T00:00:00.000000","2026-07-03T00:00:00.000000","2026-07-04T00:00:00.000000","2026-07-05T00:00:00.000000","2026-07-06T00:00:00.000000","2026-07-07T00:00:00.000000","2026-07-08T00:00:00.000000","2026-07-09T00:00:00.000000","2026-07-10T00:00:00.000000","2026-07-11T00:00:00.000000","2026-07-12T00:00:00.000000"],"y":{"dtype":"i1","bdata":"PywrH0VNODkkRjgAOSI4Vxw7SC0ySyEoTyIA"},"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"margin":{"l":48,"r":20,"t":42,"b":32},"font":{"family":"Helvetica,Arial,sans-serif","size":11,"color":"#1a1a22"},"title":{"font":{"size":12,"color":"#1a1a22"}},"legend":{"font":{"size":9},"orientation":"h","yanchor":"bottom","y":1.02,"x":0},"height":260,"width":680,"plot_bgcolor":"white","paper_bgcolor":"white","colorway":["#5B6EF5","#00C2A8","#36C5F0","#FFC75A","#9B7DFF","#00C2A8"],"hovermode":false,"xaxis":{"showgrid":false,"linecolor":"#e3e3ea"},"yaxis":{"showgrid":true,"gridcolor":"#f0f0f5","linecolor":"#e3e3ea"}},                        {"staticPlot": true, "displayModeBar": false, "responsive": true}                    )                };            </script>        </div></td>
+            <td style="width:50%"></td>
+        </tr></table>
+
+<h2>Session Compliance — Last 4 Weeks</h2>
+<table class="t">
+  <colgroup>
+    <col style="width:12%"/><col style="width:13%"/>
+    <col style="width:25%"/><col style="width:30%"/><col style="width:20%"/>
+  </colgroup>
+  <tr><th>Date</th><th>Discipline</th><th>Target</th><th>Actual</th><th>Status</th></tr>
+  <tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jun 14 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-06-15</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-06-19</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 180.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jun 07 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-06-08</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-06-12</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 80.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-06-13</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 12.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of May 31 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-06-03</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-06-05</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 80.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-06-06</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 12.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of May 24 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-05-25</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-29</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 80.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-30</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 12.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of May 17 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-05-18</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-22</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 170.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-23</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of May 10 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-05-13</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-15</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 160.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-16</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of May 03 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-05-04</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-06</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-08</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 150.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-09</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Apr 26 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-04-27</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-29</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-01</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 140.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-05-02</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Apr 19 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-04-20</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-24</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 154.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-25</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Apr 12 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-04-15</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-17</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 146.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-18</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.2km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Apr 05 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-04-06</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-10</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 138.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-11</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 17.6km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Mar 29 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-04-01</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-03</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 130.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-04-04</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 17.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Mar 22 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-03-23</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-25</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-27</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 122.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-28</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 16.4km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Mar 15 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-03-16</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-18</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-20</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 114.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-21</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 15.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Mar 08 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-03-09</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-13</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 106.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-14</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 15.2km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Mar 01 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-03-04</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-06</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 98.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-03-07</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 14.6km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Feb 22 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-02-23</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-27</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 90.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-28</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 14.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Feb 15 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-02-16</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-20</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 50.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-21</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 8.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Feb 08 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-02-11</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-13</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 50.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-14</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 8.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Feb 01 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-02-04</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-02-06</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 60.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jan 25 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-01-28</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-30</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 70.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-31</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 30.4km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jan 18 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-01-19</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-23</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 70.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-24</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 28.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jan 11 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-01-14</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-16</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 70.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-17</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 27.2km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jan 04 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2027-01-05</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-09</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 70.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-10</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 25.6km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Dec 28 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-12-29</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-31</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-02</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 26.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2027-01-03</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 24.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Dec 21 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-12-22</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-24</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-26</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 60.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-27</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 6:00/km–6:20/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Dec 14 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-12-15</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-17</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-19</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 125.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-20</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 23.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Dec 07 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-12-10</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-12</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 120.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-13</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 22.4km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Nov 30 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-12-01</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-05</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 115.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-12-06</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 21.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Nov 23 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-11-26</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-28</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 110.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-29</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 21.2km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Nov 16 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-11-17</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-19</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-21</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 105.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-22</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 20.6km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Nov 09 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-11-10</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-12</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-14</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 100.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-15</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 20.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Nov 02 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-11-03</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-07</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 60.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-08</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Oct 26 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-10-27</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-31</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 90.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-11-01</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Oct 19 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-10-20</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-22</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-24</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 60.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Oct 12 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-10-13</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-15</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-17</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 80.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-18</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 17.6km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Oct 05 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-10-06</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-08</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-10</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 75.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-11</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 17.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Sep 28 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-09-29</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-01</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-03</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 125.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-10-04</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 21.5km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Sep 21 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-09-22</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-26</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 120.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-27</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 21.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Sep 14 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-09-17</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-19</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 115.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-20</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 20.5km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Sep 07 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-09-08</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-12</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 110.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-13</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 20.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Aug 31 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-09-03</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-05</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 105.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-09-06</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 19.5km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Aug 24 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-08-25</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-27</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-29</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 100.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-30</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 19.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Aug 17 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-08-18</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-20</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-22</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 95.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-23</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.5km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Aug 10 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-08-11</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-15</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 92.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-16</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 19.2km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Aug 03 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-08-06</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-08</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 88.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-09</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jul 27 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-07-28</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-01</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 84.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-08-02</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.4km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jul 20 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-07-23</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 5:35/km–5:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-25</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 80.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-26</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 18.0km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jul 13 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-07-14</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-16</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-18</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 76.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-19</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 17.6km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jul 06 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-07-07</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-09</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 4:55/km–5:10/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-11</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 72.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-12</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 17.2km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jun 29 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-06-30</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-04</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 68.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-07-05</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 16.8km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr><td colspan="5" style="background:#f8f8fc;font-weight:700;padding:5px 6px;font-size:.8em">Week of Jun 22 <span style="color:#FF7A59">— 0% on target</span></td></tr><tr>
+                <td>2026-06-25</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">90min · 6:30/km–6:50/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-06-27</td>
+                <td style="font-weight:600">Cycling</td>
+                <td style="color:#5B6EF5;font-size:.8em">240min · 64.0km · 128–177W</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr><tr>
+                <td>2026-06-28</td>
+                <td style="font-weight:600">Running</td>
+                <td style="color:#5B6EF5;font-size:.8em">180min · 16.4km · 6:15/km–6:45/km/km</td>
+                <td style="font-size:.8em">—</td>
+                <td>⬜ Missed</td>
+            </tr>
+</table>
+
+<h2>Recent Sessions</h2>
+<table class="t">
+  <tr><th>Date</th><th>Type</th><th>Distance</th><th>Duration</th><th>Pace</th><th>Benefit</th></tr>
+  <tr>
+            <td>Jul 11</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>1.1km</td>
+            <td>27min</td>
+            <td style="font-weight:600">2:29/100m</td>
+            <td><span style="color:#5B6EF5;font-weight:600">🎯 Aerobic Dev</span></td>
+        </tr><tr>
+            <td>Jul 07</td>
+            <td style="font-weight:600">Running</td>
+            <td>6.3km</td>
+            <td>45min</td>
+            <td style="font-weight:600">7:14/km</td>
+            <td><span style="color:#FFC75A;font-weight:600">⚡ Threshold</span></td>
+        </tr><tr>
+            <td>Jul 04</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>0.3km</td>
+            <td>8min</td>
+            <td style="font-weight:600">2:50/100m</td>
+            <td><span style="color:#FF7A59;font-weight:600">⚠️ Very Hard / Short</span></td>
+        </tr><tr>
+            <td>Jul 04</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>0.1km</td>
+            <td>4min</td>
+            <td style="font-weight:600">2:38/100m</td>
+            <td><span style="color:#FF7A59;font-weight:600">⚠️ Very Hard / Short</span></td>
+        </tr><tr>
+            <td>Jun 30</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>2.1km</td>
+            <td>59min</td>
+            <td style="font-weight:600">2:30/100m</td>
+            <td><span style="color:#FFC75A;font-weight:600">⚡ Threshold</span></td>
+        </tr><tr>
+            <td>Jun 26</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>2.0km</td>
+            <td>63min</td>
+            <td style="font-weight:600">2:01/100m</td>
+            <td><span style="color:#5B6EF5;font-weight:600">🎯 Aerobic Dev</span></td>
+        </tr><tr>
+            <td>Jun 23</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>2.2km</td>
+            <td>64min</td>
+            <td style="font-weight:600">2:15/100m</td>
+            <td><span style="color:#FFC75A;font-weight:600">⚡ Threshold</span></td>
+        </tr><tr>
+            <td>Jun 21</td>
+            <td style="font-weight:600">Swimming</td>
+            <td>0.8km</td>
+            <td>17min</td>
+            <td style="font-weight:600">2:14/100m</td>
+            <td><span style="color:#FF7A59;font-weight:600">⚠️ Very Hard / Short</span></td>
+        </tr>
+</table>
+</body>
+</html>
