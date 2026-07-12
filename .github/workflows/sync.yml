@@ -45,10 +45,15 @@ jobs:
       - name: Build HTML dashboard
         run: python scripts/build_dashboard.py
 
+      # ── Cloudflare Pages routing fix ─────────────────────────────────────
+      # Ensures any unknown path falls back to index.html (SPA-style routing)
+      - name: Add Cloudflare Pages redirects
+        run: |
+          echo "/* /index.html 200" > docs/_redirects
+
       # ── Generate PDF using headless Chrome ──────────────────────────────
-      # Chrome is pre-installed on ubuntu-latest runners.
-      # This renders docs/index.html exactly as the browser sees it —
-      # identical quality to the window.print() export you get manually.
+      # Uses docs/print.html — a single-column, print-optimised page built
+      # specifically for PDF export. Identical visual quality to window.print().
       - name: Generate PDF with headless Chrome
         run: |
           google-chrome \
@@ -58,15 +63,18 @@ jobs:
             --print-to-pdf=docs/dashboard.pdf \
             --print-to-pdf-no-header \
             --run-all-compositor-stages-before-draw \
-            --virtual-time-budget=5000 \
-            "file://$(pwd)/docs/index.html"
+            --virtual-time-budget=8000 \
+            --paper-width=8.27 \
+            --paper-height=11.69 \
+            "file://$(pwd)/docs/print.html"
 
       # ── Commit data + dashboard ──────────────────────────────────────────
       - name: Commit and push
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
-          git add data/activities.json data/wellness.json docs/index.html docs/dashboard.pdf
+          git add data/activities.json data/wellness.json \
+                  docs/index.html docs/print.html docs/dashboard.pdf docs/_redirects
           git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
           git pull origin main --no-rebase -X ours
           git push
