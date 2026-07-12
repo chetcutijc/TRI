@@ -111,8 +111,8 @@ jobs:
           body: |
             Your training dashboard has been updated.
 
-            📊 Live website: https://garmin-dashboard.pages.dev
+            📊 Live website: https://chetcutijc.github.io/TRI/
             📎 PDF attached for offline reading.
 
-            Auto-synced from Garmin Connect every 6 hours.
+            Auto-synced from Garmin Connect: Wed & Sat
           attachments: docs/dashboard.pdf
