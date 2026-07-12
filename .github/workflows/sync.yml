@@ -2,8 +2,11 @@ name: Sync Garmin Data and Build Dashboard
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
-  workflow_dispatch: {}
+    # Runs at 12:00 UTC (around morning/noon depending on your timezone) every Wednesday and Saturday
+    - cron: '0 12 * * 3,6'
+  
+  # Keeps the ability to run it manually via the GitHub UI if needed
+  workflow_dispatch:
 
 concurrency:
   group: garmin-sync
