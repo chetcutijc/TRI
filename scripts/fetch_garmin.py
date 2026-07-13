@@ -135,7 +135,7 @@ def main():
 
     DATA_FILE.write_text(json.dumps(store, indent=2, default=str))
 
-wellness_store = load_existing_wellness()
+    wellness_store = load_existing_wellness()
     fresh_wellness = fetch_daily_wellness(client, days_back=14)
     wellness_store.update(fresh_wellness)
     (DATA_DIR / "wellness.json").write_text(json.dumps(wellness_store, indent=2, default=str))
@@ -150,7 +150,6 @@ wellness_store = load_existing_wellness()
                 env_file.write("GARMIN_NEW_DATA=true\n")
             else:
                 env_file.write("GARMIN_NEW_DATA=false\n")
-
 
 if __name__ == "__main__":
     main()
