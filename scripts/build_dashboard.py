@@ -316,22 +316,21 @@ def on_target_pct(weekly, plan):
 
 
 def session_compliance(df, plan_sessions, weeks_back=8):
-    """Match planned sessions to actual Garmin sessions by date ±1 day.
-    Only includes sessions between (today - weeks_back) and today."""
-    if not plan_sessions or df.empty:
-        return {}
+    """Match planned sessions to actual Garmin sessions by date ±1 day,
+    and automatically inject mandatory Tuesday & Friday Swim compliance targets."""
     today = dt.date.today()
     cutoff = today - dt.timedelta(weeks=weeks_back)
-    recent_ps = [ps for ps in plan_sessions
-                 if cutoff <= dt.date.fromisoformat(ps["date"]) <= today]
-
+    
     result = {}
+    recent_ps = [ps for ps in plan_sessions
+                 if cutoff <= dt.date.fromisoformat(ps["date"]) <= today] if plan_sessions else []
+
+    # 1. Process custom manual plan sessions if any exist
     for ps in recent_ps:
         ps_date = dt.date.fromisoformat(ps["date"])
         disc = ps["discipline"]
         wk = (ps_date - dt.timedelta(days=ps_date.weekday())).isoformat()
 
-        # find actual activity on same day ±1
         mask = (
             (df["type"] == disc) &
             (df["start"].dt.date >= ps_date - dt.timedelta(days=1)) &
@@ -352,6 +351,75 @@ def session_compliance(df, plan_sessions, weeks_back=8):
 
         result.setdefault(wk, []).append(entry)
 
+    # 2. Automatically generate and append the Tuesday/Friday Swim rules
+    current_date = cutoff - dt.timedelta(days=cutoff.weekday())  # Align to Monday start
+    while current_date <= today:
+        wk_str = current_date.isoformat()
+        
+        tue_date = current_date + dt.timedelta(days=1)
+        fri_date = current_date + dt.timedelta(days=4)
+        
+        for swim_day, day_name in [(tue_date, "Tuesday"), (fri_date, "Friday")]:
+            if swim_day > today:
+                continue
+                
+            swim_mask = (
+                (df["type"] == "swimming") &
+                (df["start"].dt.date >= swim_day - dt.timedelta(days=1)) &
+                (df["start"].dt.date <= swim_day + dt.timedelta(days=1))
+            )
+            swim_candidates = df[swim_mask]
+            
+            planned_target = "🏊 Min 2,000m · Pace ≤ 2:30/100m"
+            session_title = f"Mandatory Pool Swim ({day_name})"
+            
+            if swim_candidates.empty:
+                entry = {
+                    "date": swim_day.isoformat(), "discipline": "swimming",
+                    "session": session_title, "planned": planned_target,
+                    "actual": "—", "status": "⬜ Missed"
+                }
+            else:
+                act = swim_candidates.sort_values("start").iloc[0]
+                act_dist_m = act.get("distance_m", 0) or (act.get("distance_km", 0) * 1000)
+                
+                # Pace check (2:30/100m limits out to 150 seconds)
+                actual_pace_sec_km = speed_to_pace(act.get("avg_pace"))
+                pace_str = "—"
+                pace_ok = False
+                
+                if actual_pace_sec_km:
+                    sec_100m = actual_pace_sec_km / 10
+                    pace_str = f"{int(sec_100m)//60}:{int(sec_100m)%60:02d}/100m"
+                    if sec_100m <= 150:
+                        pace_ok = True
+                
+                dist_ok = act_dist_m >= 2000
+                actual_desc = f"{int(act_dist_m)}m · {pace_str}"
+                
+                if dist_ok and pace_ok:
+                    status = "✅ On Target"
+                elif not dist_ok and not pace_ok:
+                    status = "❌ Off Target (Short & Slow)"
+                elif not dist_ok:
+                    status = "⚠️ Slightly Off (Short Distance)"
+                else:
+                    status = "⚠️ Slightly Off (Pace Slow)"
+                    
+                entry = {
+                    "date": act["start"].date().isoformat(), "discipline": "swimming",
+                    "session": session_title, "planned": planned_target,
+                    "actual": actual_desc, "status": status
+                }
+            
+            result.setdefault(wk_str, []).append(entry)
+            
+        current_date += dt.timedelta(weeks=1)
+
+    # Keep sessions organized chronologically inside weekly blocks
+    for wk in result:
+        result[wk] = sorted(result[wk], key=lambda x: x["date"])
+        
     return result
 
 
