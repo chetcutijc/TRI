@@ -69,18 +69,16 @@ jobs:
           path: 'docs'
 
       # ── Commit data + dashboard back to repo ────────────────────────────
-- name: Commit and push
-        id: git_push
+      - name: Commit and push
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
-          # Use the -f (force) flag to guarantee Git stages the dashboard files
-          git add -f data/activities.json data/wellness.json \
-                      docs/index.html docs/print.html docs/dashboard.pdf
-          
+          git add data/activities.json data/wellness.json \
+                  docs/index.html docs/print.html docs/dashboard.pdf
           if ! git diff --quiet --cached; then
             git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull origin main --no-rebase -X theirs
+            # Keep our freshly built files if there's a conflict
+            git pull origin main --no-rebase -X ours
             git push
           else
             echo "No changes to commit."
