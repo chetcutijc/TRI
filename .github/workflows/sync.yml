@@ -83,36 +83,22 @@ jobs:
             echo "No new activities and outside scheduled window. Skipping email."
           fi
 
-# ── Commit data + dashboard back to repo ─────────────────────────────
+      # ── Upload website artifact FIRST (Takes current local workspace files) ──
+      - name: Upload Artifact (docs folder)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs'
+
+      # ── Commit data + dashboard back to repo (Keep history intact) ───────
       - name: Commit and push
-        id: commit_step
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
           git add data/activities.json data/wellness.json \
                    docs/index.html docs/print.html docs/dashboard.pdf
-          
-          # Check if there are changes, commit if so, and track if we did
-          if git diff --quiet --cached; then
-            echo "changes_made=false" >> $GITHUB_ENV
-            echo "No new files to commit."
-          else
-            git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull origin main --no-rebase -X ours
-            git push
-            echo "changes_made=true" >> $GITHUB_ENV
-          fi
-
-      # ── Force standard checkout to read the freshly pushed commit ───────
-      - name: Refresh workspace track
-        if: env.changes_made == 'true'
-        run: git pull origin main
-
-      # ── Upload website artifact for the deployment job ───────────────────
-      - name: Upload Artifact (docs folder)
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'docs'
+          git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git pull origin main --no-rebase -X ours
+          git push
 
       # ── Email PDF (CONDITIONAL) ──────────────────────────────────────────
       - name: Email dashboard PDF
@@ -129,19 +115,19 @@ jobs:
           body: |
             Your training dashboard has been updated.
 
-            📊 Live website: https://chetcutijc.github.io/TRI/
+            📊 Live website: https://chetcutijc.github.io/GARMIN/
             📎 PDF attached for offline reading.
 
             Auto-synced from Garmin Connect (Every 12 hours / Scheduled Wed & Sat)
           attachments: docs/dashboard.pdf
 
-  # ── SEPARATE DEPLOY JOB (Fixes the environment deployment error) ───────
+  # ── SEPARATE DEPLOY JOB ────────────────────────────────────────────────
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: sync # Wait until sync fetches everything and packages the docs folder
+    needs: sync 
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
