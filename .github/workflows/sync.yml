@@ -89,7 +89,9 @@ jobs:
         with:
           path: 'docs'
 
-      # ── Commit data + dashboard back to repo (Keep history intact) ───────
+      # ── Commit data + dashboard back to repo FIRST ───────────────────────
+      # We commit the code BEFORE uploading the artifact. This ensures that the 
+      # branch and the live website are perfectly synchronized to the exact same history state.
       - name: Commit and push
         run: |
           git config user.name "garmin-bot"
@@ -99,6 +101,13 @@ jobs:
           git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
           git pull origin main --no-rebase -X ours
           git push
+
+      # ── Upload website artifact AFTER commit ─────────────────────────────
+      # Now we upload the verified, saved versions of your docs folder
+      - name: Upload Artifact (docs folder)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs'
 
       # ── Email PDF (CONDITIONAL) ──────────────────────────────────────────
       - name: Email dashboard PDF
@@ -115,7 +124,7 @@ jobs:
           body: |
             Your training dashboard has been updated.
 
-            📊 Live website: https://chetcutijc.github.io/GARMIN/
+            📊 Live website: https://chetcutijc.github.io/TRI/
             📎 PDF attached for offline reading.
 
             Auto-synced from Garmin Connect (Every 12 hours / Scheduled Wed & Sat)
