@@ -90,26 +90,31 @@ jobs:
           path: 'docs'
 
       # ── Commit data + dashboard back to repo FIRST ───────────────────────
-      # We commit the code BEFORE uploading the artifact. This ensures that the 
-      # branch and the live website are perfectly synchronized to the exact same history state.
       - name: Commit and push
+        id: git_push
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
           git add data/activities.json data/wellness.json \
                    docs/index.html docs/print.html docs/dashboard.pdf
-          git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git pull origin main --no-rebase -X ours
-          git push
+          
+          if ! git diff --quiet --cached; then
+            git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            # Ensure our local files (including the newly built PDF) always win conflicts
+            git pull origin main --no-rebase -X theirs
+            git push
+          else
+            echo "No changes to commit."
+          fi
 
-      # ── Upload website artifact AFTER commit ─────────────────────────────
-      # Now we upload the verified, saved versions of your docs folder
+      # ── Upload website artifact (for Pages deployment) ───────────────────
       - name: Upload Artifact (docs folder)
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'docs'
 
       # ── Email PDF (CONDITIONAL) ──────────────────────────────────────────
+      # This reads the local 'docs/dashboard.pdf' straight from the workspace
       - name: Email dashboard PDF
         if: env.SHOULD_EMAIL == 'true'
         uses: dawidd6/action-send-mail@v3
@@ -129,15 +134,3 @@ jobs:
 
             Auto-synced from Garmin Connect (Every 12 hours / Scheduled Wed & Sat)
           attachments: docs/dashboard.pdf
-
-  # ── SEPARATE DEPLOY JOB ────────────────────────────────────────────────
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: sync 
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
