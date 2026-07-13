@@ -21,6 +21,8 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    outputs:
+      should_email: ${{ env.SHOULD_EMAIL }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,9 +75,11 @@ jobs:
           
           if [ "${{ env.GARMIN_NEW_DATA }}" = "true" ] || [ "$DAY_OF_WEEK" = "3" ] || [ "$DAY_OF_WEEK" = "6" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "SHOULD_EMAIL=true" >> $GITHUB_ENV
+            echo "SHOULD_EMAIL=true" >> $GITHUB_OUTPUT
             echo "Proceeding with email (Condition met)."
           else
             echo "SHOULD_EMAIL=false" >> $GITHUB_ENV
+            echo "SHOULD_EMAIL=false" >> $GITHUB_OUTPUT
             echo "No new activities and outside scheduled window. Skipping email."
           fi
 
@@ -90,18 +94,11 @@ jobs:
           git pull origin main --no-rebase -X ours
           git push
 
-      # ── Deploy directly to GitHub Pages ──────────────────────────────────
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
+      # ── Upload website artifact for the deployment job ───────────────────
       - name: Upload Artifact (docs folder)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs' # Tells GitHub to host your dashboard out of the /docs folder
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          path: 'docs'
 
       # ── Email PDF (CONDITIONAL) ──────────────────────────────────────────
       - name: Email dashboard PDF
@@ -123,3 +120,15 @@ jobs:
 
             Auto-synced from Garmin Connect (Every 12 hours / Scheduled Wed & Sat)
           attachments: docs/dashboard.pdf
+
+  # ── SEPARATE DEPLOY JOB (Fixes the environment deployment error) ───────
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: sync # Wait until sync fetches everything and packages the docs folder
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
