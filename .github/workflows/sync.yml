@@ -2,7 +2,7 @@ name: Sync Garmin Data and Build Dashboard
 
 on:
   schedule:
-    # 1. Check for new activities every 12 hours (00:00 and 12:00 UTC)
+    # 1. Run check every 12 hours (00:00 and 12:00 UTC)
     - cron: '0 */12 * * *'
     # 2. Hard runs on Wednesday and Saturday morning at 12:00 UTC
     - cron: '0 12 * * 3,6'
@@ -15,6 +15,8 @@ concurrency:
 
 permissions:
   contents: write
+  pages: write      # Required for GitHub Pages deployment
+  id-token: write   # Required for secure deployment verification
 
 jobs:
   sync:
@@ -49,10 +51,6 @@ jobs:
       - name: Build HTML dashboard
         run: python scripts/build_dashboard.py
 
-      - name: Add Cloudflare Pages redirects
-        run: |
-          echo "/* /index.html 200" > docs/_redirects
-
       - name: Generate PDF with headless Chrome
         run: |
           google-chrome \
@@ -67,56 +65,45 @@ jobs:
             --paper-height=11.69 \
             "file://$(pwd)/docs/print.html"
 
-      # ── CHECK FOR UPDATES OR SCHEDULE ──────────────────────────────────
-      # This step sets a variable 'SHOULD_EMAIL' to true if files changed or if it's Wed/Sat
-      - name: Check if email is required
-        id: email_check
+      # ── DETERMINING EMAIL LOGIC ──────────────────────────────────────────
+      - name: Evaluate Email Rules
+        id: evaluate_rules
         run: |
-          # Check if changes exist in data or docs folder
-          git status --porcelain data/ docs/
-          CHANGES=$(git status --porcelain data/ docs/ | wc -l)
+          DAY_OF_WEEK=$(date +%u) # 3 = Wednesday, 6 = Saturday
           
-          # Check the current day of the week (3 = Wednesday, 6 = Saturday)
-          DAY_OF_WEEK=$(date +%u)
-          HOUR=$(date +%H)
-          
-          # Determine if it's a forced schedule window (Wed/Sat around 12:00 UTC)
-          if [ "$DAY_OF_WEEK" = "3" ] || [ "$DAY_OF_WEEK" = "6" ]; then
-             IS_SCHEDULED_WINDOW="true"
-          else
-             IS_SCHEDULED_WINDOW="false"
-          fi
-
-          if [ "$CHANGES" -gt 0 ] || [ "$IS_SCHEDULED_WINDOW" = "true" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ env.GARMIN_NEW_DATA }}" = "true" ] || [ "$DAY_OF_WEEK" = "3" ] || [ "$DAY_OF_WEEK" = "6" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "SHOULD_EMAIL=true" >> $GITHUB_ENV
-            echo "Email conditions met (New data, Scheduled day, or Manual run)."
+            echo "Proceeding with email (Condition met)."
           else
             echo "SHOULD_EMAIL=false" >> $GITHUB_ENV
-            echo "No new data and not a scheduled day. Skipping email."
+            echo "No new activities and outside scheduled window. Skipping email."
           fi
 
-      # ── Commit data + dashboard ──────────────────────────────────────────
+      # ── Commit data + dashboard back to repo ─────────────────────────────
       - name: Commit and push
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
           git add data/activities.json data/wellness.json \
-                   docs/index.html docs/print.html docs/dashboard.pdf docs/_redirects
+                   docs/index.html docs/print.html docs/dashboard.pdf
           git diff --quiet --cached || git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
           git pull origin main --no-rebase -X ours
           git push
 
-      # ── Deploy to Cloudflare Pages ───────────────────────────────────────
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      # ── Deploy directly to GitHub Pages ──────────────────────────────────
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact (docs folder)
+        uses: actions/upload-pages-artifact@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy docs --project-name=garmin-dashboard --commit-dirty=true
-        continue-on-error: true
+          path: 'docs' # Tells GitHub to host your dashboard out of the /docs folder
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       # ── Email PDF (CONDITIONAL) ──────────────────────────────────────────
-      # This will now ONLY run if SHOULD_EMAIL was set to true
       - name: Email dashboard PDF
         if: env.SHOULD_EMAIL == 'true'
         uses: dawidd6/action-send-mail@v3
