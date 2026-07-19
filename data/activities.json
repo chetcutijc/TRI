@@ -185,5 +185,22 @@
     "elevation_gain": 64.0,
     "avg_pace": 2.6489999294281006,
     "vo2max_estimate": 45.0
+  },
+  "23644028967": {
+    "id": 23644028967,
+    "name": "Los Angeles Running",
+    "type": "running",
+    "start": "2026-07-18 08:00:44",
+    "duration_s": 1558.553955078125,
+    "distance_m": 5156.009765625,
+    "calories": 409.0,
+    "avg_hr": 179.0,
+    "max_hr": 193.0,
+    "training_load": 208.4022216796875,
+    "avg_power": 401.0,
+    "normalized_power": 404.0,
+    "elevation_gain": 9.0,
+    "avg_pace": 3.308000087738037,
+    "vo2max_estimate": 45.0
   }
 }
