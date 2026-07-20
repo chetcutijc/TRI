@@ -202,5 +202,22 @@
     "elevation_gain": 9.0,
     "avg_pace": 3.308000087738037,
     "vo2max_estimate": 45.0
+  },
+  "23669676959": {
+    "id": 23669676959,
+    "name": "Los Angeles Cycling",
+    "type": "cycling",
+    "start": "2026-07-20 07:43:48",
+    "duration_s": 16944.982421875,
+    "distance_m": 77282.359375,
+    "calories": 2441.0,
+    "avg_hr": 139.0,
+    "max_hr": 174.0,
+    "training_load": 209.67849731445312,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": 919.0,
+    "avg_pace": 4.560999870300293,
+    "vo2max_estimate": null
   }
 }
