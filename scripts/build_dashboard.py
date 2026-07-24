@@ -798,6 +798,8 @@ def compliance_html(weeks_data):
         </div>"""
     return html
 
+# Place this ABOVE your HTML string generation block (around line 850 or top of function)
+FAVICON_URI = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E"
 
 # ── HTML dashboard ────────────────────────────────────────────────────────────
 def build_html(df, plan, wellness, plan_sessions, manual_log):
@@ -885,9 +887,6 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
         f"<tr><td>{wk}</td><td>{'✅ Completed' if done else '❌ Missed'}</td></tr>"
         for wk, done in sorted(clean_log.items(), reverse=True)[:8]
     ) if clean_log else "<tr><td colspan='2' style='color:#999'>No entries yet — edit data/manual_log.json</td></tr>"
-
-# Place this ABOVE your HTML string generation block (around line 850 or top of function)
-FAVICON_URI = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E"
 
     recent_html = build_recent_html(df, n=8)
 
