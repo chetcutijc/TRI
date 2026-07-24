@@ -1,3 +1,5 @@
+WORKING DASHBOARD BUILD Jul-24
+
 """
 build_dashboard.py
 Builds docs/index.html (interactive) and docs/dashboard.pdf (email-friendly)
@@ -798,6 +800,8 @@ def compliance_html(weeks_data):
         </div>"""
     return html
 
+# Place this ABOVE your HTML string generation block (around line 850 or top of function)
+FAVICON_URI = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E"
 
 # ── HTML dashboard ────────────────────────────────────────────────────────────
 def build_html(df, plan, wellness, plan_sessions, manual_log):
@@ -893,7 +897,10 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
 <head>
 <title>🏊🚴🏃 Training Dashboard</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E">
+
+<link rel="icon" href="{FAVICON_URI}">
+<link rel="apple-touch-icon" href="{FAVICON_URI}">
+
 <meta name="theme-color" content="#5B6EF5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -1141,11 +1148,6 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             print(f"  SVG render failed: {e}")
             return ""
 
-    def wk_str(series):
-        """Convert a pandas Timestamp week series to clean 'Jun 23' strings.
-        Prevents kaleido from rendering nanosecond-precision timestamps on the x-axis."""
-        return pd.to_datetime(series).dt.strftime("%b %d")
-
     # ── Build charts ─────────────────────────────────────────────────────────
     charts = []   # list of (title, svg_string)
 
@@ -1155,7 +1157,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         sub = weekly[weekly["type"] == disc]
         if not sub.empty:
             fig.add_trace(go.Bar(
-                x=wk_str(sub["week"]), y=sub["duration_min"].round(),
+                x=sub["week"], y=sub["duration_min"].round(),
                 name=disc.replace("_", " ").title(),
                 marker_color=PALETTE.get(disc, "#ccc"),
             ))
@@ -1171,7 +1173,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
     if not lw.empty and lw["training_load"].notna().any():
         fig = go.Figure()
         fig.add_trace(go.Bar(
-            x=wk_str(lw["week"]), y=lw["training_load"].round(),
+            x=lw["week"], y=lw["training_load"].round(),
             marker_color=PALETTE["load"],
         ))
         s = svg(fig)
@@ -1185,7 +1187,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             fig = go.Figure()
             y = rd["pace_sec_km"].apply(lambda x: round(x/60, 2) if x else None)
             fig.add_trace(go.Scatter(
-                x=wk_str(rd["week"]), y=y, mode="lines+markers",
+                x=rd["week"], y=y, mode="lines+markers",
                 name="Run Pace", marker_color=PALETTE["running"],
             ))
             fig.update_yaxes(autorange="reversed", title_text="min/km")
@@ -1200,7 +1202,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             fig = go.Figure()
             y = sd["pace_sec_100m"].apply(lambda x: round(x/60, 2) if x else None)
             fig.add_trace(go.Scatter(
-                x=wk_str(sd["week"]), y=y, mode="lines+markers",
+                x=sd["week"], y=y, mode="lines+markers",
                 name="Swim Pace", marker_color=PALETTE["swimming"],
             ))
             fig.update_yaxes(autorange="reversed", title_text="min/100m")
@@ -1216,7 +1218,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         fig = go.Figure()
         if not pw.empty:
             fig.add_trace(go.Scatter(
-                x=wk_str(pw["week"]), y=pw["avg_power"].round(),
+                x=pw["week"], y=pw["avg_power"].round(),
                 mode="lines+markers", name="Power (W)",
                 marker_color=PALETTE["cycling"],
             ))
@@ -1226,7 +1228,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
                 charts.append(("Cycling Power Trend", s))
         elif not sp.empty:
             fig.add_trace(go.Scatter(
-                x=wk_str(sp["week"]), y=sp["speed_kmh"],
+                x=sp["week"], y=sp["speed_kmh"],
                 mode="lines+markers", name="Speed (km/h)",
                 marker_color=PALETTE["cycling"],
             ))
@@ -1241,7 +1243,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         for disc in ontarget["type"].unique():
             sub = ontarget[ontarget["type"] == disc]
             fig.add_trace(go.Scatter(
-                x=wk_str(sub["week"]), y=sub["pct"],
+                x=sub["week"], y=sub["pct"],
                 mode="lines+markers",
                 name=disc.replace("_", " ").title(),
                 marker_color=PALETTE.get(disc, "#ccc"),
@@ -1261,8 +1263,7 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             fig.add_trace(go.Scatter(
                 x=sw["date"],
                 y=(sw["sleep_duration_min"]/60).round(1),
-                mode="lines+markers", name="Sleep (hrs)",
-                marker_color=PALETTE["sleep"],
+                mode="lines+markers", marker_color=PALETTE["sleep"],
             ))
             fig.add_hline(y=7, line_dash="dot", line_color="#bbb",
                           annotation_text="7h", annotation_font_size=9)
@@ -1373,6 +1374,8 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Training Dashboard</title>
 <style>
+    <!-- Emoji Favicon (SVG Data URI) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏊</text></svg>">
 @page {{ size: A4; margin: 11mm 13mm; }}
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{
