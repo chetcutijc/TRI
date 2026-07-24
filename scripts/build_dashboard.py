@@ -886,6 +886,9 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
         for wk, done in sorted(clean_log.items(), reverse=True)[:8]
     ) if clean_log else "<tr><td colspan='2' style='color:#999'>No entries yet — edit data/manual_log.json</td></tr>"
 
+# Place this ABOVE your HTML string generation block (around line 850 or top of function)
+FAVICON_URI = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E"
+
     recent_html = build_recent_html(df, n=8)
 
     OUT_HTML.write_text(f"""<!DOCTYPE html>
@@ -893,8 +896,9 @@ def build_html(df, plan, wellness, plan_sessions, manual_log):
 <head>
 <title>🏊🚴🏃 Training Dashboard</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏊%3C/text%3E%3C/svg%3E">
+
+<link rel="icon" href="{FAVICON_URI}">
+<link rel="apple-touch-icon" href="{FAVICON_URI}">
 
 <meta name="theme-color" content="#5B6EF5">
 <meta name="apple-mobile-web-app-capable" content="yes">
