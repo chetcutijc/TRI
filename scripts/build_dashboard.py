@@ -1,4 +1,3 @@
-WORKING DASHBOARD BUILD Jul-24
 
 """
 build_dashboard.py
