@@ -468,4 +468,370 @@ def chart_load_and_hr(weekly, df):
         name="Training Load", marker_color=PALETTE["load"], opacity=0.7
     ), secondary_y=False)
 
-    hr_added = F
+    hr_added = False
+    for disc in ["running", "cycling", "swimming"]:
+        sub = df[df["type"] == disc].groupby("week")["avg_hr"].mean().reset_index()
+        if sub.empty or sub["avg_hr"].isna().all():
+            continue
+        fig.add_trace(go.Scatter(
+            x=sub["week"], y=sub["avg_hr"].round(),
+            mode="lines+markers", name=f"HR {disc}",
+            marker_color=PALETTE.get(disc),
+        ), secondary_y=True)
+        hr_added = True
+
+    fig.update_layout(title="Training Load & Avg HR by Discipline", **STYLE())
+    fig.update_yaxes(title_text="Load", secondary_y=False, showgrid=True, gridcolor="#f0f0f5")
+    if hr_added:
+        fig.update_yaxes(title_text="Avg HR (bpm)", secondary_y=True, showgrid=False)
+    fig.update_xaxes(showgrid=False)
+    return fig
+
+
+def chart_pace_trends(trends):
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    added = False
+    right_label = "Power (W)"
+
+    def sec_to_decmin(sec):
+        return round(sec / 60, 2) if sec else None
+
+    def decmin_label(val):
+        mins = int(val)
+        secs = round((val - mins) * 60)
+        return f"{mins}:{secs:02d}"
+
+    if "running" in trends:
+        rd = trends["running"].dropna(subset=["pace_sec_km"])
+        if not rd.empty:
+            y = rd["pace_sec_km"].apply(sec_to_decmin)
+            labels = y.apply(lambda v: f"{decmin_label(v)}/km" if v else "n/a")
+            fig.add_trace(go.Scatter(
+                x=rd["week"], y=y,
+                mode="lines+markers", name="Run Pace",
+                marker_color=PALETTE["running"],
+                customdata=labels,
+                hovertemplate="%{x|%b %d}<br>Run: %{customdata}<extra></extra>",
+            ), secondary_y=False)
+            added = True
+
+    if "swimming" in trends:
+        sd = trends["swimming"].dropna(subset=["pace_sec_100m"])
+        if not sd.empty:
+            y = sd["pace_sec_100m"].apply(sec_to_decmin)
+            labels = y.apply(lambda v: f"{decmin_label(v)}/100m" if v else "n/a")
+            fig.add_trace(go.Scatter(
+                x=sd["week"], y=y,
+                mode="lines+markers", name="Swim Pace (/100m)",
+                line=dict(dash="dot"), marker_color=PALETTE["swimming"],
+                customdata=labels,
+                hovertemplate="%{x|%b %d}<br>Swim: %{customdata}<extra></extra>",
+            ), secondary_y=False)
+            added = True
+
+    if "cycling" in trends:
+        cd_power = trends["cycling"].dropna(subset=["avg_power"])
+        cd_speed = trends["cycling"].dropna(subset=["speed_kmh"])
+        if not cd_power.empty:
+            fig.add_trace(go.Scatter(
+                x=cd_power["week"], y=cd_power["avg_power"].round(),
+                mode="lines+markers", name="Bike Power (W)",
+                marker_color=PALETTE["cycling"],
+                hovertemplate="%{x|%b %d}<br>Power: %{y}W<extra></extra>",
+            ), secondary_y=True)
+            right_label = "Power (W)"
+            added = True
+        elif not cd_speed.empty:
+            fig.add_trace(go.Scatter(
+                x=cd_speed["week"], y=cd_speed["speed_kmh"],
+                mode="lines+markers", name="Bike Speed (km/h)",
+                marker_color=PALETTE["cycling"],
+                hovertemplate="%{x|%b %d}<br>Speed: %{y} km/h<extra></extra>",
+            ), secondary_y=True)
+            right_label = "Speed (km/h)"
+            added = True
+
+    for race in RACES:
+        race_dt = pd.Timestamp(race["date"])
+        t = race["targets"]
+        if "run_pace_sec_km" in t:
+            fig.add_vline(x=race_dt, line_dash="dash", line_color="#FF7A59", opacity=0.4)
+            target_decmin = sec_to_decmin(t["run_pace_sec_km"])
+            fig.add_annotation(
+                x=race_dt, y=target_decmin, yref="y",
+                text=f"{race['emoji']} {decmin_label(target_decmin)}/km",
+                showarrow=False, font=dict(size=9, color="#FF7A59"),
+                bgcolor="white", bordercolor="#FF7A59", borderwidth=1
+            )
+        if "bike_power_w" in t:
+            fig.add_annotation(
+                x=race_dt, y=t["bike_power_w"], yref="y2",
+                text=f"{race['emoji']} {t['bike_power_w']}W",
+                showarrow=False, font=dict(size=9, color="#FF7A59"),
+                bgcolor="white", bordercolor="#FF7A59", borderwidth=1
+            )
+
+    if not added:
+        return None
+
+    fig.update_layout(title="Pace & Power Trends", **STYLE())
+    fig.update_yaxes(
+        title_text="Pace (min/km or min/100m — lower is faster)",
+        secondary_y=False, showgrid=True, gridcolor="#f0f0f5",
+        autorange="reversed",
+        tickformat=".2f",
+    )
+    fig.update_yaxes(title_text=right_label, secondary_y=True, showgrid=False)
+    fig.update_xaxes(showgrid=False)
+    return fig
+
+
+def chart_distance_trends(trends):
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    added = False
+    for disc in ["running", "swimming"]:
+        if disc not in trends:
+            continue
+        d = trends[disc].dropna(subset=["distance_km"])
+        if d.empty:
+            continue
+        col = PALETTE.get(disc)
+        y = d["distance_km"] * (1000 if disc == "swimming" else 1)
+        label = "Swim (m)" if disc == "swimming" else "Run (km)"
+        fig.add_trace(go.Scatter(x=d["week"], y=y.round(1), mode="lines+markers",
+                                 name=label, marker_color=col), secondary_y=False)
+        added = True
+    if "cycling" in trends:
+        d = trends["cycling"].dropna(subset=["distance_km"])
+        if not d.empty:
+            fig.add_trace(go.Scatter(x=d["week"], y=d["distance_km"].round(1),
+                                     mode="lines+markers", name="Bike (km)",
+                                     marker_color=PALETTE["cycling"]), secondary_y=True)
+            added = True
+    if not added:
+        return None
+    fig.update_layout(title="Avg Session Distance per Week", **STYLE())
+    fig.update_yaxes(title_text="Run (km) / Swim (m)", secondary_y=False, showgrid=True, gridcolor="#f0f0f5")
+    fig.update_yaxes(title_text="Bike (km)", secondary_y=True, showgrid=False)
+    fig.update_xaxes(showgrid=False)
+    return fig
+
+
+def chart_on_target(ontarget):
+    if ontarget.empty:
+        return None
+    fig = go.Figure()
+    for disc in ontarget["type"].unique():
+        sub = ontarget[ontarget["type"] == disc]
+        fig.add_trace(go.Scatter(
+            x=sub["week"], y=sub["pct"],
+            mode="lines+markers",
+            name=disc.replace("_", " ").title(),
+            marker_color=PALETTE.get(disc, "#ccc"),
+        ))
+    fig.add_hline(y=80, line_dash="dot", line_color="#00C2A8", annotation_text="80% target")
+    fig.update_layout(title="On-Target % vs Plan", yaxis_range=[0, 110], **STYLE())
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5")
+    return fig
+
+
+def chart_sleep(wellness):
+    if wellness.empty or "sleep_duration_min" not in wellness.columns:
+        return None
+    sw = wellness.dropna(subset=["sleep_duration_min"])
+    if sw.empty:
+        return None
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=sw["date"], y=(sw["sleep_duration_min"] / 60).round(1),
+        mode="lines+markers", name="Sleep (hrs)",
+        marker_color=PALETTE["sleep"]
+    ))
+    fig.add_hline(y=7, line_dash="dot", line_color="#888", annotation_text="7h target")
+    fig.update_layout(title="Sleep Duration", yaxis_title="Hours", **STYLE())
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5")
+    return fig
+
+
+def chart_body_battery(wellness):
+    if wellness.empty or "body_battery_max" not in wellness.columns:
+        return None
+    bw = wellness.dropna(subset=["body_battery_max"])
+    if bw.empty:
+        return None
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=bw["date"], y=bw["body_battery_max"].round(),
+        mode="lines+markers", name="Charged", marker_color=PALETTE["battery"]
+    ))
+    if "body_battery_min" in bw.columns:
+        fig.add_trace(go.Scatter(
+            x=bw["date"], y=bw["body_battery_min"].round(),
+            mode="lines+markers", name="Drained",
+            line=dict(dash="dot"), marker_color="#FFC75A"
+        ))
+    fig.update_layout(title="Body Battery", **STYLE())
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5")
+    return fig
+
+
+# ── Race countdown cards HTML ─────────────────────────────────────────────────
+def race_cards_html():
+    cards = ""
+    for r in RACES:
+        days = days_until(r["date"])
+        t = r["targets"]
+        targets_str = []
+        if "run_pace_sec_km" in t:
+            p = t["run_pace_sec_km"]
+            targets_str.append(f"Run: {p//60}:{p%60:02d}/km")
+        if "bike_power_w" in t:
+            targets_str.append(f"Bike: {t['bike_power_w']}W")
+        if "swim_pace_100m_sec" in t:
+            p = t["swim_pace_100m_sec"]
+            targets_str.append(f"Swim: {p//60}:{p%60:02d}/100m")
+        targets_line = " · ".join(targets_str)
+        color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
+        cards += f"""
+        <div class="race-card">
+            <div class="race-emoji">{r['emoji']}</div>
+            <div class="race-name">{r['name']}</div>
+            <div class="race-date">{r['date'].strftime('%b %d, %Y')}</div>
+            <div class="race-days" style="color:{color}">
+                {'In ' + str(days) + ' days' if days > 0 else 'RACE DAY!' if days == 0 else str(abs(days)) + ' days ago'}
+            </div>
+            <div class="race-targets">{targets_line}</div>
+            <div class="race-note">{r['note']}</div>
+        </div>"""
+    return cards
+
+
+# ── Compliance HTML table ─────────────────────────────────────────────────────
+def compliance_html(weeks_data):
+    if not weeks_data:
+        return "<p class='subtext'>No matched sessions in the last 8 weeks yet — sessions will match once your plan dates align with actual Garmin activities.</p>"
+    html = ""
+    for wk, sessions in sorted(weeks_data.items(), reverse=True):
+        label = dt.date.fromisoformat(wk).strftime("Week of %b %d, %Y")
+        on = sum(1 for s in sessions if "✅" in s["status"])
+        slight = sum(1 for s in sessions if "⚠️" in s["status"])
+        off = sum(1 for s in sessions if "❌" in s["status"])
+        missed = sum(1 for s in sessions if "⬜" in s["status"])
+        total = len(sessions)
+        pct = round(100 * on / total) if total else 0
+        badge_color = "#00C2A8" if pct >= 80 else "#FFC75A" if pct >= 50 else "#FF7A59"
+        chips = (
+            f"<span class='chip green'>✅ {on} on target</span>"
+            + (f"<span class='chip yellow'>⚠️ {slight} slightly off</span>" if slight else "")
+            + (f"<span class='chip red'>❌ {off} off target</span>" if off else "")
+            + (f"<span class='chip grey'>⬜ {missed} missed</span>" if missed else "")
+        )
+        rows = "".join(f"""<tr>
+            <td class='date-cell'>{s['date']}</td>
+            <td class='disc-cell'>{s['discipline'].replace('_',' ').title()}</td>
+            <td class='dim'>{s['session']}</td>
+            <td class='target-cell'>{s['planned']}</td>
+            <td>{s['actual']}</td>
+            <td class='status-cell'>{s['status']}</td>
+        </tr>""" for s in sessions)
+        html += f"""
+        <div class="week-block">
+            <div class="week-header">
+                <strong>{label}</strong>
+                <div class="week-chips">
+                    {chips}
+                    <span class="badge" style="background:{badge_color}">{pct}% on target</span>
+                </div>
+            </div>
+            <table class="table">
+                <tr><th>Date</th><th>Discipline</th><th>Session</th>
+                    <th>Target</th><th>Actual</th><th>Status</th></tr>
+                {rows}
+            </table>
+        </div>"""
+    return html
+
+
+# ── HTML dashboard ────────────────────────────────────────────────────────────
+def build_html(df, plan, wellness, plan_sessions, manual_log):
+    OUT_HTML.parent.mkdir(exist_ok=True)
+    if df.empty:
+        OUT_HTML.write_text("<h1>No data yet</h1>")
+        return
+
+    weekly = weekly_by_discipline(df)
+    trends = discipline_trends(df)
+    ontarget = on_target_pct(weekly, plan)
+    compliance = session_compliance(df, plan_sessions)
+
+    last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+    total_sessions = len(last30)
+    total_hours = round(last30["duration_min"].sum() / 60)
+    avg_load = round(last30["training_load"].mean()) if last30["training_load"].notna().any() else "n/a"
+
+    avg_sleep = avg_bb = "n/a"
+    if not wellness.empty:
+        rw = wellness[wellness["date"] >= (dt.datetime.now() - dt.timedelta(days=30))]
+        if "sleep_duration_min" in rw.columns and rw["sleep_duration_min"].notna().any():
+            avg_sleep = round(rw["sleep_duration_min"].mean() / 60, 1)
+        if "body_battery_max" in rw.columns and rw["body_battery_max"].notna().any():
+            avg_bb = round(rw["body_battery_max"].mean())
+
+    def disc30(disc):
+        return last30[last30["type"] == disc].copy()
+
+    sw30 = disc30("swimming")
+    swim_sessions = len(sw30)
+    swim_total_km = f"{round(sw30['distance_m'].sum()/1000,1)}km" if not sw30.empty else "n/a"
+    swim_avg_dist = f"{round(sw30['distance_m'].mean())}m" if not sw30.empty else "n/a"
+    swim_avg_pace = "n/a"
+    if not sw30.empty:
+        raw = sw30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            p = raw.mean() / 10
+            swim_avg_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
+
+    ru30 = disc30("running")
+    run_sessions = len(ru30)
+    run_total_km = f"{round(ru30['distance_km'].sum())}km" if not ru30.empty else "n/a"
+    run_avg_dist = f"{round(ru30['distance_km'].mean(),1)}km" if not ru30.empty else "n/a"
+    run_avg_pace = "n/a"
+    if not ru30.empty:
+        raw = ru30["avg_pace"].dropna().apply(speed_to_pace)
+        if not raw.empty:
+            run_avg_pace = fmt_pace(raw.mean())
+
+    cy30 = disc30("cycling")
+    bike_sessions = len(cy30)
+    bike_total_km = f"{round(cy30['distance_km'].sum())}km" if not cy30.empty else "n/a"
+    bike_avg_speed = "n/a"
+    bike_avg_watts = "n/a"
+    if not cy30.empty:
+        speeds = cy30["avg_pace"].dropna()
+        if not speeds.empty:
+            bike_avg_speed = f"{round(speeds.mean()*3.6,1)} km/h"
+        watts = cy30["avg_power"].dropna()
+        if not watts.empty:
+            bike_avg_watts = f"{round(watts.mean())}W"
+
+    figs = [
+        chart_volume(weekly),
+        chart_load_and_hr(weekly, df),
+        chart_pace_trends(trends),
+        chart_distance_trends(trends),
+        chart_on_target(ontarget),
+        chart_sleep(wellness),
+        chart_body_battery(wellness),
+    ]
+    figs = [f for f in figs if f is not None]
+
+    charts_html = "".join(
+        f'<div class="chart-cell">{pio.to_html(f, full_html=False, include_plotlyjs=(i==0), config={"displayModeBar": False, "responsive": True})}</div>'
+        for i, f in enumerate(figs)
+    )
+
+    clean_log = {k: v for k, v in manual_log.items() if not k.startswith("_")}
+    strength_rows = "".
