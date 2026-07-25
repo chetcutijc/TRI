@@ -2,3 +2,4 @@ garminconnect
 pandas
 plotly
 kaleido
+Pillow
