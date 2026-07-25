@@ -17,22 +17,45 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 
 
-def make_touch_icon_b64(width=180, height=180, r=91, g=110, b=245):
-    """Generate a solid-colour PNG as base64 using only stdlib.
-    iOS Safari requires a real PNG for <link rel='apple-touch-icon'> —
-    SVG data URIs are silently ignored."""
-    def chunk(tag, data):
-        c = tag + data
-        return struct.pack(">I", len(data)) + c + struct.pack(">I", zlib.crc32(c) & 0xFFFFFFFF)
-    sig  = b"\x89PNG\r\n\x1a\n"
-    ihdr = chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0))
-    raw  = b"".join(b"\x00" + bytes([r, g, b]) * width for _ in range(height))
-    idat = chunk(b"IDAT", zlib.compress(raw, 9))
-    iend = chunk(b"IEND", b"")
-    return base64.b64encode(sig + ihdr + idat + iend).decode()
+def make_touch_icon_b64(emoji="🏊", canvas=180, bg="#5B6EF5"):
+    """Generate an emoji home-screen icon as a base64 PNG.
+    Uses NotoColorEmoji (pre-installed on GitHub Actions ubuntu runners)
+    drawn on a rounded indigo square — works as <link rel='apple-touch-icon'>
+    on iOS Safari (SVG data URIs are ignored by iOS for home-screen icons).
+    Falls back to a solid-colour square if the font is unavailable."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+        import io as _io
+        bg_rgb = tuple(int(bg[i:i+2], 16) for i in (1, 3, 5)) + (255,)
+        img  = Image.new("RGBA", (canvas, canvas), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(img)
+        draw.rounded_rectangle([0, 0, canvas-1, canvas-1],
+                                radius=canvas//5, fill=bg_rgb)
+        font_path = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+        font = ImageFont.truetype(font_path, 109)   # 109 = NotoColorEmoji native size
+        bbox = draw.textbbox((0, 0), emoji, font=font, embedded_color=True)
+        x = (canvas - (bbox[2]-bbox[0])) // 2 - bbox[0]
+        y = (canvas - (bbox[3]-bbox[1])) // 2 - bbox[1]
+        draw.text((x, y), emoji, font=font, embedded_color=True)
+        buf = _io.BytesIO()
+        img.save(buf, format="PNG")
+        return base64.b64encode(buf.getvalue()).decode()
+    except Exception as e:
+        print(f"Emoji icon generation failed ({e}), falling back to solid colour")
+        # Pure-stdlib fallback: solid-colour square
+        r, g, b_ = 91, 110, 245
+        def chunk(tag, data):
+            c = tag + data
+            return struct.pack(">I", len(data)) + c + struct.pack(">I", zlib.crc32(c) & 0xFFFFFFFF)
+        sig  = b"\x89PNG\r\n\x1a\n"
+        ihdr = chunk(b"IHDR", struct.pack(">IIBBBBB", canvas, canvas, 8, 2, 0, 0, 0))
+        raw  = b"".join(b"\x00" + bytes([r, g, b_]) * canvas for _ in range(canvas))
+        idat = chunk(b"IDAT", zlib.compress(raw, 9))
+        iend = chunk(b"IEND", b"")
+        return base64.b64encode(b"\x89PNG\r\n\x1a\n" + ihdr + idat + iend).decode()
 
 
-# Pre-computed once at module load — indigo #5B6EF5 (rgb 91,110,245)
+# Pre-computed once at module load
 TOUCH_ICON_B64 = make_touch_icon_b64()
 
 # ── File paths ─────────────────────────────────────────────────────────────
