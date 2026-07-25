@@ -219,5 +219,22 @@
     "elevation_gain": 919.0,
     "avg_pace": 4.560999870300293,
     "vo2max_estimate": null
+  },
+  "23729912822": {
+    "id": 23729912822,
+    "name": "Los Angeles Hiking",
+    "type": "hiking",
+    "start": "2026-07-25 08:01:00",
+    "duration_s": 6876.97216796875,
+    "distance_m": 7016.83984375,
+    "calories": 346.0,
+    "avg_hr": 82.0,
+    "max_hr": 123.0,
+    "training_load": 3.2478485107421875,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": 192.0,
+    "avg_pace": 1.0199999809265137,
+    "vo2max_estimate": null
   }
 }

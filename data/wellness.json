@@ -237,6 +237,6 @@
     "sleep_duration_min": 438.0,
     "sleep_score": null,
     "body_battery_max": 56,
-    "body_battery_min": 3
+    "body_battery_min": 20
   }
 }
