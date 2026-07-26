@@ -17,32 +17,50 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 
 
-def make_touch_icon_b64(emoji="🏊", canvas=180, bg="#5B6EF5"):
-    """Generate an emoji home-screen icon as a base64 PNG.
-    Uses NotoColorEmoji (pre-installed on GitHub Actions ubuntu runners)
-    drawn on a rounded indigo square — works as <link rel='apple-touch-icon'>
-    on iOS Safari (SVG data URIs are ignored by iOS for home-screen icons).
-    Falls back to a solid-colour square if the font is unavailable."""
+def make_touch_icon_b64(canvas=180, bg="#5B6EF5"):
+    """Generate a triathlon composite emoji home-screen icon as base64 PNG.
+    Layout: 🏊 🚴 on top row, 🏃 centred below — on a rounded indigo square.
+    Uses NotoColorEmoji.ttf (pre-installed on GitHub Actions ubuntu runners).
+    Falls back to a solid-colour square if Pillow or the font is unavailable."""
     try:
         from PIL import Image, ImageDraw, ImageFont
         import io as _io
+
+        FONT_PATH = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+
+        def render_emoji(emoji):
+            font = ImageFont.truetype(FONT_PATH, 109)  # 109 = NotoColorEmoji native size
+            tmp  = Image.new("RGBA", (200, 200), (0, 0, 0, 0))
+            draw = ImageDraw.Draw(tmp)
+            bbox = draw.textbbox((0, 0), emoji, font=font, embedded_color=True)
+            w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
+            img  = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+            draw = ImageDraw.Draw(img)
+            draw.text((-bbox[0], -bbox[1]), emoji, font=font, embedded_color=True)
+            return img
+
         bg_rgb = tuple(int(bg[i:i+2], 16) for i in (1, 3, 5)) + (255,)
-        img  = Image.new("RGBA", (canvas, canvas), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(img)
+        icon   = Image.new("RGBA", (canvas, canvas), (0, 0, 0, 0))
+        draw   = ImageDraw.Draw(icon)
         draw.rounded_rectangle([0, 0, canvas-1, canvas-1],
-                                radius=canvas//5, fill=bg_rgb)
-        font_path = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
-        font = ImageFont.truetype(font_path, 109)   # 109 = NotoColorEmoji native size
-        bbox = draw.textbbox((0, 0), emoji, font=font, embedded_color=True)
-        x = (canvas - (bbox[2]-bbox[0])) // 2 - bbox[0]
-        y = (canvas - (bbox[3]-bbox[1])) // 2 - bbox[1]
-        draw.text((x, y), emoji, font=font, embedded_color=True)
+                                radius=canvas // 5, fill=bg_rgb)
+
+        emojis  = ["🏊", "🚴", "🏃"]
+        resized = [render_emoji(e).resize((68, 68), Image.LANCZOS) for e in emojis]
+
+        gap   = 6
+        top_y = 10
+        x0    = (canvas - (68 * 2 + gap)) // 2
+        icon.paste(resized[0], (x0,            top_y), resized[0])
+        icon.paste(resized[1], (x0 + 68 + gap, top_y), resized[1])
+        icon.paste(resized[2], ((canvas - 68) // 2, top_y + 68 + 6), resized[2])
+
         buf = _io.BytesIO()
-        img.save(buf, format="PNG")
+        icon.save(buf, format="PNG")
         return base64.b64encode(buf.getvalue()).decode()
+
     except Exception as e:
-        print(f"Emoji icon generation failed ({e}), falling back to solid colour")
-        # Pure-stdlib fallback: solid-colour square
+        print(f"Triathlon icon generation failed ({e}), falling back to solid colour")
         r, g, b_ = 91, 110, 245
         def chunk(tag, data):
             c = tag + data
