@@ -81,6 +81,7 @@ DATA_FILE       = Path("data/activities.json")
 WELLNESS_FILE   = Path("data/wellness.json")
 PLAN_FILE       = Path("data/plan.json")
 PLAN_SESSIONS_FILE = Path("data/plan_sessions.json")
+PLAN_FULL_FILE     = Path("data/plan_full.json")
 MANUAL_LOG_FILE = Path("data/manual_log.json")
 OUT_HTML        = Path("docs/index.html")
 OUT_PDF         = Path("docs/dashboard.pdf")
@@ -161,6 +162,10 @@ def load_plan():
 
 def load_plan_sessions():
     return json.loads(PLAN_SESSIONS_FILE.read_text()) if PLAN_SESSIONS_FILE.exists() else []
+
+
+def load_plan_full():
+    return json.loads(PLAN_FULL_FILE.read_text()) if PLAN_FULL_FILE.exists() else []
 
 
 def load_manual_log():
@@ -816,6 +821,120 @@ def race_cards_html():
     return cards
 
 
+
+# ── Plan viewer ───────────────────────────────────────────────────────────────
+DISC_COLORS = {
+    "swimming":          "#36C5F0",
+    "cycling":           "#00C2A8",
+    "running":           "#5B6EF5",
+    "strength_training": "#FF7A59",
+    "rest":              "#9B7DFF",
+    "other":             "#aaaaaa",
+}
+DISC_LABELS = {
+    "swimming":          "🏊 Swimming",
+    "cycling":           "🚴 Cycling",
+    "running":           "🏃 Running",
+    "strength_training": "💪 Strength",
+    "rest":              "😴 Rest/Recovery",
+    "other":             "📋 Other",
+}
+
+
+def plan_viewer_html(plan_full):
+    """Builds two plan views (Next 2 Weeks / Full Plan) with a JS toggle."""
+    if not plan_full:
+        return "<p class=\'subtext\'>No plan data found — add data/plan_full.json to the repo.</p>"
+
+    today = dt.date.today()
+    two_weeks = today + dt.timedelta(weeks=2)
+
+    def session_row(s, idx):
+        date    = dt.date.fromisoformat(s["date"])
+        is_past = date < today
+        is_today = date == today
+        disc    = s.get("discipline", "other")
+        color   = DISC_COLORS.get(disc, "#aaa")
+        label   = DISC_LABELS.get(disc, disc)
+        dur     = f"{s['duration_min']}min" if s.get("duration_min") else "—"
+        targets = []
+        if s.get("distance"):  targets.append(f"📏 {s['distance']}")
+        if s.get("pace"):      targets.append(f"⏱️ {s['pace']}")
+        if s.get("power"):     targets.append(f"⚡ {s['power']}")
+        target_str = "  ·  ".join(targets) if targets else ""
+        notes   = s.get("notes") or ""
+        # Truncate notes to first meaningful sentence
+        notes_short = notes.split(" | ")[0][:140] if notes else ""
+        opacity = "opacity:.5" if is_past else ""
+        highlight = "background:#fffbea" if is_today else ""
+        return f"""<tr style="{opacity}{highlight}" data-disc="{disc}" data-date="{s['date']}">
+            <td style="white-space:nowrap;color:#9a9aaa;font-size:.8em">{date.strftime('%a %b %d')}</td>
+            <td><span style="background:{color}22;color:{color};border-radius:6px;
+                padding:2px 8px;font-size:.75em;font-weight:700;white-space:nowrap">{label}</span></td>
+            <td style="font-size:.82em;color:#555">{s.get('summary','')}</td>
+            <td style="font-size:.8em;color:#9a9aaa;text-align:center">{dur}</td>
+            <td style="font-size:.78em;color:#5B6EF5;font-weight:600">{target_str}</td>
+            <td style="font-size:.76em;color:#666;max-width:260px">{notes_short}</td>
+        </tr>"""
+
+    rows_2wk   = ""
+    rows_full  = ""
+    for s in plan_full:
+        date = dt.date.fromisoformat(s["date"])
+        row  = session_row(s, 0)
+        if today <= date <= two_weeks:
+            rows_2wk  += row
+        rows_full += row
+
+    if not rows_2wk:
+        rows_2wk = "<tr><td colspan=\'6\' style=\'color:#9a9aaa;padding:16px\'>No sessions in the next 2 weeks.</td></tr>"
+
+    return f"""
+<div class="plan-controls">
+    <button class="plan-btn active" onclick="showPlan(\'two-weeks\')">Next 2 Weeks</button>
+    <button class="plan-btn" onclick="showPlan(\'full\')">Full Plan</button>
+    <span id="plan-filter-label" style="margin-left:12px;font-size:.8em;color:#9a9aaa"></span>
+</div>
+
+<div id="plan-two-weeks">
+<table class="table plan-table">
+<tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th></tr>
+{rows_2wk}
+</table>
+</div>
+
+<div id="plan-full" style="display:none">
+<div class="plan-filter-bar">
+    <span style="font-size:.8em;font-weight:600;color:#555">Filter:</span>
+    <button class="filter-btn active" onclick="filterDisc(\'all\')">All</button>
+    <button class="filter-btn" onclick="filterDisc(\'swimming\')">🏊 Swim</button>
+    <button class="filter-btn" onclick="filterDisc(\'cycling\')">🚴 Bike</button>
+    <button class="filter-btn" onclick="filterDisc(\'running\')">🏃 Run</button>
+    <button class="filter-btn" onclick="filterDisc(\'strength_training\')">💪 Strength</button>
+    <button class="filter-btn" onclick="filterDisc(\'rest\')">😴 Rest</button>
+</div>
+<table class="table plan-table" id="full-plan-table">
+<tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th></tr>
+{rows_full}
+</table>
+</div>
+
+<script>
+function showPlan(view) {{
+    document.getElementById('plan-two-weeks').style.display = view==='two-weeks' ? '' : 'none';
+    document.getElementById('plan-full').style.display      = view==='full'       ? '' : 'none';
+    document.querySelectorAll('.plan-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+}}
+function filterDisc(disc) {{
+    document.querySelectorAll('#full-plan-table tr[data-disc]').forEach(row => {{
+        row.style.display = (disc === 'all' || row.dataset.disc === disc) ? '' : 'none';
+    }});
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+}}
+</script>"""
+
 # ── Compliance HTML table ─────────────────────────────────────────────────────
 def compliance_html(weeks_data):
     if not weeks_data:
@@ -863,7 +982,7 @@ def compliance_html(weeks_data):
 
 
 # ── HTML dashboard ────────────────────────────────────────────────────────────
-def build_html(df, plan, wellness, plan_sessions, manual_log):
+def build_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None):
     OUT_HTML.parent.mkdir(exist_ok=True)
     if df.empty:
         OUT_HTML.write_text("<h1>No data yet</h1>")
@@ -1036,6 +1155,16 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
   .stats{{grid-template-columns:repeat(3,1fr);}}
   .races{{grid-template-columns:1fr;}}
 }}
+.plan-controls{{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}}
+.plan-btn{{background:#f0f1f8;border:none;border-radius:8px;padding:8px 16px;
+           font-size:.83em;font-weight:600;color:#6b6b78;cursor:pointer;}}
+.plan-btn.active{{background:#5B6EF5;color:#fff;}}
+.plan-btn:hover:not(.active){{background:#e0e2f0;}}
+.plan-filter-bar{{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;align-items:center;}}
+.filter-btn{{background:#f8f8fc;border:1px solid #eee;border-radius:6px;
+             padding:4px 10px;font-size:.76em;font-weight:600;cursor:pointer;color:#555;}}
+.filter-btn.active{{background:#5B6EF5;color:#fff;border-color:#5B6EF5;}}
+.plan-table td:last-child{{word-break:break-word;}}
 @media print{{
   .btn{{display:none;}}
   body{{background:#fff;}}
@@ -1098,6 +1227,10 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 <h2>Session Compliance — Planned vs Actual</h2>
 <p class="subtext">Each planned session matched to a Garmin activity (±1 day). Status reflects both duration completion and pace/power adherence.</p>
 {compliance_html(compliance)}
+
+<h2>Training Plan</h2>
+<p class="subtext">Sessions from your 55-week plan. Past sessions are faded. Today is highlighted.</p>
+{plan_viewer_html(plan_full or [])}
 
 <h2>Recent Sessions</h2>
 {recent_html}
@@ -1564,8 +1697,9 @@ def main():
     plan          = load_plan()
     wellness      = load_wellness()
     plan_sessions = load_plan_sessions()
+    plan_full     = load_plan_full()
     manual_log    = load_manual_log()
-    build_html(df, plan, wellness, plan_sessions, manual_log)
+    build_html(df, plan, wellness, plan_sessions, manual_log, plan_full)
     build_print_html(df, plan, wellness, plan_sessions, manual_log)
 
 
