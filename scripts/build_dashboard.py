@@ -430,7 +430,8 @@ def _target_str(ps):
     if ps.get("target_distance_km"):
         parts.append(f"{ps['target_distance_km']}km")
     if ps.get("pace_low_sec_km"):
-        lo, hi = fmt_pace(ps["pace_low_sec_km"]), fmt_pace(ps["pace_high_sec_km"])
+        lo = fmt_pace(ps["pace_low_sec_km"]).replace("/km", "")
+        hi = fmt_pace(ps["pace_high_sec_km"]).replace("/km", "")
         parts.append(f"{lo}–{hi}/km" if lo != hi else f"{lo}/km")
     if ps.get("power_low_w"):
         lo, hi = ps["power_low_w"], ps["power_high_w"]
@@ -897,7 +898,16 @@ def plan_viewer_html(plan_full):
 </div>
 
 <div id="plan-two-weeks">
-<table class="table plan-table">
+<div class="plan-filter-bar">
+    <span style="font-size:.8em;font-weight:600;color:#555">Filter:</span>
+    <button class="filter-btn active" onclick="filterDisc2(\'all\')">All</button>
+    <button class="filter-btn" onclick="filterDisc2(\'swimming\')">🏊 Swim</button>
+    <button class="filter-btn" onclick="filterDisc2(\'cycling\')">🚴 Bike</button>
+    <button class="filter-btn" onclick="filterDisc2(\'running\')">🏃 Run</button>
+    <button class="filter-btn" onclick="filterDisc2(\'strength_training\')">💪 Strength</button>
+    <button class="filter-btn" onclick="filterDisc2(\'rest\')">😴 Rest</button>
+</div>
+<table class="table plan-table" id="two-week-table">
 <tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th></tr>
 {rows_2wk}
 </table>
@@ -930,7 +940,14 @@ function filterDisc(disc) {{
     document.querySelectorAll('#full-plan-table tr[data-disc]').forEach(row => {{
         row.style.display = (disc === 'all' || row.dataset.disc === disc) ? '' : 'none';
     }});
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.closest('.plan-filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+}}
+function filterDisc2(disc) {{
+    document.querySelectorAll('#two-week-table tr[data-disc]').forEach(row => {{
+        row.style.display = (disc === 'all' || row.dataset.disc === disc) ? '' : 'none';
+    }});
+    event.target.closest('.plan-filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
 }}
 </script>"""
@@ -1164,7 +1181,14 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 .filter-btn{{background:#f8f8fc;border:1px solid #eee;border-radius:6px;
              padding:4px 10px;font-size:.76em;font-weight:600;cursor:pointer;color:#555;}}
 .filter-btn.active{{background:#5B6EF5;color:#fff;border-color:#5B6EF5;}}
-.plan-table td:last-child{{word-break:break-word;}}
+.plan-table td:last-child{{
+    white-space:normal;
+    overflow-wrap:break-word;
+    word-break:normal;
+    min-width:120px;
+    max-width:200px;
+    line-height:1.4;
+}}
 @media print{{
   .btn{{display:none;}}
   body{{background:#fff;}}
