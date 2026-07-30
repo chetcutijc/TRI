@@ -2,7 +2,7 @@
   {
     "date": "2026-06-23",
     "day": "Tuesday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk1 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -145,7 +145,7 @@
   {
     "date": "2026-07-02",
     "day": "Thursday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk2 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -398,7 +398,7 @@
   {
     "date": "2026-07-21",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk5 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -541,7 +541,7 @@
   {
     "date": "2026-07-30",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk6 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -596,7 +596,7 @@
   {
     "date": "2026-08-04",
     "day": "Tuesday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk7 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -739,7 +739,7 @@
   {
     "date": "2026-08-13",
     "day": "Thursday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk8 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -992,7 +992,7 @@
   {
     "date": "2026-09-01",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk11 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -1135,7 +1135,7 @@
   {
     "date": "2026-09-10",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk12 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -1190,7 +1190,7 @@
   {
     "date": "2026-09-15",
     "day": "Tuesday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk13 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -1333,7 +1333,7 @@
   {
     "date": "2026-09-24",
     "day": "Thursday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk14 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -1784,7 +1784,7 @@
   {
     "date": "2026-10-27",
     "day": "Tuesday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk19 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -1828,7 +1828,7 @@
   {
     "date": "2026-10-29",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk19 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -1927,7 +1927,7 @@
   {
     "date": "2026-11-05",
     "day": "Thursday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk20 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -2180,7 +2180,7 @@
   {
     "date": "2026-11-24",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk23 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -2323,7 +2323,7 @@
   {
     "date": "2026-12-03",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk24 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -2378,7 +2378,7 @@
   {
     "date": "2026-12-08",
     "day": "Tuesday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk25 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -2774,7 +2774,7 @@
   {
     "date": "2027-01-05",
     "day": "Tuesday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk29 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -2818,7 +2818,7 @@
   {
     "date": "2027-01-07",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk29 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -2873,7 +2873,7 @@
   {
     "date": "2027-01-12",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk30 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -2917,7 +2917,7 @@
   {
     "date": "2027-01-14",
     "day": "Thursday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk30 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -2972,7 +2972,7 @@
   {
     "date": "2027-01-19",
     "day": "Tuesday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk31 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -3016,7 +3016,7 @@
   {
     "date": "2027-01-21",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk31 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -3071,7 +3071,7 @@
   {
     "date": "2027-01-26",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk32 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -3115,7 +3115,7 @@
   {
     "date": "2027-01-28",
     "day": "Thursday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk32 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -3170,7 +3170,7 @@
   {
     "date": "2027-02-02",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk33 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -3269,7 +3269,7 @@
   {
     "date": "2027-02-09",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk34 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -3313,7 +3313,7 @@
   {
     "date": "2027-02-11",
     "day": "Thursday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk34 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -3368,7 +3368,7 @@
   {
     "date": "2027-02-16",
     "day": "Tuesday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk35 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -3412,7 +3412,7 @@
   {
     "date": "2027-02-18",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk35 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -3511,7 +3511,7 @@
   {
     "date": "2027-02-25",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk36 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -3566,7 +3566,7 @@
   {
     "date": "2027-03-02",
     "day": "Tuesday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk37 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -3709,7 +3709,7 @@
   {
     "date": "2027-03-11",
     "day": "Thursday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk38 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -3962,7 +3962,7 @@
   {
     "date": "2027-03-30",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk41 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -4105,7 +4105,7 @@
   {
     "date": "2027-04-08",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk42 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -4160,7 +4160,7 @@
   {
     "date": "2027-04-13",
     "day": "Tuesday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk43 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -4303,7 +4303,7 @@
   {
     "date": "2027-04-22",
     "day": "Thursday",
-    "discipline": "rest",
+    "discipline": "cycling",
     "summary": "Wk44 Evening session",
     "duration_min": 90,
     "notes": "Intervals: 5x5min @ 210-244W (Z4 Threshold), 3min Z1 recovery between, total 60-75min",
@@ -4556,7 +4556,7 @@
   {
     "date": "2027-05-11",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk47 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -4699,7 +4699,7 @@
   {
     "date": "2027-05-20",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk48 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
@@ -4754,7 +4754,7 @@
   {
     "date": "2027-05-25",
     "day": "Tuesday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk49 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -4798,7 +4798,7 @@
   {
     "date": "2027-05-27",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk49 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -4853,7 +4853,7 @@
   {
     "date": "2027-06-01",
     "day": "Tuesday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk50 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -4897,7 +4897,7 @@
   {
     "date": "2027-06-03",
     "day": "Thursday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk50 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -4952,7 +4952,7 @@
   {
     "date": "2027-06-08",
     "day": "Tuesday",
-    "discipline": "cycling",
+    "discipline": "rest",
     "summary": "Wk51 Evening session",
     "duration_min": 90,
     "notes": "Easy spin, <128W (Z1 Recovery), 45-60min, cadence drills",
@@ -4996,7 +4996,7 @@
   {
     "date": "2027-06-10",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "running",
     "summary": "Wk51 Evening session",
     "duration_min": 90,
     "notes": "Easy shakeout, 7:00-7:30/km, 25-35min",
@@ -5095,7 +5095,7 @@
   {
     "date": "2027-06-17",
     "day": "Thursday",
-    "discipline": "other",
+    "discipline": "cycling",
     "summary": "Wk52 Evening session",
     "duration_min": 90,
     "notes": "Steady endurance, 128-177W (Z2 Endurance)-178-209W (Z3 Tempo), 50-60min",
