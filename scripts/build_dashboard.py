@@ -1499,7 +1499,7 @@ def plan_viewer_html(plan_full, coaching=None):
         ics_button = f"""<div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
             <button class="btn" onclick="downloadCoachingICS()"
                 style="background:#00C2A8;font-size:.8em">⬇️ Download Adjusted ICS</button>
-            <button class="btn" onclick="triggerApplyCoaching()"
+            <button class="btn" onclick="triggerWorkflow(\'apply_coaching.yml\', \'apply-status\', \'Apply AI Coaching\')"
                 style="background:#5B6EF5;font-size:.8em">🚀 Apply to Dashboard</button>
             <span id="apply-status" style="font-size:.74em;color:#9a9aaa"></span>
         </div>
@@ -1520,10 +1520,6 @@ def plan_viewer_html(plan_full, coaching=None):
         <script>
         var COACHING_CHANGES = {json.dumps(changes_list)};
         var ICS_CONTENT = {json.dumps(build_ics_content(changes_list, gen_at))};
-        var GH_OWNER = "chetcutijc";
-        var GH_REPO  = "TRI";
-        var GH_WORKFLOW = "apply_coaching.yml";
-
         function downloadCoachingICS() {{
             var blob = new Blob([ICS_CONTENT], {{type:"application/octet-stream"}});
             var a = document.createElement("a");
@@ -1534,64 +1530,6 @@ def plan_viewer_html(plan_full, coaching=None):
             document.body.removeChild(a);
         }}
 
-        function getGhToken() {{
-            var token = localStorage.getItem("gh_pat_apply_coaching");
-            if (!token) {{
-                token = prompt(
-                    "Paste your GitHub fine-grained token (Actions: Read and Write, scoped to this repo).\\nSaved only in this browser."
-                );
-                if (token) localStorage.setItem("gh_pat_apply_coaching", token);
-            }}
-            return token;
-        }}
-
-        function triggerApplyCoaching() {{
-            var status = document.getElementById("apply-status");
-            var token = getGhToken();
-            if (!token) {{
-                status.textContent = "No token provided.";
-                status.style.color = "#FF7A59";
-                return;
-            }}
-            status.textContent = "Triggering workflow...";
-            status.style.color = "#9a9aaa";
-
-            fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
-                  "/actions/workflows/" + GH_WORKFLOW + "/dispatches", {{
-                method: "POST",
-                headers: {{
-                    "Authorization": "Bearer " + token,
-                    "Accept": "application/vnd.github+json",
-                    "X-GitHub-Api-Version": "2022-11-28"
-                }},
-                body: JSON.stringify({{ ref: "main" }})
-            }}).then(function(res) {{
-                if (res.status === 204) {{
-                    status.textContent = "\u2705 Triggered! Check GitHub Actions \u2014 dashboard updates in ~1-2 min.";
-                    status.style.color = "#00C2A8";
-                    return;
-                }}
-                if (res.status === 401 || res.status === 403) {{
-                    status.textContent = "\u274c Token invalid or expired. Try again.";
-                    status.style.color = "#FF7A59";
-                    localStorage.removeItem("gh_pat_apply_coaching");
-                    return;
-                }}
-                // Surface GitHub's actual error message so the cause is visible
-                res.json().then(function(body) {{
-                    var msg = (body && body.message) ? body.message : "unknown error";
-                    status.textContent = "\u274c " + res.status + ": " + msg;
-                    status.style.color = "#FF7A59";
-                    console.error("GitHub API error:", res.status, body);
-                }}).catch(function() {{
-                    status.textContent = "\u274c Failed (status " + res.status + ").";
-                    status.style.color = "#FF7A59";
-                }});
-            }}).catch(function(err) {{
-                status.textContent = "\u274c Network error: " + err;
-                status.style.color = "#FF7A59";
-            }});
-        }}
         </script>"""
 
     def filter_bar(suffix):
@@ -1902,8 +1840,85 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
     <h1>🏊‍♂️🚴‍♂️🏃‍♂️ Training Dashboard</h1>
     <p class="updated">Last updated: {dt.datetime.now().strftime('%Y-%m-%d %H:%M')} UTC</p>
   </div>
-  <button class="btn" onclick="window.print()">Export PDF</button>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <button class="btn" onclick="window.print()">Export PDF</button>
+      <button class="btn" onclick="triggerWorkflow(\'sync.yml\', \'sync-status\', \'Sync Now\')"
+          style="background:#00C2A8">🔄 Sync Now</button>
+  </div>
 </div>
+<p id="sync-status" style="font-size:.76em;color:#9a9aaa;margin:-4px 0 12px"></p>
+
+<script>
+// Shared GitHub API helpers used by Sync Now, Apply to Dashboard, and the Race Manager.
+var GH_OWNER = "chetcutijc";
+var GH_REPO  = "TRI";
+
+function getGhToken() {{
+    var token = localStorage.getItem("gh_pat_apply_coaching");
+    if (!token) {{
+        token = prompt(
+            "Paste your GitHub fine-grained token.\\n" +
+            "Needs 'Actions: Read and write' AND 'Contents: Read and write' on this repo.\\n" +
+            "Saved only in this browser."
+        );
+        if (token) localStorage.setItem("gh_pat_apply_coaching", token);
+    }}
+    return token;
+}}
+
+function triggerWorkflow(workflowFile, statusElId, label) {{
+    var status = document.getElementById(statusElId);
+    var token = getGhToken();
+    if (!token) {{
+        status.textContent = "No token provided.";
+        status.style.color = "#FF7A59";
+        return;
+    }}
+    status.textContent = "Triggering " + label + "...";
+    status.style.color = "#9a9aaa";
+
+    fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+          "/actions/workflows/" + workflowFile + "/dispatches", {{
+        method: "POST",
+        headers: {{
+            "Authorization": "Bearer " + token,
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28"
+        }},
+        body: JSON.stringify({{ ref: "main" }})
+    }}).then(function(res) {{
+        if (res.status === 204) {{
+            status.textContent = "\u2705 " + label + " triggered! Check GitHub Actions \u2014 dashboard updates in a few minutes.";
+            status.style.color = "#00C2A8";
+            return;
+        }}
+        if (res.status === 401 || res.status === 403) {{
+            res.json().then(function(body) {{
+                var msg = (body && body.message) ? body.message : "permission denied";
+                status.textContent = "\u274c " + res.status + ": " + msg +
+                    " \u2014 your token may be missing a required permission.";
+                status.style.color = "#FF7A59";
+            }}).catch(function() {{
+                status.textContent = "\u274c Token invalid, expired, or missing permissions.";
+                status.style.color = "#FF7A59";
+            }});
+            return;
+        }}
+        res.json().then(function(body) {{
+            var msg = (body && body.message) ? body.message : "unknown error";
+            status.textContent = "\u274c " + res.status + ": " + msg;
+            status.style.color = "#FF7A59";
+            console.error("GitHub API error:", res.status, body);
+        }}).catch(function() {{
+            status.textContent = "\u274c Failed (status " + res.status + ").";
+            status.style.color = "#FF7A59";
+        }});
+    }}).catch(function(err) {{
+        status.textContent = "\u274c Network error: " + err;
+        status.style.color = "#FF7A59";
+    }});
+}}
+</script>
 
 <h2>Race Targets</h2>
 <div class="races">{race_cards_html()}</div>
