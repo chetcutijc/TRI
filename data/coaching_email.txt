@@ -1,0 +1,51 @@
+============================================================
+🤖 AI COACHING REPORT
+   Generated: 2026-07-30
+   192 days to Marathon  |  325 days to Ironman
+============================================================
+
+OVERALL ASSESSMENT:
+Training volume over the last 4 weeks has been very low and inconsistent, with only 9 sessions logged, no cycling except one long ride, and sleep quality that is frequently poor (multiple nights under 5 hours and body battery readings regularly below 40). The one run showing HR of 179 bpm at 5:02/km pace signals a significant intensity spike well above aerobic targets, while the open-water swims are well below the 1:50/100m Ironman target pace. Recovery metrics are a persistent concern and likely the root cause of the erratic training pattern.
+
+COACHING SUGGESTIONS:
+  1. Prioritise sleep consistency above all else — multiple nights of under 4.5 hours are hampering adaptation and increasing injury risk; aim for a non-negotiable 7-hour minimum before any quality session.
+  2. Cap running intensity strictly at Z2 (HR under ~145 bpm, pace 6:15–6:45/km) for the next 3 weeks to rebuild aerobic base needed for the sub-4h marathon; the 179 bpm effort on 2026-07-18 was counterproductive given the low overall volume.
+  3. Add a dedicated Tuesday pool swim session immediately (Week 6 currently has no swim until Friday) to start hitting the 2×/week swim frequency needed to close the gap toward the 1:50/100m Ironman target.
+  4. Treat the Week 6 Thursday evening cycling session as the priority workout of that day — complete the gym session first at reduced volume (25–30 min) rather than a full 60 min to avoid arriving at the bike block already fatigued.
+  5. Given the body battery reading of 0–1 on 2026-07-30 (today), treat the Thursday strength session as optional light core only and do not attempt the evening cycling block at full Z2–Z3 effort; a partial recovery day now protects the critical weekend long ride and run.
+
+PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
+  • 2026-07-30 [STRENGTH TRAINING]
+    Current:  Wk6 Gym / Strength — full 40-50min strength session
+    Proposed: Reduce to 20-25 min light core and mobility only (no loaded shoulder or calf work today); body battery at 0-1 indicates critically low recovery.
+    Reason:   Body battery of 0–1 on the day of this session makes full strength loading inappropriate and risks compounding fatigue ahead of the weekend long sessions.
+
+  • 2026-07-30 [CYCLING]
+    Current:  Wk6 Evening session — Steady 50-60min at 128-177W (Z2) to 178-209W (Z3)
+    Proposed: Replace with 30-40 min very easy spin at 100-127W (Z1 recovery only) or skip entirely if fatigue persists after the morning session.
+    Reason:   Attempting Z2–Z3 cycling on a body battery of 0–1 will deepen fatigue and compromise Saturday's 84 km long ride quality.
+
+  • 2026-08-01 [CYCLING]
+    Current:  Wk6 Long Ride — 84km @ 128-177W Z2, optional 3x10min Z3 blocks
+    Proposed: Complete the 84 km ride but hold strictly to 128-177W Z2 only — omit the Z3 Tempo blocks this week given the depleted recovery state coming into the weekend.
+    Reason:   Sleep and body battery data indicate accumulated fatigue; skipping the Z3 blocks preserves aerobic stimulus while reducing injury and overtraining risk.
+
+  • 2026-08-04 [REST]
+    Current:  Wk7 Tuesday evening — Intervals 5x5min @ 210-244W (Z4 Threshold)
+    Proposed: Replace with a steady aerobic cycling session at 128-177W (Z2) for 45-55 min — postpone threshold intervals until body battery and sleep are consistently above 60 and 420 min respectively.
+    Reason:   The athlete has had almost no structured cycling base in the last 4 weeks; jumping to Z4 threshold intervals risks injury and produces poor adaptation without adequate aerobic foundation.
+
+  • 2026-08-13 [REST]
+    Current:  Wk8 Thursday evening — Intervals 5x5min @ 210-244W (Z4 Threshold)
+    Proposed: Replace with 50 min steady Z2 cycling at 128-177W if the Week 7 aerobic sessions were completed successfully; only introduce Z4 if two consecutive weeks of consistent Z2 riding are logged.
+    Reason:   A second Z4 cycling block in Week 8 is premature given the near-zero cycling base evident in recent training data.
+
+  • 2026-08-02 [RUNNING]
+    Current:  Wk6 Long Run — 18.4km @ 6:15-6:45/km
+    Proposed: Reduce distance to 14-15 km and hold pace strictly at the slower end (6:30-6:45/km); do not attempt negative splits this week.
+    Reason:   With only two short runs logged in the last 4 weeks, jumping to an 18.4 km long run carries a significant injury risk; a shorter aerobic effort rebuilds consistency more safely.
+
+  → Open the dashboard website to review and download the
+    adjusted ICS file if you want to apply any of these.
+
+============================================================
