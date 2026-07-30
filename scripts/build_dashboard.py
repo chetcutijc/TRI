@@ -82,6 +82,7 @@ WELLNESS_FILE   = Path("data/wellness.json")
 PLAN_FILE       = Path("data/plan.json")
 PLAN_SESSIONS_FILE = Path("data/plan_sessions.json")
 PLAN_FULL_FILE     = Path("data/plan_full.json")
+COACHING_FILE      = Path("data/ai_coaching.json")
 MANUAL_LOG_FILE = Path("data/manual_log.json")
 OUT_HTML        = Path("docs/index.html")
 OUT_PDF         = Path("docs/dashboard.pdf")
@@ -166,6 +167,10 @@ def load_plan_sessions():
 
 def load_plan_full():
     return json.loads(PLAN_FULL_FILE.read_text()) if PLAN_FULL_FILE.exists() else []
+
+
+def load_coaching():
+    return json.loads(COACHING_FILE.read_text()) if COACHING_FILE.exists() else {}
 
 
 def load_manual_log():
@@ -823,6 +828,129 @@ def race_cards_html():
 
 
 
+
+# ── AI Coaching section HTML ──────────────────────────────────────────────────
+def coaching_html(coaching):
+    """Renders the AI coaching section: summary, suggestions, proposed plan changes."""
+    if not coaching or not coaching.get("summary"):
+        return """<div style="background:#f8f8fc;border-radius:12px;padding:20px 24px;color:#9a9aaa;font-size:.88em">
+            No AI coaching data yet — analysis runs on Saturday syncs.<br>
+            Make sure <code>ANTHROPIC_API_KEY</code> is set in your repo secrets.
+        </div>"""
+
+    gen_at  = coaching.get("generated_at","")[:10]
+    summary = coaching.get("summary","")
+    suggestions = coaching.get("suggestions", [])
+    changes = coaching.get("proposed_changes", [])
+
+    sugg_html = "".join(f"""
+        <div style="display:flex;gap:12px;margin-bottom:12px;align-items:flex-start">
+            <span style="background:#5B6EF5;color:#fff;border-radius:50%;
+                         width:22px;height:22px;display:flex;align-items:center;
+                         justify-content:center;font-size:.72em;font-weight:800;
+                         flex-shrink:0;margin-top:1px">{i+1}</span>
+            <span style="font-size:.88em;line-height:1.5;color:#2c2c34">{s}</span>
+        </div>""" for i, s in enumerate(suggestions) if s)
+
+    # Proposed changes table
+    if changes:
+        change_rows = "".join(f"""<tr>
+            <td style="white-space:nowrap;color:#9a9aaa;font-size:.8em">{c.get('date','')}</td>
+            <td><span style="background:#5B6EF522;color:#5B6EF5;border-radius:5px;
+                padding:1px 7px;font-size:.75em;font-weight:700">
+                {c.get('discipline','').replace('_',' ').title()}</span></td>
+            <td style="font-size:.8em;color:#888">{c.get('current_session','')}</td>
+            <td style="font-size:.8em;color:#1a1a22;font-weight:600">{c.get('proposed_session','')}</td>
+            <td style="font-size:.75em;color:#888">{c.get('reason','')}</td>
+            <td style="font-size:.75em;text-align:center">
+                <span style="background:#FFC75A22;color:#b88a00;border-radius:5px;
+                    padding:1px 7px;font-weight:600">{c.get('change_type','').upper()}</span>
+            </td>
+        </tr>""" for c in changes)
+
+        changes_section = f"""
+        <h3 style="font-size:.9em;font-weight:700;margin:20px 0 8px;color:#1a1a22">
+            📋 Proposed Plan Adjustments
+            <span style="font-size:.8em;font-weight:400;color:#9a9aaa;margin-left:8px">
+                — review below, then download updated ICS if you want to apply
+            </span>
+        </h3>
+        <table class="table" style="margin-bottom:12px">
+            <tr><th>Date</th><th>Discipline</th><th>Current</th>
+                <th>Proposed</th><th>Reason</th><th>Type</th></tr>
+            {change_rows}
+        </table>
+        <button class="btn" onclick="downloadCoachingICS()"
+            style="background:#00C2A8;font-size:.82em">
+            ⬇️ Download Adjusted ICS
+        </button>
+        <span style="font-size:.76em;color:#9a9aaa;margin-left:10px">
+            Import into Calendar app — only proposed sessions are changed
+        </span>
+        <script>
+        var COACHING_CHANGES = {json.dumps(changes)};
+        function downloadCoachingICS() {{
+            var lines = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Jean Triathlon AI Coaching//EN",
+                "CALSCALE:GREGORIAN",
+            ];
+            COACHING_CHANGES.forEach(function(c, i) {{
+                var d = c.date.replace(/-/g, "");
+                var uid = "ai-coaching-" + d + "-" + i + "@jean-tri";
+                lines.push("BEGIN:VEVENT");
+                lines.push("UID:" + uid);
+                lines.push("DTSTART:" + d + "T070000");
+                lines.push("DTEND:"   + d + "T090000");
+                lines.push("SUMMARY:[AI ADJUSTED] " + c.discipline.replace("_"," ") + " — " + c.proposed_session.substring(0,60));
+                lines.push("DESCRIPTION:" + c.proposed_session + "\\n\\nReason: " + c.reason + "\\n\\nAI coaching adjustment " + "{gen_at}");
+                lines.push("END:VEVENT");
+            }});
+            lines.push("END:VCALENDAR");
+            var blob = new Blob([lines.join("\r\n")], {{type:"text/calendar"}});
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "ai_coaching_adjustments.ics";
+            a.click();
+        }}
+        </script>
+        """
+    else:
+        changes_section = """<div style="background:#e8f9f5;border-radius:8px;
+            padding:12px 16px;font-size:.85em;color:#00A888;margin-top:12px">
+            ✅ No plan adjustments proposed — training looks on track for this period.
+        </div>"""
+
+    return f"""
+    <div style="background:#fff;border-radius:14px;padding:20px 24px;
+                box-shadow:0 1px 3px rgba(20,20,40,.06);margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+            <div>
+                <div style="font-size:.95em;font-weight:700;color:#1a1a22">Weekly Assessment</div>
+                <div style="font-size:.78em;color:#9a9aaa">Generated {gen_at} · Claude {coaching.get('weeks_analysed',4)}-week analysis</div>
+            </div>
+            <div style="display:flex;gap:16px">
+                <div style="text-align:center">
+                    <div style="font-size:1.1em;font-weight:800;color:#FF7A59">{coaching.get('days_to_marathon','—')}</div>
+                    <div style="font-size:.65em;color:#9a9aaa;text-transform:uppercase">days to Marathon</div>
+                </div>
+                <div style="text-align:center">
+                    <div style="font-size:1.1em;font-weight:800;color:#5B6EF5">{coaching.get('days_to_ironman','—')}</div>
+                    <div style="font-size:.65em;color:#9a9aaa;text-transform:uppercase">days to Ironman</div>
+                </div>
+            </div>
+        </div>
+        <p style="font-size:.88em;line-height:1.6;color:#2c2c34;
+                  border-left:3px solid #5B6EF5;padding-left:12px;margin-bottom:16px">{summary}</p>
+        <div style="font-size:.85em;font-weight:700;color:#1a1a22;margin-bottom:10px">
+            💡 Coaching Suggestions
+        </div>
+        {sugg_html}
+        {changes_section}
+    </div>"""
+
 # ── Plan viewer ───────────────────────────────────────────────────────────────
 DISC_COLORS = {
     "swimming":          "#36C5F0",
@@ -999,7 +1127,7 @@ def compliance_html(weeks_data):
 
 
 # ── HTML dashboard ────────────────────────────────────────────────────────────
-def build_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None):
+def build_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None, coaching=None):
     OUT_HTML.parent.mkdir(exist_ok=True)
     if df.empty:
         OUT_HTML.write_text("<h1>No data yet</h1>")
@@ -1172,6 +1300,8 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
   .stats{{grid-template-columns:repeat(3,1fr);}}
   .races{{grid-template-columns:1fr;}}
 }}
+.coaching-badge{{display:inline-block;border-radius:6px;padding:2px 8px;
+               font-size:.72em;font-weight:700;}}
 .plan-controls{{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;}}
 .plan-btn{{background:#f0f1f8;border:none;border-radius:8px;padding:8px 16px;
            font-size:.83em;font-weight:600;color:#6b6b78;cursor:pointer;}}
@@ -1251,6 +1381,10 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 <h2>Session Compliance — Planned vs Actual</h2>
 <p class="subtext">Each planned session matched to a Garmin activity (±1 day). Status reflects both duration completion and pace/power adherence.</p>
 {compliance_html(compliance)}
+
+<h2>🤖 AI Coaching</h2>
+<p class="subtext">Claude analyses your last 4 weeks vs the plan every Saturday. Proposed changes are suggestions only — you download the ICS to apply them.</p>
+{coaching_html(coaching)}
 
 <h2>Training Plan</h2>
 <p class="subtext">Sessions from your 55-week plan. Past sessions are faded. Today is highlighted.</p>
@@ -1716,6 +1850,45 @@ table.t colgroup col {{ overflow: hidden; }}
 </html>""")
     print(f"Print HTML built at {OUT_PRINT} ({len(charts)} charts rendered as SVG)")
 
+
+def coaching_email_text(coaching):
+    """Returns a plain-text coaching summary for inclusion in the email."""
+    if not coaching or not coaching.get("summary"):
+        return ""
+    lines = []
+    lines.append("=" * 60)
+    lines.append("🤖 AI COACHING REPORT")
+    lines.append(f"   Generated: {coaching.get('generated_at','')[:10]}")
+    lines.append(f"   {coaching.get('days_to_marathon','?')} days to Marathon  |  "
+                 f"{coaching.get('days_to_ironman','?')} days to Ironman")
+    lines.append("=" * 60)
+    lines.append("")
+    lines.append("OVERALL ASSESSMENT:")
+    lines.append(coaching.get("summary",""))
+    lines.append("")
+    suggestions = coaching.get("suggestions", [])
+    if suggestions:
+        lines.append("COACHING SUGGESTIONS:")
+        for i, s in enumerate(suggestions, 1):
+            lines.append(f"  {i}. {s}")
+    lines.append("")
+    changes = coaching.get("proposed_changes", [])
+    if changes:
+        lines.append("PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):")
+        for c in changes:
+            lines.append(f"  • {c.get('date','')} [{c.get('discipline','').replace('_',' ').upper()}]")
+            lines.append(f"    Current:  {c.get('current_session','')}")
+            lines.append(f"    Proposed: {c.get('proposed_session','')}")
+            lines.append(f"    Reason:   {c.get('reason','')}")
+            lines.append("")
+        lines.append("  → Open the dashboard website to review and download the")
+        lines.append("    adjusted ICS file if you want to apply any of these.")
+    else:
+        lines.append("✅ No plan adjustments proposed — training is on track.")
+    lines.append("")
+    lines.append("=" * 60)
+    return "\n".join(lines)
+
 def main():
     df            = load_activities()
     plan          = load_plan()
@@ -1723,8 +1896,13 @@ def main():
     plan_sessions = load_plan_sessions()
     plan_full     = load_plan_full()
     manual_log    = load_manual_log()
-    build_html(df, plan, wellness, plan_sessions, manual_log, plan_full)
+    coaching      = load_coaching()
+    build_html(df, plan, wellness, plan_sessions, manual_log, plan_full, coaching)
     build_print_html(df, plan, wellness, plan_sessions, manual_log)
+    # Write coaching email text for use in email step
+    email_coaching = coaching_email_text(coaching)
+    if email_coaching:
+        Path("data/coaching_email.txt").write_text(email_coaching)
 
 
 if __name__ == "__main__":
