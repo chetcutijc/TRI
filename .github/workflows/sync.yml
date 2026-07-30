@@ -46,19 +46,16 @@ jobs:
         run: python scripts/fetch_garmin.py
 
       # ── AI Coaching — runs on Saturday syncs only ────────────────────────
+      - name: Determine day of week
+        run: echo "DOW=$(date +%u)" >> $GITHUB_ENV
+
       - name: Run AI coaching analysis (Saturday only)
-        if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["6"]'), format('{0}', env.DOW))
+        if: env.DOW == '6' || github.event_name == 'workflow_dispatch'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          DOW: ${{ env.DOW }}
         run: |
-          echo "DOW=$(date +%u)" >> $GITHUB_ENV
-          if [ "$(date +%u)" = "6" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "Saturday — running AI coaching analysis..."
-            python scripts/ai_coaching.py
-          else
-            echo "Not Saturday — skipping AI coaching"
-          fi
+          echo "Running AI coaching analysis (DOW=$DOW, trigger=${{ github.event_name }})..."
+          python scripts/ai_coaching.py
 
       - name: Build HTML dashboard
         run: python scripts/build_dashboard.py
@@ -149,4 +146,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
- 
