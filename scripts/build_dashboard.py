@@ -994,7 +994,7 @@ function updateRacesFile(mutator, successMsg) {{
           setRaceStatus(successMsg + " Rebuilding dashboard...", "#00C2A8");
           // kick off a rebuild so the change shows up
           return fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
-                       "/actions/workflows/" + GH_WORKFLOW + "/dispatches", {{
+                       "/actions/workflows/sync.yml/dispatches", {{
               method: "POST", headers: headers, body: JSON.stringify({{ ref: "main" }})
           }}).then(function() {{
               setRaceStatus(successMsg + " Dashboard rebuilding — refresh in ~2 min.", "#00C2A8");
