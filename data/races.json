@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Marathon",
+    "emoji": "🏃",
+    "date": "2027-02-07",
+    "note": "Target: sub-4h (~5:45/km)",
+    "targets": {
+      "run_pace_sec_km": 345
+    }
+  },
+  {
+    "name": "Ironman Italy Cervia",
+    "emoji": "🏊🚴🏃",
+    "date": "2027-06-20",
+    "note": "Full Ironman",
+    "targets": {
+      "swim_pace_100m_sec": 110,
+      "bike_power_w": 190,
+      "run_pace_sec_km": 390
+    }
+  }
+]
