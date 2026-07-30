@@ -1,54 +1,13 @@
 ============================================================
 🤖 AI COACHING REPORT
    Generated: 2026-07-30
-   192 days to Marathon  |  325 days to Ironman
+   ? days to Marathon  |  ? days to Ironman
 ============================================================
 
 OVERALL ASSESSMENT:
-Training volume over the last 4 weeks has been very low and inconsistent, with only 9 sessions logged including two very short open-water swims, three runs, one long bike, one hike, and no pool swims or strength work — well below what is needed for marathon and Ironman preparation. Sleep is chronically insufficient (many nights under 5 hours, with 41 minutes on 2026-07-27) and body battery regularly bottoms out, indicating significant accumulated fatigue and lifestyle stress that is limiting training capacity. The July 18 run at avg HR 179 bpm signals the athlete is occasionally pushing into very high intensity without the aerobic base to support it, which combined with poor recovery is a injury and burnout risk.
+AI coaching analysis unavailable this week.
 
-COACHING SUGGESTIONS:
-  1. Prioritise sleep above all else — target a minimum of 7 hours per night consistently before attempting to increase training load, as current sleep deficits are undermining adaptation and recovery from even light sessions.
-  2. Add at least two pool swim sessions per week immediately; open-water swims of 4–8 minutes do not build the fitness needed for a 3.8km Ironman swim or the swim leg endurance required — aim for 2km+ pool sessions at ≤2:30/100m.
-  3. Keep all runs in Zone 2 (HR 130–150 bpm, pace 6:15–6:45/km) until weekly run volume reaches at least 25–30km; the July 18 effort at 179 bpm average on a 5km run is unsustainable and counterproductive given the current recovery state.
-  4. Complete the planned long ride on August 1 at strictly 128–177W (Z2) and treat it as the primary training priority this weekend — the 77km ride on July 20 is a positive sign and needs to be built upon with weekly consistency.
-  5. Introduce strength sessions as planned from July 30 onward but keep loads conservative given low body battery scores; focus on single-leg and shoulder stability work which directly supports injury prevention for both marathon and Ironman.
 
-PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-07-30 [REST]
-    Current:  Wk6 Evening session — steady endurance 128–177W (Z2/Z3), 50–60min
-    Proposed: Skip the evening cycling session entirely and prioritise full rest or light stretching only — body battery is critically low (max 2, min 22 on July 30) and sleep was only 41 min on July 27 and 278 min on July 28.
-    Reason:   Body battery on July 30 is at 2/22 — training in this state will not produce adaptation and significantly raises injury and illness risk.
-
-  • 2026-07-31 [SWIMMING]
-    Current:  Wk6 Pool Swim (Friday) — 2km+ at ≤2:30/100m
-    Proposed: Proceed with pool swim as planned but cap at 1,500m if fatigue is still high; focus entirely on technique drills (catch, rotation, bilateral breathing) rather than pace targets.
-    Reason:   Re-establishing pool swim habit is the highest-priority gap in the current training log, but volume should be modest given the severely depleted recovery state heading into the weekend.
-
-  • 2026-08-02 [RUNNING]
-    Current:  Wk6 Long Run — 18.4km @ 6:15–6:45/km
-    Proposed: Reduce to 12–14km @ 6:30–6:50/km, strictly HR-capped at 150 bpm — cut the run short if HR climbs above 155 bpm.
-    Reason:   Longest recent run was 6.3km and the athlete has shown a pattern of HR spiking well above Zone 2; jumping to 18.4km this weekend without a base is an injury risk given the sleep-compromised state.
-
-  • 2026-08-04 [REST]
-    Current:  Wk7 Evening session — cycling intervals 5x5min @ 210–244W (Z4 Threshold)
-    Proposed: Replace with a 45–50min steady Z2 endurance spin at 128–160W — no threshold work until at least 3 consecutive weeks of consistent Z2 cycling volume are completed.
-    Reason:   There is insufficient cycling base (only one ride logged in 4 weeks) to safely perform Z4 threshold intervals; Z2 volume must be established first to avoid maladaptation and excessive fatigue.
-
-  • 2026-08-13 [REST]
-    Current:  Wk8 Evening session — cycling intervals 5x5min @ 210–244W (Z4 Threshold)
-    Proposed: Replace with a 50–60min Z2 endurance ride at 128–177W if weekly cycling consistency has improved by this point; only progress to threshold intervals if two prior weeks of Z2 riding have been completed as planned.
-    Reason:   Same rationale as Wk7 — threshold cycling intensity is premature without an established aerobic cycling base, and repeating Z4 efforts two weeks apart without base volume risks burnout and injury.
-
-  • 2026-08-09 [RUNNING]
-    Current:  Wk7 Long Run — 18.8km @ 6:15–6:45/km
-    Proposed: Cap at 15km @ 6:30–6:45/km with strict HR ceiling of 150 bpm; only attempt the full 18.8km if the August 2 shortened long run was completed comfortably and sleep has improved to 6.5h+ average.
-    Reason:   Progressive long run build must be earned through completed prior sessions — skipping from reduced Week 6 run to full Week 7 distance creates an unsafe load spike for marathon preparation.
-
-  → Open the dashboard website to review the unified
-    plan table (highlighted rows = AI proposals).
-  → Download ICS from the website to update your phone calendar.
-  → Run 'Apply AI Coaching' workflow in GitHub Actions to
-    update plan_full.json so changes show on the dashboard too.
+✅ No plan adjustments proposed — training is on track.
 
 ============================================================

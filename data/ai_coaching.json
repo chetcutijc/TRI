@@ -1,64 +1,8 @@
 {
-  "summary": "Training volume over the last 4 weeks has been very low and inconsistent, with only 9 sessions logged including two very short open-water swims, three runs, one long bike, one hike, and no pool swims or strength work \u2014 well below what is needed for marathon and Ironman preparation. Sleep is chronically insufficient (many nights under 5 hours, with 41 minutes on 2026-07-27) and body battery regularly bottoms out, indicating significant accumulated fatigue and lifestyle stress that is limiting training capacity. The July 18 run at avg HR 179 bpm signals the athlete is occasionally pushing into very high intensity without the aerobic base to support it, which combined with poor recovery is a injury and burnout risk.",
-  "suggestions": [
-    "Prioritise sleep above all else \u2014 target a minimum of 7 hours per night consistently before attempting to increase training load, as current sleep deficits are undermining adaptation and recovery from even light sessions.",
-    "Add at least two pool swim sessions per week immediately; open-water swims of 4\u20138 minutes do not build the fitness needed for a 3.8km Ironman swim or the swim leg endurance required \u2014 aim for 2km+ pool sessions at \u22642:30/100m.",
-    "Keep all runs in Zone 2 (HR 130\u2013150 bpm, pace 6:15\u20136:45/km) until weekly run volume reaches at least 25\u201330km; the July 18 effort at 179 bpm average on a 5km run is unsustainable and counterproductive given the current recovery state.",
-    "Complete the planned long ride on August 1 at strictly 128\u2013177W (Z2) and treat it as the primary training priority this weekend \u2014 the 77km ride on July 20 is a positive sign and needs to be built upon with weekly consistency.",
-    "Introduce strength sessions as planned from July 30 onward but keep loads conservative given low body battery scores; focus on single-leg and shoulder stability work which directly supports injury prevention for both marathon and Ironman."
-  ],
-  "proposed_changes": [
-    {
-      "date": "2026-07-30",
-      "discipline": "rest",
-      "current_session": "Wk6 Evening session \u2014 steady endurance 128\u2013177W (Z2/Z3), 50\u201360min",
-      "proposed_session": "Skip the evening cycling session entirely and prioritise full rest or light stretching only \u2014 body battery is critically low (max 2, min 22 on July 30) and sleep was only 41 min on July 27 and 278 min on July 28.",
-      "change_type": "skip",
-      "reason": "Body battery on July 30 is at 2/22 \u2014 training in this state will not produce adaptation and significantly raises injury and illness risk."
-    },
-    {
-      "date": "2026-07-31",
-      "discipline": "swimming",
-      "current_session": "Wk6 Pool Swim (Friday) \u2014 2km+ at \u22642:30/100m",
-      "proposed_session": "Proceed with pool swim as planned but cap at 1,500m if fatigue is still high; focus entirely on technique drills (catch, rotation, bilateral breathing) rather than pace targets.",
-      "change_type": "decrease",
-      "reason": "Re-establishing pool swim habit is the highest-priority gap in the current training log, but volume should be modest given the severely depleted recovery state heading into the weekend."
-    },
-    {
-      "date": "2026-08-02",
-      "discipline": "running",
-      "current_session": "Wk6 Long Run \u2014 18.4km @ 6:15\u20136:45/km",
-      "proposed_session": "Reduce to 12\u201314km @ 6:30\u20136:50/km, strictly HR-capped at 150 bpm \u2014 cut the run short if HR climbs above 155 bpm.",
-      "change_type": "decrease",
-      "reason": "Longest recent run was 6.3km and the athlete has shown a pattern of HR spiking well above Zone 2; jumping to 18.4km this weekend without a base is an injury risk given the sleep-compromised state."
-    },
-    {
-      "date": "2026-08-04",
-      "discipline": "rest",
-      "current_session": "Wk7 Evening session \u2014 cycling intervals 5x5min @ 210\u2013244W (Z4 Threshold)",
-      "proposed_session": "Replace with a 45\u201350min steady Z2 endurance spin at 128\u2013160W \u2014 no threshold work until at least 3 consecutive weeks of consistent Z2 cycling volume are completed.",
-      "change_type": "replace",
-      "reason": "There is insufficient cycling base (only one ride logged in 4 weeks) to safely perform Z4 threshold intervals; Z2 volume must be established first to avoid maladaptation and excessive fatigue."
-    },
-    {
-      "date": "2026-08-13",
-      "discipline": "rest",
-      "current_session": "Wk8 Evening session \u2014 cycling intervals 5x5min @ 210\u2013244W (Z4 Threshold)",
-      "proposed_session": "Replace with a 50\u201360min Z2 endurance ride at 128\u2013177W if weekly cycling consistency has improved by this point; only progress to threshold intervals if two prior weeks of Z2 riding have been completed as planned.",
-      "change_type": "replace",
-      "reason": "Same rationale as Wk7 \u2014 threshold cycling intensity is premature without an established aerobic cycling base, and repeating Z4 efforts two weeks apart without base volume risks burnout and injury."
-    },
-    {
-      "date": "2026-08-09",
-      "discipline": "running",
-      "current_session": "Wk7 Long Run \u2014 18.8km @ 6:15\u20136:45/km",
-      "proposed_session": "Cap at 15km @ 6:30\u20136:45/km with strict HR ceiling of 150 bpm; only attempt the full 18.8km if the August 2 shortened long run was completed comfortably and sleep has improved to 6.5h+ average.",
-      "change_type": "decrease",
-      "reason": "Progressive long run build must be earned through completed prior sessions \u2014 skipping from reduced Week 6 run to full Week 7 distance creates an unsafe load spike for marathon preparation."
-    }
-  ],
-  "generated_at": "2026-07-30T19:02:22.742825",
+  "summary": "AI coaching analysis unavailable this week.",
+  "suggestions": [],
+  "proposed_changes": [],
+  "generated_at": "2026-07-30T19:13:43.452947",
   "weeks_analysed": 4,
-  "days_to_marathon": 192,
-  "days_to_ironman": 325
+  "error": "HTTP Error 529: <none>"
 }
