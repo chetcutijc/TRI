@@ -925,6 +925,66 @@ CHANGE_COLORS = {
 }
 
 
+def build_ics_content(changes, gen_at=""):
+    """Build RFC 5545 compliant ICS text from AI proposed changes.
+
+    Handles the three things that silently break Apple Calendar imports:
+      1. Escaping reserved chars (backslash, semicolon, comma, newline)
+      2. Mandatory DTSTAMP property on every VEVENT
+      3. Line folding at 75 octets (long descriptions otherwise corrupt the file)
+    """
+    def esc(s):
+        s = str(s or "")
+        s = s.replace("\\", "\\\\")
+        s = s.replace(";", "\\;")
+        s = s.replace(",", "\\,")
+        s = s.replace("\r\n", "\\n").replace("\n", "\\n")
+        return s
+
+    def fold(line):
+        if len(line.encode("utf-8")) <= 75:
+            return line
+        out, cur = [], ""
+        for ch in line:
+            candidate = cur + ch
+            limit = 75 if not out else 74   # continuation lines lose 1 char to the leading space
+            if len(candidate.encode("utf-8")) > limit:
+                out.append(cur)
+                cur = ch
+            else:
+                cur = candidate
+        if cur:
+            out.append(cur)
+        return "\r\n ".join(out)
+
+    stamp = dt.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Jean Triathlon AI Coaching//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+    ]
+    for i, c in enumerate(changes):
+        d    = str(c.get("date", "")).replace("-", "")
+        disc = str(c.get("discipline", "")).replace("_", " ")
+        prop = str(c.get("proposed_session", ""))
+        summary = f"[AI ADJUSTED] {disc} \u2014 {prop[:60]}"
+        desc    = f"{prop}\n\nReason: {c.get('reason','')}\n\nAI coaching {gen_at}"
+        lines += [
+            "BEGIN:VEVENT",
+            f"UID:ai-coaching-{d}-{i}@jean-tri",
+            f"DTSTAMP:{stamp}",
+            f"DTSTART:{d}T070000",
+            f"DTEND:{d}T090000",
+            fold("SUMMARY:" + esc(summary)),
+            fold("DESCRIPTION:" + esc(desc)),
+            "END:VEVENT",
+        ]
+    lines.append("END:VCALENDAR")
+    return "\r\n".join(lines)
+
+
 def plan_viewer_html(plan_full, coaching=None):
     """Unified plan table with AI suggestions merged as extra columns."""
     if not plan_full:
@@ -1062,29 +1122,19 @@ def plan_viewer_html(plan_full, coaching=None):
         </p>
         <script>
         var COACHING_CHANGES = {json.dumps(changes_list)};
+        var ICS_CONTENT = {json.dumps(build_ics_content(changes_list, gen_at))};
         var GH_OWNER = "chetcutijc";
         var GH_REPO  = "TRI";
         var GH_WORKFLOW = "apply_coaching.yml";
 
         function downloadCoachingICS() {{
-            var lines = ["BEGIN:VCALENDAR","VERSION:2.0",
-                "PRODID:-//Jean Triathlon AI Coaching//EN","CALSCALE:GREGORIAN"];
-            COACHING_CHANGES.forEach(function(c, i) {{
-                var d = c.date.replace(/-/g, "");
-                lines.push("BEGIN:VEVENT");
-                lines.push("UID:ai-coaching-" + d + "-" + i + "@jean-tri");
-                lines.push("DTSTART:" + d + "T070000");
-                lines.push("DTEND:"   + d + "T090000");
-                lines.push("SUMMARY:[AI ADJUSTED] " + c.discipline.replace("_"," ") + " \u2014 " + c.proposed_session.substring(0,60));
-                lines.push("DESCRIPTION:" + c.proposed_session + "\\n\\nReason: " + c.reason + "\\n\\nAI coaching " + "{gen_at}");
-                lines.push("END:VEVENT");
-            }});
-            lines.push("END:VCALENDAR");
-            var blob = new Blob([lines.join("\\r\\n")], {{type:"application/octet-stream"}});
+            var blob = new Blob([ICS_CONTENT], {{type:"application/octet-stream"}});
             var a = document.createElement("a");
             a.href = URL.createObjectURL(blob);
             a.download = "ai_coaching_adjustments.ics";
+            document.body.appendChild(a);
             a.click();
+            document.body.removeChild(a);
         }}
 
         function getGhToken() {{
