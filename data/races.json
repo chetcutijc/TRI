@@ -1,5 +1,15 @@
 [
   {
+    "name": "Treviso 10K Tiramisu Run",
+    "emoji": "🍰",
+    "date": "2026-10-03",
+    "note": "",
+    "distances": {
+      "run_km": 10
+    },
+    "targets": {}
+  },
+  {
     "name": "Marathon",
     "emoji": "🏃",
     "date": "2027-02-07",
