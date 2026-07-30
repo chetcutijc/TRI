@@ -7,58 +7,11 @@
     "Swimming sessions are very short and infrequent (longest was 52 min / 2km open water); the pool sessions starting July 31st are critical \u2014 commit to hitting the 2km+ target every session to build toward the Ironman 3.8km swim.",
     "Avoid stacking high-load sessions (e.g. Wk7 cycling threshold intervals on Tuesday followed by strength + running on Thursday) when body battery trends remain low; use Wednesday rest days actively for breathwork and sleep extension rather than treating them as optional."
   ],
-  "proposed_changes": [
-    {
-      "date": "2026-07-30",
-      "discipline": "strength_training",
-      "current_session": "Wk6 Gym / Strength \u2014 60 min strength session including shoulder, calf, jump drills and core",
-      "proposed_session": "Skip strength session today \u2014 replace with 15 min light mobility/stretching only",
-      "change_type": "skip",
-      "reason": "Body battery is critically low (max 2, min 22) and sleep data is missing for July 30th, indicating insufficient recovery to absorb a strength stimulus safely."
-    },
-    {
-      "date": "2026-07-30",
-      "discipline": "cycling",
-      "current_session": "Wk6 Evening session \u2014 90 min steady endurance at 128-177W (Z2/Z3)",
-      "proposed_session": "Shorten to 50-60 min strictly at 128-150W (low Z2 only), no Z3 tempo work",
-      "change_type": "decrease",
-      "reason": "With strength session skipped and body battery critically depleted, keeping the ride short and at the lower end of Z2 preserves the aerobic stimulus without adding further recovery debt."
-    },
-    {
-      "date": "2026-08-02",
-      "discipline": "running",
-      "current_session": "Wk6 Long Run \u2014 18.4km @ 6:15-6:45/km, 180 min",
-      "proposed_session": "Cap at 14-15km @ 6:30-6:45/km (90-100 min), no negative-split effort; monitor HR and stop if above 155 bpm",
-      "change_type": "decrease",
-      "reason": "The athlete has not completed a run longer than 6.3km in the past 4 weeks, and jumping to 18.4km risks injury given the deconditioning and poor sleep trend."
-    },
-    {
-      "date": "2026-08-04",
-      "discipline": "cycling",
-      "current_session": "Wk7 Evening session \u2014 5x5min @ 210-244W (Z4 Threshold) intervals",
-      "proposed_session": "Replace with 60 min steady Z2 ride at 128-177W \u2014 defer threshold intervals to Wk8 when base has been re-established",
-      "change_type": "replace",
-      "reason": "Threshold intervals require a solid aerobic base and good recovery status; with only one Z2 ride completed in 4 weeks, introducing Z4 work this soon risks poor adaptation and elevated injury risk."
-    },
-    {
-      "date": "2026-08-08",
-      "discipline": "cycling",
-      "current_session": "Wk7 Long Ride \u2014 88km @ 128-177W (Z2), 240 min",
-      "proposed_session": "84km @ 128-160W (conservative Z2), 240 min \u2014 hold power strictly at lower half of Z2 range",
-      "change_type": "decrease",
-      "reason": "Progressing to 88km before consistently completing the 84km baseline is premature given the very low recent cycling volume (one 77km ride in 4 weeks)."
-    },
-    {
-      "date": "2026-08-09",
-      "discipline": "running",
-      "current_session": "Wk7 Long Run \u2014 18.8km @ 6:15-6:45/km, 180 min",
-      "proposed_session": "16km @ 6:30-6:45/km, 105-110 min \u2014 only extend beyond 16km if the Aug 2nd run was completed without issue and sleep has improved to 7h+ average",
-      "change_type": "decrease",
-      "reason": "Long run distance should progress from a successfully completed shorter baseline rather than jumping from a capped 14-15km to 18.8km in one week."
-    }
-  ],
+  "proposed_changes": [],
   "generated_at": "2026-07-30T20:27:36.630576",
   "weeks_analysed": 4,
   "days_to_marathon": 192,
-  "days_to_ironman": 325
+  "days_to_ironman": 325,
+  "applied_at": "2026-07-30T20:29:53.098987",
+  "applied_count": 6
 }
