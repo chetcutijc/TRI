@@ -831,17 +831,19 @@ def race_cards_html():
 
 # ── AI Coaching section HTML ──────────────────────────────────────────────────
 def coaching_html(coaching):
-    """Renders the AI coaching section: summary, suggestions, proposed plan changes."""
+    """Renders the AI coaching summary + suggestions card.
+    Proposed changes themselves are shown in the unified Training Plan table
+    below (highlighted rows), not duplicated here."""
     if not coaching or not coaching.get("summary"):
         return """<div style="background:#f8f8fc;border-radius:12px;padding:20px 24px;color:#9a9aaa;font-size:.88em">
             No AI coaching data yet — analysis runs on Saturday syncs.<br>
             Make sure <code>ANTHROPIC_API_KEY</code> is set in your repo secrets.
         </div>"""
 
-    gen_at  = coaching.get("generated_at","")[:10]
-    summary = coaching.get("summary","")
+    gen_at      = coaching.get("generated_at","")[:10]
+    summary     = coaching.get("summary","")
     suggestions = coaching.get("suggestions", [])
-    changes = coaching.get("proposed_changes", [])
+    changes     = coaching.get("proposed_changes", [])
 
     sugg_html = "".join(f"""
         <div style="display:flex;gap:12px;margin-bottom:12px;align-items:flex-start">
@@ -852,72 +854,17 @@ def coaching_html(coaching):
             <span style="font-size:.88em;line-height:1.5;color:#2c2c34">{s}</span>
         </div>""" for i, s in enumerate(suggestions) if s)
 
-    # Proposed changes table
     if changes:
-        change_rows = "".join(f"""<tr>
-            <td style="white-space:nowrap;color:#9a9aaa;font-size:.8em">{c.get('date','')}</td>
-            <td><span style="background:#5B6EF522;color:#5B6EF5;border-radius:5px;
-                padding:1px 7px;font-size:.75em;font-weight:700">
-                {c.get('discipline','').replace('_',' ').title()}</span></td>
-            <td style="font-size:.8em;color:#888">{c.get('current_session','')}</td>
-            <td style="font-size:.8em;color:#1a1a22;font-weight:600">{c.get('proposed_session','')}</td>
-            <td style="font-size:.75em;color:#888">{c.get('reason','')}</td>
-            <td style="font-size:.75em;text-align:center">
-                <span style="background:#FFC75A22;color:#b88a00;border-radius:5px;
-                    padding:1px 7px;font-weight:600">{c.get('change_type','').upper()}</span>
-            </td>
-        </tr>""" for c in changes)
-
-        changes_section = f"""
-        <h3 style="font-size:.9em;font-weight:700;margin:20px 0 8px;color:#1a1a22">
-            📋 Proposed Plan Adjustments
-            <span style="font-size:.8em;font-weight:400;color:#9a9aaa;margin-left:8px">
-                — review below, then download updated ICS if you want to apply
-            </span>
-        </h3>
-        <table class="table" style="margin-bottom:12px">
-            <tr><th>Date</th><th>Discipline</th><th>Current</th>
-                <th>Proposed</th><th>Reason</th><th>Type</th></tr>
-            {change_rows}
-        </table>
-        <button class="btn" onclick="downloadCoachingICS()"
-            style="background:#00C2A8;font-size:.82em">
-            ⬇️ Download Adjusted ICS
-        </button>
-        <span style="font-size:.76em;color:#9a9aaa;margin-left:10px">
-            Import into Calendar app — only proposed sessions are changed
-        </span>
-        <script>
-        var COACHING_CHANGES = {json.dumps(changes)};
-        function downloadCoachingICS() {{
-            var lines = [
-                "BEGIN:VCALENDAR",
-                "VERSION:2.0",
-                "PRODID:-//Jean Triathlon AI Coaching//EN",
-                "CALSCALE:GREGORIAN",
-            ];
-            COACHING_CHANGES.forEach(function(c, i) {{
-                var d = c.date.replace(/-/g, "");
-                var uid = "ai-coaching-" + d + "-" + i + "@jean-tri";
-                lines.push("BEGIN:VEVENT");
-                lines.push("UID:" + uid);
-                lines.push("DTSTART:" + d + "T070000");
-                lines.push("DTEND:"   + d + "T090000");
-                lines.push("SUMMARY:[AI ADJUSTED] " + c.discipline.replace("_"," ") + " — " + c.proposed_session.substring(0,60));
-                lines.push("DESCRIPTION:" + c.proposed_session + "\\n\\nReason: " + c.reason + "\\n\\nAI coaching adjustment " + "{gen_at}");
-                lines.push("END:VEVENT");
-            }});
-            lines.push("END:VCALENDAR");
-            var blob = new Blob([lines.join("\r\n")], {{type:"text/calendar"}});
-            var a = document.createElement("a");
-            a.href = URL.createObjectURL(blob);
-            a.download = "ai_coaching_adjustments.ics";
-            a.click();
-        }}
-        </script>
-        """
+        changes_note = f"""<div style="background:#eef0fd;border-radius:8px;
+            padding:12px 16px;font-size:.85em;color:#5B6EF5;margin-top:12px;
+            display:flex;align-items:center;gap:8px">
+            📋 <strong>{len(changes)} plan adjustment{'s' if len(changes)!=1 else ''} proposed</strong>
+            — see highlighted rows in the Training Plan table below.
+            Download the ICS from there, or run <strong>Apply AI Coaching</strong>
+            in GitHub Actions to update the dashboard too.
+        </div>"""
     else:
-        changes_section = """<div style="background:#e8f9f5;border-radius:8px;
+        changes_note = """<div style="background:#e8f9f5;border-radius:8px;
             padding:12px 16px;font-size:.85em;color:#00A888;margin-top:12px">
             ✅ No plan adjustments proposed — training looks on track for this period.
         </div>"""
@@ -948,8 +895,9 @@ def coaching_html(coaching):
             💡 Coaching Suggestions
         </div>
         {sugg_html}
-        {changes_section}
+        {changes_note}
     </div>"""
+
 
 # ── Plan viewer ───────────────────────────────────────────────────────────────
 DISC_COLORS = {
@@ -961,124 +909,263 @@ DISC_COLORS = {
     "other":             "#aaaaaa",
 }
 DISC_LABELS = {
-    "swimming":          "🏊 Swimming",
-    "cycling":           "🚴 Cycling",
-    "running":           "🏃 Running",
+    "swimming":          "🏊 Swim",
+    "cycling":           "🚴 Bike",
+    "running":           "🏃 Run",
     "strength_training": "💪 Strength",
-    "rest":              "😴 Rest/Recovery",
+    "rest":              "😴 Rest",
     "other":             "📋 Other",
+}
+CHANGE_COLORS = {
+    "increase": ("#00C2A8", "#e8f9f5"),
+    "decrease": ("#FFC75A", "#fff8e0"),
+    "replace":  ("#5B6EF5", "#eef0fd"),
+    "skip":     ("#FF7A59", "#ffeae8"),
+    "add":      ("#00C2A8", "#e8f9f5"),
 }
 
 
-def plan_viewer_html(plan_full):
-    """Builds two plan views (Next 2 Weeks / Full Plan) with a JS toggle."""
+def plan_viewer_html(plan_full, coaching=None):
+    """Unified plan table with AI suggestions merged as extra columns."""
     if not plan_full:
-        return "<p class=\'subtext\'>No plan data found — add data/plan_full.json to the repo.</p>"
+        return "<p class=\'subtext\'>No plan data — add data/plan_full.json to the repo.</p>"
 
-    today = dt.date.today()
+    today     = dt.date.today()
     two_weeks = today + dt.timedelta(weeks=2)
 
-    def session_row(s, idx):
-        date    = dt.date.fromisoformat(s["date"])
-        is_past = date < today
-        is_today = date == today
-        disc    = s.get("discipline", "other")
-        color   = DISC_COLORS.get(disc, "#aaa")
-        label   = DISC_LABELS.get(disc, disc)
-        dur     = f"{s['duration_min']}min" if s.get("duration_min") else "—"
+    # Build a lookup: date+discipline → proposed change from coaching
+    ai_changes = {}
+    if coaching:
+        for c in coaching.get("proposed_changes", []):
+            key = (c.get("date",""), c.get("discipline",""))
+            ai_changes[key] = c
+
+    def session_row(s):
+        date   = dt.date.fromisoformat(s["date"])
+        is_past   = date < today
+        is_today  = date == today
+        disc   = s.get("discipline", "other")
+        color  = DISC_COLORS.get(disc, "#aaa")
+        label  = DISC_LABELS.get(disc, disc)
+        dur    = f"{s['duration_min']}min" if s.get("duration_min") else "—"
         targets = []
         if s.get("distance"):  targets.append(f"📏 {s['distance']}")
-        if s.get("pace"):      targets.append(f"⏱️ {s['pace']}")
+        if s.get("pace"):      targets.append(f"⏱ {s['pace']}")
         if s.get("power"):     targets.append(f"⚡ {s['power']}")
-        target_str = "  ·  ".join(targets) if targets else ""
-        notes   = s.get("notes") or ""
-        # Truncate notes to first meaningful sentence
-        notes_short = notes.split(" | ")[0][:140] if notes else ""
-        opacity = "opacity:.5" if is_past else ""
-        highlight = "background:#fffbea" if is_today else ""
-        return f"""<tr style="{opacity}{highlight}" data-disc="{disc}" data-date="{s['date']}">
-            <td style="white-space:nowrap;color:#9a9aaa;font-size:.8em">{date.strftime('%a %b %d')}</td>
-            <td><span style="background:{color}22;color:{color};border-radius:6px;
-                padding:2px 8px;font-size:.75em;font-weight:700;white-space:nowrap">{label}</span></td>
-            <td style="font-size:.82em;color:#555">{s.get('summary','')}</td>
-            <td style="font-size:.8em;color:#9a9aaa;text-align:center">{dur}</td>
-            <td style="font-size:.78em;color:#5B6EF5;font-weight:600">{target_str}</td>
-            <td style="font-size:.76em;color:#666;max-width:260px">{notes_short}</td>
-        </tr>"""
+        target_str   = " · ".join(targets)
+        notes_short  = (s.get("notes") or "").split(" | ")[0][:120]
 
-    rows_2wk   = ""
-    rows_full  = ""
+        # AI proposal for this session?
+        ai = ai_changes.get((s["date"], disc))
+        if ai:
+            ct         = ai.get("change_type","replace")
+            text_color, bg_color = CHANGE_COLORS.get(ct, ("#888","#f8f8f8"))
+            ai_cell = f"""<td style="font-size:.78em;color:{text_color};
+                font-weight:600;line-height:1.4">{ai.get('proposed_session','')}<br>
+                <span style="font-size:.9em;color:#888;font-weight:400">{ai.get('reason','')}</span></td>
+            <td style="text-align:center">
+                <span style="background:{bg_color};color:{text_color};border-radius:5px;
+                    padding:2px 7px;font-size:.7em;font-weight:700">
+                    {ct.upper()}</span></td>"""
+            row_style = f"border-left:3px solid {text_color};background:{bg_color}88"
+        else:
+            ai_cell = "<td style=\'color:#eee;font-size:.78em\''>—</td><td></td>"
+            row_style = ""
+
+        opacity  = "opacity:.45" if is_past else ""
+        highlight = "background:#fffbea !important" if is_today else ""
+
+        return (
+            f"<tr data-disc=\'{disc}\' data-date=\'{s['date']}\' "
+            f"style=\'{row_style};{opacity}{highlight}\'>"
+            f"<td style=\'white-space:nowrap;color:#9a9aaa;font-size:.8em\'>"
+            f"{date.strftime('%a %b %d')}</td>"
+            f"<td><span style=\'background:{color}22;color:{color};border-radius:6px;"
+            f"padding:2px 7px;font-size:.72em;font-weight:700\'>{label}</span></td>"
+            f"<td style=\'font-size:.82em;color:#555\'>{s.get('summary','')}</td>"
+            f"<td style=\'font-size:.8em;color:#9a9aaa;text-align:center\'>{dur}</td>"
+            f"<td style=\'font-size:.78em;color:#5B6EF5;font-weight:600\'>{target_str}</td>"
+            f"<td style=\'font-size:.76em;color:#666;max-width:180px;word-break:normal;"
+            f"overflow-wrap:break-word\'>{notes_short}</td>"
+            f"{ai_cell}</tr>"
+        )
+
+    rows_2wk  = ""
+    rows_full = ""
+    has_ai    = bool(ai_changes)
+
     for s in plan_full:
         date = dt.date.fromisoformat(s["date"])
-        row  = session_row(s, 0)
+        row  = session_row(s)
         if today <= date <= two_weeks:
             rows_2wk  += row
         rows_full += row
 
     if not rows_2wk:
-        rows_2wk = "<tr><td colspan=\'6\' style=\'color:#9a9aaa;padding:16px\'>No sessions in the next 2 weeks.</td></tr>"
+        rows_2wk = "<tr><td colspan=\'8\' style=\'color:#9a9aaa;padding:16px\'>No sessions in the next 2 weeks.</td></tr>"
+
+    ai_header = ("<th>🤖 AI Suggestion</th><th>Change</th>" if has_ai
+                 else "<th style=\'color:#ddd\'>AI Suggestion</th><th></th>")
+
+    ai_legend = ""
+    ics_button = ""
+    if has_ai:
+        changes_list = list(ai_changes.values())
+        ai_legend = """<div style="display:flex;gap:10px;flex-wrap:wrap;
+            font-size:.75em;margin-bottom:6px;align-items:center">
+            <span style="font-weight:600;color:#555">AI proposals:</span>
+            <span style="background:#e8f9f5;color:#00C2A8;border-radius:4px;padding:1px 7px;font-weight:600">INCREASE</span>
+            <span style="background:#fff8e0;color:#b88a00;border-radius:4px;padding:1px 7px;font-weight:600">DECREASE</span>
+            <span style="background:#eef0fd;color:#5B6EF5;border-radius:4px;padding:1px 7px;font-weight:600">REPLACE</span>
+            <span style="background:#ffeae8;color:#FF7A59;border-radius:4px;padding:1px 7px;font-weight:600">SKIP</span>
+        </div>"""
+        gen_at = coaching.get("generated_at","")[:10] if coaching else ""
+        ics_button = f"""<div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn" onclick="downloadCoachingICS()"
+                style="background:#00C2A8;font-size:.8em">⬇️ Download Adjusted ICS</button>
+            <button class="btn" onclick="triggerApplyCoaching()"
+                style="background:#5B6EF5;font-size:.8em">🚀 Apply to Dashboard</button>
+            <span id="apply-status" style="font-size:.74em;color:#9a9aaa"></span>
+        </div>
+        <p style="font-size:.72em;color:#bbb;margin:-6px 0 12px">
+            "Apply to Dashboard" triggers the GitHub Actions workflow that merges these
+            changes into your plan. First time only: it asks for a GitHub token
+            (saved in this browser only —
+            <a href="https://github.com/settings/personal-access-tokens/new" target="_blank"
+               style="color:#5B6EF5">create one here</a>,
+            fine-grained, scoped to this repo, Actions: Read and Write).
+        </p>
+        <script>
+        var COACHING_CHANGES = {json.dumps(changes_list)};
+        var GH_OWNER = "chetcutijc";
+        var GH_REPO  = "TRI";
+        var GH_WORKFLOW = "apply_coaching.yml";
+
+        function downloadCoachingICS() {{
+            var lines = ["BEGIN:VCALENDAR","VERSION:2.0",
+                "PRODID:-//Jean Triathlon AI Coaching//EN","CALSCALE:GREGORIAN"];
+            COACHING_CHANGES.forEach(function(c, i) {{
+                var d = c.date.replace(/-/g, "");
+                lines.push("BEGIN:VEVENT");
+                lines.push("UID:ai-coaching-" + d + "-" + i + "@jean-tri");
+                lines.push("DTSTART:" + d + "T070000");
+                lines.push("DTEND:"   + d + "T090000");
+                lines.push("SUMMARY:[AI ADJUSTED] " + c.discipline.replace("_"," ") + " \u2014 " + c.proposed_session.substring(0,60));
+                lines.push("DESCRIPTION:" + c.proposed_session + "\\n\\nReason: " + c.reason + "\\n\\nAI coaching " + "{gen_at}");
+                lines.push("END:VEVENT");
+            }});
+            lines.push("END:VCALENDAR");
+            var blob = new Blob([lines.join("\r\n")], {{type:"text/calendar"}});
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "ai_coaching_adjustments.ics";
+            a.click();
+        }}
+
+        function getGhToken() {{
+            var token = localStorage.getItem("gh_pat_apply_coaching");
+            if (!token) {{
+                token = prompt(
+                    "Paste your GitHub fine-grained token (Actions: Read and Write, scoped to this repo).\nSaved only in this browser."
+                );
+                if (token) localStorage.setItem("gh_pat_apply_coaching", token);
+            }}
+            return token;
+        }}
+
+        function triggerApplyCoaching() {{
+            var status = document.getElementById("apply-status");
+            var token = getGhToken();
+            if (!token) {{
+                status.textContent = "No token provided.";
+                status.style.color = "#FF7A59";
+                return;
+            }}
+            status.textContent = "Triggering workflow...";
+            status.style.color = "#9a9aaa";
+
+            fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+                  "/actions/workflows/" + GH_WORKFLOW + "/dispatches", {{
+                method: "POST",
+                headers: {{
+                    "Authorization": "Bearer " + token,
+                    "Accept": "application/vnd.github+json",
+                    "X-GitHub-Api-Version": "2022-11-28"
+                }},
+                body: JSON.stringify({{ ref: "main" }})
+            }}).then(function(res) {{
+                if (res.status === 204) {{
+                    status.textContent = "\u2705 Triggered! Check GitHub Actions \u2014 dashboard updates in ~1-2 min.";
+                    status.style.color = "#00C2A8";
+                }} else if (res.status === 401 || res.status === 403) {{
+                    status.textContent = "\u274c Token invalid or expired. Try again.";
+                    status.style.color = "#FF7A59";
+                    localStorage.removeItem("gh_pat_apply_coaching");
+                }} else {{
+                    status.textContent = "\u274c Failed (status " + res.status + "). Check token permissions.";
+                    status.style.color = "#FF7A59";
+                }}
+            }}).catch(function(err) {{
+                status.textContent = "\u274c Network error: " + err;
+                status.style.color = "#FF7A59";
+            }});
+        }}
+        </script>"""
+
+    def filter_bar(suffix):
+        return f"""<div class="plan-filter-bar" style="margin-bottom:10px">
+            <span style="font-size:.8em;font-weight:600;color:#555">Filter:</span>
+            <button class="filter-btn active" onclick="filterDisc{suffix}(\'all\')">All</button>
+            <button class="filter-btn" onclick="filterDisc{suffix}(\'swimming\')">🏊 Swim</button>
+            <button class="filter-btn" onclick="filterDisc{suffix}(\'cycling\')">🚴 Bike</button>
+            <button class="filter-btn" onclick="filterDisc{suffix}(\'running\')">🏃 Run</button>
+            <button class="filter-btn" onclick="filterDisc{suffix}(\'strength_training\')">💪 Strength</button>
+            <button class="filter-btn" onclick="filterDisc{suffix}(\'rest\')">😴 Rest</button>
+        </div>"""
+
+    header_row = f"<tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th>{ai_header}</tr>"
 
     return f"""
 <div class="plan-controls">
     <button class="plan-btn active" onclick="showPlan(\'two-weeks\')">Next 2 Weeks</button>
     <button class="plan-btn" onclick="showPlan(\'full\')">Full Plan</button>
-    <span id="plan-filter-label" style="margin-left:12px;font-size:.8em;color:#9a9aaa"></span>
 </div>
+{ai_legend}
+{ics_button}
 
 <div id="plan-two-weeks">
-<div class="plan-filter-bar">
-    <span style="font-size:.8em;font-weight:600;color:#555">Filter:</span>
-    <button class="filter-btn active" onclick="filterDisc2(\'all\')">All</button>
-    <button class="filter-btn" onclick="filterDisc2(\'swimming\')">🏊 Swim</button>
-    <button class="filter-btn" onclick="filterDisc2(\'cycling\')">🚴 Bike</button>
-    <button class="filter-btn" onclick="filterDisc2(\'running\')">🏃 Run</button>
-    <button class="filter-btn" onclick="filterDisc2(\'strength_training\')">💪 Strength</button>
-    <button class="filter-btn" onclick="filterDisc2(\'rest\')">😴 Rest</button>
-</div>
-<table class="table plan-table" id="two-week-table">
-<tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th></tr>
-{rows_2wk}
-</table>
+{filter_bar("A")}
+<table class="table plan-table" id="two-week-table">{header_row}{rows_2wk}</table>
 </div>
 
 <div id="plan-full" style="display:none">
-<div class="plan-filter-bar">
-    <span style="font-size:.8em;font-weight:600;color:#555">Filter:</span>
-    <button class="filter-btn active" onclick="filterDisc(\'all\')">All</button>
-    <button class="filter-btn" onclick="filterDisc(\'swimming\')">🏊 Swim</button>
-    <button class="filter-btn" onclick="filterDisc(\'cycling\')">🚴 Bike</button>
-    <button class="filter-btn" onclick="filterDisc(\'running\')">🏃 Run</button>
-    <button class="filter-btn" onclick="filterDisc(\'strength_training\')">💪 Strength</button>
-    <button class="filter-btn" onclick="filterDisc(\'rest\')">😴 Rest</button>
-</div>
-<table class="table plan-table" id="full-plan-table">
-<tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th></tr>
-{rows_full}
-</table>
+{filter_bar("B")}
+<table class="table plan-table" id="full-plan-table">{header_row}{rows_full}</table>
 </div>
 
 <script>
 function showPlan(view) {{
-    document.getElementById('plan-two-weeks').style.display = view==='two-weeks' ? '' : 'none';
-    document.getElementById('plan-full').style.display      = view==='full'       ? '' : 'none';
-    document.querySelectorAll('.plan-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    document.getElementById("plan-two-weeks").style.display = view==="two-weeks" ? "" : "none";
+    document.getElementById("plan-full").style.display      = view==="full"       ? "" : "none";
+    document.querySelectorAll(".plan-btn").forEach(b => b.classList.remove("active"));
+    event.target.classList.add("active");
 }}
-function filterDisc(disc) {{
-    document.querySelectorAll('#full-plan-table tr[data-disc]').forEach(row => {{
-        row.style.display = (disc === 'all' || row.dataset.disc === disc) ? '' : 'none';
+function filterDiscA(disc) {{
+    document.querySelectorAll("#two-week-table tr[data-disc]").forEach(r => {{
+        r.style.display = (disc==="all" || r.dataset.disc===disc) ? "" : "none";
     }});
-    event.target.closest('.plan-filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    event.target.closest(".plan-filter-bar").querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    event.target.classList.add("active");
 }}
-function filterDisc2(disc) {{
-    document.querySelectorAll('#two-week-table tr[data-disc]').forEach(row => {{
-        row.style.display = (disc === 'all' || row.dataset.disc === disc) ? '' : 'none';
+function filterDiscB(disc) {{
+    document.querySelectorAll("#full-plan-table tr[data-disc]").forEach(r => {{
+        r.style.display = (disc==="all" || r.dataset.disc===disc) ? "" : "none";
     }});
-    event.target.closest('.plan-filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    event.target.closest(".plan-filter-bar").querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    event.target.classList.add("active");
 }}
 </script>"""
+
 
 # ── Compliance HTML table ─────────────────────────────────────────────────────
 def compliance_html(weeks_data):
@@ -1388,7 +1475,7 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 
 <h2>Training Plan</h2>
 <p class="subtext">Sessions from your 55-week plan. Past sessions are faded. Today is highlighted.</p>
-{plan_viewer_html(plan_full or [])}
+{plan_viewer_html(plan_full or [], coaching)}
 
 <h2>Recent Sessions</h2>
 {recent_html}
@@ -1881,8 +1968,11 @@ def coaching_email_text(coaching):
             lines.append(f"    Proposed: {c.get('proposed_session','')}")
             lines.append(f"    Reason:   {c.get('reason','')}")
             lines.append("")
-        lines.append("  → Open the dashboard website to review and download the")
-        lines.append("    adjusted ICS file if you want to apply any of these.")
+        lines.append("  → Open the dashboard website to review the unified")
+        lines.append("    plan table (highlighted rows = AI proposals).")
+        lines.append("  → Download ICS from the website to update your phone calendar.")
+        lines.append("  → Run 'Apply AI Coaching' workflow in GitHub Actions to")
+        lines.append("    update plan_full.json so changes show on the dashboard too.")
     else:
         lines.append("✅ No plan adjustments proposed — training is on track.")
     lines.append("")
