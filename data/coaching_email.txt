@@ -1,49 +1,49 @@
 ============================================================
 🤖 AI COACHING REPORT
    Generated: 2026-07-30
-   192 days to Marathon  |  325 days to Ironman Italy Cervia
+   65 days to Treviso 10K Tiramisu Run  |  192 days to Marathon  |  325 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show a very low and inconsistent training volume with only 9 sessions logged, dominated by swimming and sporadic runs, with a single long bike ride. Sleep quality is chronically poor — frequently under 5 hours and often under 4 hours — and body battery readings are regularly critically low (hitting 2–5 on multiple days), indicating the athlete is carrying significant accumulated fatigue that is undermining training absorption. The one quality running session on July 18th (avg HR 179 bpm at 5:02/km) suggests a hard effort that likely added to the fatigue debt rather than building fitness toward the marathon target 192 days away.
+The last 4 weeks show a very low and inconsistent training volume — only 9 sessions logged with no cycling until July 20th, minimal swimming, and two runs. Sleep is chronically short (averaging well under 7 hours on most nights) and body battery is frequently critically low, indicating significant accumulated fatigue and poor recovery. The most recent days (July 27–30) show an alarming collapse in sleep (41 min on July 27th) and body battery (max 2–25), meaning the athlete is entering the upcoming training block in a compromised state that must be addressed before meaningful fitness gains are possible.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all else for the next 2 weeks: aim for 7–8 hours per night consistently, as the chronic sleep deprivation (multiple nights under 4 hours) is the single biggest barrier to adaptation and marathon fitness right now.
-  2. Run pace and HR discipline is critical — the July 18th run at 179 bpm avg is far too hard for this phase; all easy runs must be genuinely easy (HR under 150 bpm, pace 6:30–7:00/km) to build the aerobic base needed for a sub-4h marathon.
-  3. Add at least two pool swim sessions per week consistently — you have strong open-water sessions but pool work is missing entirely from the last 4 weeks, and the 1:50/100m Ironman target requires structured technique and pace work.
-  4. Avoid back-to-back high-load days: the pattern of hard run followed by long bike ride without adequate recovery is compounding fatigue; schedule at least one full rest day between quality sessions.
-  5. Begin tracking and acting on body battery before each session — if body battery max is below 40, default to rest or a 20-minute easy walk only; this guardrail will prevent the cycle of digging deeper into a fatigue hole.
+  1. Prioritise sleep above all else for the next 7–10 days — the 10K Tiramisu Run is 65 days away and fitness gains require consistent 7–8 hour nights; no training session this month will compensate for the chronic sleep deficit currently undermining recovery.
+  2. Add a dedicated open-water swim or pool session twice weekly in the lead-up to the 10K (even 20–30 min easy technique work) to maintain swim fitness for Ironman Cervia without adding meaningful fatigue.
+  3. For the Treviso 10K (65 days), shift run training focus toward one quality session per week (e.g. 4–5x1km @ 5:00–5:15/km) once body battery consistently reaches 50+ — your July 18th run at 5:02/km pace with HR 179 bpm suggests speed is there but aerobic efficiency at pace needs work.
+  4. Replace the July 31st pool swim with a very easy 30-min walk or mobility session if body battery on waking is below 35 — logging junk miles while underslept reinforces fatigue patterns rather than building fitness.
+  5. Track a 7-day rolling average of sleep duration and only progress intensity (Z3/Z4 blocks) in Weeks 8–10 when that average exceeds 6.5 hours — this single metric is the clearest lever available to improve race-day performance at Treviso.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-07-31 [SWIMMING]
-    Current:  Pool swim 60 min, 2km+, pace ≤2:30/100m — technique drills and aerobic sets
-    Proposed: Reduce to 45 min, 1,500m only, focusing purely on drill work (catch-up, fingertip drag, bilateral breathing) with no pace pressure; skip if body battery is below 35 on waking
-    Reason:   Body battery on July 30th is critically low (max 2) and the athlete needs to ease back into training; a shorter, low-intensity technical swim will maintain feel for the water without adding to the fatigue deficit.
+    Current:  Pool Swim 60 min, 2km+, pace ≤2:30/100m
+    Proposed: Shorten to 30–40 min easy technique-only swim, 1,000–1,200m, drills and easy laps at perceived effort only — no pace target today.
+    Reason:   Body battery max was 2 on July 30th and sleep data is missing; even with one rest day, a full 2km pool session risks compounding the critical recovery deficit entering the weekend.
 
   • 2026-08-01 [CYCLING]
-    Current:  AI adjusted long ride: 60–70km @ 128–155W, cap 180–200 min, no tempo blocks, stop if HR > 145 bpm
-    Proposed: Cap at 50–60km @ 128–145W (low Z2 only), 150–165 min maximum; include 10 min warm-up and 10 min cool-down within that time; abort and return home if HR exceeds 140 bpm before the halfway point
-    Reason:   Chronic sleep deprivation and critically low body battery across the past week mean even the already-reduced AI plan may be too aggressive; a further reduction protects against deeper fatigue going into the following week's key sessions.
+    Current:  AI-adjusted long ride 60–70km @ 128–155W, cap 180–200 min, stop if HR >145 bpm
+    Proposed: Cap at 50–60km @ 128–145W (low Z2 only), strict 150-min ceiling, no tempo blocks; if HR exceeds 140 bpm in the first 30 min, turn around early and stop at 90 min.
+    Reason:   Given the near-total sleep collapse on July 27th and body battery of 2 on July 30th, even the already-adjusted ride target is too aggressive; a shorter, flatter effort protects weekend-to-week recovery.
 
   • 2026-08-02 [RUNNING]
-    Current:  AI adjusted long run: 10–12km @ 6:45–7:00/km, HR cap 150 bpm; convert to 30-min walk if HR > 150 bpm in first 3km
-    Proposed: Replace with a 40–50 min easy walk/run at conversational effort only (HR under 140 bpm); if HR stays comfortably under 140 for 20 min, jog at 7:00–7:30/km for the remainder — total distance is irrelevant
-    Reason:   Following a reduced long ride on Saturday with depleted recovery reserves, a true easy effort rather than a target-distance run will allow meaningful aerobic stimulus without compounding the accumulated fatigue.
+    Current:  AI-adjusted long run capped at 10–12km @ 6:45–7:00/km, HR ≤150 bpm
+    Proposed: Reduce to 7–8km @ 7:00/km conversational pace, HR ≤145 bpm; if HR exceeds 145 bpm at any point in the first 2km, convert immediately to a 30-min easy walk.
+    Reason:   The athlete has logged only two runs in four weeks and is entering this long run off critically low body battery and fragmented sleep; a shorter easy effort builds the habit of consistency without injury risk.
 
   • 2026-08-06 [RUNNING]
-    Current:  Wk7 Evening session: maintenance aerobic run 6:30–6:50/km, 30–40 min, no intensity
-    Proposed: 30 min easy run at 7:00–7:30/km with strict HR cap of 145 bpm; shorten to 20 min or switch to brisk walk if HR does not settle below 145 bpm within the first 5 min
-    Reason:   Given the pattern of persistently elevated HR during runs (152 bpm on an easy July 7th run, 179 bpm on July 18th), holding a genuinely easy pace with a hard HR ceiling will rebuild the aerobic base more effectively than hitting pace targets.
+    Current:  Maintenance aerobic run 6:30–6:50/km, 30–40 min, no intensity (90 min block)
+    Proposed: 30 min easy run @ 6:45–7:00/km, HR ≤145 bpm, flat route — keep this as a confidence-builder ahead of the Treviso 10K focus block starting Week 9.
+    Reason:   The 90-minute session block is misleading given notes say 30–40 min; explicitly cap at 30 min and set conservative HR ceiling to reinforce recovery-first habits this week.
+
+  • 2026-08-20 [RUNNING]
+    Current:  Intervals: 6x800m @ 4:55–5:10/km, 2 min jog recovery, 45–55 min total
+    Proposed: Reduce to 4x800m @ 5:00–5:15/km with 90-sec standing recovery between reps, total 35–40 min including warm-up and cool-down jog.
+    Reason:   This is the first structured interval session in the plan and falls only 7 weeks out from the Treviso 10K; starting at 4 reps instead of 6 reduces injury risk while still building the specific speed needed for a sub-52-min 10K.
 
   • 2026-08-13 [CYCLING]
-    Current:  AI adjusted Wk8 evening cycling: 3x8min @ 178–209W (Z3 Tempo), 4 min easy recovery, 55–65 min total
-    Proposed: Keep as Z2 only — 55 min @ 128–155W flat effort; postpone all Z3 tempo blocks until Wk9 at the earliest, and only introduce them if average nightly sleep has improved to 6.5h+ for the preceding 5 nights
-    Reason:   Introducing tempo cycling intensity in Wk8 while the athlete is still carrying a chronic sleep and recovery deficit risks injury and maladaptation; building the aerobic base solidly through Z2 is more important for both the marathon and Ironman goals at this stage.
-
-  • 2026-08-16 [RUNNING]
-    Current:  AI adjusted Wk8 long run: 16–17km @ 6:30–6:45/km, 105–115 min, no negative-split effort
-    Proposed: Target 14–16km @ 6:45–7:00/km (95–110 min), HR strictly under 150 bpm throughout; walk all uphills and any section where HR approaches 148 bpm — distance is secondary to keeping the effort genuinely aerobic
-    Reason:   Marathon readiness depends on consistent aerobic long runs rather than distance targets; capping intensity and adding HR-based walk breaks will accumulate time-on-feet safely while the athlete rebuilds recovery capacity.
+    Current:  AI-adjusted: 3x8min @ 178–209W (Z3 Tempo), 4 min easy recovery, 55–65 min total
+    Proposed: Keep the structure but add a gate: only execute the tempo blocks if the Aug 1st and Aug 8th rides were both completed and average nightly sleep in the prior 5 days exceeded 6 hours — otherwise revert to 60 min Z2 @ 128–155W.
+    Reason:   Progressing to Z3 tempo work while still sleep-deprived will not produce a training adaptation and risks a stress response; the conditional gate ensures intensity is earned by recovery, not just scheduled.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
