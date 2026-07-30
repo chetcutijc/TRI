@@ -5,6 +5,7 @@ from Garmin activity data, wellness data, training plan, and manual logs.
 """
 
 import json
+import re
 import datetime as dt
 import struct
 import zlib
@@ -925,6 +926,128 @@ CHANGE_COLORS = {
 }
 
 
+def evaluate_adherence(change, df):
+    """Did the athlete actually follow this AI suggestion?
+
+    Returns (status_label, colour, detail_string).
+    Compares the suggestion against real Garmin activities on that date (+/-1 day).
+    """
+    try:
+        target = dt.date.fromisoformat(change.get("date", ""))
+    except Exception:
+        return ("?", "#aaa", "invalid date")
+
+    if target > dt.date.today():
+        return ("Upcoming", "#9a9aaa", "not due yet")
+
+    disc = change.get("discipline", "")
+    ct   = change.get("change_type", "replace")
+
+    if df is None or df.empty:
+        return ("No data", "#aaa", "no activity data")
+
+    window = df[
+        (df["start"].dt.date >= target - dt.timedelta(days=1)) &
+        (df["start"].dt.date <= target + dt.timedelta(days=1))
+    ]
+    same_disc = window[window["type"] == disc]
+
+    # ── SKIP: success means the session did NOT happen ──
+    if ct == "skip":
+        if same_disc.empty:
+            return ("Followed", "#00C2A8", "session correctly skipped")
+        mins = round(same_disc["duration_min"].sum())
+        return ("Not followed", "#FF7A59", f"{mins}min logged anyway")
+
+    # ── ADD: success means an activity of that discipline appeared ──
+    if ct == "add":
+        if not same_disc.empty:
+            mins = round(same_disc["duration_min"].sum())
+            return ("Followed", "#00C2A8", f"{mins}min logged")
+        return ("Not followed", "#FF7A59", "no session logged")
+
+    # ── everything else needs an actual session to judge ──
+    if same_disc.empty:
+        return ("Missed", "#FF7A59", "no session logged")
+
+    act_min = round(same_disc["duration_min"].sum())
+    act_km  = round(same_disc["distance_km"].sum(), 1) if same_disc["distance_km"].notna().any() else None
+    detail  = f"{act_min}min" + (f" / {act_km}km" if act_km else "")
+
+    # Try to read the original planned duration out of the suggestion text
+    m = re.search(r"(\d+)\s*min", str(change.get("current_session", "")))
+    planned = int(m.group(1)) if m else None
+
+    if ct == "decrease" and planned:
+        if act_min <= planned * 0.95:
+            return ("Followed", "#00C2A8", f"{detail} (below {planned}min)")
+        return ("Not followed", "#FF7A59", f"{detail} (target was under {planned}min)")
+
+    if ct == "increase" and planned:
+        if act_min >= planned:
+            return ("Followed", "#00C2A8", f"{detail} (met {planned}min)")
+        return ("Partial", "#FFC75A", f"{detail} (target was {planned}min+)")
+
+    # replace / unknown: we can confirm it happened but not verify the content
+    return ("Completed", "#5B6EF5", detail)
+
+
+def adherence_html(coaching, df):
+    """Renders a history table of past AI suggestions and whether they were followed."""
+    history = (coaching or {}).get("history", [])
+    if not history:
+        return ""
+
+    # flatten most-recent-first, cap at 20 rows so it stays readable
+    rows_data = []
+    for round_ in reversed(history):
+        for c in round_.get("changes", []):
+            rows_data.append((round_.get("generated_at", "")[:10], c))
+    rows_data = rows_data[:20]
+    if not rows_data:
+        return ""
+
+    followed = sum(1 for _, c in rows_data
+                   if evaluate_adherence(c, df)[0] in ("Followed", "Completed"))
+    total_judged = sum(1 for _, c in rows_data
+                       if evaluate_adherence(c, df)[0] not in ("Upcoming", "No data", "?"))
+    pct = round(100 * followed / total_judged) if total_judged else 0
+    badge = "#00C2A8" if pct >= 70 else "#FFC75A" if pct >= 40 else "#FF7A59"
+
+    rows = ""
+    for gen_date, c in rows_data:
+        label, colour, detail = evaluate_adherence(c, df)
+        ct = c.get("change_type", "")
+        rows += f"""<tr>
+            <td style="white-space:nowrap;color:#9a9aaa;font-size:.8em">{c.get('date','')}</td>
+            <td style="font-size:.8em;font-weight:600">{c.get('discipline','').replace('_',' ').title()}</td>
+            <td style="text-align:center">
+                <span style="background:#f0f1f8;color:#6b6b78;border-radius:5px;
+                    padding:1px 7px;font-size:.7em;font-weight:700">{ct.upper()}</span></td>
+            <td style="font-size:.78em;color:#666;max-width:280px">{str(c.get('proposed_session',''))[:110]}</td>
+            <td style="text-align:center;white-space:nowrap">
+                <span style="background:{colour}22;color:{colour};border-radius:6px;
+                    padding:2px 9px;font-size:.75em;font-weight:700">{label}</span></td>
+            <td style="font-size:.74em;color:#9a9aaa">{detail}</td>
+        </tr>"""
+
+    return f"""
+    <div style="display:flex;justify-content:space-between;align-items:center;
+                flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <p class="subtext" style="margin:0">
+            Past AI suggestions checked against what you actually logged in Garmin.
+        </p>
+        <span style="background:{badge};color:#fff;border-radius:20px;
+            padding:3px 14px;font-size:.78em;font-weight:700">
+            {pct}% adherence ({followed}/{total_judged})</span>
+    </div>
+    <table class="table">
+        <tr><th>Date</th><th>Discipline</th><th>Type</th>
+            <th>Suggestion</th><th>Outcome</th><th>Actual</th></tr>
+        {rows}
+    </table>"""
+
+
 def build_ics_content(changes, gen_at=""):
     """Build RFC 5545 compliant ICS text from AI proposed changes.
 
@@ -1557,6 +1680,9 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 <h2>🤖 AI Coaching</h2>
 <p class="subtext">Claude analyses your last 4 weeks vs the plan every Saturday. Proposed changes are suggestions only — you download the ICS to apply them.</p>
 {coaching_html(coaching)}
+
+<h2>📊 AI Suggestion Adherence</h2>
+{adherence_html(coaching, df) or "<p class='subtext'>No applied suggestions yet — history appears here once you tap 'Apply to Dashboard'.</p>"}
 
 <h2>Training Plan</h2>
 <p class="subtext">Sessions from your 55-week plan. Past sessions are faded. Today is highlighted.</p>
