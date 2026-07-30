@@ -89,28 +89,37 @@ OUT_HTML        = Path("docs/index.html")
 OUT_PDF         = Path("docs/dashboard.pdf")
 
 # ── Race targets ────────────────────────────────────────────────────────────
-RACES = [
-    {
-        "name": "Marathon",
-        "emoji": "🏃",
-        "date": dt.date(2027, 2, 7),
-        "disciplines": ["running"],
-        "targets": {"run_pace_sec_km": 5*60+45},
-        "note": "Target: sub-4h (~5:45/km)",
-    },
-    {
-        "name": "Ironman Italy Cervia",
-        "emoji": "🏊🚴🏃",
-        "date": dt.date(2027, 6, 20),
-        "disciplines": ["swimming", "cycling", "running"],
-        "targets": {
-            "swim_pace_100m_sec": 110,    # 1:50/100m
-            "bike_power_w": 190,           # ~82% FTP
-            "run_pace_sec_km": 6*60+30,   # 6:30/km IM marathon
-        },
-        "note": "Full Ironman",
-    },
-]
+# Races live in data/races.json so you can add/edit them without touching code.
+RACES_FILE = Path("data/races.json")
+
+
+def load_races():
+    """Load races from data/races.json, sorted soonest-first.
+    Falls back to an empty list if the file is missing or malformed."""
+    if not RACES_FILE.exists():
+        print("WARNING: data/races.json not found — no races will be shown.")
+        return []
+    try:
+        raw = json.loads(RACES_FILE.read_text())
+    except Exception as e:
+        print(f"WARNING: could not parse races.json ({e}) — no races will be shown.")
+        return []
+
+    races = []
+    for r in raw:
+        try:
+            r = dict(r)
+            r["date"] = dt.date.fromisoformat(r["date"])
+            r.setdefault("emoji", "🏁")
+            r.setdefault("note", "")
+            r.setdefault("targets", {})
+            races.append(r)
+        except Exception as e:
+            print(f"WARNING: skipping malformed race entry {r!r}: {e}")
+    return sorted(races, key=lambda x: x["date"])
+
+
+RACES = load_races()
 
 PALETTE = {
     "running":           "#5B6EF5",
@@ -798,6 +807,218 @@ def chart_body_battery(wellness):
 
 
 # ── Race countdown cards HTML ─────────────────────────────────────────────────
+def race_manager_html():
+    """Add/remove races directly from the website.
+
+    Writes to data/races.json via the GitHub Contents API using the same
+    browser-stored token as the 'Apply to Dashboard' button, then triggers
+    a rebuild so the dashboard reflects the change.
+    """
+    existing = [
+        {"name": r["name"], "date": r["date"].isoformat(), "emoji": r.get("emoji", "🏁")}
+        for r in RACES
+    ]
+
+    return f"""
+<div style="margin:10px 0 4px">
+    <button class="btn" onclick="toggleRaceForm()"
+        style="background:#5B6EF5;font-size:.8em">＋ Add / Manage Races</button>
+    <span id="race-status" style="font-size:.76em;color:#9a9aaa;margin-left:10px"></span>
+</div>
+
+<div id="race-form" style="display:none;background:#fff;border-radius:12px;
+     padding:16px 18px;box-shadow:0 1px 3px rgba(20,20,40,.06);margin-bottom:14px">
+
+  <div style="font-size:.9em;font-weight:700;margin-bottom:10px">Add a race</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+      <label style="font-size:.75em;color:#6b6b78">Name
+          <input id="rf-name" type="text" placeholder="Malta Half Marathon"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Date
+          <input id="rf-date" type="date"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Emoji
+          <input id="rf-emoji" type="text" value="🏁" maxlength="8"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Note
+          <input id="rf-note" type="text" placeholder="Tune-up race"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+  </div>
+
+  <div style="font-size:.75em;font-weight:600;color:#6b6b78;margin:12px 0 6px">
+      Targets (optional — leave blank if not relevant)</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+      <label style="font-size:.75em;color:#6b6b78">Run pace (mm:ss /km)
+          <input id="rf-run" type="text" placeholder="5:45"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Bike power (W)
+          <input id="rf-bike" type="number" placeholder="190"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Swim pace (mm:ss /100m)
+          <input id="rf-swim" type="text" placeholder="1:50"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+  </div>
+
+  <div style="margin-top:14px">
+      <button class="btn" onclick="saveRace()" style="background:#00C2A8;font-size:.8em">Save Race</button>
+      <button class="btn" onclick="toggleRaceForm()"
+          style="background:#f0f1f8;color:#6b6b78;font-size:.8em">Cancel</button>
+  </div>
+
+  <div style="font-size:.85em;font-weight:700;margin:18px 0 8px;
+              border-top:1px solid #f0f0f5;padding-top:14px">Current races</div>
+  <div id="race-list"></div>
+
+  <p style="font-size:.72em;color:#bbb;margin-top:12px">
+      Saves to <code>data/races.json</code> and rebuilds the dashboard (~1–2 min).
+      Your GitHub token needs <strong>Contents: Read and write</strong> in addition to
+      Actions — if saving fails with a 403, update the token permissions
+      <a href="https://github.com/settings/tokens?type=beta" target="_blank"
+         style="color:#5B6EF5">here</a>.
+  </p>
+</div>
+
+<script>
+var EXISTING_RACES = {json.dumps(existing)};
+
+function toggleRaceForm() {{
+    var f = document.getElementById("race-form");
+    f.style.display = (f.style.display === "none") ? "" : "none";
+    if (f.style.display === "") renderRaceList();
+}}
+
+function renderRaceList() {{
+    var el = document.getElementById("race-list");
+    if (!EXISTING_RACES.length) {{ el.innerHTML = "<p style='font-size:.8em;color:#9a9aaa'>None yet.</p>"; return; }}
+    el.innerHTML = EXISTING_RACES.map(function(r, i) {{
+        return "<div style='display:flex;justify-content:space-between;align-items:center;" +
+               "padding:6px 0;border-bottom:1px solid #f5f5f8;font-size:.82em'>" +
+               "<span>" + r.emoji + " <strong>" + r.name + "</strong> " +
+               "<span style='color:#9a9aaa'>" + r.date + "</span></span>" +
+               "<button onclick='deleteRace(" + i + ")' style='background:none;border:none;" +
+               "color:#FF7A59;cursor:pointer;font-size:1em;font-weight:600'>Remove</button></div>";
+    }}).join("");
+}}
+
+function paceToSec(v) {{
+    if (!v) return null;
+    var m = String(v).trim().match(/^([0-9]{{1,2}}):([0-9]{{2}})$/);
+    if (!m) return null;
+    return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+}}
+
+function b64encodeUtf8(str) {{
+    var bytes = new TextEncoder().encode(str);
+    var bin = "";
+    bytes.forEach(function(b) {{ bin += String.fromCharCode(b); }});
+    return btoa(bin);
+}}
+function b64decodeUtf8(b64) {{
+    var bin = atob(b64.split(String.fromCharCode(10)).join(""));
+    var bytes = Uint8Array.from(bin, function(c) {{ return c.charCodeAt(0); }});
+    return new TextDecoder().decode(bytes);
+}}
+
+function setRaceStatus(msg, colour) {{
+    var s = document.getElementById("race-status");
+    s.textContent = msg;
+    s.style.color = colour || "#9a9aaa";
+}}
+
+// Read races.json -> mutate -> write back -> trigger rebuild
+function updateRacesFile(mutator, successMsg) {{
+    var token = getGhToken();
+    if (!token) {{ setRaceStatus("No token provided.", "#FF7A59"); return; }}
+
+    var url = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/data/races.json";
+    var headers = {{
+        "Authorization": "Bearer " + token,
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28"
+    }};
+
+    setRaceStatus("Saving...");
+
+    fetch(url, {{ headers: headers }})
+      .then(function(res) {{
+          if (!res.ok) throw new Error("Could not read races.json (status " + res.status + ")");
+          return res.json();
+      }})
+      .then(function(file) {{
+          var races = JSON.parse(b64decodeUtf8(file.content));
+          var updated = mutator(races);
+          if (updated === null) return null;
+          updated.sort(function(a, b) {{ return a.date < b.date ? -1 : 1; }});
+          return fetch(url, {{
+              method: "PUT",
+              headers: headers,
+              body: JSON.stringify({{
+                  message: "Update races via dashboard",
+                  content: b64encodeUtf8(JSON.stringify(updated, null, 2)),
+                  sha: file.sha
+              }})
+          }});
+      }})
+      .then(function(res) {{
+          if (res === null) return;
+          if (!res.ok) {{
+              return res.json().then(function(b) {{
+                  throw new Error(res.status + ": " + (b.message || "write failed"));
+              }});
+          }}
+          setRaceStatus(successMsg + " Rebuilding dashboard...", "#00C2A8");
+          // kick off a rebuild so the change shows up
+          return fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+                       "/actions/workflows/" + GH_WORKFLOW + "/dispatches", {{
+              method: "POST", headers: headers, body: JSON.stringify({{ ref: "main" }})
+          }}).then(function() {{
+              setRaceStatus(successMsg + " Dashboard rebuilding — refresh in ~2 min.", "#00C2A8");
+          }});
+      }})
+      .catch(function(err) {{
+          setRaceStatus("\u274c " + err.message, "#FF7A59");
+          console.error(err);
+      }});
+}}
+
+function saveRace() {{
+    var name = document.getElementById("rf-name").value.trim();
+    var date = document.getElementById("rf-date").value;
+    if (!name || !date) {{ setRaceStatus("Name and date are required.", "#FF7A59"); return; }}
+
+    var targets = {{}};
+    var run  = paceToSec(document.getElementById("rf-run").value);
+    var swim = paceToSec(document.getElementById("rf-swim").value);
+    var bike = parseInt(document.getElementById("rf-bike").value, 10);
+    if (run)  targets.run_pace_sec_km    = run;
+    if (swim) targets.swim_pace_100m_sec = swim;
+    if (!isNaN(bike)) targets.bike_power_w = bike;
+
+    var race = {{
+        name: name,
+        emoji: document.getElementById("rf-emoji").value.trim() || "🏁",
+        date: date,
+        note: document.getElementById("rf-note").value.trim(),
+        targets: targets
+    }};
+
+    updateRacesFile(function(races) {{ races.push(race); return races; }},
+                    "\u2705 Added " + name + ".");
+}}
+
+function deleteRace(idx) {{
+    var r = EXISTING_RACES[idx];
+    if (!r) return;
+    if (!confirm("Remove " + r.name + " (" + r.date + ")?")) return;
+    updateRacesFile(function(races) {{
+        return races.filter(function(x) {{
+            return !(x.name === r.name && x.date === r.date);
+        }});
+    }}, "\u2705 Removed " + r.name + ".");
+}}
+</script>"""
+
+
 def race_cards_html():
     cards = ""
     for r in RACES:
@@ -870,6 +1091,18 @@ def coaching_html(coaching):
             ✅ No plan adjustments proposed — training looks on track for this period.
         </div>"""
 
+    # Countdown chip per upcoming race — works with any number of races
+    _palette = ["#FF7A59", "#5B6EF5", "#00C2A8", "#FFC75A", "#9B7DFF"]
+    countdown_cards = ""
+    for i, r in enumerate([x for x in RACES if days_until(x["date"]) >= 0][:4]):
+        d = days_until(r["date"])
+        countdown_cards += f"""<div style="text-align:center">
+            <div style="font-size:1.1em;font-weight:800;color:{_palette[i % len(_palette)]}">{d}</div>
+            <div style="font-size:.65em;color:#9a9aaa;text-transform:uppercase">days to {r['name'][:18]}</div>
+        </div>"""
+    if not countdown_cards:
+        countdown_cards = '<div style="font-size:.75em;color:#9a9aaa">No upcoming races</div>'
+
     return f"""
     <div style="background:#fff;border-radius:14px;padding:20px 24px;
                 box-shadow:0 1px 3px rgba(20,20,40,.06);margin-bottom:8px">
@@ -880,14 +1113,7 @@ def coaching_html(coaching):
                 <div style="font-size:.78em;color:#9a9aaa">Generated {gen_at} · Claude {coaching.get('weeks_analysed',4)}-week analysis</div>
             </div>
             <div style="display:flex;gap:16px">
-                <div style="text-align:center">
-                    <div style="font-size:1.1em;font-weight:800;color:#FF7A59">{coaching.get('days_to_marathon','—')}</div>
-                    <div style="font-size:.65em;color:#9a9aaa;text-transform:uppercase">days to Marathon</div>
-                </div>
-                <div style="text-align:center">
-                    <div style="font-size:1.1em;font-weight:800;color:#5B6EF5">{coaching.get('days_to_ironman','—')}</div>
-                    <div style="font-size:.65em;color:#9a9aaa;text-transform:uppercase">days to Ironman</div>
-                </div>
+                {countdown_cards}
             </div>
         </div>
         <p style="font-size:.88em;line-height:1.6;color:#2c2c34;
@@ -1539,7 +1765,7 @@ h1{{font-size:1.55em;margin:0;font-weight:800;letter-spacing:-.3px;}}
 .card .label{{font-size:.68em;color:#9a9aaa;margin-top:2px;font-weight:600;
               text-transform:uppercase;letter-spacing:.3px;}}
 /* race cards */
-.races{{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0;}}
+.races{{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0;}}
 .race-card{{background:#fff;border-radius:12px;padding:16px 18px;
             box-shadow:0 1px 3px rgba(20,20,40,.06);}}
 .race-emoji{{font-size:1.6em;}}
@@ -1633,6 +1859,7 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 
 <h2>Race Targets</h2>
 <div class="races">{race_cards_html()}</div>
+{race_manager_html()}
 
 <h2>Last 30 Days — Overview</h2>
 <div class="stats">
@@ -2157,8 +2384,10 @@ def coaching_email_text(coaching):
     lines.append("=" * 60)
     lines.append("🤖 AI COACHING REPORT")
     lines.append(f"   Generated: {coaching.get('generated_at','')[:10]}")
-    lines.append(f"   {coaching.get('days_to_marathon','?')} days to Marathon  |  "
-                 f"{coaching.get('days_to_ironman','?')} days to Ironman")
+    upcoming = [r for r in RACES if days_until(r["date"]) >= 0][:4]
+    if upcoming:
+        lines.append("   " + "  |  ".join(
+            f"{days_until(r['date'])} days to {r['name']}" for r in upcoming))
     lines.append("=" * 60)
     lines.append("")
     lines.append("OVERALL ASSESSMENT:")
