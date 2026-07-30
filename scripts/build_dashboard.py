@@ -1046,6 +1046,12 @@ def plan_viewer_html(plan_full, coaching=None):
                 style="background:#5B6EF5;font-size:.8em">🚀 Apply to Dashboard</button>
             <span id="apply-status" style="font-size:.74em;color:#9a9aaa"></span>
         </div>
+        <p style="font-size:.72em;color:#bbb;margin:-6px 0 4px">
+            📥 On iPhone: after tapping Download, choose <strong>Save to Files</strong>
+            (not "Open") — then open the <strong>Files app</strong> and tap the saved
+            <code>.ics</code> file, which shows an "Add All Events" option for every
+            session at once. Opening it directly in Safari only adds one at a time.
+        </p>
         <p style="font-size:.72em;color:#bbb;margin:-6px 0 12px">
             "Apply to Dashboard" triggers the GitHub Actions workflow that merges these
             changes into your plan. First time only: it asks for a GitHub token
@@ -1074,7 +1080,7 @@ def plan_viewer_html(plan_full, coaching=None):
                 lines.push("END:VEVENT");
             }});
             lines.push("END:VCALENDAR");
-            var blob = new Blob([lines.join("\\r\\n")], {{type:"text/calendar"}});
+            var blob = new Blob([lines.join("\\r\\n")], {{type:"application/octet-stream"}});
             var a = document.createElement("a");
             a.href = URL.createObjectURL(blob);
             a.download = "ai_coaching_adjustments.ics";
