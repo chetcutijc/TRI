@@ -14,41 +14,6 @@ COACHING SUGGESTIONS:
   4. Swimming sessions are very short and infrequent (longest was 52 min / 2km open water); the pool sessions starting July 31st are critical — commit to hitting the 2km+ target every session to build toward the Ironman 3.8km swim.
   5. Avoid stacking high-load sessions (e.g. Wk7 cycling threshold intervals on Tuesday followed by strength + running on Thursday) when body battery trends remain low; use Wednesday rest days actively for breathwork and sleep extension rather than treating them as optional.
 
-PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-07-30 [STRENGTH TRAINING]
-    Current:  Wk6 Gym / Strength — 60 min strength session including shoulder, calf, jump drills and core
-    Proposed: Skip strength session today — replace with 15 min light mobility/stretching only
-    Reason:   Body battery is critically low (max 2, min 22) and sleep data is missing for July 30th, indicating insufficient recovery to absorb a strength stimulus safely.
-
-  • 2026-07-30 [CYCLING]
-    Current:  Wk6 Evening session — 90 min steady endurance at 128-177W (Z2/Z3)
-    Proposed: Shorten to 50-60 min strictly at 128-150W (low Z2 only), no Z3 tempo work
-    Reason:   With strength session skipped and body battery critically depleted, keeping the ride short and at the lower end of Z2 preserves the aerobic stimulus without adding further recovery debt.
-
-  • 2026-08-02 [RUNNING]
-    Current:  Wk6 Long Run — 18.4km @ 6:15-6:45/km, 180 min
-    Proposed: Cap at 14-15km @ 6:30-6:45/km (90-100 min), no negative-split effort; monitor HR and stop if above 155 bpm
-    Reason:   The athlete has not completed a run longer than 6.3km in the past 4 weeks, and jumping to 18.4km risks injury given the deconditioning and poor sleep trend.
-
-  • 2026-08-04 [CYCLING]
-    Current:  Wk7 Evening session — 5x5min @ 210-244W (Z4 Threshold) intervals
-    Proposed: Replace with 60 min steady Z2 ride at 128-177W — defer threshold intervals to Wk8 when base has been re-established
-    Reason:   Threshold intervals require a solid aerobic base and good recovery status; with only one Z2 ride completed in 4 weeks, introducing Z4 work this soon risks poor adaptation and elevated injury risk.
-
-  • 2026-08-08 [CYCLING]
-    Current:  Wk7 Long Ride — 88km @ 128-177W (Z2), 240 min
-    Proposed: 84km @ 128-160W (conservative Z2), 240 min — hold power strictly at lower half of Z2 range
-    Reason:   Progressing to 88km before consistently completing the 84km baseline is premature given the very low recent cycling volume (one 77km ride in 4 weeks).
-
-  • 2026-08-09 [RUNNING]
-    Current:  Wk7 Long Run — 18.8km @ 6:15-6:45/km, 180 min
-    Proposed: 16km @ 6:30-6:45/km, 105-110 min — only extend beyond 16km if the Aug 2nd run was completed without issue and sleep has improved to 7h+ average
-    Reason:   Long run distance should progress from a successfully completed shorter baseline rather than jumping from a capped 14-15km to 18.8km in one week.
-
-  → Open the dashboard website to review the unified
-    plan table (highlighted rows = AI proposals).
-  → Download ICS from the website to update your phone calendar.
-  → Run 'Apply AI Coaching' workflow in GitHub Actions to
-    update plan_full.json so changes show on the dashboard too.
+✅ No plan adjustments proposed — training is on track.
 
 ============================================================
