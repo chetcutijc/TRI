@@ -933,12 +933,18 @@ def plan_viewer_html(plan_full, coaching=None):
     today     = dt.date.today()
     two_weeks = today + dt.timedelta(weeks=2)
 
-    # Build a lookup: date+discipline → proposed change from coaching
+    # Build a lookup: date+discipline → proposed change from coaching.
+    # Falls back to date-only matching if discipline labels don't line up
+    # exactly (e.g. AI says "cycling", plan session was parsed as "other").
     ai_changes = {}
-    if coaching:
-        for c in coaching.get("proposed_changes", []):
-            key = (c.get("date",""), c.get("discipline",""))
-            ai_changes[key] = c
+    ai_changes_by_date = {}
+    all_changes = coaching.get("proposed_changes", []) if coaching else []
+    for c in all_changes:
+        key = (c.get("date",""), c.get("discipline",""))
+        ai_changes[key] = c
+        ai_changes_by_date.setdefault(c.get("date",""), []).append(c)
+
+    used_change_ids = set()
 
     def session_row(s):
         date   = dt.date.fromisoformat(s["date"])
@@ -955,9 +961,15 @@ def plan_viewer_html(plan_full, coaching=None):
         target_str   = " · ".join(targets)
         notes_short  = (s.get("notes") or "").split(" | ")[0][:120]
 
-        # AI proposal for this session?
+        # AI proposal for this session — exact match first, then date-only fallback
         ai = ai_changes.get((s["date"], disc))
+        if not ai:
+            same_day = ai_changes_by_date.get(s["date"], [])
+            unclaimed = [c for c in same_day if id(c) not in used_change_ids]
+            ai = unclaimed[0] if len(same_day) == 1 and unclaimed else None
+
         if ai:
+            used_change_ids.add(id(ai))
             ct         = ai.get("change_type","replace")
             text_color, bg_color = CHANGE_COLORS.get(ct, ("#888","#f8f8f8"))
             ai_cell = f"""<td style="font-size:.78em;color:{text_color};
@@ -970,6 +982,7 @@ def plan_viewer_html(plan_full, coaching=None):
             row_style = f"border-left:3px solid {text_color};background:{bg_color}88"
         else:
             ai_cell = "<td style=\'color:#eee;font-size:.78em\''>—</td><td></td>"
+
             row_style = ""
 
         opacity  = "opacity:.45" if is_past else ""
@@ -992,7 +1005,7 @@ def plan_viewer_html(plan_full, coaching=None):
 
     rows_2wk  = ""
     rows_full = ""
-    has_ai    = bool(ai_changes)
+    has_ai    = bool(all_changes)   # true if ANY proposal exists, matched or not
 
     for s in plan_full:
         date = dt.date.fromisoformat(s["date"])
@@ -1010,7 +1023,7 @@ def plan_viewer_html(plan_full, coaching=None):
     ai_legend = ""
     ics_button = ""
     if has_ai:
-        changes_list = list(ai_changes.values())
+        changes_list = all_changes   # include every proposal, even unmatched ones
         ai_legend = """<div style="display:flex;gap:10px;flex-wrap:wrap;
             font-size:.75em;margin-bottom:6px;align-items:center">
             <span style="font-weight:600;color:#555">AI proposals:</span>
@@ -1019,6 +1032,12 @@ def plan_viewer_html(plan_full, coaching=None):
             <span style="background:#eef0fd;color:#5B6EF5;border-radius:4px;padding:1px 7px;font-weight:600">REPLACE</span>
             <span style="background:#ffeae8;color:#FF7A59;border-radius:4px;padding:1px 7px;font-weight:600">SKIP</span>
         </div>"""
+        unmatched_count = len(all_changes) - len(used_change_ids)
+        if unmatched_count > 0:
+            ai_legend += f"""<p style="font-size:.72em;color:#b88a00;margin:4px 0 6px">
+                ⚠️ {unmatched_count} proposal(s) didn\'t line up with a specific row above
+                (date/discipline mismatch) but are still included in the ICS download below.
+            </p>"""
         gen_at = coaching.get("generated_at","")[:10] if coaching else ""
         ics_button = f"""<div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
             <button class="btn" onclick="downloadCoachingICS()"
