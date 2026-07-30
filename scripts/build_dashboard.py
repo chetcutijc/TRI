@@ -1122,14 +1122,24 @@ def plan_viewer_html(plan_full, coaching=None):
                 if (res.status === 204) {{
                     status.textContent = "\u2705 Triggered! Check GitHub Actions \u2014 dashboard updates in ~1-2 min.";
                     status.style.color = "#00C2A8";
-                }} else if (res.status === 401 || res.status === 403) {{
+                    return;
+                }}
+                if (res.status === 401 || res.status === 403) {{
                     status.textContent = "\u274c Token invalid or expired. Try again.";
                     status.style.color = "#FF7A59";
                     localStorage.removeItem("gh_pat_apply_coaching");
-                }} else {{
-                    status.textContent = "\u274c Failed (status " + res.status + "). Check token permissions.";
-                    status.style.color = "#FF7A59";
+                    return;
                 }}
+                // Surface GitHub's actual error message so the cause is visible
+                res.json().then(function(body) {{
+                    var msg = (body && body.message) ? body.message : "unknown error";
+                    status.textContent = "\u274c " + res.status + ": " + msg;
+                    status.style.color = "#FF7A59";
+                    console.error("GitHub API error:", res.status, body);
+                }}).catch(function() {{
+                    status.textContent = "\u274c Failed (status " + res.status + ").";
+                    status.style.color = "#FF7A59";
+                }});
             }}).catch(function(err) {{
                 status.textContent = "\u274c Network error: " + err;
                 status.style.color = "#FF7A59";
