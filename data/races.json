@@ -4,6 +4,9 @@
     "emoji": "🏃",
     "date": "2027-02-07",
     "note": "Target: sub-4h (~5:45/km)",
+    "distances": {
+      "run_km": 42.2
+    },
     "targets": {
       "run_pace_sec_km": 345
     }
@@ -13,6 +16,11 @@
     "emoji": "🏊🚴🏃",
     "date": "2027-06-20",
     "note": "Full Ironman",
+    "distances": {
+      "swim_m": 3800,
+      "bike_km": 180,
+      "run_km": 42.2
+    },
     "targets": {
       "swim_pace_100m_sec": 110,
       "bike_power_w": 190,
