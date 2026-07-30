@@ -787,26 +787,6 @@ def chart_sleep(wellness):
     return fig
 
 
-def chart_body_battery(wellness):
-    if wellness.empty or "body_battery_max" not in wellness.columns:
-        return None
-    bw = wellness.dropna(subset=["body_battery_max"])
-    if bw.empty:
-        return None
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_max"].round(),
-                              mode="lines+markers", name="Charged", marker_color=PALETTE["battery"]))
-    if "body_battery_min" in bw.columns:
-        fig.add_trace(go.Scatter(x=bw["date"], y=bw["body_battery_min"].round(),
-                                  mode="lines+markers", name="Drained",
-                                  line=dict(dash="dot"), marker_color="#FFC75A"))
-    fig.update_layout(title="Body Battery", **STYLE())
-    fig.update_xaxes(showgrid=False)
-    fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5")
-    return fig
-
-
-# ── Race countdown cards HTML ─────────────────────────────────────────────────
 def race_manager_html():
     """Add/remove races directly from the website.
 
@@ -842,6 +822,31 @@ def race_manager_html():
               style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
       <label style="font-size:.75em;color:#6b6b78">Note
           <input id="rf-note" type="text" placeholder="Tune-up race"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+  </div>
+
+  <div style="font-size:.75em;font-weight:600;color:#6b6b78;margin:12px 0 6px">
+      Distance — quick presets</div>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+      <button type="button" class="filter-btn" onclick="preset('5k')">5K</button>
+      <button type="button" class="filter-btn" onclick="preset('10k')">10K</button>
+      <button type="button" class="filter-btn" onclick="preset('half')">Half Marathon</button>
+      <button type="button" class="filter-btn" onclick="preset('full')">Marathon</button>
+      <button type="button" class="filter-btn" onclick="preset('sprint')">Sprint Tri</button>
+      <button type="button" class="filter-btn" onclick="preset('olympic')">Olympic Tri</button>
+      <button type="button" class="filter-btn" onclick="preset('70.3')">Ironman 70.3</button>
+      <button type="button" class="filter-btn" onclick="preset('140.6')">Full Ironman</button>
+      <button type="button" class="filter-btn" onclick="preset('clear')">Clear</button>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+      <label style="font-size:.75em;color:#6b6b78">Swim (m)
+          <input id="rf-dswim" type="number" step="any" placeholder="3800"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Bike (km)
+          <input id="rf-dbike" type="number" step="any" placeholder="180"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Run (km)
+          <input id="rf-drun" type="number" step="any" placeholder="42.2"
               style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
   </div>
 
@@ -898,6 +903,26 @@ function renderRaceList() {{
                "<button onclick='deleteRace(" + i + ")' style='background:none;border:none;" +
                "color:#FF7A59;cursor:pointer;font-size:1em;font-weight:600'>Remove</button></div>";
     }}).join("");
+}}
+
+var RACE_PRESETS = {{
+    "5k":      {{swim:null, bike:null, run:5}},
+    "10k":     {{swim:null, bike:null, run:10}},
+    "half":    {{swim:null, bike:null, run:21.1}},
+    "full":    {{swim:null, bike:null, run:42.2}},
+    "sprint":  {{swim:750,  bike:20,   run:5}},
+    "olympic": {{swim:1500, bike:40,   run:10}},
+    "70.3":    {{swim:1900, bike:90,   run:21.1}},
+    "140.6":   {{swim:3800, bike:180,  run:42.2}},
+    "clear":   {{swim:null, bike:null, run:null}}
+}};
+
+function preset(key) {{
+    var p = RACE_PRESETS[key];
+    if (!p) return;
+    document.getElementById("rf-dswim").value = p.swim === null ? "" : p.swim;
+    document.getElementById("rf-dbike").value = p.bike === null ? "" : p.bike;
+    document.getElementById("rf-drun").value  = p.run  === null ? "" : p.run;
 }}
 
 function paceToSec(v) {{
@@ -994,11 +1019,20 @@ function saveRace() {{
     if (swim) targets.swim_pace_100m_sec = swim;
     if (!isNaN(bike)) targets.bike_power_w = bike;
 
+    var distances = {{}};
+    var dSwim = parseFloat(document.getElementById("rf-dswim").value);
+    var dBike = parseFloat(document.getElementById("rf-dbike").value);
+    var dRun  = parseFloat(document.getElementById("rf-drun").value);
+    if (!isNaN(dSwim)) distances.swim_m  = dSwim;
+    if (!isNaN(dBike)) distances.bike_km = dBike;
+    if (!isNaN(dRun))  distances.run_km  = dRun;
+
     var race = {{
         name: name,
         emoji: document.getElementById("rf-emoji").value.trim() || "🏁",
         date: date,
         note: document.getElementById("rf-note").value.trim(),
+        distances: distances,
         targets: targets
     }};
 
@@ -1034,6 +1068,19 @@ def race_cards_html():
             p = t["swim_pace_100m_sec"]
             targets_str.append(f"Swim: {p//60}:{p%60:02d}/100m")
         targets_line = " · ".join(targets_str)
+
+        # Distances (optional) — shown as a separate line above the pace/power targets
+        d = r.get("distances", {}) or {}
+        dist_str = []
+        if d.get("swim_m"):
+            sm = d["swim_m"]
+            dist_str.append(f"🏊 {sm/1000:.1f}km" if sm >= 1000 else f"🏊 {sm}m")
+        if d.get("bike_km"):
+            dist_str.append(f"🚴 {d['bike_km']}km")
+        if d.get("run_km"):
+            dist_str.append(f"🏃 {d['run_km']}km")
+        dist_line = " · ".join(dist_str)
+
         color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
         cards += f"""
         <div class="race-card">
@@ -1043,6 +1090,7 @@ def race_cards_html():
             <div class="race-days" style="color:{color}">
                 {'In ' + str(days) + ' days' if days > 0 else 'RACE DAY!' if days == 0 else str(abs(days)) + ' days ago'}
             </div>
+            {f'<div class="race-dist">{dist_line}</div>' if dist_line else ''}
             <div class="race-targets">{targets_line}</div>
             <div class="race-note">{r['note']}</div>
         </div>"""
@@ -1604,7 +1652,7 @@ function filterDiscB(disc) {{
 # ── Compliance HTML table ─────────────────────────────────────────────────────
 def compliance_html(weeks_data):
     if not weeks_data:
-        return "<p class='subtext'>No matched sessions in the last 8 weeks yet — sessions will match once your plan dates align with actual Garmin activities.</p>"
+        return "<p class='subtext'>No matched sessions in the last 4 weeks yet — sessions will match once your plan dates align with actual Garmin activities.</p>"
     html = ""
     for wk, sessions in sorted(weeks_data.items(), reverse=True):
         label = dt.date.fromisoformat(wk).strftime("Week of %b %d, %Y")
@@ -1657,7 +1705,7 @@ def build_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None, co
     weekly  = weekly_by_discipline(df)
     trends  = discipline_trends(df)
     ontarget = on_target_pct(weekly, plan)
-    compliance = session_compliance(df, plan_sessions)
+    compliance = session_compliance(df, plan_sessions, weeks_back=4)
 
     last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last30)
@@ -1719,7 +1767,6 @@ def build_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None, co
         chart_distance_trends(trends),
         chart_on_target(ontarget),
         chart_sleep(wellness),
-        chart_body_battery(wellness),
     ]
     figs = [f for f in figs if f is not None]
 
@@ -1772,6 +1819,7 @@ h1{{font-size:1.55em;margin:0;font-weight:800;letter-spacing:-.3px;}}
 .race-name{{font-weight:700;font-size:1em;margin:4px 0 2px;}}
 .race-date{{color:#9a9aaa;font-size:.8em;}}
 .race-days{{font-size:1.3em;font-weight:800;margin:6px 0 4px;}}
+.race-dist{{font-size:.8em;color:#1a1a22;font-weight:700;margin-bottom:2px;}}
 .race-targets{{font-size:.78em;color:#5B6EF5;font-weight:600;}}
 .race-note{{font-size:.72em;color:#9a9aaa;margin-top:2px;}}
 /* discipline grid */
@@ -1900,16 +1948,16 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
 <h2>Trends</h2>
 <div class="chart-grid">{charts_html}</div>
 
-<h2>Session Compliance — Planned vs Actual</h2>
-<p class="subtext">Each planned session matched to a Garmin activity (±1 day). Status reflects both duration completion and pace/power adherence.</p>
-{compliance_html(compliance)}
-
 <h2>🤖 AI Coaching</h2>
 <p class="subtext">Claude analyses your last 4 weeks vs the plan every Saturday. Proposed changes are suggestions only — you download the ICS to apply them.</p>
 {coaching_html(coaching)}
 
 <h2>📊 AI Suggestion Adherence</h2>
 {adherence_html(coaching, df) or "<p class='subtext'>No applied suggestions yet — history appears here once you tap 'Apply to Dashboard'.</p>"}
+
+<h2>Session Compliance — Last 4 Weeks</h2>
+<p class="subtext">Each planned session matched to a Garmin activity (±1 day). Status reflects both duration completion and pace/power adherence.</p>
+{compliance_html(compliance)}
 
 <h2>Training Plan</h2>
 <p class="subtext">Sessions from your 55-week plan. Past sessions are faded. Today is highlighted.</p>
@@ -2152,27 +2200,6 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             s = svg(fig)
             if s:
                 charts.append(("Sleep Duration", s))
-
-    # 8. Body battery
-    if not wellness.empty and "body_battery_max" in wellness.columns:
-        bw = wellness.dropna(subset=["body_battery_max"])
-        if not bw.empty:
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(
-                x=bw["date"], y=bw["body_battery_max"].round(),
-                mode="lines+markers", name="Charged",
-                marker_color=PALETTE["battery"],
-            ))
-            if "body_battery_min" in bw.columns:
-                fig.add_trace(go.Scatter(
-                    x=bw["date"], y=bw["body_battery_min"].round(),
-                    mode="lines", name="Drained",
-                    line=dict(dash="dot"), marker_color="#FFC75A",
-                ))
-            fig.update_layout(showlegend=True)
-            s = svg(fig)
-            if s:
-                charts.append(("Body Battery", s))
 
     # ── Pair charts into 2-col table rows ────────────────────────────────────
     chart_rows = ""
