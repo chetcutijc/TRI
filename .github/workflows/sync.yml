@@ -2,8 +2,8 @@ name: Sync Garmin Data and Build Dashboard
 
 on:
   schedule:
-    - cron: '0 */12 * * *'        # every 12 hours
-    - cron: '0 12 * * 3,6'        # hard run Wed + Sat at noon UTC
+    - cron: '0 */12 * * *'
+    - cron: '0 12 * * 3,6'
   workflow_dispatch:
 
 concurrency:
@@ -45,6 +45,21 @@ jobs:
           GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
         run: python scripts/fetch_garmin.py
 
+      # ── AI Coaching — runs on Saturday syncs only ────────────────────────
+      - name: Run AI coaching analysis (Saturday only)
+        if: github.event_name == 'workflow_dispatch' || contains(fromJSON('["6"]'), format('{0}', env.DOW))
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DOW: ${{ env.DOW }}
+        run: |
+          echo "DOW=$(date +%u)" >> $GITHUB_ENV
+          if [ "$(date +%u)" = "6" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Saturday — running AI coaching analysis..."
+            python scripts/ai_coaching.py
+          else
+            echo "Not Saturday — skipping AI coaching"
+          fi
+
       - name: Build HTML dashboard
         run: python scripts/build_dashboard.py
 
@@ -62,33 +77,9 @@ jobs:
             --paper-height=11.69 \
             "file://$(pwd)/docs/print.html"
 
-      # ── Upload Pages artifact (only once, right after building) ─────────
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'docs'
-
-      # ── Commit data + dashboard back to repo ────────────────────────────
-      - name: Commit and push
-        run: |
-          git config user.name "garmin-bot"
-          git config user.email "actions@github.com"
-          git add data/activities.json data/wellness.json \
-                  docs/index.html docs/print.html docs/dashboard.pdf
-          if ! git diff --quiet --cached; then
-            git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            # Keep our freshly built files if there's a conflict
-            git pull origin main --no-rebase -X ours
-            git push
-          else
-            echo "No changes to commit."
-          fi
-
-      # ── Decide whether to email ─────────────────────────────────────────
       - name: Evaluate email rules
-        id: evaluate_rules
         run: |
-          DAY=$(date +%u)   # 3=Wed, 6=Sat
+          DAY=$(date +%u)
           if [ "${{ env.GARMIN_NEW_DATA }}" = "true" ] || \
              [ "$DAY" = "3" ] || [ "$DAY" = "6" ] || \
              [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
@@ -97,7 +88,43 @@ jobs:
             echo "SHOULD_EMAIL=false" >> $GITHUB_ENV
           fi
 
-      # ── Email PDF (conditional) ─────────────────────────────────────────
+      - name: Build email body
+        run: |
+          COACHING=""
+          if [ -f data/coaching_email.txt ]; then
+            COACHING=$(cat data/coaching_email.txt)
+          fi
+          cat > /tmp/email_body.txt << EMAILEOF
+          Your training dashboard has been updated.
+          
+          📊 Live: https://chetcutijc.github.io/TRI/
+          📎 PDF attached.
+          
+          $COACHING
+          
+          Auto-synced from Garmin Connect (every 12h / Wed & Sat)
+          EMAILEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "garmin-bot"
+          git config user.email "actions@github.com"
+          git add data/activities.json data/wellness.json \
+                  docs/index.html docs/print.html docs/dashboard.pdf \
+                  data/ai_coaching.json data/coaching_email.txt || true
+          if ! git diff --quiet --cached; then
+            git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull origin main --no-rebase -X ours
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs'
+
       - name: Email dashboard PDF
         if: env.SHOULD_EMAIL == 'true'
         uses: dawidd6/action-send-mail@v3
@@ -109,16 +136,9 @@ jobs:
           subject: "Training Dashboard Update"
           to: ${{ secrets.EMAIL_USERNAME }}
           from: Garmin Dashboard Bot
-          body: |
-            Your training dashboard has been updated.
-
-            📊 Live website: https://chetcutijc.github.io/TRI/
-            📎 PDF attached for offline reading.
-
-            Auto-synced from Garmin Connect (every 12h / Wed & Sat)
+          body_path: /tmp/email_body.txt
           attachments: docs/dashboard.pdf
 
-  # ── Deploy to GitHub Pages (separate job, runs after sync) ─────────────
   deploy:
     needs: sync
     runs-on: ubuntu-latest
