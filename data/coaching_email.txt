@@ -1,13 +1,54 @@
 ============================================================
 🤖 AI COACHING REPORT
    Generated: 2026-07-30
-   ? days to Marathon  |  ? days to Ironman
+   192 days to Marathon  |  325 days to Ironman
 ============================================================
 
 OVERALL ASSESSMENT:
-AI coaching analysis unavailable this week.
+Training over the last 4 weeks has been highly inconsistent, with only 9 sessions logged against a structured plan, no pool swimming at all, and chronic sleep deprivation (multiple nights under 5 hours, including a 41-minute night on Jul 27). Recovery metrics are concerning with body battery frequently in the 20s-30s range, and the Jul 18 run at avg HR 179 bpm signals a significant overreach event. Cycling volume is minimal relative to Ironman demands, and there is a complete absence of structured running sessions aligned to the marathon pace target of 5:45/km.
 
+COACHING SUGGESTIONS:
+  1. Prioritise sleep as a non-negotiable training input — multiple nights of 3-4 hours are actively eroding adaptation; target a minimum of 7 hours before any moderate or hard session.
+  2. Begin pool swimming sessions immediately: zero pool swims have been logged in 4 weeks despite Ironman swim targets of 1:50/100m — start with 2x per week at 1,500-2,000m and build from there.
+  3. Introduce at least one weekly run at marathon target pace (5:45/km) for 20-30 minutes within a longer easy run to build pace familiarity, given the marathon is only 192 days away.
+  4. Cap running intensity: the HR-179 effort on Jul 18 at 5:02/km pace is far above aerobic threshold and counter-productive for base building — restrict all runs to below 160 bpm until sleep and body battery are consistently recovered.
+  5. Treat the upcoming Week 6 long ride (84km) with caution given the very low body battery on Jul 30 (max 2); if body battery is still below 30 on Aug 1 morning, reduce to 50-60km at Z2 only rather than risk further fatigue accumulation.
 
-✅ No plan adjustments proposed — training is on track.
+PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
+  • 2026-07-30 [CYCLING]
+    Current:  Wk6 Evening session: 90min steady endurance 128-177W (Z2) to 178-209W (Z3 Tempo)
+    Proposed: Skip or reduce to 30-40min very light Z1 spin at under 128W only — no tempo work
+    Reason:   Body battery peaked at just 2 on Jul 30 indicating severely depleted recovery; adding a 90min evening ride on top of a strength session today risks injury and illness.
+
+  • 2026-07-31 [SWIMMING]
+    Current:  Wk6 Pool Swim (Friday): 60min, 2km+, pace ≤2:30/100m
+    Proposed: Complete this session as the highest priority of the week — 2,000m aerobic with 400m warm-up, 8x100m at 2:20-2:30/100m, 400m cool-down
+    Reason:   No pool swims have been completed in 4 weeks; this discipline is most at risk relative to Ironman targets and must be re-established immediately.
+
+  • 2026-08-01 [CYCLING]
+    Current:  Wk6 Long Ride: 84km @ 128-177W (Z2), 240min
+    Proposed: Reduce to 60-70km @ 128-160W (low Z2 only), capping at 200min — no Z3 tempo blocks this week
+    Reason:   Accumulated sleep debt and low body battery over the past week mean a full 84km long ride carries excessive injury and overtraining risk before recovery is re-established.
+
+  • 2026-08-02 [RUNNING]
+    Current:  Wk6 Long Run: 18.4km @ 6:15-6:45/km, 180min
+    Proposed: Reduce to 12-14km @ 6:30-6:50/km, HR cap 155 bpm, walk if HR exceeds 158 bpm
+    Reason:   Running only 3 times in 4 weeks with one severe intensity spike means an 18.4km long run is too aggressive a jump; a shorter aerobic run better matches current fitness and recovery state.
+
+  • 2026-08-04 [CYCLING]
+    Current:  Wk7 Evening session: 5x5min intervals @ 210-244W (Z4 Threshold)
+    Proposed: Replace with 60min steady Z2 endurance ride at 128-165W — defer threshold intervals until Week 8 when base is better established
+    Reason:   With no consistent training base over the last 4 weeks and poor recovery data, jumping to Z4 threshold cycling intervals in Week 7 risks overreach; aerobic consolidation is the priority.
+
+  • 2026-08-06 [RUNNING]
+    Current:  Wk7 Evening session: maintenance aerobic run 6:30-6:50/km, 30-40min
+    Proposed: Run 35min at 6:30-6:50/km but include 2x10min at 5:45/km (marathon target pace) in the middle to begin pace-specific adaptation
+    Reason:   The marathon is 192 days away and no sessions at target pace (5:45/km) have been logged; introducing structured marathon-pace blocks now builds neuromuscular familiarity without excessive load.
+
+  → Open the dashboard website to review the unified
+    plan table (highlighted rows = AI proposals).
+  → Download ICS from the website to update your phone calendar.
+  → Run 'Apply AI Coaching' workflow in GitHub Actions to
+    update plan_full.json so changes show on the dashboard too.
 
 ============================================================
