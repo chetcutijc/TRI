@@ -1,63 +1,63 @@
 {
-  "summary": "Training volume over the last 4 weeks has been very low and inconsistent, with only 9 sessions logged and several multi-day gaps suggesting significant lifestyle or work stress. Sleep quality is chronically poor \u2014 most nights fall well below 7 hours, body battery frequently bottoms out below 30, and the last few days (Jul 27-30) show critically low sleep and near-zero body battery, indicating accumulated fatigue entering Week 6. The one positive signal is the 77km cycling session on Jul 20 and some open-water swim progression, but running volume is far below what's needed to build toward a sub-4h marathon in 192 days.",
+  "summary": "Training volume over the last 4 weeks has been very low and inconsistent, with only 9 sessions logged across all disciplines and significant gaps between workouts. Sleep quality is a major concern, with multiple nights under 5 hours and body battery readings frequently in the 20-40 range, suggesting chronic under-recovery. The one high-intensity run on July 18th at HR 179 bpm stands out as a significant red flag given the poor recovery context surrounding it.",
   "suggestions": [
-    "Prioritise sleep above all else this week \u2014 with body battery at 2 and sleep at only 41 min on Jul 27, the Thu Jul 30 double session (strength + cycling) risks deepening a hole that will take weeks to climb out of; consider dropping one of those sessions tonight if fatigue is still severe.",
-    "Running consistency is the most urgent gap for the Feb 2027 marathon: you completed only 3 runs totalling ~16.5km in 4 weeks, whereas the plan requires 18+ km long runs every weekend \u2014 prioritise protecting the Sunday long run slots above all other sessions.",
-    "Your Jul 18 run at 179 bpm avg HR for a 5:02/km effort signals you're working at near-maximal intensity for what should be a moderate pace; keep all running sessions strictly in Zone 2 (\u2264150 bpm) until sleep and body battery consistently recover above 60.",
-    "Add a short 10-15 min evening walk or mobility routine on rest days to improve body battery recovery without adding training stress \u2014 your battery is frequently not recovering overnight, and light parasympathetic activity can help.",
-    "Begin pool swim sessions as planned \u2014 your open-water data shows pace of ~25-28 min/km which is very slow, and structured pool work with drills is the fastest way to improve efficiency toward the Ironman 1:50/100m target."
+    "Prioritise sleep immediately \u2014 multiple nights of 3-4 hours are severely limiting adaptation and injury resilience; target 7-8 hours consistently before attempting any quality sessions in the upcoming plan.",
+    "The July 30th plan stacks a 60-min strength session AND a 90-min cycling session on a day where body battery is 2-22 and sleep data is missing \u2014 reduce this to one session only (the cycling Z2 ride at lower end of power range) to avoid digging a deeper recovery hole.",
+    "Running pace for the marathon sub-4h goal (5:45/km target) is not being developed \u2014 current long runs at 6:15-6:45/km are appropriate base building, but ensure at least one run per week touches 6:00-6:15/km as aerobic capacity improves to close the gap to race pace.",
+    "Swimming sessions are very short and infrequent (longest was 52 min / 2km open water); the pool sessions starting July 31st are critical \u2014 commit to hitting the 2km+ target every session to build toward the Ironman 3.8km swim.",
+    "Avoid stacking high-load sessions (e.g. Wk7 cycling threshold intervals on Tuesday followed by strength + running on Thursday) when body battery trends remain low; use Wednesday rest days actively for breathwork and sleep extension rather than treating them as optional."
   ],
   "proposed_changes": [
     {
       "date": "2026-07-30",
       "discipline": "strength_training",
-      "current_session": "Wk6 Gym / Strength, 60 min \u2014 shoulder, calf raises, jump drills, core",
-      "proposed_session": "Skip or reduce to 20 min of core and light mobility only \u2014 no loaded strength work today",
-      "change_type": "decrease",
-      "reason": "Body battery is at 2 and sleep was only 41 min on Jul 27 followed by 278 min on Jul 28; loading a strength session today risks injury and deepens accumulated fatigue."
+      "current_session": "Wk6 Gym / Strength \u2014 60 min strength session including shoulder, calf, jump drills and core",
+      "proposed_session": "Skip strength session today \u2014 replace with 15 min light mobility/stretching only",
+      "change_type": "skip",
+      "reason": "Body battery is critically low (max 2, min 22) and sleep data is missing for July 30th, indicating insufficient recovery to absorb a strength stimulus safely."
     },
     {
       "date": "2026-07-30",
       "discipline": "cycling",
-      "current_session": "Wk6 Evening session, 90 min, 128\u2013177W Z2/Z3 Tempo",
-      "proposed_session": "Replace with 30\u201340 min very easy spin at 100\u2013120W (Z1 only) or full rest if fatigue persists after assessing energy tonight",
+      "current_session": "Wk6 Evening session \u2014 90 min steady endurance at 128-177W (Z2/Z3)",
+      "proposed_session": "Shorten to 50-60 min strictly at 128-150W (low Z2 only), no Z3 tempo work",
       "change_type": "decrease",
-      "reason": "Stacking a 90-min cycling block on the same evening as strength training on critically depleted body battery increases injury and overtraining risk significantly."
+      "reason": "With strength session skipped and body battery critically depleted, keeping the ride short and at the lower end of Z2 preserves the aerobic stimulus without adding further recovery debt."
     },
     {
-      "date": "2026-08-01",
-      "discipline": "cycling",
-      "current_session": "Wk6 Long Ride, 84km @ 128\u2013177W, 240 min",
-      "proposed_session": "Reduce to 60\u201370km at strictly 128\u2013150W (lower Z2 only), capping effort at 180\u2013200 min, skipping any Z3 tempo blocks",
+      "date": "2026-08-02",
+      "discipline": "running",
+      "current_session": "Wk6 Long Run \u2014 18.4km @ 6:15-6:45/km, 180 min",
+      "proposed_session": "Cap at 14-15km @ 6:30-6:45/km (90-100 min), no negative-split effort; monitor HR and stop if above 155 bpm",
       "change_type": "decrease",
-      "reason": "Given the severely depleted state entering this week, a full 84km long ride would likely be executed at excessive HR and impair the following day's long run \u2014 the more important session for marathon prep."
+      "reason": "The athlete has not completed a run longer than 6.3km in the past 4 weeks, and jumping to 18.4km risks injury given the deconditioning and poor sleep trend."
     },
     {
       "date": "2026-08-04",
       "discipline": "cycling",
-      "current_session": "Wk7 Evening session, 5x5min intervals @ 210\u2013244W Z4 Threshold, 90 min",
-      "proposed_session": "Replace with 60 min steady Z2 endurance ride at 128\u2013177W \u2014 defer threshold intervals to Week 8 when recovery is confirmed",
+      "current_session": "Wk7 Evening session \u2014 5x5min @ 210-244W (Z4 Threshold) intervals",
+      "proposed_session": "Replace with 60 min steady Z2 ride at 128-177W \u2014 defer threshold intervals to Wk8 when base has been re-established",
       "change_type": "replace",
-      "reason": "Introducing Z4 threshold cycling intervals in Week 7 with current sleep deficit and no recent consistent training base risks a sharp spike in fatigue that could compromise the entire week's run and swim sessions."
+      "reason": "Threshold intervals require a solid aerobic base and good recovery status; with only one Z2 ride completed in 4 weeks, introducing Z4 work this soon risks poor adaptation and elevated injury risk."
+    },
+    {
+      "date": "2026-08-08",
+      "discipline": "cycling",
+      "current_session": "Wk7 Long Ride \u2014 88km @ 128-177W (Z2), 240 min",
+      "proposed_session": "84km @ 128-160W (conservative Z2), 240 min \u2014 hold power strictly at lower half of Z2 range",
+      "change_type": "decrease",
+      "reason": "Progressing to 88km before consistently completing the 84km baseline is premature given the very low recent cycling volume (one 77km ride in 4 weeks)."
     },
     {
       "date": "2026-08-09",
       "discipline": "running",
-      "current_session": "Wk7 Long Run, 18.8km @ 6:15\u20136:45/km, 180 min",
-      "proposed_session": "Keep the 18.8km target but enforce a strict HR ceiling of 150 bpm \u2014 if HR rises above 150 bpm, slow pace to whatever is required even if that means 7:00\u20137:30/km",
-      "change_type": "replace",
-      "reason": "The Jul 18 run data shows HR spiking to 179 bpm, indicating aerobic base is currently stressed; protecting cardiac drift on long runs now is critical to building the sustainable base needed for a sub-4h marathon."
-    },
-    {
-      "date": "2026-08-16",
-      "discipline": "running",
-      "current_session": "Wk8 Long Run, 19.2km @ 6:15\u20136:45/km, 180 min",
-      "proposed_session": "Execute as planned only if sleep averages 7+ hours and body battery consistently reaches 60+ in the preceding week; otherwise reduce to 16km at the same easy pace",
+      "current_session": "Wk7 Long Run \u2014 18.8km @ 6:15-6:45/km, 180 min",
+      "proposed_session": "16km @ 6:30-6:45/km, 105-110 min \u2014 only extend beyond 16km if the Aug 2nd run was completed without issue and sleep has improved to 7h+ average",
       "change_type": "decrease",
-      "reason": "Progressive long run increases are only safe when recovery is adequate \u2014 given the chronic sleep deficit pattern, a conditional volume cap prevents compounding fatigue across the critical marathon build."
+      "reason": "Long run distance should progress from a successfully completed shorter baseline rather than jumping from a capped 14-15km to 18.8km in one week."
     }
   ],
-  "generated_at": "2026-07-30T20:17:17.644362",
+  "generated_at": "2026-07-30T20:27:36.630576",
   "weeks_analysed": 4,
   "days_to_marathon": 192,
   "days_to_ironman": 325
