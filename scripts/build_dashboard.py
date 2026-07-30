@@ -1055,7 +1055,7 @@ def plan_viewer_html(plan_full, coaching=None):
                 lines.push("END:VEVENT");
             }});
             lines.push("END:VCALENDAR");
-            var blob = new Blob([lines.join("\r\n")], {{type:"text/calendar"}});
+            var blob = new Blob([lines.join("\\r\\n")], {{type:"text/calendar"}});
             var a = document.createElement("a");
             a.href = URL.createObjectURL(blob);
             a.download = "ai_coaching_adjustments.ics";
@@ -1066,7 +1066,7 @@ def plan_viewer_html(plan_full, coaching=None):
             var token = localStorage.getItem("gh_pat_apply_coaching");
             if (!token) {{
                 token = prompt(
-                    "Paste your GitHub fine-grained token (Actions: Read and Write, scoped to this repo).\nSaved only in this browser."
+                    "Paste your GitHub fine-grained token (Actions: Read and Write, scoped to this repo).\\nSaved only in this browser."
                 );
                 if (token) localStorage.setItem("gh_pat_apply_coaching", token);
             }}
