@@ -1634,6 +1634,87 @@ def build_ics_content(changes, gen_at=""):
     return "\r\n".join(lines)
 
 
+def detect_race_conflicts(plan_full, races, days_before=2, max_easy_min=45):
+    """
+    Deterministic (no AI needed) sanity check: flags any session scheduled in
+    the last `days_before` days before a race that isn't rest/short-easy.
+
+    This catches things like a long bike ride the night before a marathon —
+    a rule basic enough that it shouldn't need Claude's judgment, and should
+    never silently exist in the plan.
+
+    Returns a list of dicts: {race_name, race_date, session_date, discipline,
+    summary, duration_min, days_before_race}
+    """
+    if not plan_full or not races:
+        return []
+
+    conflicts = []
+    for r in races:
+        race_date = r["date"]
+        window_start = race_date - dt.timedelta(days=days_before)
+
+        for s in plan_full:
+            try:
+                sdate = dt.date.fromisoformat(s["date"])
+            except Exception:
+                continue
+            if not (window_start <= sdate < race_date):
+                continue
+            if s.get("discipline") in ("rest", "race", None):
+                continue
+            dur = s.get("duration_min") or 0
+            # A short easy session (e.g. a shakeout jog) close to race day is fine.
+            if dur and dur <= max_easy_min:
+                continue
+            conflicts.append({
+                "race_name":        r["name"],
+                "race_date":        race_date.isoformat(),
+                "session_date":     s["date"],
+                "discipline":       s.get("discipline", "?"),
+                "summary":          s.get("summary", ""),
+                "duration_min":     dur,
+                "days_before_race": (race_date - sdate).days,
+            })
+
+    conflicts.sort(key=lambda c: (c["race_date"], c["session_date"]))
+    return conflicts
+
+
+def race_conflicts_html(conflicts):
+    """Renders the pre-race conflict warning box, if any conflicts exist."""
+    if not conflicts:
+        return ""
+
+    rows = "".join(f"""<tr>
+        <td style="white-space:nowrap;font-size:.8em;color:#9a9aaa">{c['session_date']}</td>
+        <td style="font-size:.8em;font-weight:700">{c['discipline'].replace('_',' ').title()}</td>
+        <td style="font-size:.8em;color:#555">{c['summary']}</td>
+        <td style="font-size:.8em;text-align:center">{c['duration_min']}min</td>
+        <td style="font-size:.8em;color:#FF7A59;font-weight:600">
+            {c['days_before_race']} day{'s' if c['days_before_race']!=1 else ''} before {c['race_name']}
+        </td>
+    </tr>""" for c in conflicts)
+
+    return f"""
+    <div style="background:#fff5f4;border:1px solid #ffd6d1;border-radius:12px;
+                padding:16px 20px;margin-bottom:20px">
+        <div style="font-size:.95em;font-weight:800;color:#c0392b;margin-bottom:4px">
+            ⚠️ Pre-Race Conflicts Detected
+        </div>
+        <p style="font-size:.82em;color:#8a5a54;margin:0 0 12px">
+            These sessions are scheduled too close to a race and aren't easy/short —
+            they risk arriving fatigued or injured. Consider replacing them with
+            rest or a short shakeout, either manually or via AI Coaching.
+        </p>
+        <table class="table">
+            <tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Conflict</th></tr>
+            {rows}
+        </table>
+    </div>"""
+
+
+
 def plan_viewer_html(plan_full, coaching=None):
     """Unified plan table with AI suggestions merged as extra columns.
     Race days from data/races.json are merged in as special \U0001F3C1 rows so
@@ -1666,6 +1747,10 @@ def plan_viewer_html(plan_full, coaching=None):
             "power":        None,
             "distance":     " \u00b7 ".join(dist_bits) if dist_bits else None,
         })
+
+    # Sort chronologically — race days were appended after the regular
+    # sessions above, so without this they'd all land at the bottom.
+    plan_full.sort(key=lambda s: s.get("date", ""))
 
     # Build a lookup: date+discipline \u2192 proposed change from coaching.
     # Falls back to date-only matching if discipline labels don\'t line up
@@ -1922,6 +2007,7 @@ def build_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None, co
     trends  = discipline_trends(df)
     ontarget = on_target_pct(weekly, plan)
     compliance = session_compliance(df, plan_sessions, weeks_back=4)
+    race_conflicts = detect_race_conflicts(plan_full or [], RACES)
 
     last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last30)
@@ -2240,6 +2326,8 @@ function triggerWorkflow(workflowFile, statusElId, label) {{
 
 <h2>Trends</h2>
 <div class="chart-grid">{charts_html}</div>
+
+{race_conflicts_html(race_conflicts)}
 
 <h2>🤖 AI Coaching</h2>
 <p class="subtext">Claude analyses your last 4 weeks vs the plan every Saturday. Proposed changes are suggestions only — you download the ICS to apply them.</p>
