@@ -7,56 +7,68 @@
     "Increase swim consistency to at least 2 pool sessions per week \u2014 current open-water sessions are too short (0.1\u20132km) and infrequent to build the swim base needed for Ironman Cervia; pool sessions allow pace-controlled technique work regardless of sea conditions.",
     "Add a short flat 20\u201325 minute test run at 5:45/km around Week 9\u201310 to gauge where 10K race fitness actually sits \u2014 this will allow realistic pacing targets for Treviso without overcommitting on intervals too early in the recovery block."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-07-31T02:55:45.592855+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-08-01",
-      "discipline": "cycling",
-      "current_session": "Long Ride capped at 50\u201360km @ 128\u2013145W, 150-min ceiling with HR guard",
-      "proposed_session": "Reduce further to 45\u201350km @ 128\u2013140W (Z1-low Z2 only), strict 90-min ceiling; abort at 60 min if HR exceeds 135 bpm \u2014 body battery was 2 on July 30th and sleep has essentially collapsed over the last 4 nights.",
-      "change_type": "decrease",
-      "reason": "Body battery of 2 and multiple nights of severely broken sleep (41 min and 278 min in the last two nights) indicate the athlete cannot safely absorb even a reduced long ride at the currently planned intensity ceiling."
-    },
-    {
-      "date": "2026-08-02",
-      "discipline": "running",
-      "current_session": "Reduced long run 7\u20138km @ 7:00/km, HR \u2264145 bpm, convert to 30-min walk if HR exceeds 145 bpm in first 2km",
-      "proposed_session": "Replace with a 30-minute flat walk only \u2014 no running; if body battery on Sunday morning is \u226550, a very easy 20-min jog at conversational pace is permitted but not required.",
-      "change_type": "replace",
-      "reason": "With body battery at 2 on July 30th and sleep averaging under 4.5 hours across the last four nights, any running load \u2014 even easy \u2014 adds stress the body cannot recover from before the week's training resumes."
-    },
-    {
-      "date": "2026-08-04",
-      "discipline": "cycling",
-      "current_session": "60 min Z2 @ 128\u2013155W with body battery gate of 40+",
-      "proposed_session": "Keep the 40+ body battery gate; if met, execute 45 min @ 128\u2013145W (low Z2 only, no upper Z2); if body battery is below 40, replace entirely with 20 min of easy walking or full rest.",
-      "change_type": "decrease",
-      "reason": "Tightening the power ceiling and duration guards against re-entering the same fatigue spiral that produced a body battery crash, ensuring Week 7 can actually be completed."
-    },
-    {
-      "date": "2026-08-20",
-      "discipline": "running",
-      "current_session": "4x800m @ 5:00\u20135:15/km with 90-sec standing recovery, 35\u201340 min total (AI adjusted interval session)",
-      "proposed_session": "Execute as planned only if average nightly sleep in the 5 days prior (Aug 15\u201319) exceeds 6.5 hours AND body battery on Thursday morning is \u226550; otherwise replace with a 30-min easy run @ 6:30\u20136:45/km, HR \u2264145 bpm \u2014 this protects the first quality session of the Treviso block.",
-      "change_type": "replace",
-      "reason": "This is the first structured interval session feeding into the Treviso 10K build and should only be executed when the athlete is genuinely recovered, not as a scheduled obligation after weeks of sleep deprivation."
-    },
-    {
-      "date": "2026-08-25",
-      "discipline": "running",
-      "current_session": "6x800m @ 4:55\u20135:10/km, 2-min jog recovery, 45\u201355 min total",
-      "proposed_session": "Reduce to 5x800m @ 5:00\u20135:10/km (not faster) with 90-sec standing recovery, total 40\u201345 min including warm-up and cool-down; target effort should feel controlled at 8/10, not maximal \u2014 this is race-pace rehearsal, not a time trial.",
-      "change_type": "decrease",
-      "reason": "Given the recovery deficit entering this block, reducing rep count by one and enforcing the slower end of the pace range lowers injury risk while still delivering Treviso-specific race-pace stimulus 9 weeks out."
-    },
-    {
-      "date": "2027-06-18",
-      "discipline": "rest",
-      "current_session": "Wk52 Pool Swim (Friday) \u2014 60 min pool session, 2km+, \u22642:30/100m",
-      "proposed_session": "Convert to complete rest or a 10-minute gentle shakeout swim (200\u2013300m easy, no pace target) \u2014 this is 2 days before Ironman Italy Cervia and any meaningful swim load at this point is purely stress with no adaptation benefit.",
-      "change_type": "replace",
-      "reason": "A 60-minute pool session 2 days before a full Ironman is a mandatory pre-race conflict \u2014 legs and shoulders must arrive at the start line fresh, not carrying residual fatigue from a 2km swim."
+      "applied_at": "2026-07-31T03:00:51.259939+00:00",
+      "generated_at": "2026-07-31T02:55:45.592855+00:00",
+      "summary": "The last 4 weeks show a fragmented training pattern with very low swim volumes (mostly under 2km per session), inconsistent running, and a single long cycling effort \u2014 overall load is modest but recovery is severely compromised by chronic sleep deprivation (multiple nights under 5 hours, body battery crashing as low as 2 on July 30th). The high-HR run on July 18th (avg 179 bpm) is a red flag indicating the athlete is pushing into intensity without adequate base or recovery. With the Treviso 10K just 64 days away, the immediate priority must be stabilising sleep and aerobic base before introducing any race-pace work.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-08-01",
+          "discipline": "cycling",
+          "current_session": "Long Ride capped at 50\u201360km @ 128\u2013145W, 150-min ceiling with HR guard",
+          "proposed_session": "Reduce further to 45\u201350km @ 128\u2013140W (Z1-low Z2 only), strict 90-min ceiling; abort at 60 min if HR exceeds 135 bpm \u2014 body battery was 2 on July 30th and sleep has essentially collapsed over the last 4 nights.",
+          "change_type": "decrease",
+          "reason": "Body battery of 2 and multiple nights of severely broken sleep (41 min and 278 min in the last two nights) indicate the athlete cannot safely absorb even a reduced long ride at the currently planned intensity ceiling."
+        },
+        {
+          "date": "2026-08-02",
+          "discipline": "running",
+          "current_session": "Reduced long run 7\u20138km @ 7:00/km, HR \u2264145 bpm, convert to 30-min walk if HR exceeds 145 bpm in first 2km",
+          "proposed_session": "Replace with a 30-minute flat walk only \u2014 no running; if body battery on Sunday morning is \u226550, a very easy 20-min jog at conversational pace is permitted but not required.",
+          "change_type": "replace",
+          "reason": "With body battery at 2 on July 30th and sleep averaging under 4.5 hours across the last four nights, any running load \u2014 even easy \u2014 adds stress the body cannot recover from before the week's training resumes."
+        },
+        {
+          "date": "2026-08-04",
+          "discipline": "cycling",
+          "current_session": "60 min Z2 @ 128\u2013155W with body battery gate of 40+",
+          "proposed_session": "Keep the 40+ body battery gate; if met, execute 45 min @ 128\u2013145W (low Z2 only, no upper Z2); if body battery is below 40, replace entirely with 20 min of easy walking or full rest.",
+          "change_type": "decrease",
+          "reason": "Tightening the power ceiling and duration guards against re-entering the same fatigue spiral that produced a body battery crash, ensuring Week 7 can actually be completed."
+        },
+        {
+          "date": "2026-08-20",
+          "discipline": "running",
+          "current_session": "4x800m @ 5:00\u20135:15/km with 90-sec standing recovery, 35\u201340 min total (AI adjusted interval session)",
+          "proposed_session": "Execute as planned only if average nightly sleep in the 5 days prior (Aug 15\u201319) exceeds 6.5 hours AND body battery on Thursday morning is \u226550; otherwise replace with a 30-min easy run @ 6:30\u20136:45/km, HR \u2264145 bpm \u2014 this protects the first quality session of the Treviso block.",
+          "change_type": "replace",
+          "reason": "This is the first structured interval session feeding into the Treviso 10K build and should only be executed when the athlete is genuinely recovered, not as a scheduled obligation after weeks of sleep deprivation."
+        },
+        {
+          "date": "2026-08-25",
+          "discipline": "running",
+          "current_session": "6x800m @ 4:55\u20135:10/km, 2-min jog recovery, 45\u201355 min total",
+          "proposed_session": "Reduce to 5x800m @ 5:00\u20135:10/km (not faster) with 90-sec standing recovery, total 40\u201345 min including warm-up and cool-down; target effort should feel controlled at 8/10, not maximal \u2014 this is race-pace rehearsal, not a time trial.",
+          "change_type": "decrease",
+          "reason": "Given the recovery deficit entering this block, reducing rep count by one and enforcing the slower end of the pace range lowers injury risk while still delivering Treviso-specific race-pace stimulus 9 weeks out."
+        },
+        {
+          "date": "2027-06-18",
+          "discipline": "rest",
+          "current_session": "Wk52 Pool Swim (Friday) \u2014 60 min pool session, 2km+, \u22642:30/100m",
+          "proposed_session": "Convert to complete rest or a 10-minute gentle shakeout swim (200\u2013300m easy, no pace target) \u2014 this is 2 days before Ironman Italy Cervia and any meaningful swim load at this point is purely stress with no adaptation benefit.",
+          "change_type": "replace",
+          "reason": "A 60-minute pool session 2 days before a full Ironman is a mandatory pre-race conflict \u2014 legs and shoulders must arrive at the start line fresh, not carrying residual fatigue from a 2km swim."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-07-31T02:55:45.592855+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-07-31T03:00:51.259939+00:00",
+  "applied_count": 6
 }
