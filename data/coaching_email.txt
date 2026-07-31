@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show severely fragmented training with only 9 sessions logged, dominated by chronically poor sleep (multiple nights under 4 hours, body battery hitting 2-5 on several days) and a dangerous HR spike during the July 18 run (avg 179 bpm, load 208). Cycling volume is the brightest spot with a solid 77km ride on July 20, but swim and run consistency are well below what's needed for the Treviso 10K and Half Oceanman in 64 days. The most urgent priority is rebuilding sleep discipline and letting the body battery recover before layering any meaningful training stress.
+The last 4 weeks show a highly inconsistent training pattern with very low overall volume — only 9 sessions logged, dominated by short swims and two runs — combined with chronically poor sleep (multiple nights under 5 hours, a 41-minute night on July 27) and persistently low body battery readings. The July 18 run at 179 bpm average HR and the 4.5-hour cycling session on July 20 stand out as significant outliers that likely deepened the fatigue hole the athlete is now in. With both the Treviso 10K and Half Oceanman 64 days away, the priority must be rebuilding sleep and recovery first, then gradually reintroducing structured training before adding any race-specific intensity.
 
 COACHING SUGGESTIONS:
-  1. Target 7+ hours of sleep every night through August 7 as a non-negotiable prerequisite before reintroducing structured intensity — the repeated sub-5-hour nights are the single biggest limiter right now.
-  2. For the Treviso 10K (64 days), introduce short race-pace efforts of 4×1km at 5:45/km starting only in Week 9 (Aug 20) once sleep gates are consistently met — do not attempt these while body battery remains below 50.
-  3. Swimming needs to become the most consistent discipline given the Half Oceanman 5km target; aim for two pool sessions per week hitting 2km+ each from Week 7 onwards, prioritising stroke efficiency and aerobic volume over pace.
-  4. Eliminate all high-intensity running (HR >160 bpm) until at least August 9; the July 18 run at 179 bpm average without adequate recovery is a clear injury and overtraining risk signal.
-  5. Consider shifting the Week 7 long ride (Aug 8) start time to early morning Malta hours (before 08:00) to avoid peak summer heat, which compounds cardiovascular stress on an already fatigued system.
+  1. Prioritise sleep above all else this week — aim for 7+ hours every night before adding any training load, as body battery has been critically low (2 on July 30, 5 on July 27) and no meaningful adaptation can occur in this state.
+  2. For the Treviso 10K (64 days away), introduce 1 x race-pace run per week from Week 8 onwards at 5:45/km — short intervals (4-5 x 1km) are already in the plan for Wk9/10 and should be protected as the key quality session each week.
+  3. For the Half Oceanman 5km swim (64 days away), the twice-weekly pool sessions are appropriate but currently unmet — make the Tuesday pool swim the non-negotiable anchor of each week once recovery permits, building toward a 3.5-4km continuous or broken set by late August.
+  4. Avoid any HR exceedances above 160 bpm in runs until at least mid-August — the July 18 run at 179 bpm average was counterproductive given the fatigue context and risks injury ahead of both September races.
+  5. Cap the long ride at 84km / Z2 lower half until two consecutive weeks of 6.5h+ average sleep are achieved — the July 20 cycling session (282 min) was too long relative to the recovery state and should not be repeated in the current condition.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-08-02 [REST]
     Current:  30-min gentle walk at conversational pace, flat route, no targets
-    Proposed: Full rest — no movement targets at all. Sleep and eat well. Recheck body battery on Aug 3 morning; only proceed to any activity if it reads ≥45.
-    Reason:   Body battery was 2 on July 30 and 31 on July 31, and sleep collapsed to 41 min on July 27 — even a walk risks cementing the downward spiral before the recovery window can close.
+    Proposed: Full rest day — no structured movement. If feeling well, 10-15 min of light stretching indoors only. Postpone any outdoor activity until body battery consistently reads ≥40 on waking.
+    Reason:   Sleep has averaged under 5.5 hours across the past 5 nights and body battery hit 2 on July 30 and 31 — even a walk adds cortisol stress the body cannot currently absorb.
 
   • 2026-08-04 [CYCLING]
-    Current:  30-min Z1 cap at 128W if body battery ≥50, otherwise full rest
-    Proposed: 30-min easy spin at 110–125W (pure Z1 flush) only if morning body battery ≥50 AND prior two nights averaged ≥6h sleep; if either gate fails, full rest — no consolation walk.
-    Reason:   The existing gate is correct but the power ceiling should be lowered to Z1 flush level (110–125W) given the depth of the fatigue hole; 128W sits at the top of Z1 and adds unnecessary stress while recovering.
-
-  • 2026-08-08 [CYCLING]
-    Current:  84km @ 128–160W (conservative Z2), ~240 min
-    Proposed: 60–70km @ 128–150W (lower half of Z2 only), 180–200 min; abort and turn home if HR exceeds 145 bpm for more than 5 consecutive minutes — prioritise completion over distance.
-    Reason:   Given the sleep deficit accumulated through late July, a 240-min ride risks digging deeper into fatigue; shortening to 180–200 min keeps the aerobic stimulus while protecting recovery ahead of the Treviso and Oceanman build.
+    Current:  Z1 spin 30 min max at ≤128W if body battery ≥50, otherwise full rest
+    Proposed: Full rest or 20-min easy indoor spin at ≤110W (active recovery only) — gate remains body battery ≥45 on waking; if not met, skip entirely with no substitution.
+    Reason:   Given the sleep collapse over the past week, the power ceiling and gate should be kept conservative to avoid digging the fatigue hole deeper before the key weekend sessions.
 
   • 2026-08-09 [RUNNING]
-    Current:  12km @ 6:45–7:00/km, 80–85 min if sleep gates met, otherwise 8km easy walk-run
-    Proposed: 10km @ 6:45–7:00/km, 68–72 min, HR cap ≤145 bpm; if HR climbs above cap, walk until it drops then resume — do not push through. Gate remains: avg sleep ≥6.5h Aug 2–8 AND body battery ≥55.
-    Reason:   Reducing to 10km from 12km lowers acute run load appropriately for an athlete returning from a sleep-crash week while still providing enough stimulus to support the Treviso 10K preparation arc.
+    Current:  12km @ 6:45–7:00/km, 80–85 min, conditional on sleep and body battery ≥55
+    Proposed: 10km @ 6:45–7:00/km (67–70 min), walk-run format if needed; gate unchanged (body battery ≥55, avg sleep ≥6.5h Aug 2–8) — do not extend beyond 10km this week regardless of how good you feel.
+    Reason:   With the Treviso 10K 64 days away, building run volume progressively from a low base is safer than jumping to 12km in the first real long run after a recovery week — arriving at 10km comfortably is the goal here.
 
-  • 2026-08-20 [RUNNING]
-    Current:  4×1km @ 5:45/km with 90-sec walk recovery, total 38–42 min, gate: sleep ≥6.5h avg Aug 15–19 and body battery ≥50
-    Proposed: 4×1km @ 5:45/km (Treviso 10K race pace) with 90-sec walk recovery; add a 10-min warm-up jog at 7:00/km and 10-min cool-down — keep the same gates. This is the first structured race-pace session so treat RPE 7/10 as the ceiling.
-    Reason:   The Treviso 10K is 64 days away and this is the earliest point where race-pace neuromuscular work is appropriate; the session structure is sound but explicitly capping RPE protects against overcooking the first quality run after a difficult recovery block.
+  • 2026-08-16 [RUNNING]
+    Current:  Cap at 16–17km @ 6:30–6:45/km (105–115 min), extend to 19km+ only if prior runs completed without HR exceedances
+    Proposed: 14km @ 6:30–6:45/km (90–95 min) with the final 2km at 5:45/km (Treviso race pace) as a race-feel closer — only if Aug 9 run was completed and sleep gate (6.5h avg) met; otherwise 12km easy.
+    Reason:   Inserting a short race-pace finish block at 8 weeks out begins neuromuscular preparation for 5:45/km at Treviso without adding meaningful volume stress.
 
-  • 2026-08-25 [RUNNING]
-    Current:  5×1km @ 5:40–5:50/km with 90-sec walk recovery, total 40–45 min
-    Proposed: 5×1km @ 5:40–5:50/km with 90-sec walk recovery, total 40–45 min — only execute if the Aug 20 race-pace session was completed without HR exceeding 170 bpm; if that session was skipped or HR was excessive, revert to 4×1km @ 5:50/km instead.
-    Reason:   Building from 4 to 5 repetitions is appropriate for the Treviso 10K block but must be conditional on the prior week's quality session completing cleanly, given the fragile recovery baseline established in late July.
+  • 2026-08-23 [RUNNING]
+    Current:  18.5km @ 6:15–6:45/km steady aerobic, negative-split last 20% if Run-peak week
+    Proposed: 15km @ 6:30–6:45/km with 3km at 5:45/km (Treviso race pace) inserted at km 10–13, then easy cooldown to finish — total ~90–100 min; skip race-pace segment if morning body battery <50.
+    Reason:   At 6 weeks out from Treviso 10K, a mid-long-run race-pace block is the most race-specific stimulus available without compromising the aerobic base being built, and 15km is sufficient volume given the current low fitness starting point.
+
+  • 2026-08-21 [SWIMMING]
+    Current:  Pool session 60 min, min 2,000m, technique drills and aerobic sets at ≤2:30/100m
+    Proposed: Pool session 60–70 min: 400m warm-up, then 5 x 400m @ 2:20–2:25/100m with 30-sec rest, 200m cooldown (total ~2,600m) — this begins building toward the Half Oceanman 5km swim pace target.
+    Reason:   With the Half Oceanman 5km swim 64 days away and current longest swim at 2km open water, weekly pool volume needs to begin increasing from late Week 7 to build toward a 3.5–4km continuous capacity by race week.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).

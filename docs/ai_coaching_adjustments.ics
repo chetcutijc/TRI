@@ -1,0 +1,93 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jean Triathlon AI Coaching//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-coaching-20260802-0@jean-tri
+DTSTAMP:20260731T190122Z
+DTSTART:20260802T070000
+DTEND:20260802T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest day — no structured movement. If
+  feeling well\, 10-
+DESCRIPTION:Full rest day — no structured movement. If feeling well\, 10-
+ 15 min of light stretching indoors only. Postpone any outdoor activity unt
+ il body battery consistently reads ≥40 on waking.\n\nReason: Sleep has a
+ veraged under 5.5 hours across the past 5 nights and body battery hit 2 on
+  July 30 and 31 — even a walk adds cortisol stress the body cannot curre
+ ntly absorb.\n\nAI coaching 2026-07-31
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260804-1@jean-tri
+DTSTAMP:20260731T190122Z
+DTSTART:20260804T070000
+DTEND:20260804T090000
+SUMMARY:[AI ADJUSTED] cycling — Full rest or 20-min easy indoor spin at 
+ ≤110W (active recove
+DESCRIPTION:Full rest or 20-min easy indoor spin at ≤110W (active recover
+ y only) — gate remains body battery ≥45 on waking\; if not met\, skip 
+ entirely with no substitution.\n\nReason: Given the sleep collapse over th
+ e past week\, the power ceiling and gate should be kept conservative to av
+ oid digging the fatigue hole deeper before the key weekend sessions.\n\nAI
+  coaching 2026-07-31
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260809-2@jean-tri
+DTSTAMP:20260731T190122Z
+DTSTART:20260809T070000
+DTEND:20260809T090000
+SUMMARY:[AI ADJUSTED] running — 10km @ 6:45–7:00/km (67–70 min)\, wal
+ k-run format if needed\; 
+DESCRIPTION:10km @ 6:45–7:00/km (67–70 min)\, walk-run format if needed
+ \; gate unchanged (body battery ≥55\, avg sleep ≥6.5h Aug 2–8) — d
+ o not extend beyond 10km this week regardless of how good you feel.\n\nRea
+ son: With the Treviso 10K 64 days away\, building run volume progressively
+  from a low base is safer than jumping to 12km in the first real long run 
+ after a recovery week — arriving at 10km comfortably is the goal here.\n
+ \nAI coaching 2026-07-31
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260816-3@jean-tri
+DTSTAMP:20260731T190122Z
+DTSTART:20260816T070000
+DTEND:20260816T090000
+SUMMARY:[AI ADJUSTED] running — 14km @ 6:30–6:45/km (90–95 min) with 
+ the final 2km at 5:45/k
+DESCRIPTION:14km @ 6:30–6:45/km (90–95 min) with the final 2km at 5:45/
+ km (Treviso race pace) as a race-feel closer — only if Aug 9 run was com
+ pleted and sleep gate (6.5h avg) met\; otherwise 12km easy.\n\nReason: Ins
+ erting a short race-pace finish block at 8 weeks out begins neuromuscular 
+ preparation for 5:45/km at Treviso without adding meaningful volume stress
+ .\n\nAI coaching 2026-07-31
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260823-4@jean-tri
+DTSTAMP:20260731T190122Z
+DTSTART:20260823T070000
+DTEND:20260823T090000
+SUMMARY:[AI ADJUSTED] running — 15km @ 6:30–6:45/km with 3km at 5:45/km
+  (Treviso race pace) 
+DESCRIPTION:15km @ 6:30–6:45/km with 3km at 5:45/km (Treviso race pace) i
+ nserted at km 10–13\, then easy cooldown to finish — total ~90–100 m
+ in\; skip race-pace segment if morning body battery <50.\n\nReason: At 6 w
+ eeks out from Treviso 10K\, a mid-long-run race-pace block is the most rac
+ e-specific stimulus available without compromising the aerobic base being 
+ built\, and 15km is sufficient volume given the current low fitness starti
+ ng point.\n\nAI coaching 2026-07-31
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260821-5@jean-tri
+DTSTAMP:20260731T190122Z
+DTSTART:20260821T070000
+DTEND:20260821T090000
+SUMMARY:[AI ADJUSTED] swimming — Pool session 60–70 min: 400m warm-up\,
+  then 5 x 400m @ 2:20–2
+DESCRIPTION:Pool session 60–70 min: 400m warm-up\, then 5 x 400m @ 2:20
+ –2:25/100m with 30-sec rest\, 200m cooldown (total ~2\,600m) — this be
+ gins building toward the Half Oceanman 5km swim pace target.\n\nReason: Wi
+ th the Half Oceanman 5km swim 64 days away and current longest swim at 2km
+  open water\, weekly pool volume needs to begin increasing from late Week 
+ 7 to build toward a 3.5–4km continuous capacity by race week.\n\nAI coac
+ hing 2026-07-31
+END:VEVENT
+END:VCALENDAR
