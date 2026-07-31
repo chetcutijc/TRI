@@ -1,74 +1,62 @@
 {
-  "summary": "The last 4 weeks show a very inconsistent training pattern with extremely poor sleep quality \u2014 average nightly sleep is well below 6 hours on many nights, and body battery has repeatedly collapsed to single digits, indicating chronic under-recovery. Training load has been sporadic with some high-intensity spikes (July 18 run at avg HR 179bpm, July 20 long ride at 210 load) mixed with long gaps, and the most recent week (July 25\u201331) shows near-zero structured training alongside severely degraded sleep, suggesting the athlete is currently in a fatigue hole. With the Treviso 10K just 64 days away, the immediate priority is restoring sleep quality and rebuilding aerobic consistency before any race-specific work can be effective.",
+  "summary": "The last 4 weeks reveal a deeply fragmented training pattern: sleep is chronically insufficient (multiple nights under 4-5 hours, with 41 minutes on July 27), body battery has repeatedly collapsed to single digits, and training load has been highly erratic \u2014 swinging from very easy efforts to a 208-load run and a 210-load ride within days of each other. The body is not recovering between sessions, and the cumulative fatigue risk heading into the Treviso 10K (64 days away) is significant. Immediate priority is stabilising sleep and recovery before any meaningful run-specific training for the race can be built.",
   "suggestions": [
-    "Prioritise sleep above all else this week \u2014 aim for a minimum 7 hours per night before resuming any structured training, as no training adaptation can occur in the current state of chronic sleep deprivation.",
-    "For the Treviso 10K (64 days away), begin introducing short race-pace intervals (3\u20135 x 1km @ 5:45/km) only once sleep averages 6.5h+ for 5 consecutive nights and morning body battery is consistently above 45.",
-    "Cap running HR at 145bpm for all easy runs until body battery stabilises above 60 in the mornings \u2014 the July 18 run at 179bpm avg HR reflects the kind of uncontrolled intensity that deepens fatigue holes.",
-    "Re-establish swim consistency by committing to at least two pool sessions per week from Week 7 onward \u2014 open water sessions in early July were very short (0.1\u20132km) and the discipline needs volume to build race-ready fitness for the longer-term Ironman goal.",
-    "Consider replacing the Aug 8 long ride's Z3 tempo blocks with pure Z2 if sleep has not recovered to 6.5h average by Aug 5 \u2014 building aerobic base on depleted recovery will not produce fitness gains and risks injury."
+    "Target a minimum of 6.5 hours of sleep per night as a non-negotiable gate before any training session harder than Z1 \u2014 body battery data shows you cannot absorb training stress without it, and several recent sessions (especially the July 18 run at avg HR 179) were clearly performed in a compromised state.",
+    "For the Treviso 10K (64 days away), aim to introduce 1 race-pace run per week (4\u20135 x 1km @ 5:45/km with 90-sec recovery) from mid-August onward \u2014 but only once sleep has averaged 6.5h+ for at least 5 consecutive nights and body battery is consistently above 50.",
+    "Avoid back-to-back high-load days entirely until recovery stabilises; the July 18 high-HR run followed by the July 20 4.7-hour ride is an example of the pattern that is driving accumulated fatigue and suppressing body battery.",
+    "Replace the Aug 11 Wk8 Tuesday run (currently 90 min) with a short easy aerobic run of 30\u201335 min at 6:30\u20136:50/km \u2014 the 90-minute duration is mismatched with current fitness and recovery capacity, and risks derailing the week before it starts.",
+    "Open-water swimming sessions are very short (under 30 min, under 2km) and inconsistent; consolidate to one meaningful OWS per week of at least 45 min once recovery allows, to build swim confidence ahead of Ironman Cervia long-term."
   ],
-  "proposed_changes": [],
-  "generated_at": "2026-07-31T17:33:11.016233+00:00",
-  "weeks_analysed": 4,
-  "history": [
+  "proposed_changes": [
     {
-      "applied_at": "2026-07-31T17:39:15.552688+00:00",
-      "generated_at": "2026-07-31T17:33:11.016233+00:00",
-      "summary": "The last 4 weeks show a very inconsistent training pattern with extremely poor sleep quality \u2014 average nightly sleep is well below 6 hours on many nights, and body battery has repeatedly collapsed to single digits, indicating chronic under-recovery. Training load has been sporadic with some high-intensity spikes (July 18 run at avg HR 179bpm, July 20 long ride at 210 load) mixed with long gaps, and the most recent week (July 25\u201331) shows near-zero structured training alongside severely degraded sleep, suggesting the athlete is currently in a fatigue hole. With the Treviso 10K just 64 days away, the immediate priority is restoring sleep quality and rebuilding aerobic consistency before any race-specific work can be effective.",
-      "applied_count": 6,
-      "changes": [
-        {
-          "date": "2026-08-01",
-          "discipline": "cycling",
-          "current_session": "30\u201340 min easy spin at 110\u2013128W (Z1 only); skip if morning body battery below 30",
-          "proposed_session": "Skip entirely \u2014 full rest day. With body battery at 2 on July 30, 41 minutes of sleep on July 27, and 278 min on July 28, even a Z1 spin adds unabsorbable stress; walk 15\u201320 min outside for light movement only if you feel the urge to move.",
-          "change_type": "skip",
-          "reason": "Body battery and sleep data for the past 5 days indicate the athlete cannot absorb any training load without deepening the current recovery deficit."
-        },
-        {
-          "date": "2026-08-02",
-          "discipline": "running",
-          "current_session": "30-min flat walk only \u2014 active recovery",
-          "proposed_session": "30-min gentle walk at conversational pace, flat route, no targets \u2014 treat as lifestyle movement not training; postpone any running until at least Aug 4 and only if sleep improves.",
-          "change_type": "decrease",
-          "reason": "Maintaining the walk is appropriate but framing it purely as lifestyle movement reduces psychological pressure to perform while sleep remains critically low."
-        },
-        {
-          "date": "2026-08-04",
-          "discipline": "cycling",
-          "current_session": "45 min @ 128\u2013145W low Z2 if body battery \u226540, else 20 min easy walk",
-          "proposed_session": "Raise the body battery gate to \u226550 and cap power at 128W (Z1 ceiling) for 30 min maximum; if gate not met, full rest \u2014 do not substitute with a walk as a consolation session.",
-          "change_type": "decrease",
-          "reason": "Given the severity of the recent sleep collapse, a stricter gate and lower ceiling protect against repeating the pattern of training into fatigue that has characterised the last two weeks."
-        },
-        {
-          "date": "2026-08-09",
-          "discipline": "running",
-          "current_session": "16km @ 6:30\u20136:45/km, 105\u2013110 min long run",
-          "proposed_session": "12km @ 6:45\u20137:00/km, 80\u201385 min \u2014 only attempt if the Aug 2 walk was completed, sleep has averaged 6.5h+ for Aug 2\u20138, and morning body battery is \u226555; otherwise cap at 8km easy walk-run.",
-          "change_type": "decrease",
-          "reason": "With the Treviso 10K 56 days out at this point, a conservative long run ceiling prevents injury risk from sleep-depleted muscle recovery while still building aerobic base."
-        },
-        {
-          "date": "2026-08-20",
-          "discipline": "running",
-          "current_session": "3 x 1km @ 5:30\u20135:45/km with 2-min walk recovery, 35\u201340 min total \u2014 gate: sleep 6.5h avg Aug 15\u201319 and body battery \u226550",
-          "proposed_session": "4 x 1km @ 5:45/km (Treviso race pace) with 90-sec walk recovery, 10-min warm-up and cool-down \u2014 total 38\u201342 min; execute only if sleep gate (6.5h avg Aug 15\u201319) and body battery \u226550 are both met, otherwise replace with 30 min easy run at HR \u2264140.",
-          "change_type": "replace",
-          "reason": "Aligning the interval pace precisely to Treviso 10K target pace (5:45/km) with a slight volume increase from 3 to 4 reps gives race-specific neuromuscular stimulus 35 days before the race without overreaching."
-        },
-        {
-          "date": "2027-06-18",
-          "discipline": "swimming",
-          "current_session": "Wk52 Pool Swim (Friday) \u2014 60 min pool session, 2km+, pace \u22642:30/100m",
-          "proposed_session": "Replace with a 15-min open water shakeout swim at easy effort (\u22641:55/100m), focusing on sighting and settling race nerves \u2014 no sets, no targets, exit feeling fresh; or full rest if fatigued.",
-          "change_type": "replace",
-          "reason": "This session is only 2 days before Ironman Italy Cervia and a full 60-min pool session at race pace would compromise freshness on race morning \u2014 a short shakeout or rest is mandatory."
-        }
-      ],
-      "unmatched": []
+      "date": "2026-08-09",
+      "discipline": "running",
+      "current_session": "Wk7 Long Run \u2014 12km @ 6:45\u20137:00/km (80\u201385 min) if sleep gate met, else 8km easy walk-run",
+      "proposed_session": "Cap at 8km @ 6:45\u20137:00/km (55\u201360 min) regardless of sleep gate \u2014 treat this as a confidence-builder, not a fitness session; walk any uphill sections and stop if HR exceeds 150 bpm.",
+      "change_type": "decrease",
+      "reason": "Sleep has been severely disrupted for 5+ consecutive nights and body battery is in the low 20s\u201330s; even if the Aug 2 walk was completed, jumping to 12km carries meaningful injury risk given the detraining effect of poor recovery."
+    },
+    {
+      "date": "2026-08-11",
+      "discipline": "running",
+      "current_session": "Wk8 Evening session \u2014 90 min aerobic run at 6:30\u20136:50/km",
+      "proposed_session": "30\u201335 min easy jog at 6:30\u20136:50/km, HR cap 145 bpm \u2014 execute only if morning body battery is \u226550; otherwise replace with 20 min walk.",
+      "change_type": "decrease",
+      "reason": "90 minutes is far beyond current demonstrated run fitness (longest recent run was 45 min) and would create excessive load on a Tuesday following a Sunday long run during a recovery phase."
+    },
+    {
+      "date": "2026-08-16",
+      "discipline": "running",
+      "current_session": "Wk8 Long Run \u2014 cap at 16\u201317km @ 6:30\u20136:45/km (105\u2013115 min)",
+      "proposed_session": "10km @ 6:45\u20137:00/km (68\u201370 min) with a gate of \u22656.5h average sleep Aug 10\u201315 and morning body battery \u226555; include 2km of easy strides at 5:45/km pace in km 7\u20138 as first race-pace exposure.",
+      "change_type": "decrease",
+      "reason": "16\u201317km is too aggressive given the current run base (longest recent run is 6.3km) and the Treviso 10K is 46 days away at this point \u2014 building to 10km with a brief race-pace stimulus is more appropriate and safer."
+    },
+    {
+      "date": "2026-08-22",
+      "discipline": "cycling",
+      "current_session": "Wk9 Long Ride \u2014 95km @ 128\u2013177W (Z2), with optional 3x10min Z3 blocks",
+      "proposed_session": "85km @ 128\u2013160W (lower half of Z2 only), omit Z3 blocks \u2014 focus on sustained aerobic quality and nutrition practice rather than intensity.",
+      "change_type": "decrease",
+      "reason": "With Treviso 10K 33 days away at this point, running legs take priority and a hard bike effort two days before the Sunday long run undermines race-specific run readiness."
+    },
+    {
+      "date": "2026-08-23",
+      "discipline": "running",
+      "current_session": "Wk9 Long Run \u2014 18.5km @ 6:15\u20136:45/km (steady aerobic; negative-split last 20% if Run-peak week)",
+      "proposed_session": "12km @ 6:30\u20136:45/km (78\u201382 min), including 3 x 1km @ 5:45/km (Treviso race pace) inserted at km 5, 8, and 11 with easy jogging recovery between \u2014 total effort controlled at 7/10.",
+      "change_type": "replace",
+      "reason": "This is the ideal window (41 days to Treviso) to introduce structured race-pace exposure within a long run, while keeping total volume realistic for current fitness rather than jumping to 18.5km."
+    },
+    {
+      "date": "2026-08-25",
+      "discipline": "running",
+      "current_session": "Wk10 Evening session \u2014 5 x 1km @ 5:40\u20135:50/km with 90-sec walk recovery (40\u201345 min total)",
+      "proposed_session": "5 x 1km @ 5:45/km (Treviso target pace) with 90-sec walk recovery, 10-min warm-up and 10-min cool-down \u2014 total 45 min; execute only if morning body battery \u226550 and average sleep Aug 20\u201324 exceeds 6h.",
+      "change_type": "replace",
+      "reason": "Aligning the pace precisely to 5:45/km (Treviso race pace) rather than 5:40\u20135:50/km builds the correct neuromuscular pattern for the race and removes the temptation to push the faster end of the range."
     }
   ],
-  "applied_at": "2026-07-31T17:39:15.552688+00:00",
-  "applied_count": 6
+  "generated_at": "2026-07-31T17:42:13.444881+00:00",
+  "weeks_analysed": 4
 }
