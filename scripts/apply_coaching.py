@@ -15,11 +15,52 @@ silently skipped.
 """
 
 import json
+import re
 import datetime as dt
 from pathlib import Path
 
 COACHING_FILE  = Path("data/ai_coaching.json")
 PLAN_FULL_FILE = Path("data/plan_full.json")
+RACES_FILE     = Path("data/races.json")
+
+
+def load_races():
+    if not RACES_FILE.exists():
+        return []
+    try:
+        return json.loads(RACES_FILE.read_text())
+    except Exception:
+        return []
+
+
+def detect_race_conflicts(plan_full, races, days_before=2, max_easy_min=45):
+    """Same rule as build_dashboard.py's version: flags any non-rest session
+    >45min scheduled in the last 2 days before a race."""
+    if not plan_full or not races:
+        return []
+    conflicts = []
+    for r in races:
+        try:
+            race_date = dt.date.fromisoformat(r["date"])
+        except Exception:
+            continue
+        window_start = race_date - dt.timedelta(days=days_before)
+        for s in plan_full:
+            try:
+                sdate = dt.date.fromisoformat(s["date"])
+            except Exception:
+                continue
+            if not (window_start <= sdate < race_date):
+                continue
+            if s.get("discipline") in ("rest", "race", None):
+                continue
+            dur = s.get("duration_min") or 0
+            if dur and dur <= max_easy_min:
+                continue
+            conflicts.append({
+                "session_date": s["date"], "discipline": s.get("discipline", "?"),
+            })
+    return conflicts
 
 
 def main():
@@ -37,6 +78,13 @@ def main():
         return
 
     plan = json.loads(PLAN_FULL_FILE.read_text())
+    races = load_races()
+    conflicts_before = detect_race_conflicts(plan, races)
+    if conflicts_before:
+        print(f"Detected {len(conflicts_before)} pre-race conflict(s) — any change "
+              f"touching these sessions will be forced to rest/30min regardless "
+              f"of what the AI's change_type says.\n")
+
     print(f"Loaded {len(plan)} plan sessions, {len(changes)} proposed changes.\n")
 
     applied   = 0
@@ -97,7 +145,16 @@ def main():
         # ── apply the change ──
         original_notes = match.get("notes", "")
 
-        if change_type == "skip":
+        # Was this session flagged as a pre-race conflict? If so, whatever the
+        # AI proposed, it MUST end up short/easy — no partial half-measures
+        # like a blind 10% duration cut. Checked against the plan state
+        # *before* this change is applied.
+        is_conflict_fix = any(
+            c["session_date"] == target_date and c["discipline"] == disc
+            for c in conflicts_before
+        )
+
+        if change_type == "skip" or is_conflict_fix:
             match["discipline"]   = "rest"
             match["duration_min"] = 30
             match["summary"]      = match.get("summary", "") + " (AI: skipped)"
@@ -106,13 +163,20 @@ def main():
             match["summary"] = match.get("summary", "") + " (AI adjusted)"
             match["notes"]   = f"[AI ADJUSTED] {proposed}\n\nReason: {reason}\n\nOriginal: {original_notes}"
             if match.get("duration_min"):
-                if change_type == "increase":
+                # Prefer an explicit duration Claude actually wrote (e.g. "cap at
+                # 30min", "reduce to 45 minutes") over blind percentage math —
+                # a flat *0.9 barely changes a 180min session.
+                explicit = re.search(r"(\d+)\s*-?\s*\d*\s*min", proposed)
+                if explicit:
+                    match["duration_min"] = int(explicit.group(1))
+                elif change_type == "increase":
                     match["duration_min"] = round(match["duration_min"] * 1.10)
                 elif change_type == "decrease":
                     match["duration_min"] = round(match["duration_min"] * 0.90)
 
         applied += 1
-        print(f"  {change_type.upper():<9}{target_date} [{disc}] -> applied")
+        tag = " [pre-race safety: forced to rest/30min]" if is_conflict_fix else ""
+        print(f"  {change_type.upper():<9}{target_date} [{disc}] -> applied{tag}")
 
     # keep plan chronological (new "add" sessions land in the right place)
     plan.sort(key=lambda s: s.get("date", ""))
