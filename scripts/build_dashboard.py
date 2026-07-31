@@ -2685,6 +2685,20 @@ def main():
     if email_coaching:
         Path("data/coaching_email.txt").write_text(email_coaching)
 
+    # Write a physical .ics file for the AI's proposed changes so it can be
+    # emailed as an attachment — Mail's "Add All N Events" import flow works
+    # properly, unlike Safari's one-at-a-time download preview on iPhone.
+    ics_path = Path("docs/ai_coaching_adjustments.ics")
+    proposed = (coaching or {}).get("proposed_changes", [])
+    if proposed:
+        gen_at = (coaching or {}).get("generated_at", "")[:10]
+        ics_path.write_text(build_ics_content(proposed, gen_at))
+        print(f"ICS written to {ics_path} ({len(proposed)} events)")
+    elif ics_path.exists():
+        # No pending changes this run — remove any stale file from a
+        # previous round so the email step doesn't attach outdated events.
+        ics_path.unlink()
+
 
 if __name__ == "__main__":
     main()
