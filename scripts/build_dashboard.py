@@ -1053,7 +1053,100 @@ function deleteRace(idx) {{
 </script>"""
 
 
-def race_cards_html():
+def fmt_hms(total_seconds):
+    """Seconds -> H:MM:SS (or MM:SS if under an hour)."""
+    if total_seconds is None or total_seconds <= 0:
+        return None
+    total_seconds = round(total_seconds)
+    h, rem = divmod(total_seconds, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
+def compute_race_prediction(race, df):
+    """
+    Rough finish-time estimate per discipline, based on your average pace/power/speed
+    over the last 4 weeks of actual Garmin activities, applied to the race's distances.
+
+    This is a simple linear projection (recent pace × race distance) — it does NOT
+    account for endurance fade over longer distances, so treat it as a ballpark,
+    not a race predictor.
+    """
+    dist = race.get("distances", {}) or {}
+    if not dist or df is None or df.empty:
+        return None
+
+    recent = df[df["start"] >= (dt.datetime.now() - dt.timedelta(weeks=4))]
+    if recent.empty:
+        return None
+
+    total_sec = 0
+    parts = []
+    have_any = False
+
+    if dist.get("run_km"):
+        ru = recent[recent["type"] == "running"]
+        paces = ru["avg_pace"].dropna().apply(speed_to_pace)  # sec/km
+        paces = paces[paces > 0]
+        if not paces.empty:
+            sec_km = paces.mean()
+            run_sec = sec_km * dist["run_km"]
+            total_sec += run_sec
+            parts.append(("🏃", fmt_hms(run_sec)))
+            have_any = True
+
+    if dist.get("bike_km"):
+        cy = recent[recent["type"] == "cycling"]
+        speeds = cy["avg_pace"].dropna()  # m/s
+        speeds = speeds[speeds > 0.1]
+        if not speeds.empty:
+            kmh = speeds.mean() * 3.6
+            bike_sec = (dist["bike_km"] / kmh) * 3600
+            total_sec += bike_sec
+            parts.append(("🚴", fmt_hms(bike_sec)))
+            have_any = True
+
+    if dist.get("swim_m"):
+        sw = recent[recent["type"] == "swimming"]
+        paces = sw["avg_pace"].dropna().apply(speed_to_pace)  # sec/km -> /100m
+        paces = paces[paces > 0]
+        if not paces.empty:
+            sec_100m = paces.mean() / 10
+            swim_sec = sec_100m * (dist["swim_m"] / 100)
+            total_sec += swim_sec
+            parts.append(("🏊", fmt_hms(swim_sec)))
+            have_any = True
+
+    if not have_any:
+        return None
+
+    return {"total": fmt_hms(total_sec), "parts": parts}
+
+
+def compute_race_target_time(race):
+    """Target finish time derived from targets × distances, if both are set."""
+    dist = race.get("distances", {}) or {}
+    tgt  = race.get("targets", {}) or {}
+    if not dist:
+        return None
+
+    total_sec = 0
+    have_any = False
+
+    if dist.get("run_km") and tgt.get("run_pace_sec_km"):
+        total_sec += tgt["run_pace_sec_km"] * dist["run_km"]
+        have_any = True
+    if dist.get("bike_km") and tgt.get("bike_power_w"):
+        # power alone can't derive a time — skip unless a target speed is ever added
+        pass
+    if dist.get("swim_m") and tgt.get("swim_pace_100m_sec"):
+        total_sec += tgt["swim_pace_100m_sec"] * (dist["swim_m"] / 100)
+        have_any = True
+
+    return fmt_hms(total_sec) if have_any else None
+
+
+def race_cards_html(df=None):
     cards = ""
     for r in RACES:
         days = days_until(r["date"])
@@ -1081,6 +1174,26 @@ def race_cards_html():
             dist_str.append(f"🏃 {d['run_km']}km")
         dist_line = " · ".join(dist_str)
 
+        # Target and predicted finish times
+        target_time    = compute_race_target_time(r)
+        prediction      = compute_race_prediction(r, df) if df is not None else None
+        pred_time       = prediction["total"] if prediction else None
+        pred_parts      = prediction["parts"] if prediction else []
+
+        time_html = ""
+        if target_time or pred_time:
+            bits = []
+            if target_time:
+                bits.append(f'<span style="color:#5B6EF5;font-weight:700">🎯 {target_time}</span>')
+            if pred_time:
+                pred_detail = " · ".join(f"{emoji} {t}" for emoji, t in pred_parts)
+                bits.append(
+                    f'<span style="color:#00C2A8;font-weight:700" '
+                    f'title="Based on your last 4 weeks of training ({pred_detail})">'
+                    f'📈 ~{pred_time}</span>'
+                )
+            time_html = f'<div style="font-size:.82em;margin:4px 0;display:flex;gap:10px">{"".join(bits)}</div>'
+
         color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
         cards += f"""
         <div class="race-card">
@@ -1091,6 +1204,7 @@ def race_cards_html():
                 {'In ' + str(days) + ' days' if days > 0 else 'RACE DAY!' if days == 0 else str(abs(days)) + ' days ago'}
             </div>
             {f'<div class="race-dist">{dist_line}</div>' if dist_line else ''}
+            {time_html}
             <div class="race-targets">{targets_line}</div>
             <div class="race-note">{r['note']}</div>
         </div>"""
@@ -1921,7 +2035,7 @@ function triggerWorkflow(workflowFile, statusElId, label) {{
 </script>
 
 <h2>Race Targets</h2>
-<div class="races">{race_cards_html()}</div>
+<div class="races">{race_cards_html(df)}</div>
 {race_manager_html()}
 
 <h2>Last 30 Days — Overview</h2>
