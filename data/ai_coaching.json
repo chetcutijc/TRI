@@ -7,7 +7,10 @@
     "Avoid stacking cycling and running on the same day during Weeks 6\u20137; the plan already separates them, but honour that structure strictly to prevent the HR spikes seen on July 18th.",
     "Track body battery daily: use 40+ as the minimum green light for any aerobic session and 60+ for any session with intensity \u2014 below these thresholds, substitute with mobility or full rest."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-07-31T02:55:45.592855+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
       "date": "2026-08-01",
       "discipline": "cycling",
