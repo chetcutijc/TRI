@@ -50,6 +50,7 @@
     "targets": {
       "swim_pace_100m_sec": 110,
       "bike_power_w": 190,
+      "bike_speed_kmh": 30,
       "run_pace_sec_km": 390
     }
   }
