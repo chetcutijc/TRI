@@ -1,62 +1,62 @@
 {
-  "summary": "The last 4 weeks show a fragmented, low-volume training block with very poor recovery \u2014 sleep has repeatedly fallen below 5 hours, body battery has hit critically low values (2 on July 30th, 5 on July 27th), and the only high-intensity run (July 18th, avg HR 179 bpm) was a significant spike with no apparent build rationale. Cycling has been the most consistent discipline with one strong 77km ride, but swimming volume is minimal and running continuity is absent. With a sprint triathlon test race just 7 days away, the immediate priority must be arriving fresh rather than accumulating more fitness load.",
+  "summary": "The last 4 weeks show a very inconsistent training block with low overall volume across all three disciplines \u2014 only 9 sessions logged, dominated by short open-water swims and a single long ride. Recovery is severely compromised, with chronic sleep deprivation (multiple nights under 5 hours, including 41 min on July 27) and body battery readings frequently in the 2\u201325 range, indicating the athlete is carrying significant cumulative fatigue. With a sprint triathlon test race just 7 days away, the immediate priority must be rest and race-specific sharpening rather than any further load accumulation.",
   "suggestions": [
-    "For the sprint test race in 7 days, treat this entire week as a taper: eliminate all high-intensity and long-duration sessions, keep any movement short (under 40 min), easy, and race-discipline specific \u2014 a short 750m open-water swim, a 20\u201325 min easy spin, and a 15-min easy run at race pace (around 5:30\u20135:45/km) are all you need.",
-    "Sleep is the single biggest limiter right now \u2014 you've had at least 6 nights under 5 hours in the last 4 weeks, which directly impairs recovery and raises injury risk; make 7+ hours a non-negotiable target every night this week before the race.",
-    "Your open-water swim pace (24\u201328 min/km) is far slower than the race target for the 750m leg \u2014 after the test race, dedicate at least two pool sessions per week to technique drills (catch, high-elbow pull) to close the gap toward the \u22642:30/100m target needed for Ironman Cervia.",
-    "The July 18th run at avg HR 179 bpm with 401W power is a red flag for uncontrolled intensity \u2014 future interval sessions must use strict HR caps (\u2264170 bpm) or power-based targets with a warm-up check, especially while sleep quality remains compromised.",
-    "After the test race, re-establish a consistent 3-discipline weekly structure (swim/bike/run) before adding volume; with Treviso 10K 64 days away, the priority from Week 9 onward should shift to run-specific work (tempo and intervals) while maintaining cycling aerobic base at Z2."
+    "Treat the next 7 days as a mini-taper: cap all sessions at 30\u201340 min of easy effort and prioritise 7\u20138 hours of sleep every night \u2014 your body battery data shows you are not currently absorbing any training stimulus meaningfully.",
+    "For the sprint test race (750m/20km/5km), do a short 10\u201315 min brick session on Saturday (Aug 1) \u2014 10 min easy bike into 5 min easy run \u2014 just to rehearse the transitions and feel the bike-to-run change; this replaces the planned long ride.",
+    "Your swim pace in open water has been 24\u201328 min/km, which is significantly slower than the 1:50/100m Ironman target \u2014 prioritise pool sessions with drills over open-water social swims from Week 7 onward to build technique and efficiency.",
+    "The July 18 run at 179 bpm avg HR is a red flag for overreaching; enforce a strict HR ceiling of 145 bpm on all easy runs until sleep consistently averages 6.5+ hours per night.",
+    "From Week 9 onward, introduce structured 800m intervals for the Treviso 10K (64 days away) at 5:00\u20135:15/km as already planned \u2014 but only proceed if the preceding two long runs were completed without HR exceedances and sleep has stabilised."
   ],
   "proposed_changes": [
     {
-      "date": "2026-07-31",
-      "discipline": "swimming",
-      "current_session": "Wk6 Pool Swim (Friday) \u2014 54 min, 2km+, \u22642:30/100m (AI adjusted to 30\u201340 min easy technique, 1,000\u20131,200m)",
-      "proposed_session": "15\u201320 min easy pool or open-water swim, drills only (catch-up, fingertip drag), no pace target, max 600\u2013800m \u2014 pure race familiarity, not a training stimulus.",
-      "change_type": "decrease",
-      "reason": "Body battery was 2 on July 30th and the race is 7 days away \u2014 any meaningful training load today delays recovery without adding fitness."
-    },
-    {
       "date": "2026-08-01",
       "discipline": "cycling",
-      "current_session": "Wk6 Long Ride (AI adjusted) \u2014 up to 150 min, 50\u201360km @ 128\u2013145W",
-      "proposed_session": "Replace with a 35\u201340 min easy race-prep spin @ 120\u2013140W (well below Z2 ceiling), flat route; include 3x30-second pickups at race effort (~160\u2013170W) to wake up the legs \u2014 total duration strictly 40 min maximum.",
+      "current_session": "Long ride AI adjusted: 50\u201360km @ 128\u2013145W, up to 150 min",
+      "proposed_session": "Replace with a 15\u201320 min easy brick: 10 min easy spin at 110\u2013130W followed immediately by 5 min easy jog at 7:00/km \u2014 purely to rehearse the bike-to-run transition ahead of the test race on or around Aug 2.",
       "change_type": "replace",
-      "reason": "A long ride 6 days before the test race will deepen fatigue, not build fitness; a short activation spin with brief race-effort touches is more appropriate."
+      "reason": "With a sprint triathlon test race 7 days away and body battery critically low, a long aerobic ride adds fatigue with no fitness gain \u2014 a short brick is more race-specific and less costly."
     },
     {
       "date": "2026-08-02",
       "discipline": "running",
-      "current_session": "Wk6 Long Run (AI adjusted) \u2014 7\u20138km @ 7:00/km, HR \u2264145 bpm, or 30-min walk if HR spikes",
-      "proposed_session": "20\u201325 min easy run @ 6:30\u20137:00/km with 4x30-second strides at 5:30/km (race pace) near the end \u2014 total distance ~3\u20134km; stop immediately if HR exceeds 150 bpm during strides.",
-      "change_type": "replace",
-      "reason": "Five days before the race, a long run is counterproductive; a short run with race-pace strides primes the neuromuscular system without adding fatigue debt."
+      "current_session": "Long run AI adjusted: 7\u20138km @ 7:00/km, HR \u2264145 bpm",
+      "proposed_session": "Skip or replace with a 20-min easy walk/jog if legs feel heavy \u2014 if the test race is on this day, this IS the race; do not double up with a training run.",
+      "change_type": "decrease",
+      "reason": "If the test race falls on or near Aug 2, running a long session the same day defeats the purpose; if the race is later in the week, preserving freshness is more valuable than a short aerobic run."
     },
     {
       "date": "2026-08-04",
       "discipline": "cycling",
-      "current_session": "Wk7 Evening session (AI adjusted) \u2014 60 min Z2 @ 128\u2013155W (if body battery \u226540, else 40 min easy)",
-      "proposed_session": "Full rest or 20 min very easy spin @ 110\u2013125W only \u2014 this is 3 days before race day and the body needs to be absorbing, not loading.",
+      "current_session": "AI adjusted: 60 min Z2 at 128\u2013155W, body battery gate of 40+",
+      "proposed_session": "Keep the 60 min Z2 ride at 128\u2013145W only if body battery is 50+ after the test race weekend; if below 50, reduce to 30 min easy spin at 110\u2013130W or skip entirely.",
       "change_type": "decrease",
-      "reason": "Three days pre-race, even a 60-min Z2 ride risks leaving residual fatigue in the legs for the bike leg on race day."
+      "reason": "Post-race recovery is unpredictable and the body battery data shows the athlete is currently not bouncing back quickly between efforts."
     },
     {
-      "date": "2026-08-04",
-      "discipline": "swimming",
-      "current_session": "Wk7 Pool Swim (Tuesday) \u2014 60 min, 2km+, \u22642:30/100m",
-      "proposed_session": "20\u201325 min pool swim: 400m easy warm-up, 4x50m at race effort with 20-sec rest, 200m easy cool-down \u2014 total ~1,000m, focus on feel and confidence not volume.",
+      "date": "2026-08-08",
+      "discipline": "cycling",
+      "current_session": "AI adjusted: 84km @ 128\u2013160W, 240 min, conservative Z2",
+      "proposed_session": "70km @ 128\u2013150W, strict 180-min ceiling, flat Malta roads; no tempo blocks \u2014 hold lower Z2 only and stop early if avg HR exceeds 138 bpm in the first 45 min.",
       "change_type": "decrease",
-      "reason": "Three days before the race the 750m swim leg needs a confidence touch, not a 2km training stimulus that adds fatigue."
+      "reason": "The athlete's only long ride in 4 weeks was 77km with no power data; stepping to 84km+ in Week 7 is too aggressive given the ongoing sleep and recovery deficit."
     },
     {
-      "date": "2026-08-06",
+      "date": "2026-08-20",
       "discipline": "running",
-      "current_session": "Wk7 Evening session (AI adjusted) \u2014 30 min easy run @ 6:45\u20137:00/km, HR \u2264145 bpm",
-      "proposed_session": "Skip the run entirely \u2014 full rest or 15 min easy walk only; this is the day before race day and legs must be fresh for the 5km run leg.",
-      "change_type": "skip",
-      "reason": "Running the day before a triathlon race, even easy, adds unnecessary neuromuscular fatigue and risks arriving at the start line with heavy legs."
+      "current_session": "AI adjusted: 4x800m @ 5:00\u20135:15/km, 35\u201340 min total",
+      "proposed_session": "3x800m @ 5:10\u20135:20/km with 2-min standing recovery, total 30\u201335 min including warm-up and cool-down \u2014 reduce rep count by one as this is the first structured interval block in the cycle.",
+      "change_type": "decrease",
+      "reason": "The Treviso 10K is 64 days away and interval fitness must be built gradually; 3 reps at conservative pace reduces injury risk and allows the athlete to assess readiness before adding volume in Week 10."
+    },
+    {
+      "date": "2026-08-23",
+      "discipline": "running",
+      "current_session": "Long run: 18.5km @ 6:15\u20136:45/km, 180 min",
+      "proposed_session": "16km @ 6:30\u20136:45/km (105 min), with the final 3km at 6:00\u20136:10/km only if HR has stayed under 145 bpm throughout \u2014 this adds a Treviso-pace touch without extending overall volume.",
+      "change_type": "decrease",
+      "reason": "18.5km is beyond what the athlete has demonstrated in recent weeks; capping at 16km with an optional race-pace finish builds Treviso 10K specificity without overreaching."
     }
   ],
-  "generated_at": "2026-07-31T01:36:07.579543+00:00",
+  "generated_at": "2026-07-31T01:54:29.161146+00:00",
   "weeks_analysed": 4
 }
