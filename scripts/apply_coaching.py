@@ -125,9 +125,30 @@ def main():
             None
         )
 
-        # ── 2. fallback: single session on that date, whatever its discipline ──
+        # ── 1b. same discipline, date off by 1 day (catches timezone-shift bugs) ──
         if match is None:
-            same_day = [s for s in plan if s.get("date") == target_date]
+            try:
+                td = dt.date.fromisoformat(target_date)
+                near_dates = {(td - dt.timedelta(days=1)).isoformat(),
+                              (td + dt.timedelta(days=1)).isoformat()}
+                match = next(
+                    (s for s in plan
+                     if s.get("date") in near_dates and s.get("discipline") == disc),
+                    None
+                )
+                if match:
+                    print(f"  (matched {target_date} [{disc}] to session actually "
+                          f"dated {match.get('date')} \u2014 date was off by 1 day)")
+            except Exception:
+                pass
+
+        # ── 2. fallback: single NON-REST session on that exact date ──
+        # A discipline-specific fix (swimming/cycling/running/strength) must
+        # never silently land on an unrelated existing "rest" slot — that's
+        # always a wrong match, not a valid fallback.
+        if match is None:
+            same_day = [s for s in plan
+                        if s.get("date") == target_date and s.get("discipline") != "rest"]
             if len(same_day) == 1:
                 match = same_day[0]
                 print(f"  (fallback match on date only for {target_date}: "
@@ -140,6 +161,8 @@ def main():
                 "discipline": disc,
                 "sessions_on_that_date": [s.get("discipline") for s in same_day],
             })
+            print(f"  UNMATCHED {target_date} [{disc}] -> no safe match found "
+                  f"(sessions that day: {[s.get('discipline') for s in same_day]})")
             continue
 
         # ── apply the change ──
@@ -148,9 +171,10 @@ def main():
         # Was this session flagged as a pre-race conflict? If so, whatever the
         # AI proposed, it MUST end up short/easy — no partial half-measures
         # like a blind 10% duration cut. Checked against the plan state
-        # *before* this change is applied.
+        # *before* this change is applied, using the ACTUAL matched session's
+        # date (not just the AI's stated date, in case of the off-by-1 fallback).
         is_conflict_fix = any(
-            c["session_date"] == target_date and c["discipline"] == disc
+            c["session_date"] == match.get("date") and c["discipline"] == match.get("discipline")
             for c in conflicts_before
         )
 
