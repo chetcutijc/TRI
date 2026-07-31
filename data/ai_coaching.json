@@ -7,56 +7,68 @@
     "Replace the July 31st pool swim with a very easy 30-min walk or mobility session if body battery on waking is below 35 \u2014 logging junk miles while underslept reinforces fatigue patterns rather than building fitness.",
     "Track a 7-day rolling average of sleep duration and only progress intensity (Z3/Z4 blocks) in Weeks 8\u201310 when that average exceeds 6.5 hours \u2014 this single metric is the clearest lever available to improve race-day performance at Treviso."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-07-30T23:58:21.897900+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-07-31",
-      "discipline": "swimming",
-      "current_session": "Pool Swim 60 min, 2km+, pace \u22642:30/100m",
-      "proposed_session": "Shorten to 30\u201340 min easy technique-only swim, 1,000\u20131,200m, drills and easy laps at perceived effort only \u2014 no pace target today.",
-      "change_type": "decrease",
-      "reason": "Body battery max was 2 on July 30th and sleep data is missing; even with one rest day, a full 2km pool session risks compounding the critical recovery deficit entering the weekend."
-    },
-    {
-      "date": "2026-08-01",
-      "discipline": "cycling",
-      "current_session": "AI-adjusted long ride 60\u201370km @ 128\u2013155W, cap 180\u2013200 min, stop if HR >145 bpm",
-      "proposed_session": "Cap at 50\u201360km @ 128\u2013145W (low Z2 only), strict 150-min ceiling, no tempo blocks; if HR exceeds 140 bpm in the first 30 min, turn around early and stop at 90 min.",
-      "change_type": "decrease",
-      "reason": "Given the near-total sleep collapse on July 27th and body battery of 2 on July 30th, even the already-adjusted ride target is too aggressive; a shorter, flatter effort protects weekend-to-week recovery."
-    },
-    {
-      "date": "2026-08-02",
-      "discipline": "running",
-      "current_session": "AI-adjusted long run capped at 10\u201312km @ 6:45\u20137:00/km, HR \u2264150 bpm",
-      "proposed_session": "Reduce to 7\u20138km @ 7:00/km conversational pace, HR \u2264145 bpm; if HR exceeds 145 bpm at any point in the first 2km, convert immediately to a 30-min easy walk.",
-      "change_type": "decrease",
-      "reason": "The athlete has logged only two runs in four weeks and is entering this long run off critically low body battery and fragmented sleep; a shorter easy effort builds the habit of consistency without injury risk."
-    },
-    {
-      "date": "2026-08-06",
-      "discipline": "running",
-      "current_session": "Maintenance aerobic run 6:30\u20136:50/km, 30\u201340 min, no intensity (90 min block)",
-      "proposed_session": "30 min easy run @ 6:45\u20137:00/km, HR \u2264145 bpm, flat route \u2014 keep this as a confidence-builder ahead of the Treviso 10K focus block starting Week 9.",
-      "change_type": "decrease",
-      "reason": "The 90-minute session block is misleading given notes say 30\u201340 min; explicitly cap at 30 min and set conservative HR ceiling to reinforce recovery-first habits this week."
-    },
-    {
-      "date": "2026-08-20",
-      "discipline": "running",
-      "current_session": "Intervals: 6x800m @ 4:55\u20135:10/km, 2 min jog recovery, 45\u201355 min total",
-      "proposed_session": "Reduce to 4x800m @ 5:00\u20135:15/km with 90-sec standing recovery between reps, total 35\u201340 min including warm-up and cool-down jog.",
-      "change_type": "decrease",
-      "reason": "This is the first structured interval session in the plan and falls only 7 weeks out from the Treviso 10K; starting at 4 reps instead of 6 reduces injury risk while still building the specific speed needed for a sub-52-min 10K."
-    },
-    {
-      "date": "2026-08-13",
-      "discipline": "cycling",
-      "current_session": "AI-adjusted: 3x8min @ 178\u2013209W (Z3 Tempo), 4 min easy recovery, 55\u201365 min total",
-      "proposed_session": "Keep the structure but add a gate: only execute the tempo blocks if the Aug 1st and Aug 8th rides were both completed and average nightly sleep in the prior 5 days exceeded 6 hours \u2014 otherwise revert to 60 min Z2 @ 128\u2013155W.",
-      "change_type": "replace",
-      "reason": "Progressing to Z3 tempo work while still sleep-deprived will not produce a training adaptation and risks a stress response; the conditional gate ensures intensity is earned by recovery, not just scheduled."
+      "applied_at": "2026-07-31T00:36:53.324615+00:00",
+      "generated_at": "2026-07-30T23:58:21.897900+00:00",
+      "summary": "The last 4 weeks show a very low and inconsistent training volume \u2014 only 9 sessions logged with no cycling until July 20th, minimal swimming, and two runs. Sleep is chronically short (averaging well under 7 hours on most nights) and body battery is frequently critically low, indicating significant accumulated fatigue and poor recovery. The most recent days (July 27\u201330) show an alarming collapse in sleep (41 min on July 27th) and body battery (max 2\u201325), meaning the athlete is entering the upcoming training block in a compromised state that must be addressed before meaningful fitness gains are possible.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-07-31",
+          "discipline": "swimming",
+          "current_session": "Pool Swim 60 min, 2km+, pace \u22642:30/100m",
+          "proposed_session": "Shorten to 30\u201340 min easy technique-only swim, 1,000\u20131,200m, drills and easy laps at perceived effort only \u2014 no pace target today.",
+          "change_type": "decrease",
+          "reason": "Body battery max was 2 on July 30th and sleep data is missing; even with one rest day, a full 2km pool session risks compounding the critical recovery deficit entering the weekend."
+        },
+        {
+          "date": "2026-08-01",
+          "discipline": "cycling",
+          "current_session": "AI-adjusted long ride 60\u201370km @ 128\u2013155W, cap 180\u2013200 min, stop if HR >145 bpm",
+          "proposed_session": "Cap at 50\u201360km @ 128\u2013145W (low Z2 only), strict 150-min ceiling, no tempo blocks; if HR exceeds 140 bpm in the first 30 min, turn around early and stop at 90 min.",
+          "change_type": "decrease",
+          "reason": "Given the near-total sleep collapse on July 27th and body battery of 2 on July 30th, even the already-adjusted ride target is too aggressive; a shorter, flatter effort protects weekend-to-week recovery."
+        },
+        {
+          "date": "2026-08-02",
+          "discipline": "running",
+          "current_session": "AI-adjusted long run capped at 10\u201312km @ 6:45\u20137:00/km, HR \u2264150 bpm",
+          "proposed_session": "Reduce to 7\u20138km @ 7:00/km conversational pace, HR \u2264145 bpm; if HR exceeds 145 bpm at any point in the first 2km, convert immediately to a 30-min easy walk.",
+          "change_type": "decrease",
+          "reason": "The athlete has logged only two runs in four weeks and is entering this long run off critically low body battery and fragmented sleep; a shorter easy effort builds the habit of consistency without injury risk."
+        },
+        {
+          "date": "2026-08-06",
+          "discipline": "running",
+          "current_session": "Maintenance aerobic run 6:30\u20136:50/km, 30\u201340 min, no intensity (90 min block)",
+          "proposed_session": "30 min easy run @ 6:45\u20137:00/km, HR \u2264145 bpm, flat route \u2014 keep this as a confidence-builder ahead of the Treviso 10K focus block starting Week 9.",
+          "change_type": "decrease",
+          "reason": "The 90-minute session block is misleading given notes say 30\u201340 min; explicitly cap at 30 min and set conservative HR ceiling to reinforce recovery-first habits this week."
+        },
+        {
+          "date": "2026-08-20",
+          "discipline": "running",
+          "current_session": "Intervals: 6x800m @ 4:55\u20135:10/km, 2 min jog recovery, 45\u201355 min total",
+          "proposed_session": "Reduce to 4x800m @ 5:00\u20135:15/km with 90-sec standing recovery between reps, total 35\u201340 min including warm-up and cool-down jog.",
+          "change_type": "decrease",
+          "reason": "This is the first structured interval session in the plan and falls only 7 weeks out from the Treviso 10K; starting at 4 reps instead of 6 reduces injury risk while still building the specific speed needed for a sub-52-min 10K."
+        },
+        {
+          "date": "2026-08-13",
+          "discipline": "cycling",
+          "current_session": "AI-adjusted: 3x8min @ 178\u2013209W (Z3 Tempo), 4 min easy recovery, 55\u201365 min total",
+          "proposed_session": "Keep the structure but add a gate: only execute the tempo blocks if the Aug 1st and Aug 8th rides were both completed and average nightly sleep in the prior 5 days exceeded 6 hours \u2014 otherwise revert to 60 min Z2 @ 128\u2013155W.",
+          "change_type": "replace",
+          "reason": "Progressing to Z3 tempo work while still sleep-deprived will not produce a training adaptation and risks a stress response; the conditional gate ensures intensity is earned by recovery, not just scheduled."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-07-30T23:58:21.897900+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-07-31T00:36:53.324615+00:00",
+  "applied_count": 6
 }
