@@ -258,15 +258,24 @@ Rules:
   consistent HR too high, pace trend worsening).
 - Keep proposed_changes to max 6 entries — quality over quantity.
 - proposed_changes may be empty [] if training is on track.
-- Do not change race week sessions or sessions more than 4 weeks away.
 - Suggestions should prioritise the nearest race target.
-- If any race is within the next 3 weeks (see RACE TARGETS above), treat it as a
-  priority even if it wasn't part of the original training block: propose a short
-  taper or race-specific prep (reduced volume, race-pace touches, extra rest) in
-  the days leading into it, using "replace" or "decrease" change types on the
-  sessions scheduled that week. Don't invent new distances beyond what's realistic
-  from current fitness — the goal is arriving fresh and injury-free, not peak
-  performance for an unplanned race.
+- Race awareness: if a race in RACE TARGETS above is NOT reflected in the current
+  plan structure (e.g. it was added after the plan was built), you may propose
+  changes to sessions further out than the usual 4-week window specifically to
+  prepare for it — the further out the race, the more gradual the adjustment
+  should be:
+    * Race 0-3 weeks away: propose a short taper/race-specific prep block in the
+      days leading into it (reduced volume, race-pace touches, extra rest).
+    * Race 4-8 weeks away: you may propose a gradual build across the intervening
+      weeks (e.g. progressively increasing race-discipline volume or race-pace
+      work), still capped at 6 total proposed_changes.
+    * Race 8+ weeks away: only mention it in "summary" as something to plan for
+      later — don't propose concrete session changes yet, there's no urgency.
+- Do not change sessions in the week of ANY race unless that race is the one
+  being prepared for.
+- Don't invent new distances beyond what's realistic from current fitness — the
+  goal is arriving fresh and injury-free, not peak performance for an unplanned
+  race squeezed into an existing block.
 """
 
     print("Calling Claude API for coaching analysis...")
