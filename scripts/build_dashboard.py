@@ -699,9 +699,14 @@ def chart_pace_trends(trends):
                                 text=f"{race['emoji']} {decmin_label(target_decmin)}/km",
                                 showarrow=False, font=dict(size=9, color="#FF7A59"),
                                 bgcolor="white", bordercolor="#FF7A59", borderwidth=1)
-        if "bike_power_w" in t:
+        if right_label.startswith("Power") and "bike_power_w" in t:
             fig.add_annotation(x=race_dt, y=t["bike_power_w"], yref="y2",
                                 text=f"{race['emoji']} {t['bike_power_w']}W",
+                                showarrow=False, font=dict(size=9, color="#FF7A59"),
+                                bgcolor="white", bordercolor="#FF7A59", borderwidth=1)
+        elif right_label.startswith("Speed") and "bike_speed_kmh" in t:
+            fig.add_annotation(x=race_dt, y=t["bike_speed_kmh"], yref="y2",
+                                text=f"{race['emoji']} {t['bike_speed_kmh']}km/h",
                                 showarrow=False, font=dict(size=9, color="#FF7A59"),
                                 bgcolor="white", bordercolor="#FF7A59", borderwidth=1)
 
@@ -859,10 +864,16 @@ def race_manager_html():
       <label style="font-size:.75em;color:#6b6b78">Bike power (W)
           <input id="rf-bike" type="number" placeholder="190"
               style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
+      <label style="font-size:.75em;color:#6b6b78">Bike speed (km/h)
+          <input id="rf-bikespeed" type="number" step="any" placeholder="32"
+              style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
       <label style="font-size:.75em;color:#6b6b78">Swim pace (mm:ss /100m)
           <input id="rf-swim" type="text" placeholder="1:50"
               style="width:100%;padding:7px;border:1px solid #e3e3ea;border-radius:6px;font-size:1.05em"></label>
   </div>
+  <p style="font-size:.7em;color:#bbb;margin-top:4px">
+      Speed enables a target finish-time estimate for the bike leg — power alone can't derive a time.
+  </p>
 
   <div style="margin-top:14px">
       <button class="btn" onclick="saveRace()" style="background:#00C2A8;font-size:.8em">Save Race</button>
@@ -1015,9 +1026,11 @@ function saveRace() {{
     var run  = paceToSec(document.getElementById("rf-run").value);
     var swim = paceToSec(document.getElementById("rf-swim").value);
     var bike = parseInt(document.getElementById("rf-bike").value, 10);
+    var bikeSpeed = parseFloat(document.getElementById("rf-bikespeed").value);
     if (run)  targets.run_pace_sec_km    = run;
     if (swim) targets.swim_pace_100m_sec = swim;
     if (!isNaN(bike)) targets.bike_power_w = bike;
+    if (!isNaN(bikeSpeed)) targets.bike_speed_kmh = bikeSpeed;
 
     var distances = {{}};
     var dSwim = parseFloat(document.getElementById("rf-dswim").value);
@@ -1179,9 +1192,11 @@ def compute_race_target_time(race):
         total_sec  += tgt["run_pace_sec_km"] * dist["run_km"]
         covered_km += dist["run_km"]
         have_any = True
-    if dist.get("bike_km") and tgt.get("bike_power_w"):
-        # power alone can't derive a time — skip unless a target speed is ever added
-        pass
+    if dist.get("bike_km") and tgt.get("bike_speed_kmh"):
+        total_sec  += (dist["bike_km"] / tgt["bike_speed_kmh"]) * 3600
+        covered_km += dist["bike_km"]
+        have_any = True
+    # bike_power_w alone still can't derive a time — only bike_speed_kmh can
     if dist.get("swim_m") and tgt.get("swim_pace_100m_sec"):
         total_sec  += tgt["swim_pace_100m_sec"] * (dist["swim_m"] / 100)
         covered_km += dist["swim_m"] / 1000
@@ -1208,8 +1223,12 @@ def race_cards_html(df=None):
         if "run_pace_sec_km" in t:
             p = t["run_pace_sec_km"]
             targets_str.append(f"Run: {p//60}:{p%60:02d}/km")
-        if "bike_power_w" in t:
+        if "bike_power_w" in t and "bike_speed_kmh" in t:
+            targets_str.append(f"Bike: {t['bike_power_w']}W ({t['bike_speed_kmh']}km/h)")
+        elif "bike_power_w" in t:
             targets_str.append(f"Bike: {t['bike_power_w']}W")
+        elif "bike_speed_kmh" in t:
+            targets_str.append(f"Bike: {t['bike_speed_kmh']}km/h")
         if "swim_pace_100m_sec" in t:
             p = t["swim_pace_100m_sec"]
             targets_str.append(f"Swim: {p//60}:{p%60:02d}/100m")
@@ -2423,8 +2442,12 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         if "run_pace_sec_km" in t:
             p = t["run_pace_sec_km"]
             tgt.append(f"Run {p//60}:{p%60:02d}/km")
-        if "bike_power_w" in t:
+        if "bike_power_w" in t and "bike_speed_kmh" in t:
+            tgt.append(f"Bike {t['bike_power_w']}W ({t['bike_speed_kmh']}km/h)")
+        elif "bike_power_w" in t:
             tgt.append(f"Bike {t['bike_power_w']}W")
+        elif "bike_speed_kmh" in t:
+            tgt.append(f"Bike {t['bike_speed_kmh']}km/h")
         if "swim_pace_100m_sec" in t:
             p = t["swim_pace_100m_sec"]
             tgt.append(f"Swim {p//60}:{p%60:02d}/100m")
