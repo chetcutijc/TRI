@@ -1110,11 +1110,12 @@ def compute_race_prediction(race, df):
     Rough finish-time estimate per discipline, based on your average pace/power/speed
     over the last 4 weeks of actual Garmin activities, applied to the race's distances.
 
-    This is a simple linear projection (recent pace × race distance) — it does NOT
-    account for endurance fade over longer distances, so treat it as a ballpark,
-    not a race predictor.
+    This is a simple linear projection (recent pace x race distance) per leg — it does
+    NOT account for endurance fade over longer distances or transitions, so treat it as
+    a ballpark, not a race predictor.
 
-    Returns dict with total_sec, total (formatted), pace (overall sec/km), parts.
+    Returns: {"total_sec": float, "total": "H:MM:SS", "parts": [(emoji, label, pace_str, time_str), ...]}
+    or None if there's not enough data to estimate anything.
     """
     dist = race.get("distances", {}) or {}
     if not dist or df is None or df.empty:
@@ -1125,7 +1126,6 @@ def compute_race_prediction(race, df):
         return None
 
     total_sec = 0
-    covered_km = 0
     parts = []
     have_any = False
 
@@ -1137,9 +1137,8 @@ def compute_race_prediction(race, df):
             sec_km = paces.mean()
             run_sec = sec_km * dist["run_km"]
             total_sec += run_sec
-            covered_km += dist["run_km"]
-            parts.append(("🏃", fmt_hms(run_sec)))
             have_any = True
+            parts.append(("🏃", "Run", fmt_pace(sec_km), fmt_hms(run_sec)))
 
     if dist.get("bike_km"):
         cy = recent[recent["type"] == "cycling"]
@@ -1149,9 +1148,8 @@ def compute_race_prediction(race, df):
             kmh = speeds.mean() * 3.6
             bike_sec = (dist["bike_km"] / kmh) * 3600
             total_sec += bike_sec
-            covered_km += dist["bike_km"]
-            parts.append(("🚴", fmt_hms(bike_sec)))
             have_any = True
+            parts.append(("🚴", "Bike", f"{kmh:.1f}km/h", fmt_hms(bike_sec)))
 
     if dist.get("swim_m"):
         sw = recent[recent["type"] == "swimming"]
@@ -1161,56 +1159,63 @@ def compute_race_prediction(race, df):
             sec_100m = paces.mean() / 10
             swim_sec = sec_100m * (dist["swim_m"] / 100)
             total_sec += swim_sec
-            covered_km += dist["swim_m"] / 1000
-            parts.append(("🏊", fmt_hms(swim_sec)))
             have_any = True
+            m, s = divmod(round(sec_100m), 60)
+            parts.append(("🏊", "Swim", f"{m}:{s:02d}/100m", fmt_hms(swim_sec)))
 
     if not have_any:
         return None
 
-    overall_pace = (total_sec / covered_km) if covered_km else None
-    return {
-        "total_sec": total_sec,
-        "total": fmt_hms(total_sec),
-        "pace": fmt_pace_general(overall_pace),
-        "parts": parts,
-    }
+    return {"total_sec": total_sec, "total": fmt_hms(total_sec), "parts": parts}
 
 
 def compute_race_target_time(race):
-    """Target finish time + overall pace, derived from targets × distances."""
+    """
+    Target finish time per discipline, derived from targets x distances.
+    Bike only contributes a time if a target SPEED is set — power alone can't
+    derive a duration.
+
+    Returns: {"total_sec": float, "total": "H:MM:SS", "parts": [(emoji, label, pace_str, time_str), ...]}
+    or None if no leg has both a distance and a usable target.
+    """
     dist = race.get("distances", {}) or {}
     tgt  = race.get("targets", {}) or {}
     if not dist:
         return None
 
-    total_sec  = 0
-    covered_km = 0
-    have_any   = False
+    total_sec = 0
+    parts = []
+    have_any = False
 
     if dist.get("run_km") and tgt.get("run_pace_sec_km"):
-        total_sec  += tgt["run_pace_sec_km"] * dist["run_km"]
-        covered_km += dist["run_km"]
+        sec_km = tgt["run_pace_sec_km"]
+        run_sec = sec_km * dist["run_km"]
+        total_sec += run_sec
         have_any = True
+        parts.append(("🏃", "Run", fmt_pace(sec_km), fmt_hms(run_sec)))
+
     if dist.get("bike_km") and tgt.get("bike_speed_kmh"):
-        total_sec  += (dist["bike_km"] / tgt["bike_speed_kmh"]) * 3600
-        covered_km += dist["bike_km"]
+        kmh = tgt["bike_speed_kmh"]
+        bike_sec = (dist["bike_km"] / kmh) * 3600
+        total_sec += bike_sec
         have_any = True
-    # bike_power_w alone still can't derive a time — only bike_speed_kmh can
+        parts.append(("🚴", "Bike", f"{kmh}km/h", fmt_hms(bike_sec)))
+    elif dist.get("bike_km") and tgt.get("bike_power_w"):
+        # power alone can't derive a time — show the power target with no time
+        parts.append(("🚴", "Bike", f"{tgt['bike_power_w']}W", "—"))
+
     if dist.get("swim_m") and tgt.get("swim_pace_100m_sec"):
-        total_sec  += tgt["swim_pace_100m_sec"] * (dist["swim_m"] / 100)
-        covered_km += dist["swim_m"] / 1000
+        sec_100m = tgt["swim_pace_100m_sec"]
+        swim_sec = sec_100m * (dist["swim_m"] / 100)
+        total_sec += swim_sec
         have_any = True
+        m, s = divmod(round(sec_100m), 60)
+        parts.append(("🏊", "Swim", f"{m}:{s:02d}/100m", fmt_hms(swim_sec)))
 
     if not have_any:
         return None
 
-    overall_pace = (total_sec / covered_km) if covered_km else None
-    return {
-        "total_sec": total_sec,
-        "total": fmt_hms(total_sec),
-        "pace": fmt_pace_general(overall_pace),
-    }
+    return {"total_sec": total_sec, "total": fmt_hms(total_sec), "parts": parts}
 
 
 def race_cards_html(df=None):
@@ -1247,38 +1252,82 @@ def race_cards_html(df=None):
         dist_line = " · ".join(dist_str)
 
         # Target and predicted finish times + overall pace
-        target   = compute_race_target_time(r)
+        target     = compute_race_target_time(r)
         prediction = compute_race_prediction(r, df) if df is not None else None
+
+        is_multi = sum(1 for k in ("swim_m","bike_km","run_km") if (r.get("distances") or {}).get(k)) > 1
 
         time_html = ""
         if target or prediction:
-            rows = []
-            if target:
-                pace_bit = f" · {target['pace']}" if target.get("pace") else ""
-                is_multi = sum(1 for k in ("swim_m","bike_km","run_km") if (r.get("distances") or {}).get(k)) > 1
-                tip = ' title="Overall pace = total time \\u00f7 total distance across all legs combined"' if is_multi else ""
-                rows.append(
-                    f'<div style="display:flex;justify-content:space-between;align-items:baseline"{tip}>'
-                    f'<span style="color:#5B6EF5;font-weight:700;font-size:.85em">🎯 Target</span>'
-                    f'<span style="color:#5B6EF5;font-weight:700;font-size:.9em">{target["total"]}{pace_bit}</span>'
-                    f'</div>'
+            if is_multi:
+                # Per-discipline breakdown table: one row per leg, target vs predicted side by side
+                leg_order = ["Swim", "Bike", "Run"]
+                tgt_by_leg  = {label: (pace, tm) for _, label, pace, tm in (target["parts"] if target else [])}
+                pred_by_leg = {label: (pace, tm) for _, label, pace, tm in (prediction["parts"] if prediction else [])}
+                emoji_by_leg = {"Swim": "🏊", "Bike": "🚴", "Run": "🏃"}
+
+                leg_rows = ""
+                for label in leg_order:
+                    if label not in tgt_by_leg and label not in pred_by_leg:
+                        continue
+                    t_pace, t_time = tgt_by_leg.get(label, ("—", "—"))
+                    p_pace, p_time = pred_by_leg.get(label, ("—", "—"))
+                    leg_rows += f"""<tr>
+                        <td style="font-size:.78em;font-weight:600;color:#555;padding:3px 4px">{emoji_by_leg[label]} {label}</td>
+                        <td style="font-size:.78em;color:#5B6EF5;text-align:right;padding:3px 4px">{t_time} <span style="color:#9a9aaa">({t_pace})</span></td>
+                        <td style="font-size:.78em;color:#00C2A8;text-align:right;padding:3px 4px">{p_time} <span style="color:#9a9aaa">({p_pace})</span></td>
+                    </tr>"""
+
+                total_row = ""
+                if target or prediction:
+                    t_total = target["total"] if target else "—"
+                    p_total = prediction["total"] if prediction else "—"
+                    total_row = f"""<tr style="border-top:1px solid #e3e3ea">
+                        <td style="font-size:.8em;font-weight:800;color:#1a1a22;padding:5px 4px">Total</td>
+                        <td style="font-size:.85em;font-weight:800;color:#5B6EF5;text-align:right;padding:5px 4px">🎯 {t_total}</td>
+                        <td style="font-size:.85em;font-weight:800;color:#00C2A8;text-align:right;padding:5px 4px">📈 ~{p_total}</td>
+                    </tr>"""
+
+                time_html = f"""
+                <div style="background:#f8f8fc;border-radius:8px;padding:8px 10px;margin:6px 0">
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr>
+                            <td></td>
+                            <td style="font-size:.68em;color:#5B6EF5;text-align:right;font-weight:700;text-transform:uppercase">Target</td>
+                            <td style="font-size:.68em;color:#00C2A8;text-align:right;font-weight:700;text-transform:uppercase">Predicted</td>
+                        </tr>
+                        {leg_rows}
+                        {total_row}
+                    </table>
+                    <p style="font-size:.68em;color:#bbb;margin:4px 0 0">
+                        Predicted uses your avg pace/speed per discipline over the last 4 weeks — a rough
+                        linear estimate, not a race predictor (ignores fatigue over distance, transitions).
+                    </p>
+                </div>"""
+            else:
+                # Single-discipline race: simple two-row time + pace box
+                rows = []
+                if target:
+                    _, _, pace, _ = target["parts"][0]
+                    rows.append(
+                        f'<div style="display:flex;justify-content:space-between;align-items:baseline">'
+                        f'<span style="color:#5B6EF5;font-weight:700;font-size:.85em">🎯 Target</span>'
+                        f'<span style="color:#5B6EF5;font-weight:700;font-size:.9em">{target["total"]} · {pace}</span>'
+                        f'</div>'
+                    )
+                if prediction:
+                    _, _, pace, _ = prediction["parts"][0]
+                    rows.append(
+                        f'<div style="display:flex;justify-content:space-between;align-items:baseline">'
+                        f'<span style="color:#00C2A8;font-weight:700;font-size:.85em">📈 Predicted</span>'
+                        f'<span style="color:#00C2A8;font-weight:700;font-size:.9em">~{prediction["total"]} · {pace}</span>'
+                        f'</div>'
+                    )
+                time_html = (
+                    '<div style="background:#f8f8fc;border-radius:8px;padding:8px 10px;'
+                    'margin:6px 0;display:flex;flex-direction:column;gap:4px">'
+                    + "".join(rows) + "</div>"
                 )
-            if prediction:
-                pred_detail = " · ".join(f"{emoji} {t}" for emoji, t in prediction["parts"])
-                pace_bit = f" · {prediction['pace']}" if prediction.get("pace") else ""
-                rows.append(
-                    f'<div style="display:flex;justify-content:space-between;align-items:baseline" '
-                    f'title="Based on your last 4 weeks: {pred_detail}. '
-                    f'Pace = total time \\u00f7 total distance across all legs combined.">'
-                    f'<span style="color:#00C2A8;font-weight:700;font-size:.85em">📈 Predicted</span>'
-                    f'<span style="color:#00C2A8;font-weight:700;font-size:.9em">~{prediction["total"]}{pace_bit}</span>'
-                    f'</div>'
-                )
-            time_html = (
-                '<div style="background:#f8f8fc;border-radius:8px;padding:8px 10px;'
-                'margin:6px 0;display:flex;flex-direction:column;gap:4px">'
-                + "".join(rows) + "</div>"
-            )
 
         color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
 
@@ -1382,6 +1431,7 @@ DISC_COLORS = {
     "running":           "#5B6EF5",
     "strength_training": "#FF7A59",
     "rest":              "#9B7DFF",
+    "race":              "#FF3B30",
     "other":             "#aaaaaa",
 }
 DISC_LABELS = {
@@ -1390,6 +1440,7 @@ DISC_LABELS = {
     "running":           "🏃 Run",
     "strength_training": "💪 Strength",
     "rest":              "😴 Rest",
+    "race":              "🏁 Race Day",
     "other":             "📋 Other",
 }
 CHANGE_COLORS = {
@@ -1584,15 +1635,40 @@ def build_ics_content(changes, gen_at=""):
 
 
 def plan_viewer_html(plan_full, coaching=None):
-    """Unified plan table with AI suggestions merged as extra columns."""
-    if not plan_full:
-        return "<p class=\'subtext\'>No plan data — add data/plan_full.json to the repo.</p>"
+    """Unified plan table with AI suggestions merged as extra columns.
+    Race days from data/races.json are merged in as special \U0001F3C1 rows so
+    a newly added race shows up here immediately, without needing to
+    edit plan_full.json."""
+    if not plan_full and not RACES:
+        return "<p class=\'subtext\'>No plan data \u2014 add data/plan_full.json to the repo.</p>"
 
     today     = dt.date.today()
     two_weeks = today + dt.timedelta(weeks=2)
 
-    # Build a lookup: date+discipline → proposed change from coaching.
-    # Falls back to date-only matching if discipline labels don't line up
+    # Synthesize a pseudo-session for each race so it appears in the table
+    # even though it lives in a separate file (races.json) from the plan.
+    plan_full = list(plan_full or [])
+    for r in RACES:
+        race_date = r["date"].isoformat()
+        dist = r.get("distances", {}) or {}
+        dist_bits = []
+        if dist.get("swim_m"):  dist_bits.append(f"{dist['swim_m']}m swim")
+        if dist.get("bike_km"): dist_bits.append(f"{dist['bike_km']}km bike")
+        if dist.get("run_km"):  dist_bits.append(f"{dist['run_km']}km run")
+        plan_full.append({
+            "date":         race_date,
+            "day":          r["date"].strftime("%A"),
+            "discipline":   "race",
+            "summary":      f"{r['emoji']} RACE DAY: {r['name']}",
+            "duration_min": None,
+            "notes":        r.get("note", ""),
+            "pace":         None,
+            "power":        None,
+            "distance":     " \u00b7 ".join(dist_bits) if dist_bits else None,
+        })
+
+    # Build a lookup: date+discipline \u2192 proposed change from coaching.
+    # Falls back to date-only matching if discipline labels don\'t line up
     # exactly (e.g. AI says "cycling", plan session was parsed as "other").
     ai_changes = {}
     ai_changes_by_date = {}
@@ -1742,6 +1818,7 @@ def plan_viewer_html(plan_full, coaching=None):
             <button class="filter-btn" onclick="filterDisc{suffix}(\'running\')">🏃 Run</button>
             <button class="filter-btn" onclick="filterDisc{suffix}(\'strength_training\')">💪 Strength</button>
             <button class="filter-btn" onclick="filterDisc{suffix}(\'rest\')">😴 Rest</button>
+            <button class="filter-btn" onclick="filterDisc{suffix}(\'race\')">🏁 Race</button>
         </div>"""
 
     header_row = f"<tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Targets</th><th>Notes</th>{ai_header}</tr>"
