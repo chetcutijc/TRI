@@ -1634,6 +1634,55 @@ def build_ics_content(changes, gen_at=""):
     return "\r\n".join(lines)
 
 
+def status_strip_html(races, race_conflicts, coaching):
+    """One-glance status bar: next race, conflicts, pending AI suggestions.
+    Sits right at the top so the important stuff doesn't require scrolling."""
+    chips = []
+
+    upcoming = [r for r in races if days_until(r["date"]) >= 0]
+    if upcoming:
+        nxt = upcoming[0]
+        d = days_until(nxt["date"])
+        chips.append(
+            f'<div class="status-chip" style="background:#eef0fd">'
+            f'<span style="font-size:1.1em">{nxt["emoji"]}</span>'
+            f'<span style="font-weight:700;color:#5B6EF5">{d}d</span>'
+            f'<span style="color:#6b6b78;font-size:.82em">to {nxt["name"][:20]}</span>'
+            f'</div>'
+        )
+
+    if race_conflicts:
+        chips.append(
+            f'<div class="status-chip" style="background:#fff5f4">'
+            f'<span style="font-size:1.1em">\u26a0\ufe0f</span>'
+            f'<span style="font-weight:700;color:#c0392b">{len(race_conflicts)}</span>'
+            f'<span style="color:#6b6b78;font-size:.82em">pre-race conflict{"s" if len(race_conflicts)!=1 else ""}</span>'
+            f'</div>'
+        )
+
+    pending = (coaching or {}).get("proposed_changes", [])
+    if pending:
+        chips.append(
+            f'<div class="status-chip" style="background:#eef0fd">'
+            f'<span style="font-size:1.1em">\U0001F916</span>'
+            f'<span style="font-weight:700;color:#5B6EF5">{len(pending)}</span>'
+            f'<span style="color:#6b6b78;font-size:.82em">AI suggestion{"s" if len(pending)!=1 else ""} pending</span>'
+            f'</div>'
+        )
+    elif coaching and coaching.get("summary"):
+        chips.append(
+            f'<div class="status-chip" style="background:#e8f9f5">'
+            f'<span style="font-size:1.1em">\u2705</span>'
+            f'<span style="color:#00A888;font-size:.82em;font-weight:600">Training on track</span>'
+            f'</div>'
+        )
+
+    if not chips:
+        return ""
+
+    return f'<div class="status-strip">{"".join(chips)}</div>'
+
+
 def detect_race_conflicts(plan_full, races, days_before=2, max_easy_min=45):
     """
     Deterministic (no AI needed) sanity check: flags any session scheduled in
@@ -1831,7 +1880,8 @@ def plan_viewer_html(plan_full, coaching=None):
         row  = session_row(s)
         if today <= date <= two_weeks:
             rows_2wk  += row
-        rows_full += row
+        if date >= today:
+            rows_full += row
 
     if not rows_2wk:
         rows_2wk = "<tr><td colspan=\'8\' style=\'color:#9a9aaa;padding:16px\'>No sessions in the next 2 weeks.</td></tr>"
@@ -2103,6 +2153,9 @@ body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sa
 .topbar{{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;}}
 h1{{font-size:1.55em;margin:0;font-weight:800;letter-spacing:-.3px;}}
 .updated{{color:#9a9aaa;font-size:.8em;margin:2px 0 0;}}
+.status-strip{{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}}
+.status-chip{{display:flex;align-items:center;gap:6px;border-radius:20px;
+              padding:7px 14px;box-shadow:0 1px 3px rgba(20,20,40,.06);}}
 .btn{{background:#5B6EF5;color:#fff;border:none;padding:9px 18px;border-radius:8px;
       font-size:.84em;font-weight:700;cursor:pointer;box-shadow:0 2px 6px rgba(91,110,245,.3);}}
 .btn:hover{{background:#4757d8;}}
@@ -2211,6 +2264,8 @@ h2{{font-size:1.1em;margin:32px 0 4px;font-weight:800;}}
   </div>
 </div>
 <p id="sync-status" style="font-size:.76em;color:#9a9aaa;margin:-4px 0 12px"></p>
+
+{status_strip_html(RACES, race_conflicts, coaching)}
 
 <script>
 // Shared GitHub API helpers used by Sync Now, Apply to Dashboard, and the Race Manager.
@@ -2355,12 +2410,19 @@ function triggerWorkflow(workflowFile, statusElId, label) {{
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
-def build_print_html(df, plan, wellness, plan_sessions, manual_log):
+def build_print_html(df, plan, wellness, plan_sessions, manual_log, plan_full=None, coaching=None):
     """
-    Builds docs/print.html — mobile/print-optimised for Chrome headless PDF export.
-    Charts are rendered as static SVG via kaleido (server-side), so Chrome gets
-    plain markup with no JS timing issues — charts are always visible in the PDF.
-    Compliance limited to last 4 weeks, past sessions only.
+    Builds docs/print.html — the source for the emailed PDF.
+
+    Deliberately kept SHORT and focused, unlike the full website: just the
+    things worth reading on a phone in under a minute —
+      1. Race targets (target vs predicted time/pace)
+      2. Last 30 days overview (stats + per-discipline)
+      3. Pre-race scheduling conflicts (if any)
+      4. AI coaching summary + suggestions (if any)
+
+    No charts, no full session tables, no training plan — those live on the
+    website. This keeps the PDF something you'd actually read end to end.
     """
     OUT_PRINT = Path("docs/print.html")
     OUT_PRINT.parent.mkdir(exist_ok=True)
@@ -2369,16 +2431,15 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
         OUT_PRINT.write_text("<h1>No activity data yet</h1>")
         return
 
-    # ── Data ────────────────────────────────────────────────────────────────
-    weekly    = weekly_by_discipline(df)
-    trends    = discipline_trends(df)
-    ontarget  = on_target_pct(weekly, plan)
-    compliance = session_compliance(df, plan_sessions, weeks_back=4)
+    plan_full = plan_full or []
+    race_conflicts = detect_race_conflicts(plan_full, RACES)
 
+    # ── Last 30 days: overview + per-discipline ──────────────────────────────
     last30 = df[df["start"] >= (dt.datetime.now() - dt.timedelta(days=30))]
     total_sessions = len(last30)
     total_hours    = round(last30["duration_min"].sum() / 60)
     avg_load       = round(last30["training_load"].mean()) if last30["training_load"].notna().any() else "n/a"
+
     avg_sleep = avg_bb = "n/a"
     if not wellness.empty:
         rw = wellness[wellness["date"] >= (dt.datetime.now() - dt.timedelta(days=30))]
@@ -2393,7 +2454,6 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
     sw30 = d30("swimming")
     swim_sessions = len(sw30)
     swim_total    = f"{round(sw30['distance_m'].sum()/1000,1)}km" if not sw30.empty else "n/a"
-    swim_avg_dist = f"{round(sw30['distance_m'].mean())}m" if not sw30.empty else "n/a"
     swim_pace     = "n/a"
     if not sw30.empty:
         raw = sw30["avg_pace"].dropna().apply(speed_to_pace)
@@ -2402,320 +2462,120 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log):
             swim_pace = f"{int(p)//60}:{int(p)%60:02d}/100m"
 
     ru30 = d30("running")
-    run_sessions  = len(ru30)
-    run_total     = f"{round(ru30['distance_km'].sum())}km" if not ru30.empty else "n/a"
-    run_avg_dist  = f"{round(ru30['distance_km'].mean(),1)}km" if not ru30.empty else "n/a"
-    run_pace      = "n/a"
+    run_sessions = len(ru30)
+    run_total    = f"{round(ru30['distance_km'].sum())}km" if not ru30.empty else "n/a"
+    run_pace     = "n/a"
     if not ru30.empty:
         raw = ru30["avg_pace"].dropna().apply(speed_to_pace)
         if not raw.empty:
             run_pace = fmt_pace(raw.mean())
 
     cy30 = d30("cycling")
-    bike_sessions  = len(cy30)
-    bike_total     = f"{round(cy30['distance_km'].sum())}km" if not cy30.empty else "n/a"
-    bike_speed     = "n/a"
-    bike_watts     = "n/a"
+    bike_sessions = len(cy30)
+    bike_total    = f"{round(cy30['distance_km'].sum())}km" if not cy30.empty else "n/a"
+    bike_speed    = "n/a"
     if not cy30.empty:
         sp = cy30["avg_pace"].dropna()
         if not sp.empty:
             bike_speed = f"{round(sp.mean()*3.6,1)} km/h"
-        wp = cy30["avg_power"].dropna()
-        if not wp.empty:
-            bike_watts = f"{round(wp.mean())}W"
 
-    # ── Chart style ──────────────────────────────────────────────────────────
-    PRINT_W, PRINT_H = 500, 220
-    PRINT_STYLE = dict(
-        height=PRINT_H, width=PRINT_W,
-        margin=dict(l=52, r=16, t=36, b=32),
-        font=dict(family="Helvetica,Arial,sans-serif", size=10, color="#1a1a22"),
-        title_font=dict(size=11, color="#1a1a22"),
-        plot_bgcolor="white", paper_bgcolor="white",
-        colorway=[PALETTE["running"], PALETTE["cycling"], PALETTE["swimming"],
-                  PALETTE["load"], PALETTE["sleep"], PALETTE["battery"]],
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, font=dict(size=8)),
-        showlegend=False,   # enabled per-chart only when multiple traces exist
-    )
-
-    def svg(fig):
-        """Render figure as inline SVG string via kaleido. Falls back to empty string."""
-        fig.update_layout(**PRINT_STYLE)
-        fig.update_xaxes(showgrid=False, linecolor="#e3e3ea")
-        fig.update_yaxes(showgrid=True, gridcolor="#f0f0f5", linecolor="#e3e3ea")
-        try:
-            raw = fig.to_image(format="svg")
-            return raw.decode("utf-8")
-        except Exception as e:
-            print(f"  SVG render failed: {e}")
-            return ""
-
-    def wk_str(series):
-        """Convert a pandas Timestamp week series to clean 'Jun 23' strings.
-        Prevents kaleido from rendering nanosecond-precision timestamps on the x-axis."""
-        return pd.to_datetime(series).dt.strftime("%b %d")
-
-    # ── Build charts ─────────────────────────────────────────────────────────
-    charts = []   # list of (title, svg_string)
-
-    # 1. Weekly volume
-    fig = go.Figure()
-    for disc in ["swimming", "running", "cycling", "strength_training"]:
-        sub = weekly[weekly["type"] == disc]
-        if not sub.empty:
-            fig.add_trace(go.Bar(
-                x=wk_str(sub["week"]), y=sub["duration_min"].round(),
-                name=disc.replace("_", " ").title(),
-                marker_color=PALETTE.get(disc, "#ccc"),
-            ))
-    fig.update_layout(barmode="stack", showlegend=True)
-    s = svg(fig)
-    if s:
-        charts.append(("Weekly Volume (min)", s))
-
-    # 2. Weekly training load
-    df2 = df.copy()
-    df2["week"] = df2["start"].dt.to_period("W").apply(lambda r: r.start_time)
-    lw = df2.groupby("week")["training_load"].sum().reset_index()
-    if not lw.empty and lw["training_load"].notna().any():
-        fig = go.Figure()
-        fig.add_trace(go.Bar(
-            x=wk_str(lw["week"]), y=lw["training_load"].round(),
-            name="Training Load",
-            marker_color=PALETTE["load"],
-        ))
-        s = svg(fig)
-        if s:
-            charts.append(("Weekly Training Load", s))
-
-    # 3. Run pace trend
-    if "running" in trends:
-        rd = trends["running"].dropna(subset=["pace_sec_km"])
-        if not rd.empty:
-            fig = go.Figure()
-            y = rd["pace_sec_km"].apply(lambda x: round(x/60, 2) if x else None)
-            fig.add_trace(go.Scatter(
-                x=wk_str(rd["week"]), y=y, mode="lines+markers",
-                name="Run Pace", marker_color=PALETTE["running"],
-            ))
-            fig.update_yaxes(autorange="reversed", title_text="min/km")
-            s = svg(fig)
-            if s:
-                charts.append(("Run Pace Trend", s))
-
-    # 4. Swim pace trend
-    if "swimming" in trends:
-        sd = trends["swimming"].dropna(subset=["pace_sec_100m"])
-        if not sd.empty:
-            fig = go.Figure()
-            y = sd["pace_sec_100m"].apply(lambda x: round(x/60, 2) if x else None)
-            fig.add_trace(go.Scatter(
-                x=wk_str(sd["week"]), y=y, mode="lines+markers",
-                name="Swim Pace", marker_color=PALETTE["swimming"],
-            ))
-            fig.update_yaxes(autorange="reversed", title_text="min/100m")
-            s = svg(fig)
-            if s:
-                charts.append(("Swim Pace Trend", s))
-
-    # 5. Cycling power or speed
-    if "cycling" in trends:
-        cd = trends["cycling"]
-        pw = cd.dropna(subset=["avg_power"])
-        sp = cd.dropna(subset=["speed_kmh"])
-        fig = go.Figure()
-        if not pw.empty:
-            fig.add_trace(go.Scatter(
-                x=wk_str(pw["week"]), y=pw["avg_power"].round(),
-                mode="lines+markers", name="Power (W)",
-                marker_color=PALETTE["cycling"],
-            ))
-            fig.update_yaxes(title_text="Watts")
-            s = svg(fig)
-            if s:
-                charts.append(("Cycling Power Trend", s))
-        elif not sp.empty:
-            fig.add_trace(go.Scatter(
-                x=wk_str(sp["week"]), y=sp["speed_kmh"],
-                mode="lines+markers", name="Speed (km/h)",
-                marker_color=PALETTE["cycling"],
-            ))
-            fig.update_yaxes(title_text="km/h")
-            s = svg(fig)
-            if s:
-                charts.append(("Cycling Speed Trend", s))
-
-    # 6. On-target %
-    if not ontarget.empty:
-        fig = go.Figure()
-        for disc in ontarget["type"].unique():
-            sub = ontarget[ontarget["type"] == disc]
-            fig.add_trace(go.Scatter(
-                x=wk_str(sub["week"]), y=sub["pct"],
-                mode="lines+markers",
-                name=disc.replace("_", " ").title(),
-                marker_color=PALETTE.get(disc, "#ccc"),
-            ))
-        fig.add_hline(y=80, line_dash="dot", line_color="#bbb",
-                      annotation_text="80% target", annotation_font_size=9)
-        fig.update_yaxes(range=[0, 110], title_text="%")
-        fig.update_layout(showlegend=True)
-        s = svg(fig)
-        if s:
-            charts.append(("On-Target % vs Plan", s))
-
-    # 7. Sleep duration
-    if not wellness.empty and "sleep_duration_min" in wellness.columns:
-        sw = wellness.dropna(subset=["sleep_duration_min"])
-        if not sw.empty:
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(
-                x=sw["date"],
-                y=(sw["sleep_duration_min"]/60).round(1),
-                mode="lines+markers", name="Sleep (hrs)",
-                marker_color=PALETTE["sleep"],
-            ))
-            fig.add_hline(y=7, line_dash="dot", line_color="#bbb",
-                          annotation_text="7h", annotation_font_size=9)
-            fig.update_yaxes(title_text="Hours")
-            s = svg(fig)
-            if s:
-                charts.append(("Sleep Duration", s))
-
-    # ── Pair charts into 2-col table rows ────────────────────────────────────
-    chart_rows = ""
-    for i in range(0, len(charts), 2):
-        ltitle, lsvg = charts[i]
-        if i + 1 < len(charts):
-            rtitle, rsvg = charts[i+1]
-            rcell = f'<td style="width:50%;padding:3px 3px 8px;vertical-align:top"><div class="ctitle">{rtitle}</div>{rsvg}</td>'
-        else:
-            rcell = '<td style="width:50%"></td>'
-        chart_rows += f"""<tr>
-            <td style="width:50%;padding:3px 3px 8px;vertical-align:top">
-                <div class="ctitle">{ltitle}</div>{lsvg}
-            </td>
-            {rcell}
-        </tr>"""
-
-    # ── Race countdown ───────────────────────────────────────────────────────
-    race_rows = ""
+    # ── Race targets ─────────────────────────────────────────────────────────
+    race_html = ""
     for r in RACES:
-        days = days_until(r["date"])
-        t = r["targets"]
-        tgt = []
-        if "run_pace_sec_km" in t:
-            p = t["run_pace_sec_km"]
-            tgt.append(f"Run {p//60}:{p%60:02d}/km")
-        if "bike_power_w" in t and "bike_speed_kmh" in t:
-            tgt.append(f"Bike {t['bike_power_w']}W ({t['bike_speed_kmh']}km/h)")
-        elif "bike_power_w" in t:
-            tgt.append(f"Bike {t['bike_power_w']}W")
-        elif "bike_speed_kmh" in t:
-            tgt.append(f"Bike {t['bike_speed_kmh']}km/h")
-        if "swim_pace_100m_sec" in t:
-            p = t["swim_pace_100m_sec"]
-            tgt.append(f"Swim {p//60}:{p%60:02d}/100m")
-        days_str = f"In {days} days" if days > 0 else "RACE DAY!"
-        col = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
-        race_rows += f"""<tr>
-            <td>{r['emoji']} <strong>{r['name']}</strong></td>
-            <td>{r['date'].strftime('%b %d, %Y')}</td>
-            <td style="color:{col};font-weight:700">{days_str}</td>
-            <td style="color:#5B6EF5;font-size:.85em">{' · '.join(tgt)}</td>
-        </tr>"""
+        d = days_until(r["date"])
+        target     = compute_race_target_time(r)
+        prediction = compute_race_prediction(r, df)
+        days_str   = f"In {d} days" if d > 0 else "RACE DAY!" if d == 0 else f"{abs(d)} days ago"
+        col = "#00C2A8" if d > 90 else "#FFC75A" if d > 30 else "#FF7A59"
 
-    # ── Session compliance (last 4 weeks, past only) ─────────────────────────
-    comp_rows = ""
-    for wk, sessions in sorted(compliance.items(), reverse=True):
-        label = dt.date.fromisoformat(wk).strftime("Week of %b %d")
-        on  = sum(1 for s in sessions if "✅" in s["status"])
-        pct = round(100 * on / len(sessions)) if sessions else 0
-        col = "#00C2A8" if pct >= 80 else "#FFC75A" if pct >= 50 else "#FF7A59"
-        comp_rows += (
-            f'<tr><td colspan="5" style="background:#f5f5fa;font-weight:700;'
-            f'padding:5px 6px;font-size:.82em">'
-            f'{label} <span style="color:{col}">— {pct}% on target</span></td></tr>'
-        )
-        for s in sessions:
-            comp_rows += f"""<tr>
-                <td>{s['date']}</td>
-                <td style="font-weight:600">{s['discipline'].replace('_',' ').title()}</td>
-                <td style="color:#5B6EF5;font-size:.82em">{s['planned']}</td>
-                <td style="font-size:.82em">{s['actual']}</td>
-                <td style="white-space:nowrap">{s['status']}</td>
-            </tr>"""
+        times = ""
+        if target:
+            times += f'<div style="color:#5B6EF5;font-weight:700">Target: {target["total"]}</div>'
+        if prediction:
+            times += f'<div style="color:#00C2A8;font-weight:700">Predicted: ~{prediction["total"]}</div>'
 
-    # ── Recent sessions ──────────────────────────────────────────────────────
-    recent_rows = ""
-    for _, row in df.tail(8).iloc[::-1].iterrows():
-        pace_str = session_avg_pace_str(row)
-        benefit, bcol = session_benefit(row)
-        recent_rows += f"""<tr>
-            <td>{row['start'].strftime('%b %d')}</td>
-            <td style="font-weight:600">{str(row.get('type','') or '').replace('_',' ').title()}</td>
-            <td>{round(row['distance_km'],1) if row.get('distance_km') else '—'}km</td>
-            <td>{round(row['duration_min'])}min</td>
-            <td style="font-weight:600">{pace_str}</td>
-            <td style="color:{bcol};font-weight:600;font-size:.85em">{benefit}</td>
-        </tr>"""
+        race_html += f"""<div class="rcard">
+            <div style="font-size:13pt">{r['emoji']}</div>
+            <div style="font-weight:700;font-size:9.5pt">{r['name']}</div>
+            <div style="font-size:7.5pt;color:#888">{r['date'].strftime('%b %d, %Y')}</div>
+            <div style="font-size:11pt;font-weight:800;color:{col};margin:3pt 0">{days_str}</div>
+            {times}
+        </div>"""
+
+    # ── Pre-race conflicts ───────────────────────────────────────────────────
+    conflict_html = ""
+    if race_conflicts:
+        rows = "".join(f"""<tr>
+            <td>{c['session_date']}</td>
+            <td style="font-weight:600">{c['discipline'].replace('_',' ').title()}</td>
+            <td>{c['summary']}</td>
+            <td>{c['duration_min']}min</td>
+            <td style="color:#c0392b;font-weight:600">{c['days_before_race']}d before {c['race_name']}</td>
+        </tr>""" for c in race_conflicts)
+        conflict_html = f"""
+        <h2 style="color:#c0392b">⚠️ Pre-Race Conflicts</h2>
+        <table class="t">
+            <tr><th>Date</th><th>Discipline</th><th>Session</th><th>Duration</th><th>Conflict</th></tr>
+            {rows}
+        </table>"""
+
+    # ── AI coaching summary + suggestions ────────────────────────────────────
+    coaching_html_block = ""
+    if coaching and coaching.get("summary"):
+        suggestions = coaching.get("suggestions", [])
+        changes     = coaching.get("proposed_changes", [])
+        sugg_rows = "".join(f"<li>{s}</li>" for s in suggestions if s)
+
+        change_rows = ""
+        if changes:
+            rows = "".join(f"""<tr>
+                <td>{c.get('date','')}</td>
+                <td style="font-weight:600">{c.get('discipline','').replace('_',' ').title()}</td>
+                <td style="color:#5B6EF5">{str(c.get('proposed_session',''))[:90]}</td>
+                <td style="text-align:center">{c.get('change_type','').upper()}</td>
+            </tr>""" for c in changes)
+            change_rows = f"""
+            <p class="subtext">Proposed plan changes (review on the website, apply via "Apply to Dashboard"):</p>
+            <table class="t">
+                <tr><th>Date</th><th>Discipline</th><th>Proposed</th><th>Type</th></tr>
+                {rows}
+            </table>"""
+
+        coaching_html_block = f"""
+        <h2>🤖 AI Coaching</h2>
+        <p style="font-size:8.5pt;line-height:1.5;border-left:2pt solid #5B6EF5;padding-left:8pt">{coaching['summary']}</p>
+        {f'<ul class="sugg">{sugg_rows}</ul>' if sugg_rows else ''}
+        {change_rows}"""
 
     # ── Write HTML ───────────────────────────────────────────────────────────
     OUT_PRINT.write_text(f"""<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Training Dashboard</title>
 <style>
-@page {{ size: A4; margin: 11mm 13mm; }}
+@page {{ size: A4; margin: 12mm 14mm; }}
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-body {{
-    font-family: Helvetica, Arial, sans-serif;
-    color: #1a1a22; font-size: 9pt;
-    max-width: 720px; margin: 0 auto; padding: 10px;
-}}
-h1 {{ font-size: 15pt; font-weight: 800; margin-bottom: 2pt; }}
-h2 {{
-    font-size: 10pt; font-weight: 700; margin: 12pt 0 5pt;
-    border-bottom: 2px solid #f0f0f5; padding-bottom: 2pt; color: #1a1a22;
-}}
-.updated {{ color: #999; font-size: 7pt; margin-bottom: 8pt; }}
-/* stat cards */
-.stats {{ display: flex; flex-wrap: wrap; gap: 5pt; margin: 5pt 0 8pt; }}
-.card {{
-    border: 1px solid #eee; border-radius: 5pt;
-    padding: 5pt 7pt; text-align: center; flex: 1; min-width: 50pt;
-}}
-.card .num {{ font-size: 11pt; font-weight: 800; }}
-.card .lbl {{ font-size: 5.5pt; color: #999; text-transform: uppercase; letter-spacing: .3px; }}
-/* discipline grid */
-.dg {{ display: flex; gap: 5pt; margin: 5pt 0 10pt; }}
-.db {{ border: 1px solid #eee; border-radius: 5pt; padding: 6pt 8pt; flex: 1; }}
-.db .dt {{ font-weight: 700; font-size: 8pt; margin-bottom: 4pt; }}
+body {{ font-family: Helvetica, Arial, sans-serif; color: #1a1a22; font-size: 9pt; }}
+h1 {{ font-size: 16pt; font-weight: 800; margin-bottom: 2pt; }}
+h2 {{ font-size: 11pt; font-weight: 700; margin: 16pt 0 6pt; border-bottom: 2px solid #f0f0f5; padding-bottom: 3pt; }}
+.updated {{ color: #999; font-size: 7.5pt; margin-bottom: 10pt; }}
+.subtext {{ color: #999; font-size: 7.5pt; margin: 2pt 0 6pt; }}
+.stats {{ display: flex; flex-wrap: wrap; gap: 6pt; margin: 6pt 0; }}
+.card {{ border: 1px solid #eee; border-radius: 5pt; padding: 6pt 8pt; text-align: center; flex: 1; min-width: 55pt; }}
+.card .num {{ font-size: 12pt; font-weight: 800; }}
+.card .lbl {{ font-size: 6pt; color: #999; text-transform: uppercase; }}
+.races {{ display: flex; gap: 8pt; margin: 6pt 0; }}
+.rcard {{ border: 1px solid #eee; border-radius: 5pt; padding: 8pt 10pt; flex: 1; }}
+.dg {{ display: flex; gap: 6pt; margin: 8pt 0; }}
+.db {{ border: 1px solid #eee; border-radius: 5pt; padding: 7pt 9pt; flex: 1; }}
+.db .dt {{ font-weight: 700; font-size: 8.5pt; margin-bottom: 4pt; }}
 .db .stats {{ gap: 3pt; margin: 0; }}
 .db .card {{ padding: 4pt 4pt; min-width: 0; background: #f8f8fc; border: none; }}
-/* charts */
-.ctitle {{
-    font-size: 7.5pt; font-weight: 700; color: #5B6EF5;
-    text-transform: uppercase; letter-spacing: .4px; margin-bottom: 2pt;
-}}
-.chart-table {{ width: 100%; border-collapse: collapse; margin-bottom: 4pt; }}
-.chart-table td svg {{ width: 100% !important; height: auto !important; }}
-/* tables */
-table.t {{ width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-bottom: 5pt; }}
-table.t th {{
-    background: #f0f1f8; padding: 4pt 5pt; text-align: left;
-    font-size: 6.5pt; text-transform: uppercase; letter-spacing: .3px; color: #6b6b78;
-}}
-table.t td {{ padding: 4pt 5pt; border-bottom: 1px solid #f5f5f8; }}
-table.t colgroup col {{ overflow: hidden; }}
-@media print {{
-    body {{ padding: 0; }}
-    h2 {{ page-break-after: avoid; }}
-    table.t {{ page-break-inside: avoid; }}
-    .chart-table tr {{ page-break-inside: avoid; }}
-}}
+table.t {{ width: 100%; border-collapse: collapse; font-size: 8pt; margin-bottom: 6pt; }}
+table.t th {{ background: #f5f5fa; padding: 4pt 5pt; text-align: left; font-size: 6.8pt; text-transform: uppercase; }}
+table.t td {{ padding: 4pt 5pt; border-bottom: 1px solid #f0f0f5; }}
+ul.sugg {{ margin: 6pt 0 6pt 14pt; font-size: 8.5pt; line-height: 1.6; }}
 </style>
 </head>
 <body>
@@ -2724,12 +2584,9 @@ table.t colgroup col {{ overflow: hidden; }}
 <p class="updated">Generated {dt.datetime.now().strftime('%Y-%m-%d %H:%M')} UTC</p>
 
 <h2>Race Targets</h2>
-<table class="t">
-  <tr><th>Race</th><th>Date</th><th>Countdown</th><th>Targets</th></tr>
-  {race_rows}
-</table>
+<div class="races">{race_html}</div>
 
-<h2>Last 30 Days — Overview</h2>
+<h2>Last 30 Days</h2>
 <div class="stats">
   <div class="card"><div class="num">{total_sessions}</div><div class="lbl">Sessions</div></div>
   <div class="card"><div class="num">{total_hours}h</div><div class="lbl">Volume</div></div>
@@ -2742,7 +2599,6 @@ table.t colgroup col {{ overflow: hidden; }}
     <div class="dt">🏊 Swimming ({swim_sessions})</div>
     <div class="stats">
       <div class="card"><div class="num">{swim_total}</div><div class="lbl">Total</div></div>
-      <div class="card"><div class="num">{swim_avg_dist}</div><div class="lbl">Avg</div></div>
       <div class="card"><div class="num">{swim_pace}</div><div class="lbl">Pace</div></div>
     </div>
   </div>
@@ -2750,7 +2606,6 @@ table.t colgroup col {{ overflow: hidden; }}
     <div class="dt">🏃 Running ({run_sessions})</div>
     <div class="stats">
       <div class="card"><div class="num">{run_total}</div><div class="lbl">Total</div></div>
-      <div class="card"><div class="num">{run_avg_dist}</div><div class="lbl">Avg</div></div>
       <div class="card"><div class="num">{run_pace}</div><div class="lbl">Pace</div></div>
     </div>
   </div>
@@ -2759,33 +2614,16 @@ table.t colgroup col {{ overflow: hidden; }}
     <div class="stats">
       <div class="card"><div class="num">{bike_total}</div><div class="lbl">Total</div></div>
       <div class="card"><div class="num">{bike_speed}</div><div class="lbl">Speed</div></div>
-      <div class="card"><div class="num">{bike_watts}</div><div class="lbl">Power</div></div>
     </div>
   </div>
 </div>
 
-<h2>Trends</h2>
-<table class="chart-table">{chart_rows}</table>
-
-<h2>Session Compliance — Last 4 Weeks</h2>
-<table class="t">
-  <colgroup>
-    <col style="width:11%"/><col style="width:13%"/>
-    <col style="width:24%"/><col style="width:30%"/><col style="width:22%"/>
-  </colgroup>
-  <tr><th>Date</th><th>Discipline</th><th>Target</th><th>Actual</th><th>Status</th></tr>
-  {comp_rows if comp_rows else '<tr><td colspan="5" style="color:#999;padding:8pt">No sessions matched in the last 4 weeks yet.</td></tr>'}
-</table>
-
-<h2>Recent Sessions</h2>
-<table class="t">
-  <tr><th>Date</th><th>Type</th><th>Distance</th><th>Duration</th><th>Pace</th><th>Benefit</th></tr>
-  {recent_rows}
-</table>
+{conflict_html}
+{coaching_html_block}
 
 </body>
 </html>""")
-    print(f"Print HTML built at {OUT_PRINT} ({len(charts)} charts rendered as SVG)")
+    print(f"Print HTML built at {OUT_PRINT}")
 
 
 def coaching_email_text(coaching):
@@ -2823,13 +2661,14 @@ def coaching_email_text(coaching):
         lines.append("  → Open the dashboard website to review the unified")
         lines.append("    plan table (highlighted rows = AI proposals).")
         lines.append("  → Download ICS from the website to update your phone calendar.")
-        lines.append("  → Run 'Apply AI Coaching' workflow in GitHub Actions to")
+        lines.append("  → Tap 'Sync Now' then 'Apply to Dashboard' on the website to")
         lines.append("    update plan_full.json so changes show on the dashboard too.")
     else:
         lines.append("✅ No plan adjustments proposed — training is on track.")
     lines.append("")
     lines.append("=" * 60)
     return "\n".join(lines)
+
 
 def main():
     df            = load_activities()
@@ -2840,7 +2679,7 @@ def main():
     manual_log    = load_manual_log()
     coaching      = load_coaching()
     build_html(df, plan, wellness, plan_sessions, manual_log, plan_full, coaching)
-    build_print_html(df, plan, wellness, plan_sessions, manual_log)
+    build_print_html(df, plan, wellness, plan_sessions, manual_log, plan_full, coaching)
     # Write coaching email text for use in email step
     email_coaching = coaching_email_text(coaching)
     if email_coaching:
