@@ -1,19 +1,5 @@
 [
   {
-    "name": "Test",
-    "emoji": "🏁",
-    "date": "2026-08-07",
-    "note": "",
-    "distances": {
-      "swim_m": 750,
-      "bike_km": 20,
-      "run_km": 5
-    },
-    "targets": {
-      "bike_speed_kmh": 31
-    }
-  },
-  {
     "name": "Treviso 10K Tiramisu Run",
     "emoji": "🍰",
     "date": "2026-10-03",
