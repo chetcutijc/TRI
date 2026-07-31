@@ -87,6 +87,44 @@ def summarise_activities(acts_store, weeks=4):
     return rows
 
 
+def detect_race_conflicts(plan_full, races, days_before=2, max_easy_min=45):
+    """
+    Deterministic sanity check (no AI judgment needed): flags any session in
+    the last `days_before` days before a race that isn't rest or short/easy.
+    E.g. a long bike ride the night before a marathon should never happen —
+    this catches that class of bug regardless of what Claude decides.
+    """
+    if not plan_full or not races:
+        return []
+    conflicts = []
+    for r in races:
+        try:
+            race_date = dt.date.fromisoformat(r["date"])
+        except Exception:
+            continue
+        window_start = race_date - dt.timedelta(days=days_before)
+        for s in plan_full:
+            try:
+                sdate = dt.date.fromisoformat(s["date"])
+            except Exception:
+                continue
+            if not (window_start <= sdate < race_date):
+                continue
+            if s.get("discipline") in ("rest", "race", None):
+                continue
+            dur = s.get("duration_min") or 0
+            if dur and dur <= max_easy_min:
+                continue
+            conflicts.append({
+                "race_name": r["name"], "race_date": race_date.isoformat(),
+                "session_date": s["date"], "discipline": s.get("discipline", "?"),
+                "summary": s.get("summary", ""), "duration_min": dur,
+                "days_before_race": (race_date - sdate).days,
+            })
+    conflicts.sort(key=lambda c: (c["race_date"], c["session_date"]))
+    return conflicts
+
+
 def summarise_plan(plan_full, weeks=4):
     """Return upcoming plan sessions for the next N weeks."""
     if not plan_full:
@@ -181,6 +219,26 @@ def main():
     races = load_races()
     today = dt.date.today()
 
+    # Deterministic pre-race conflict detection (e.g. a long ride the night
+    # before a marathon) — these are non-negotiable fixes, not suggestions
+    # that depend on Claude's judgment.
+    conflicts = detect_race_conflicts(plan, races, days_before=2)
+    if conflicts:
+        conflict_lines = "\n".join(
+            f"- {c['session_date']} [{c['discipline']}] \"{c['summary']}\" "
+            f"({c['duration_min']}min) is only {c['days_before_race']} day(s) "
+            f"before {c['race_name']} on {c['race_date']}"
+            for c in conflicts
+        )
+        conflicts_block = (
+            "The following sessions are dangerously close to a race and are "
+            "NOT rest/easy — these MUST be addressed in proposed_changes "
+            "(convert to rest or a short shakeout), regardless of the normal "
+            "4/8-week change window:\n" + conflict_lines
+        )
+    else:
+        conflicts_block = "None detected."
+
     # Build a race-target description block from data/races.json
     race_lines = []
     for r in races:
@@ -229,6 +287,9 @@ UPCOMING PLAN (next 4 weeks):
 RACE TARGETS (in date order — prioritise the nearest):
 {races_block}
 
+PRE-RACE SCHEDULING CONFLICTS (auto-detected, non-negotiable):
+{conflicts_block}
+
 Analyse my training and respond with ONLY this JSON structure (no extra text):
 {{
   "summary": "<2-3 sentence overall assessment of the last 4 weeks>",
@@ -254,6 +315,9 @@ Analyse my training and respond with ONLY this JSON structure (no extra text):
 }}
 
 Rules:
+- If PRE-RACE SCHEDULING CONFLICTS lists any items, those changes are MANDATORY
+  and must be included in proposed_changes even if it pushes you over 6 entries —
+  athlete safety before a race takes priority over the usual limits.
 - Only propose changes where you see clear evidence (e.g. 2+ missed sessions, 
   consistent HR too high, pace trend worsening).
 - Keep proposed_changes to max 6 entries — quality over quantity.
