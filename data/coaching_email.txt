@@ -5,50 +5,50 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show a very irregular training pattern with chronic sleep deprivation (multiple nights under 5 hours, one night at only 41 minutes) driving body battery consistently into critically low ranges (2–31 on several recent days), which is the dominant performance and health risk right now. Training load spiked sharply on July 18 (HR 179 bpm, load 208) and July 20 (4.7h ride, load 210) before abruptly dropping to a hike, suggesting the body forced a de-load. With the Treviso 10K and Half Oceanman both 64 days away, the immediate priority must be restoring sleep and aerobic base before any race-specific intensity is introduced.
+The last 4 weeks show severely fragmented training with only 9 sessions logged, dominated by chronically poor sleep (multiple nights under 4 hours, body battery hitting 2-5 on several days) and a dangerous HR spike during the July 18 run (avg 179 bpm, load 208). Cycling volume is the brightest spot with a solid 77km ride on July 20, but swim and run consistency are well below what's needed for the Treviso 10K and Half Oceanman in 64 days. The most urgent priority is rebuilding sleep discipline and letting the body battery recover before layering any meaningful training stress.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all else this week — target 7+ hours per night as a non-negotiable gate before any training session harder than a walk or easy swim is attempted.
-  2. For the Treviso 10K (64 days), begin introducing short 4–6 x 1km race-pace intervals (5:45/km) once weekly from mid-August only after sleep has averaged 6.5h+ for a full week, building to 6–8 reps by race week taper.
-  3. For the Half Oceanman swim (64 days, 5km target at 2:30/100m), increase open-water or pool volume progressively — aim for at least two swim sessions per week hitting 2km+ each, focusing on sustaining 2:20–2:30/100m effort across longer sets.
-  4. The July 18 run at 179 bpm average HR (load 208) is a clear red flag for overreach — avoid any running above Z2 (HR ≤150 bpm) until at least two consecutive weeks of stable sleep and body battery ≥50 are established.
-  5. Cap the August 8 long ride at 84km in the lower Z2 range (128–155W) rather than reaching into the upper Z2/Z3 boundary — the aerobic base needs consolidation, not further stress, given the recovery deficit.
+  1. Target 7+ hours of sleep every night through August 7 as a non-negotiable prerequisite before reintroducing structured intensity — the repeated sub-5-hour nights are the single biggest limiter right now.
+  2. For the Treviso 10K (64 days), introduce short race-pace efforts of 4×1km at 5:45/km starting only in Week 9 (Aug 20) once sleep gates are consistently met — do not attempt these while body battery remains below 50.
+  3. Swimming needs to become the most consistent discipline given the Half Oceanman 5km target; aim for two pool sessions per week hitting 2km+ each from Week 7 onwards, prioritising stroke efficiency and aerobic volume over pace.
+  4. Eliminate all high-intensity running (HR >160 bpm) until at least August 9; the July 18 run at 179 bpm average without adequate recovery is a clear injury and overtraining risk signal.
+  5. Consider shifting the Week 7 long ride (Aug 8) start time to early morning Malta hours (before 08:00) to avoid peak summer heat, which compounds cardiovascular stress on an already fatigued system.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-08-02 [REST]
     Current:  30-min gentle walk at conversational pace, flat route, no targets
-    Proposed: Full rest day — no structured movement of any kind. Body battery on July 31 is 31 (max) with only 245 min sleep; even a gentle walk adds cortisol load the body cannot absorb. Hydrate, eat well, sleep early.
-    Reason:   Sleep has averaged under 5 hours across the last 5 nights and body battery has not exceeded 31 since July 26 — any movement beyond daily living delays rather than accelerates recovery.
+    Proposed: Full rest — no movement targets at all. Sleep and eat well. Recheck body battery on Aug 3 morning; only proceed to any activity if it reads ≥45.
+    Reason:   Body battery was 2 on July 30 and 31 on July 31, and sleep collapsed to 41 min on July 27 — even a walk risks cementing the downward spiral before the recovery window can close.
 
   • 2026-08-04 [CYCLING]
-    Current:  30 min Z1 cycling, gate ≥50 body battery, cap 128W
-    Proposed: Keep the ≥50 body battery gate strictly; if met, do 25 min at 110–125W (pure Z1 recovery spin, flat) — do not attempt the Tuesday swim on the same day if body battery is between 50–60; choose one or the other.
-    Reason:   Stacking a cycle and a 2km+ swim on the same day during a recovery deficit risks reversing any gains made over the Aug 1–3 rest period; splitting them protects the adaptation window.
+    Current:  30-min Z1 cap at 128W if body battery ≥50, otherwise full rest
+    Proposed: 30-min easy spin at 110–125W (pure Z1 flush) only if morning body battery ≥50 AND prior two nights averaged ≥6h sleep; if either gate fails, full rest — no consolation walk.
+    Reason:   The existing gate is correct but the power ceiling should be lowered to Z1 flush level (110–125W) given the depth of the fatigue hole; 128W sits at the top of Z1 and adds unnecessary stress while recovering.
+
+  • 2026-08-08 [CYCLING]
+    Current:  84km @ 128–160W (conservative Z2), ~240 min
+    Proposed: 60–70km @ 128–150W (lower half of Z2 only), 180–200 min; abort and turn home if HR exceeds 145 bpm for more than 5 consecutive minutes — prioritise completion over distance.
+    Reason:   Given the sleep deficit accumulated through late July, a 240-min ride risks digging deeper into fatigue; shortening to 180–200 min keeps the aerobic stimulus while protecting recovery ahead of the Treviso and Oceanman build.
 
   • 2026-08-09 [RUNNING]
-    Current:  12km @ 6:45–7:00/km, 80–85 min, with gates on sleep and body battery ≥55
-    Proposed: Cap at 10km @ 6:50–7:10/km (70 min max); raise the body battery gate to ≥60 and require 3 consecutive nights of 6.5h+ sleep before attempting — reduce to 6km easy walk-run if either gate is missed.
-    Reason:   Given the depth of the current sleep hole (5 nights averaging ~3.5h), recovery to a genuine ≥55 body battery by Aug 9 is optimistic — a more conservative gate and shorter ceiling protects against re-entering overreach.
-
-  • 2026-08-15 [CYCLING]
-    Current:  92km @ 128–177W Z2, with optional 3x10min Z3 tempo blocks
-    Proposed: 92km @ 128–160W (lower half of Z2 only), no tempo blocks; add one 15-min Z3 block (178–195W) only if the Aug 8 ride was completed fully and average sleep Aug 9–14 exceeded 6.5h.
-    Reason:   With the Treviso 10K and Half Oceanman 49 days away at this point, aerobic consolidation at honest Z2 is more valuable than premature Z3 exposure while the athlete is still climbing out of a fatigue hole.
+    Current:  12km @ 6:45–7:00/km, 80–85 min if sleep gates met, otherwise 8km easy walk-run
+    Proposed: 10km @ 6:45–7:00/km, 68–72 min, HR cap ≤145 bpm; if HR climbs above cap, walk until it drops then resume — do not push through. Gate remains: avg sleep ≥6.5h Aug 2–8 AND body battery ≥55.
+    Reason:   Reducing to 10km from 12km lowers acute run load appropriately for an athlete returning from a sleep-crash week while still providing enough stimulus to support the Treviso 10K preparation arc.
 
   • 2026-08-20 [RUNNING]
-    Current:  4 x 1km @ 5:45/km with 90-sec walk recovery, ~38–42 min total, gate sleep 6.5h avg + body battery ≥50
-    Proposed: Keep the session structure but adjust to 3 x 1km @ 5:45/km (Treviso race pace) with 2-min walk recovery, 10-min warm-up and cool-down — total ~30 min; maintain the same sleep and body battery gates.
-    Reason:   First race-pace run session after a prolonged low-sleep block should be conservative — 3 reps instead of 4 reduces injury risk while still establishing the neuromuscular pattern needed for the Treviso 10K.
+    Current:  4×1km @ 5:45/km with 90-sec walk recovery, total 38–42 min, gate: sleep ≥6.5h avg Aug 15–19 and body battery ≥50
+    Proposed: 4×1km @ 5:45/km (Treviso 10K race pace) with 90-sec walk recovery; add a 10-min warm-up jog at 7:00/km and 10-min cool-down — keep the same gates. This is the first structured race-pace session so treat RPE 7/10 as the ceiling.
+    Reason:   The Treviso 10K is 64 days away and this is the earliest point where race-pace neuromuscular work is appropriate; the session structure is sound but explicitly capping RPE protects against overcooking the first quality run after a difficult recovery block.
 
   • 2026-08-25 [RUNNING]
-    Current:  5 x 1km @ 5:40–5:50/km with 90-sec walk recovery, 40–45 min total
-    Proposed: 5 x 1km @ 5:40–5:50/km with 90-sec walk recovery as planned, but add a 10-min easy cool-down run at 6:45/km to practice sustained running after effort — total ~50 min; only execute if sleep avg Aug 20–24 ≥6.5h and body battery ≥50.
-    Reason:   With the Treviso 10K now 38 days away, adding a brief sustained cool-down after the interval block begins to rehearse the neuromuscular demand of racing 10km continuously at target pace.
+    Current:  5×1km @ 5:40–5:50/km with 90-sec walk recovery, total 40–45 min
+    Proposed: 5×1km @ 5:40–5:50/km with 90-sec walk recovery, total 40–45 min — only execute if the Aug 20 race-pace session was completed without HR exceeding 170 bpm; if that session was skipped or HR was excessive, revert to 4×1km @ 5:50/km instead.
+    Reason:   Building from 4 to 5 repetitions is appropriate for the Treviso 10K block but must be conditional on the prior week's quality session completing cleanly, given the fragile recovery baseline established in late July.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
   → Download ICS from the website to update your phone calendar.
-  → Run 'Apply AI Coaching' workflow in GitHub Actions to
+  → Tap 'Sync Now' then 'Apply to Dashboard' on the website to
     update plan_full.json so changes show on the dashboard too.
 
 ============================================================
