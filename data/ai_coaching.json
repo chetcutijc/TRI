@@ -7,56 +7,68 @@
     "Avoid back-to-back high-load days (e.g. cycling 210+ min followed next day by a long run) until sleep averages 7h+ for 5 consecutive nights; the current pattern risks injury from accumulated fatigue without recovery.",
     "In the 10 days before Treviso (from Sep 23rd), taper sharply: drop total run volume by 40%, keep one short race-pace effort (2\u20133km at 5:45/km), and ensure no hard sessions within 48 hours of race day."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-07-31T02:33:01.947057+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-10-01",
-      "discipline": "strength_training",
-      "current_session": "Wk15 Gym / Strength (AI adjusted) \u2014 60 min strength session 2 days before Treviso 10K",
-      "proposed_session": "Convert to full rest day \u2014 no strength training. Optional 10-min gentle mobility/stretching only.",
-      "change_type": "replace",
-      "reason": "Strength training 2 days before the Treviso 10K risks residual muscle fatigue and soreness on race day; full rest protects performance."
-    },
-    {
-      "date": "2026-10-01",
-      "discipline": "running",
-      "current_session": "Wk15 Evening session (AI adjusted) \u2014 90 min run 2 days before Treviso 10K",
-      "proposed_session": "Shakeout run only: 15\u201320 min very easy jog at 7:00+/km, flat route, HR \u2264130 bpm \u2014 stop if legs feel heavy.",
-      "change_type": "decrease",
-      "reason": "A 90-minute run 2 days before the 10K race would leave the athlete fatigued on race morning; a brief shakeout maintains feel without adding stress."
-    },
-    {
-      "date": "2026-10-02",
-      "discipline": "swimming",
-      "current_session": "Wk15 Pool Swim (Friday) (AI adjusted) \u2014 60 min pool swim 1 day before Treviso 10K",
-      "proposed_session": "Skip entirely \u2014 full rest day. Optional 5-min pre-race leg shake-out walk only.",
-      "change_type": "skip",
-      "reason": "Any meaningful swim session the day before the 10K adds unnecessary fatigue and reduces the athlete's ability to race fresh."
-    },
-    {
-      "date": "2027-02-05",
-      "discipline": "swimming",
-      "current_session": "Wk33 Pool Swim (Friday) (AI adjusted) \u2014 60 min pool swim 2 days before Marathon",
-      "proposed_session": "Convert to full rest or optional 10-min easy walk; no swimming within 48 hours of the marathon.",
-      "change_type": "replace",
-      "reason": "Swimming 2 days before a marathon adds upper-body fatigue and disrupts the final rest window needed for optimal race-day performance."
-    },
-    {
-      "date": "2027-02-06",
-      "discipline": "cycling",
-      "current_session": "Wk33 Long Ride (AI adjusted) \u2014 240 min cycling 1 day before Marathon",
-      "proposed_session": "Replace with full rest day \u2014 no cycling. Optional 10-min shakeout jog at very easy effort if the athlete feels the need to move.",
-      "change_type": "replace",
-      "reason": "A 4-hour ride the day before a marathon is dangerous to race performance and risks glycogen depletion and leg fatigue at the start line."
-    },
-    {
-      "date": "2027-06-19",
-      "discipline": "cycling",
-      "current_session": "Wk52 Long Ride \u2014 240 min cycling 1 day before Ironman Italy Cervia",
-      "proposed_session": "Replace with a 20\u201330 min easy bike check spin at 100\u2013120W only (gear and position check), then full rest for the remainder of the day.",
-      "change_type": "replace",
-      "reason": "A full long ride the day before an Ironman is a critical pre-race error; only a short equipment-check spin is appropriate 24 hours before race start."
+      "applied_at": "2026-07-31T02:52:26.487188+00:00",
+      "generated_at": "2026-07-31T02:33:01.947057+00:00",
+      "summary": "The last 4 weeks show a heavily disrupted recovery pattern \u2014 sleep is chronically short (frequently under 5 hours, with a catastrophic 41-minute night on July 27th) and body battery has been critically low on multiple days, indicating the athlete is operating in a significant recovery deficit. Training has been sparse and inconsistent, with only 9 sessions logged across 4 weeks, though the July 20th cycling session (77km, 282 min) and the July 18th run (avg HR 179 bpm) suggest the athlete is pushing hard on isolated days rather than building sustainably. The nearest race, the Treviso 10K on October 3rd (64 days away), requires immediate prioritisation: sleep must be protected above all else, and structured running volume needs to build gradually from this point.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-10-01",
+          "discipline": "strength_training",
+          "current_session": "Wk15 Gym / Strength (AI adjusted) \u2014 60 min strength session 2 days before Treviso 10K",
+          "proposed_session": "Convert to full rest day \u2014 no strength training. Optional 10-min gentle mobility/stretching only.",
+          "change_type": "replace",
+          "reason": "Strength training 2 days before the Treviso 10K risks residual muscle fatigue and soreness on race day; full rest protects performance."
+        },
+        {
+          "date": "2026-10-01",
+          "discipline": "running",
+          "current_session": "Wk15 Evening session (AI adjusted) \u2014 90 min run 2 days before Treviso 10K",
+          "proposed_session": "Shakeout run only: 15\u201320 min very easy jog at 7:00+/km, flat route, HR \u2264130 bpm \u2014 stop if legs feel heavy.",
+          "change_type": "decrease",
+          "reason": "A 90-minute run 2 days before the 10K race would leave the athlete fatigued on race morning; a brief shakeout maintains feel without adding stress."
+        },
+        {
+          "date": "2026-10-02",
+          "discipline": "swimming",
+          "current_session": "Wk15 Pool Swim (Friday) (AI adjusted) \u2014 60 min pool swim 1 day before Treviso 10K",
+          "proposed_session": "Skip entirely \u2014 full rest day. Optional 5-min pre-race leg shake-out walk only.",
+          "change_type": "skip",
+          "reason": "Any meaningful swim session the day before the 10K adds unnecessary fatigue and reduces the athlete's ability to race fresh."
+        },
+        {
+          "date": "2027-02-05",
+          "discipline": "swimming",
+          "current_session": "Wk33 Pool Swim (Friday) (AI adjusted) \u2014 60 min pool swim 2 days before Marathon",
+          "proposed_session": "Convert to full rest or optional 10-min easy walk; no swimming within 48 hours of the marathon.",
+          "change_type": "replace",
+          "reason": "Swimming 2 days before a marathon adds upper-body fatigue and disrupts the final rest window needed for optimal race-day performance."
+        },
+        {
+          "date": "2027-02-06",
+          "discipline": "cycling",
+          "current_session": "Wk33 Long Ride (AI adjusted) \u2014 240 min cycling 1 day before Marathon",
+          "proposed_session": "Replace with full rest day \u2014 no cycling. Optional 10-min shakeout jog at very easy effort if the athlete feels the need to move.",
+          "change_type": "replace",
+          "reason": "A 4-hour ride the day before a marathon is dangerous to race performance and risks glycogen depletion and leg fatigue at the start line."
+        },
+        {
+          "date": "2027-06-19",
+          "discipline": "cycling",
+          "current_session": "Wk52 Long Ride \u2014 240 min cycling 1 day before Ironman Italy Cervia",
+          "proposed_session": "Replace with a 20\u201330 min easy bike check spin at 100\u2013120W only (gear and position check), then full rest for the remainder of the day.",
+          "change_type": "replace",
+          "reason": "A full long ride the day before an Ironman is a critical pre-race error; only a short equipment-check spin is appropriate 24 hours before race start."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-07-31T02:33:01.947057+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-07-31T02:52:26.487188+00:00",
+  "applied_count": 6
 }

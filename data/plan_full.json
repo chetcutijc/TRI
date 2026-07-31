@@ -1421,10 +1421,10 @@
   {
     "date": "2026-10-01",
     "day": "Thursday",
-    "discipline": "strength_training",
-    "summary": "Wk15 Gym / Strength (AI adjusted)",
-    "duration_min": 60,
-    "notes": "[AI ADJUSTED] Replace with full rest or 10-min gentle mobility/foam rolling only \u2014 no loading, no gym work 2 days before the Treviso 10K.\n\nReason: Strength training 2 days before a race causes muscle damage and glycogen depletion that will directly impair 10K performance on October 3rd.\n\nOriginal: Strength 40-50min: single-arm shoulder work (L-side bias), single-leg calf raises (L-side bias), landing/jump drills, core. Lighten load on whichever discipline is peaking that week.",
+    "discipline": "rest",
+    "summary": "Wk15 Gym / Strength (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Convert to full rest day \u2014 no strength training. Optional 10-min gentle mobility/stretching only.\n\nReason: Strength training 2 days before the Treviso 10K risks residual muscle fatigue and soreness on race day; full rest protects performance.\n\nOriginal: [AI ADJUSTED] Replace with full rest or 10-min gentle mobility/foam rolling only \u2014 no loading, no gym work 2 days before the Treviso 10K.\n\nReason: Strength training 2 days before a race causes muscle damage and glycogen depletion that will directly impair 10K performance on October 3rd.\n\nOriginal: Strength 40-50min: single-arm shoulder work (L-side bias), single-leg calf raises (L-side bias), landing/jump drills, core. Lighten load on whichever discipline is peaking that week.",
     "pace": null,
     "power": null,
     "distance": null
@@ -1432,10 +1432,10 @@
   {
     "date": "2026-10-01",
     "day": "Thursday",
-    "discipline": "running",
-    "summary": "Wk15 Evening session (AI adjusted)",
-    "duration_min": 90,
-    "notes": "[AI ADJUSTED] Replace with a 15-min shakeout jog at easy conversational pace (7:00+/km) with 4\u00d720-second light strides at roughly 5:45/km \u2014 total 20 min maximum.\n\nReason: A 90-minute run 2 days before the Treviso 10K will leave legs heavy on race day; a short shakeout keeps the neuromuscular system primed without accumulating fatigue.\n\nOriginal: Intervals: 6x800m @ 4:55-5:10/km (400-800m reps), 2min jog recovery, total 45-55min",
+    "discipline": "rest",
+    "summary": "Wk15 Evening session (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Shakeout run only: 15\u201320 min very easy jog at 7:00+/km, flat route, HR \u2264130 bpm \u2014 stop if legs feel heavy.\n\nReason: A 90-minute run 2 days before the 10K race would leave the athlete fatigued on race morning; a brief shakeout maintains feel without adding stress.\n\nOriginal: [AI ADJUSTED] Replace with a 15-min shakeout jog at easy conversational pace (7:00+/km) with 4\u00d720-second light strides at roughly 5:45/km \u2014 total 20 min maximum.\n\nReason: A 90-minute run 2 days before the Treviso 10K will leave legs heavy on race day; a short shakeout keeps the neuromuscular system primed without accumulating fatigue.\n\nOriginal: Intervals: 6x800m @ 4:55-5:10/km (400-800m reps), 2min jog recovery, total 45-55min",
     "pace": "4:55\u20135:10/km",
     "power": null,
     "distance": null
@@ -1454,10 +1454,10 @@
   {
     "date": "2026-10-02",
     "day": "Friday",
-    "discipline": "swimming",
-    "summary": "Wk15 Pool Swim (Friday) (AI adjusted)",
-    "duration_min": 60,
-    "notes": "[AI ADJUSTED] Replace with full rest \u2014 no swimming the day before a 10K race; use the time for race-day logistics, light walking, and hydration.\n\nReason: Swimming 60 minutes the day before the Treviso 10K will fatigue the upper body and disturb pre-race sleep, undermining the taper benefit built over the preceding weeks.\n\nOriginal: Pool session: min 2,000m. Mix of technique drills and aerobic sets. Pace target \u22642:30/100m",
+    "discipline": "rest",
+    "summary": "Wk15 Pool Swim (Friday) (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Skip entirely \u2014 full rest day. Optional 5-min pre-race leg shake-out walk only.\n\nReason: Any meaningful swim session the day before the 10K adds unnecessary fatigue and reduces the athlete's ability to race fresh.\n\nOriginal: [AI ADJUSTED] Replace with full rest \u2014 no swimming the day before a 10K race; use the time for race-day logistics, light walking, and hydration.\n\nReason: Swimming 60 minutes the day before the Treviso 10K will fatigue the upper body and disturb pre-race sleep, undermining the taper benefit built over the preceding weeks.\n\nOriginal: Pool session: min 2,000m. Mix of technique drills and aerobic sets. Pace target \u22642:30/100m",
     "pace": "\u22642:30/100m",
     "power": null,
     "distance": "2km+"
@@ -3236,10 +3236,10 @@
   {
     "date": "2027-02-05",
     "day": "Friday",
-    "discipline": "swimming",
-    "summary": "Wk33 Pool Swim (Friday) (AI adjusted)",
-    "duration_min": 60,
-    "notes": "[AI ADJUSTED] Replace with full rest or 20-min easy walk only \u2014 no structured training 2 days before the Marathon.\n\nReason: Any meaningful swim session 2 days before a marathon disrupts the taper and risks arriving at the start line with accumulated fatigue in the shoulders and disturbed sleep.\n\nOriginal: Pool session: min 2,000m. Mix of technique drills and aerobic sets. Pace target \u22642:30/100m",
+    "discipline": "rest",
+    "summary": "Wk33 Pool Swim (Friday) (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Convert to full rest or optional 10-min easy walk; no swimming within 48 hours of the marathon.\n\nReason: Swimming 2 days before a marathon adds upper-body fatigue and disrupts the final rest window needed for optimal race-day performance.\n\nOriginal: [AI ADJUSTED] Replace with full rest or 20-min easy walk only \u2014 no structured training 2 days before the Marathon.\n\nReason: Any meaningful swim session 2 days before a marathon disrupts the taper and risks arriving at the start line with accumulated fatigue in the shoulders and disturbed sleep.\n\nOriginal: Pool session: min 2,000m. Mix of technique drills and aerobic sets. Pace target \u22642:30/100m",
     "pace": "\u22642:30/100m",
     "power": null,
     "distance": "2km+"
@@ -3247,10 +3247,10 @@
   {
     "date": "2027-02-06",
     "day": "Saturday",
-    "discipline": "cycling",
-    "summary": "Wk33 Long Ride (AI adjusted)",
-    "duration_min": 240,
-    "notes": "[AI ADJUSTED] Replace with full rest \u2014 no cycling the day before the Marathon; this is the final rest day of the taper and must be completely training-free.\n\nReason: A 4-hour ride the day before a marathon would completely destroy any taper benefit and make a sub-4h marathon target impossible \u2014 this is a mandatory rest day.\n\nOriginal: 60km @ 128-177W (Z2 Endurance) (long aerobic; add 3x10min 178-209W (Z3 Tempo) blocks if Bike-peak week)",
+    "discipline": "rest",
+    "summary": "Wk33 Long Ride (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Replace with full rest day \u2014 no cycling. Optional 10-min shakeout jog at very easy effort if the athlete feels the need to move.\n\nReason: A 4-hour ride the day before a marathon is dangerous to race performance and risks glycogen depletion and leg fatigue at the start line.\n\nOriginal: [AI ADJUSTED] Replace with full rest \u2014 no cycling the day before the Marathon; this is the final rest day of the taper and must be completely training-free.\n\nReason: A 4-hour ride the day before a marathon would completely destroy any taper benefit and make a sub-4h marathon target impossible \u2014 this is a mandatory rest day.\n\nOriginal: 60km @ 128-177W (Z2 Endurance) (long aerobic; add 3x10min 178-209W (Z3 Tempo) blocks if Bike-peak week)",
     "pace": null,
     "power": "128\u2013177W",
     "distance": "60km"
@@ -5128,10 +5128,10 @@
   {
     "date": "2027-06-19",
     "day": "Saturday",
-    "discipline": "cycling",
-    "summary": "Wk52 Long Ride",
-    "duration_min": 240,
-    "notes": "180km @ 128-177W (Z2 Endurance) (long aerobic; add 3x10min 178-209W (Z3 Tempo) blocks if Bike-peak week)",
+    "discipline": "rest",
+    "summary": "Wk52 Long Ride (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Replace with a 20\u201330 min easy bike check spin at 100\u2013120W only (gear and position check), then full rest for the remainder of the day.\n\nReason: A full long ride the day before an Ironman is a critical pre-race error; only a short equipment-check spin is appropriate 24 hours before race start.\n\nOriginal: 180km @ 128-177W (Z2 Endurance) (long aerobic; add 3x10min 178-209W (Z3 Tempo) blocks if Bike-peak week)",
     "pace": null,
     "power": "128\u2013177W",
     "distance": "180km"
