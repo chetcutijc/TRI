@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show a very inconsistent training pattern with low total volume — only 9 sessions logged, dominated by short open-water swims and two cycling efforts, with running severely underrepresented given the Treviso 10K is just 64 days away. Sleep quality is a serious concern, with multiple nights under 4 hours and body battery repeatedly bottoming out near zero, indicating cumulative fatigue that has likely been suppressing training adherence. The one bright spot is the 77km cycling ride on July 20th, but the July 18th run at 179 bpm avg HR signals the athlete is pushing too hard when they do run, which is a red flag ahead of a 10K target pace of 5:45/km.
+The last 4 weeks show a very inconsistent training pattern with chronically poor sleep (many nights under 5 hours, including a 41-minute night on July 27th) and depleted body battery scores, which has clearly forced multiple AI-adjusted session reductions. The one standout effort was the July 18th run at 179 bpm average HR — a significant red flag indicating the athlete pushed into a dangerously high intensity zone while already fatigued. With the Treviso 10K 64 days away, the immediate priority must be rebuilding sleep quality and aerobic base before any race-pace intensity is introduced.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all else this week — without consistent 7+ hour nights, no training adaptation will stick and race-day performance will be compromised; treat sleep as the most important session on the plan.
-  2. Begin introducing structured easy running immediately (3 runs/week at HR ≤145 bpm, 6:45–7:15/km) to rebuild the aerobic running base needed for a 5:45/km 10K in 9 weeks — you currently have almost no recent run volume to draw on.
-  3. The July 18th run at 179 bpm average suggests you are running far too hard when you do run; enforce a strict HR cap of 145 bpm on every easy run until Week 9 intervals, even if that means walk-run in Malta's summer heat.
-  4. Use the August 20th interval session (4×800m) as a genuine test of current run fitness — if those reps feel controlled at 5:00–5:15/km, progress to 6×800m in Week 10 as planned; if not, add one more easy week before intensifying.
-  5. Swimming technique in open water looks slow (~26 min/km = ~2:37/100m) relative to the Ironman 1:50/100m target — keep pool sessions as planned but focus 50% of each session on pull drills and bilateral breathing to close this gap over the coming months.
+  1. Prioritise sleep above all else this week — the July 27–30 data shows near-total sleep collapse (41 min, 278 min, 379 min, then null), and no training adaptation can occur in this state; aim for a strict 7-hour minimum before resuming structured sessions.
+  2. Avoid any running above Z2 (HR >145 bpm) until you have at least 5 consecutive nights averaging 6+ hours of sleep — the July 18th run at 179 bpm avg HR on a fatigued body is a clear injury and overtraining risk that must not be repeated.
+  3. For the Treviso 10K (64 days), begin building run frequency to 3x per week from Week 8 onward, targeting 5:50–6:00/km on easy runs before introducing the 800m intervals in Week 9 as planned — this gives a solid 4-week speed block into a 2-week taper.
+  4. Your open-water swim paces (24–28 min/km) are significantly slower than your Ironman target of 1:50/100m (~18:20/km) — start adding at least one pool technique session per week immediately, focusing on stroke efficiency and bilateral breathing before building volume.
+  5. Consider shifting the July 31st pool swim to tomorrow (August 1st) if body battery remains below 30 tonight — arriving at the weekend long ride even marginally fresher will yield better training adaptation than forcing a swim on a depleted system.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-08-01 [CYCLING]
-    Current:  AI-adjusted long ride capped at 50–60km @ 128–145W, 150-min ceiling
-    Proposed: 50km @ 128–140W (strict low Z2), hard 90-min ceiling — stop immediately if HR exceeds 140 bpm; focus on fuelling practice (eat every 30 min) to build race nutrition habits.
-    Reason:   Body battery was 2 on July 30th and sleep data shows severe fatigue entering the weekend; a shorter, genuinely easy ride protects recovery without sacrificing the aerobic stimulus entirely.
+  • 2026-07-31 [SWIMMING]
+    Current:  54-min pool swim targeting 2km+ at ≤2:30/100m (AI adjusted to 30–40 min easy technique, 1,000–1,200m)
+    Proposed: Skip entirely — full rest day. Body battery max was 2 on July 30th and sleep has collapsed over the past 4 nights; even a short easy swim adds stress the body cannot absorb right now.
+    Reason:   Body battery of 2 on July 30th with multiple nights of severely broken sleep (41 min, 278 min) means there is zero recovery capacity available — any training stress today will deepen the hole, not build fitness.
 
-  • 2026-08-02 [RUNNING]
-    Current:  AI-adjusted 7–8km @ 7:00/km, HR ≤145 bpm, convert to walk if HR exceeds 145 in first 2km
-    Proposed: 6km easy run/walk @ HR ≤140 bpm (use walk breaks proactively every 8 min to keep HR controlled in Malta summer heat), total 40 min maximum — this is a fitness check, not a workout.
-    Reason:   Given the near-zero body battery and chronic sleep deficit, a short aerobic check-in with mandatory walk breaks is safer than targeting even 7km, and sets a reliable baseline for the upcoming 10K build.
+  • 2026-10-01 [STRENGTH TRAINING]
+    Current:  Wk15 Gym / Strength — 60 min strength session (shoulders, calves, core)
+    Proposed: Replace with full rest or 10-min gentle mobility/foam rolling only — no loading, no gym work 2 days before the Treviso 10K.
+    Reason:   Strength training 2 days before a race causes muscle damage and glycogen depletion that will directly impair 10K performance on October 3rd.
 
-  • 2026-08-06 [RUNNING]
-    Current:  AI-adjusted 30 min easy run @ 6:45–7:00/km, HR ≤145 bpm
-    Proposed: 35 min easy run @ 6:45–7:15/km, HR ≤145 bpm, flat route — add 4×20-second strides at the end (10K race feel, not sprinting) to begin neuromuscular prep for Treviso pace.
-    Reason:   If the August 2nd run completed without HR exceedance, strides begin priming the neuromuscular system for 5:45/km race pace without adding meaningful fatigue load 9 weeks out from Treviso.
+  • 2026-10-01 [RUNNING]
+    Current:  Wk15 Evening session — 90 min run at 6:30–6:50/km
+    Proposed: Replace with a 15-min shakeout jog at easy conversational pace (7:00+/km) with 4×20-second light strides at roughly 5:45/km — total 20 min maximum.
+    Reason:   A 90-minute run 2 days before the Treviso 10K will leave legs heavy on race day; a short shakeout keeps the neuromuscular system primed without accumulating fatigue.
 
-  • 2026-08-09 [RUNNING]
-    Current:  AI-adjusted 16km @ 6:30–6:45/km, 105–110 min, conditional on Aug 2nd completion
-    Proposed: 12km @ 6:45–7:00/km (100 min max), last 2km at 6:10–6:20/km if feeling strong — prioritise completing the full run controlled over hitting distance; skip the negative-split entirely if it's above 28°C.
-    Reason:   Current run fitness is insufficient to support 16km at target pace safely — a controlled 12km that finishes strong builds more confidence and fitness for Treviso than a 16km that blows up in the heat.
+  • 2026-10-02 [SWIMMING]
+    Current:  Wk15 Pool Swim (Friday) — 60 min, 2km+ at ≤2:30/100m
+    Proposed: Replace with full rest — no swimming the day before a 10K race; use the time for race-day logistics, light walking, and hydration.
+    Reason:   Swimming 60 minutes the day before the Treviso 10K will fatigue the upper body and disturb pre-race sleep, undermining the taper benefit built over the preceding weeks.
 
-  • 2026-08-20 [RUNNING]
-    Current:  AI-adjusted 4×800m @ 5:00–5:15/km, 90-sec standing recovery, 35–40 min total
-    Proposed: Warm-up 10 min easy, 4×800m @ 5:00–5:15/km with 90-sec standing recovery, cool-down 10 min easy — note target 10K race pace is 5:45/km so these reps should feel controlled and rhythmic, not maximal; record split times to set Week 10 targets.
-    Reason:   Adding explicit warm-up and cool-down structure and anchoring the rep pace to the Treviso race goal ensures this first interval session builds specific 10K fitness rather than becoming an uncontrolled time trial.
+  • 2027-02-05 [SWIMMING]
+    Current:  Wk33 Pool Swim (Friday) — 60 min, 2km+ at ≤2:30/100m
+    Proposed: Replace with full rest or 20-min easy walk only — no structured training 2 days before the Marathon.
+    Reason:   Any meaningful swim session 2 days before a marathon disrupts the taper and risks arriving at the start line with accumulated fatigue in the shoulders and disturbed sleep.
 
-  • 2026-08-25 [RUNNING]
-    Current:  6×800m @ 4:55–5:10/km, 2-min jog recovery, 45–55 min total
-    Proposed: 6×800m @ 5:00–5:10/km with 90-sec standing recovery (not jog), total 50 min including warm-up and cool-down — only progress to 4:55/km if all Week 9 reps completed at 5:00–5:10/km without HR exceeding 175 bpm.
-    Reason:   Standing recovery instead of jog recovery at this stage of fitness development allows better quality on each rep, which is more valuable for 10K pace development than accumulating fatigue through jog recoveries at insufficient aerobic base.
+  • 2027-02-06 [CYCLING]
+    Current:  Wk33 Long Ride — 240 min cycling session the day before the Marathon
+    Proposed: Replace with full rest — no cycling the day before the Marathon; this is the final rest day of the taper and must be completely training-free.
+    Reason:   A 4-hour ride the day before a marathon would completely destroy any taper benefit and make a sub-4h marathon target impossible — this is a mandatory rest day.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
