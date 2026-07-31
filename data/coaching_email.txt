@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show a heavily disrupted recovery pattern — sleep is chronically short (frequently under 5 hours, with a catastrophic 41-minute night on July 27th) and body battery has been critically low on multiple days, indicating the athlete is operating in a significant recovery deficit. Training has been sparse and inconsistent, with only 9 sessions logged across 4 weeks, though the July 20th cycling session (77km, 282 min) and the July 18th run (avg HR 179 bpm) suggest the athlete is pushing hard on isolated days rather than building sustainably. The nearest race, the Treviso 10K on October 3rd (64 days away), requires immediate prioritisation: sleep must be protected above all else, and structured running volume needs to build gradually from this point.
+The last 4 weeks show a fragmented training pattern with very low swim volumes (mostly under 2km per session), inconsistent running, and a single long cycling effort — overall load is modest but recovery is severely compromised by chronic sleep deprivation (multiple nights under 5 hours, body battery crashing as low as 2 on July 30th). The high-HR run on July 18th (avg 179 bpm) is a red flag indicating the athlete is pushing into intensity without adequate base or recovery. With the Treviso 10K just 64 days away, the immediate priority must be stabilising sleep and aerobic base before introducing any race-pace work.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all training variables for the next 2 weeks — target 7+ hours nightly consistently before attempting any quality sessions, as no training adaptation can occur in the current recovery deficit.
-  2. For the Treviso 10K (64 days away), begin introducing one structured run interval session per week from Week 9 (Aug 20th) onwards, targeting 4x800m to 6x800m at 5:00–5:15/km to build race-specific speed at 5:45/km goal pace.
-  3. Cap the Aug 1st long ride at 50–60km and convert the Aug 2nd long run to 7–8km easy — do not attempt prescribed distances until body battery consistently reaches 50+ before sessions.
-  4. Avoid back-to-back high-load days (e.g. cycling 210+ min followed next day by a long run) until sleep averages 7h+ for 5 consecutive nights; the current pattern risks injury from accumulated fatigue without recovery.
-  5. In the 10 days before Treviso (from Sep 23rd), taper sharply: drop total run volume by 40%, keep one short race-pace effort (2–3km at 5:45/km), and ensure no hard sessions within 48 hours of race day.
+  1. Prioritise sleep as the number-one performance intervention right now — target 7+ hours nightly this week before resuming structured training, as the chronic sleep debt is likely suppressing adaptation and elevating injury risk more than any missed session.
+  2. For the Treviso 10K (64 days out), introduce controlled 5:45/km race-pace touches starting Week 9 (Aug 20th interval session) only if sleep has recovered — keep all running easy at ≤145 bpm until then to build aerobic efficiency without digging a deeper recovery hole.
+  3. Avoid high-intensity running (HR >160 bpm) entirely for the next 2 weeks; the July 18th effort at avg 179 bpm with a training load of 208 on poor sleep suggests the athlete is accumulating stress without the recovery capacity to absorb it.
+  4. Increase swim consistency to at least 2 pool sessions per week — current open-water sessions are too short (0.1–2km) and infrequent to build the swim base needed for Ironman Cervia; pool sessions allow pace-controlled technique work regardless of sea conditions.
+  5. Add a short flat 20–25 minute test run at 5:45/km around Week 9–10 to gauge where 10K race fitness actually sits — this will allow realistic pacing targets for Treviso without overcommitting on intervals too early in the recovery block.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-10-01 [STRENGTH TRAINING]
-    Current:  Wk15 Gym / Strength (AI adjusted) — 60 min strength session 2 days before Treviso 10K
-    Proposed: Convert to full rest day — no strength training. Optional 10-min gentle mobility/stretching only.
-    Reason:   Strength training 2 days before the Treviso 10K risks residual muscle fatigue and soreness on race day; full rest protects performance.
+  • 2026-08-01 [CYCLING]
+    Current:  Long Ride capped at 50–60km @ 128–145W, 150-min ceiling with HR guard
+    Proposed: Reduce further to 45–50km @ 128–140W (Z1-low Z2 only), strict 90-min ceiling; abort at 60 min if HR exceeds 135 bpm — body battery was 2 on July 30th and sleep has essentially collapsed over the last 4 nights.
+    Reason:   Body battery of 2 and multiple nights of severely broken sleep (41 min and 278 min in the last two nights) indicate the athlete cannot safely absorb even a reduced long ride at the currently planned intensity ceiling.
 
-  • 2026-10-01 [RUNNING]
-    Current:  Wk15 Evening session (AI adjusted) — 90 min run 2 days before Treviso 10K
-    Proposed: Shakeout run only: 15–20 min very easy jog at 7:00+/km, flat route, HR ≤130 bpm — stop if legs feel heavy.
-    Reason:   A 90-minute run 2 days before the 10K race would leave the athlete fatigued on race morning; a brief shakeout maintains feel without adding stress.
+  • 2026-08-02 [RUNNING]
+    Current:  Reduced long run 7–8km @ 7:00/km, HR ≤145 bpm, convert to 30-min walk if HR exceeds 145 bpm in first 2km
+    Proposed: Replace with a 30-minute flat walk only — no running; if body battery on Sunday morning is ≥50, a very easy 20-min jog at conversational pace is permitted but not required.
+    Reason:   With body battery at 2 on July 30th and sleep averaging under 4.5 hours across the last four nights, any running load — even easy — adds stress the body cannot recover from before the week's training resumes.
 
-  • 2026-10-02 [SWIMMING]
-    Current:  Wk15 Pool Swim (Friday) (AI adjusted) — 60 min pool swim 1 day before Treviso 10K
-    Proposed: Skip entirely — full rest day. Optional 5-min pre-race leg shake-out walk only.
-    Reason:   Any meaningful swim session the day before the 10K adds unnecessary fatigue and reduces the athlete's ability to race fresh.
+  • 2026-08-04 [CYCLING]
+    Current:  60 min Z2 @ 128–155W with body battery gate of 40+
+    Proposed: Keep the 40+ body battery gate; if met, execute 45 min @ 128–145W (low Z2 only, no upper Z2); if body battery is below 40, replace entirely with 20 min of easy walking or full rest.
+    Reason:   Tightening the power ceiling and duration guards against re-entering the same fatigue spiral that produced a body battery crash, ensuring Week 7 can actually be completed.
 
-  • 2027-02-05 [SWIMMING]
-    Current:  Wk33 Pool Swim (Friday) (AI adjusted) — 60 min pool swim 2 days before Marathon
-    Proposed: Convert to full rest or optional 10-min easy walk; no swimming within 48 hours of the marathon.
-    Reason:   Swimming 2 days before a marathon adds upper-body fatigue and disrupts the final rest window needed for optimal race-day performance.
+  • 2026-08-20 [RUNNING]
+    Current:  4x800m @ 5:00–5:15/km with 90-sec standing recovery, 35–40 min total (AI adjusted interval session)
+    Proposed: Execute as planned only if average nightly sleep in the 5 days prior (Aug 15–19) exceeds 6.5 hours AND body battery on Thursday morning is ≥50; otherwise replace with a 30-min easy run @ 6:30–6:45/km, HR ≤145 bpm — this protects the first quality session of the Treviso block.
+    Reason:   This is the first structured interval session feeding into the Treviso 10K build and should only be executed when the athlete is genuinely recovered, not as a scheduled obligation after weeks of sleep deprivation.
 
-  • 2027-02-06 [CYCLING]
-    Current:  Wk33 Long Ride (AI adjusted) — 240 min cycling 1 day before Marathon
-    Proposed: Replace with full rest day — no cycling. Optional 10-min shakeout jog at very easy effort if the athlete feels the need to move.
-    Reason:   A 4-hour ride the day before a marathon is dangerous to race performance and risks glycogen depletion and leg fatigue at the start line.
+  • 2026-08-25 [RUNNING]
+    Current:  6x800m @ 4:55–5:10/km, 2-min jog recovery, 45–55 min total
+    Proposed: Reduce to 5x800m @ 5:00–5:10/km (not faster) with 90-sec standing recovery, total 40–45 min including warm-up and cool-down; target effort should feel controlled at 8/10, not maximal — this is race-pace rehearsal, not a time trial.
+    Reason:   Given the recovery deficit entering this block, reducing rep count by one and enforcing the slower end of the pace range lowers injury risk while still delivering Treviso-specific race-pace stimulus 9 weeks out.
 
-  • 2027-06-19 [CYCLING]
-    Current:  Wk52 Long Ride — 240 min cycling 1 day before Ironman Italy Cervia
-    Proposed: Replace with a 20–30 min easy bike check spin at 100–120W only (gear and position check), then full rest for the remainder of the day.
-    Reason:   A full long ride the day before an Ironman is a critical pre-race error; only a short equipment-check spin is appropriate 24 hours before race start.
+  • 2027-06-18 [REST]
+    Current:  Wk52 Pool Swim (Friday) — 60 min pool session, 2km+, ≤2:30/100m
+    Proposed: Convert to complete rest or a 10-minute gentle shakeout swim (200–300m easy, no pace target) — this is 2 days before Ironman Italy Cervia and any meaningful swim load at this point is purely stress with no adaptation benefit.
+    Reason:   A 60-minute pool session 2 days before a full Ironman is a mandatory pre-race conflict — legs and shoulders must arrive at the start line fresh, not carrying residual fatigue from a 2km swim.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
