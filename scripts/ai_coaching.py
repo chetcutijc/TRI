@@ -258,6 +258,13 @@ Rules:
 - proposed_changes may be empty [] if training is on track.
 - Do not change race week sessions or sessions more than 4 weeks away.
 - Suggestions should prioritise the nearest race target.
+- If any race is within the next 3 weeks (see RACE TARGETS above), treat it as a
+  priority even if it wasn't part of the original training block: propose a short
+  taper or race-specific prep (reduced volume, race-pace touches, extra rest) in
+  the days leading into it, using "replace" or "decrease" change types on the
+  sessions scheduled that week. Don't invent new distances beyond what's realistic
+  from current fitness — the goal is arriving fresh and injury-free, not peak
+  performance for an unplanned race.
 """
 
     print("Calling Claude API for coaching analysis...")
