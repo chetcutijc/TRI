@@ -12,6 +12,18 @@
     }
   },
   {
+    "name": "Half Oceanman",
+    "emoji": "🏊‍♂️",
+    "date": "2026-10-03",
+    "note": "",
+    "distances": {
+      "swim_m": 5000
+    },
+    "targets": {
+      "swim_pace_100m_sec": 150
+    }
+  },
+  {
     "name": "Marathon",
     "emoji": "🏃",
     "date": "2027-02-07",
