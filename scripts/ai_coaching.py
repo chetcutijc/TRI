@@ -200,6 +200,8 @@ def main():
             s = tgt["run_pace_sec_km"]; bits.append(f"run {s//60}:{s%60:02d}/km")
         if "bike_power_w" in tgt:
             bits.append(f"bike ~{tgt['bike_power_w']}W")
+        if "bike_speed_kmh" in tgt:
+            bits.append(f"bike ~{tgt['bike_speed_kmh']}km/h")
         if "swim_pace_100m_sec" in tgt:
             s = tgt["swim_pace_100m_sec"]; bits.append(f"swim {s//60}:{s%60:02d}/100m")
         detail = (" — " + ", ".join(bits)) if bits else ""
