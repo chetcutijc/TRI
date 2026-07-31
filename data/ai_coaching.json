@@ -7,56 +7,68 @@
     "Your open-water swim paces (24\u201328 min/km) are significantly slower than your Ironman target of 1:50/100m (~18:20/km) \u2014 start adding at least one pool technique session per week immediately, focusing on stroke efficiency and bilateral breathing before building volume.",
     "Consider shifting the July 31st pool swim to tomorrow (August 1st) if body battery remains below 30 tonight \u2014 arriving at the weekend long ride even marginally fresher will yield better training adaptation than forcing a swim on a depleted system."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-07-31T02:16:43.197568+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-07-31",
-      "discipline": "swimming",
-      "current_session": "54-min pool swim targeting 2km+ at \u22642:30/100m (AI adjusted to 30\u201340 min easy technique, 1,000\u20131,200m)",
-      "proposed_session": "Skip entirely \u2014 full rest day. Body battery max was 2 on July 30th and sleep has collapsed over the past 4 nights; even a short easy swim adds stress the body cannot absorb right now.",
-      "change_type": "skip",
-      "reason": "Body battery of 2 on July 30th with multiple nights of severely broken sleep (41 min, 278 min) means there is zero recovery capacity available \u2014 any training stress today will deepen the hole, not build fitness."
-    },
-    {
-      "date": "2026-10-01",
-      "discipline": "strength_training",
-      "current_session": "Wk15 Gym / Strength \u2014 60 min strength session (shoulders, calves, core)",
-      "proposed_session": "Replace with full rest or 10-min gentle mobility/foam rolling only \u2014 no loading, no gym work 2 days before the Treviso 10K.",
-      "change_type": "replace",
-      "reason": "Strength training 2 days before a race causes muscle damage and glycogen depletion that will directly impair 10K performance on October 3rd."
-    },
-    {
-      "date": "2026-10-01",
-      "discipline": "running",
-      "current_session": "Wk15 Evening session \u2014 90 min run at 6:30\u20136:50/km",
-      "proposed_session": "Replace with a 15-min shakeout jog at easy conversational pace (7:00+/km) with 4\u00d720-second light strides at roughly 5:45/km \u2014 total 20 min maximum.",
-      "change_type": "replace",
-      "reason": "A 90-minute run 2 days before the Treviso 10K will leave legs heavy on race day; a short shakeout keeps the neuromuscular system primed without accumulating fatigue."
-    },
-    {
-      "date": "2026-10-02",
-      "discipline": "swimming",
-      "current_session": "Wk15 Pool Swim (Friday) \u2014 60 min, 2km+ at \u22642:30/100m",
-      "proposed_session": "Replace with full rest \u2014 no swimming the day before a 10K race; use the time for race-day logistics, light walking, and hydration.",
-      "change_type": "replace",
-      "reason": "Swimming 60 minutes the day before the Treviso 10K will fatigue the upper body and disturb pre-race sleep, undermining the taper benefit built over the preceding weeks."
-    },
-    {
-      "date": "2027-02-05",
-      "discipline": "swimming",
-      "current_session": "Wk33 Pool Swim (Friday) \u2014 60 min, 2km+ at \u22642:30/100m",
-      "proposed_session": "Replace with full rest or 20-min easy walk only \u2014 no structured training 2 days before the Marathon.",
-      "change_type": "replace",
-      "reason": "Any meaningful swim session 2 days before a marathon disrupts the taper and risks arriving at the start line with accumulated fatigue in the shoulders and disturbed sleep."
-    },
-    {
-      "date": "2027-02-06",
-      "discipline": "cycling",
-      "current_session": "Wk33 Long Ride \u2014 240 min cycling session the day before the Marathon",
-      "proposed_session": "Replace with full rest \u2014 no cycling the day before the Marathon; this is the final rest day of the taper and must be completely training-free.",
-      "change_type": "replace",
-      "reason": "A 4-hour ride the day before a marathon would completely destroy any taper benefit and make a sub-4h marathon target impossible \u2014 this is a mandatory rest day."
+      "applied_at": "2026-07-31T02:20:01.513123+00:00",
+      "generated_at": "2026-07-31T02:16:43.197568+00:00",
+      "summary": "The last 4 weeks show a very inconsistent training pattern with chronically poor sleep (many nights under 5 hours, including a 41-minute night on July 27th) and depleted body battery scores, which has clearly forced multiple AI-adjusted session reductions. The one standout effort was the July 18th run at 179 bpm average HR \u2014 a significant red flag indicating the athlete pushed into a dangerously high intensity zone while already fatigued. With the Treviso 10K 64 days away, the immediate priority must be rebuilding sleep quality and aerobic base before any race-pace intensity is introduced.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-07-31",
+          "discipline": "swimming",
+          "current_session": "54-min pool swim targeting 2km+ at \u22642:30/100m (AI adjusted to 30\u201340 min easy technique, 1,000\u20131,200m)",
+          "proposed_session": "Skip entirely \u2014 full rest day. Body battery max was 2 on July 30th and sleep has collapsed over the past 4 nights; even a short easy swim adds stress the body cannot absorb right now.",
+          "change_type": "skip",
+          "reason": "Body battery of 2 on July 30th with multiple nights of severely broken sleep (41 min, 278 min) means there is zero recovery capacity available \u2014 any training stress today will deepen the hole, not build fitness."
+        },
+        {
+          "date": "2026-10-01",
+          "discipline": "strength_training",
+          "current_session": "Wk15 Gym / Strength \u2014 60 min strength session (shoulders, calves, core)",
+          "proposed_session": "Replace with full rest or 10-min gentle mobility/foam rolling only \u2014 no loading, no gym work 2 days before the Treviso 10K.",
+          "change_type": "replace",
+          "reason": "Strength training 2 days before a race causes muscle damage and glycogen depletion that will directly impair 10K performance on October 3rd."
+        },
+        {
+          "date": "2026-10-01",
+          "discipline": "running",
+          "current_session": "Wk15 Evening session \u2014 90 min run at 6:30\u20136:50/km",
+          "proposed_session": "Replace with a 15-min shakeout jog at easy conversational pace (7:00+/km) with 4\u00d720-second light strides at roughly 5:45/km \u2014 total 20 min maximum.",
+          "change_type": "replace",
+          "reason": "A 90-minute run 2 days before the Treviso 10K will leave legs heavy on race day; a short shakeout keeps the neuromuscular system primed without accumulating fatigue."
+        },
+        {
+          "date": "2026-10-02",
+          "discipline": "swimming",
+          "current_session": "Wk15 Pool Swim (Friday) \u2014 60 min, 2km+ at \u22642:30/100m",
+          "proposed_session": "Replace with full rest \u2014 no swimming the day before a 10K race; use the time for race-day logistics, light walking, and hydration.",
+          "change_type": "replace",
+          "reason": "Swimming 60 minutes the day before the Treviso 10K will fatigue the upper body and disturb pre-race sleep, undermining the taper benefit built over the preceding weeks."
+        },
+        {
+          "date": "2027-02-05",
+          "discipline": "swimming",
+          "current_session": "Wk33 Pool Swim (Friday) \u2014 60 min, 2km+ at \u22642:30/100m",
+          "proposed_session": "Replace with full rest or 20-min easy walk only \u2014 no structured training 2 days before the Marathon.",
+          "change_type": "replace",
+          "reason": "Any meaningful swim session 2 days before a marathon disrupts the taper and risks arriving at the start line with accumulated fatigue in the shoulders and disturbed sleep."
+        },
+        {
+          "date": "2027-02-06",
+          "discipline": "cycling",
+          "current_session": "Wk33 Long Ride \u2014 240 min cycling session the day before the Marathon",
+          "proposed_session": "Replace with full rest \u2014 no cycling the day before the Marathon; this is the final rest day of the taper and must be completely training-free.",
+          "change_type": "replace",
+          "reason": "A 4-hour ride the day before a marathon would completely destroy any taper benefit and make a sub-4h marathon target impossible \u2014 this is a mandatory rest day."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-07-31T02:16:43.197568+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-07-31T02:20:01.513123+00:00",
+  "applied_count": 6
 }
