@@ -35,7 +35,7 @@ jobs:
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
           git add data/plan_full.json data/ai_coaching.json \
-                  docs/index.html docs/print.html
+                  docs/index.html docs/print.html docs/ai_coaching_adjustments.ics || true
           if ! git diff --quiet --cached; then
             git commit -m "Apply AI coaching changes: $(date -u +'%Y-%m-%d')"
             git pull origin main --no-rebase -X ours
