@@ -7,7 +7,9 @@
     "distances": {
       "run_km": 10
     },
-    "targets": {}
+    "targets": {
+            "run_pace_sec_km": 345
+    }
   },
   {
     "name": "Marathon",
