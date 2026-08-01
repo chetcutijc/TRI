@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks reveal a heavily fatigued athlete: sleep is chronically short (multiple nights under 5 hours, one night at 41 minutes), body battery has been critically low (2–31 on several recent mornings), and training volume has been sporadic with a dangerous HR spike on July 18 (avg 179 bpm running). The one positive is the July 20 long ride (77km) showing baseline cycling fitness exists, and open-water swims are building toward the Half Oceanman target. Immediate priority must be rebuilding sleep and recovery before any structured training load can be absorbed.
+The last 4 weeks show a fragmented training block dominated by severe sleep deprivation — multiple nights under 3 hours and body battery readings as low as 2 — which has likely suppressed adaptation and increased injury risk significantly. Training load is inconsistent, with a dangerous HR spike on July 18 (avg 179 bpm) suggesting a near-maximal effort that was inappropriate given the fatigue context, and swim volume is minimal (only ~3.5km total) relative to the Half Oceanman 5km target 63 days away. The positive signal is the 77km cycling session on July 20 showing aerobic base, but without urgent improvements to sleep and recovery discipline, the Half Oceanman swim target of 2:30/100m is at serious risk.
 
 COACHING SUGGESTIONS:
-  1. Enforce a strict body battery gate of ≥45 before any session through at least August 8 — if the gate is not met, full rest only, no 'consolation' walks or easy spins that still add stress.
-  2. Target 7+ hours in bed every night this week regardless of sleep quality achieved — the pattern of 41-minute, 163-minute, and 183-minute nights is clinically significant and will prevent any training adaptation until corrected.
-  3. The Half Oceanman swim (5,000m at 2:30/100m) in 63 days is the priority race: begin rebuilding pool volume systematically from August 4 with technique-focused sessions, targeting 3×/week swimming by August 18 to restore feel after the 4-week open-water-only period.
-  4. The July 18 run at avg 179 bpm (training load 208) was a red-flag session — avoid any running above HR 145 until at least August 9, and gate all runs on morning body battery ≥50 to prevent a repeat.
-  5. For the Treviso 10K (71 days away), begin adding 4–5 × 1km race-pace intervals at 5:45/km in week 9 (August 20 onwards) only after sleep and body battery metrics normalise — the current fitness base supports this pace but only when recovered.
+  1. Prioritise sleep above all other interventions: target 7+ hours nightly for the next 2 weeks — no training session is worth completing if morning body battery is below 40, and the Half Oceanman swim requires consistent adaptation that only happens during quality sleep.
+  2. Urgently rebuild open-water and pool swim volume — with 5km to cover at 2:30/100m in 63 days, aim for at least 3 swim sessions per week totalling 6–8km, starting with the gated Aug 4 pool session and treating it as non-negotiable once body battery recovers.
+  3. Eliminate any Z4+ running efforts until sleep averages 6.5h per night consistently — the July 18 run at avg 179 bpm is a red flag and should not be repeated; all running through mid-August should stay below 145 bpm.
+  4. Add one open-water swim session per week from late August onward to simulate Half Oceanman race conditions in Malta's warm water, focusing on sighting technique and pacing at 2:25–2:30/100m over 1,500–2,000m efforts.
+  5. For the Treviso 10K (71 days), race-pace work (5:45/km intervals) should not start until sleep and body battery are stable — defer structured speedwork until the Wk9 session on Aug 20 at the earliest, and only if wellness gates are met.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-08-04 [CYCLING]
-    Current:  Wk7 Evening session — 30 min at 210–244W with body battery gate ≥50
-    Proposed: Full rest or 20-min gentle walk only — do not attempt the cycling session; given body battery of 0–31 across July 30–August 1 and less than 5 hours sleep on multiple recent nights, even a Z1 spin is counter-productive this day.
-    Reason:   Body battery has been critically depleted (0 on Aug 1, 25 on July 28) and sleep is severely insufficient — no cycling stimulus will be absorbed and additional stress risks compounding fatigue into the Half Oceanman build.
+    Current:  Wk7 Evening cycling session, 30 min, 210–244W (gated at body battery ≥50, cap at 128W Z1)
+    Proposed: Skip entirely if body battery on waking is below 50; if gate is met, 25–30 min at 110–128W (Z1 only, no tempo) — remove the 210–244W target entirely this week as it is inappropriate given current fatigue state.
+    Reason:   Body battery has been critically low (2 on Jul 30, 5 on Jul 27) and sleep chronically short; Z3–Z4 cycling power would add unabsorbable stress and delay recovery needed for the Half Oceanman swim block.
 
-  • 2026-08-08 [CYCLING]
-    Current:  Wk7 Long Ride — 60–75 min Z1–low-Z2 at 128–145W, treat as systems check
-    Proposed: 45-min flat Z1 spin capped at 128W maximum — only execute if morning body battery is ≥55 AND sleep averaged ≥6 hours for August 4–7; otherwise replace with a 30-min easy walk. Drop the 84km distance target entirely this week.
-    Reason:   Recovery from the severe sleep deficit of late July will not be complete by August 8, so a hard cap on both duration and power protects against compounding fatigue entering the critical Half Oceanman build weeks.
+  • 2026-08-09 [RUNNING]
+    Current:  Wk7 Long Run adjusted to 8km walk-run at 7:00–7:30/km, 55–65 min, HR cap 140 bpm
+    Proposed: Replace with a 45–50 min open-water or pool swim at easy aerobic effort (~2:35–2:40/100m) targeting 1,500–1,800m — skip the run entirely unless sleep averaged 6.5h for Aug 4–8.
+    Reason:   With the Half Oceanman swim only 55 days away from Aug 9, substituting a Sunday run with an additional swim session accelerates the critical swim volume build without adding musculoskeletal load on a fatigued body.
 
-  • 2026-08-15 [CYCLING]
-    Current:  Wk8 Long Ride — 92km at 128–177W (Z2 endurance), 240 min
-    Proposed: 70–90 min at 128–160W (low Z2), flat route, no distance target — add Z3 tempo blocks only if morning body battery is ≥60 AND sleep averaged ≥6.5 hours for August 11–14; cap at 100 min absolute maximum.
-    Reason:   Jumping to a 240-min ride in week 8 after the severe depletion of late July is too aggressive; a gated, shorter ride maintains fitness stimulus while protecting the athlete from overreach heading into the Half Oceanman peak block.
+  • 2026-08-16 [RUNNING]
+    Current:  Wk8 Long Run adjusted to 16–17km @ 6:30–6:45/km, 105–115 min
+    Proposed: Cap at 12–13km @ 6:45–7:00/km (85–90 min max), HR strictly below 145 bpm; if body battery on waking is below 50, replace with a 60 min pool swim at aerobic pace.
+    Reason:   Given the 4-week sleep deficit and minimal swim training, protecting recovery to allow swim volume to increase is higher priority than hitting long-run distance targets 7 weeks before the nearest race.
 
-  • 2026-08-21 [SWIMMING]
-    Current:  Wk9 Pool Swim (Friday) — 60 min, 2,500m with 3×600m @ 2:25/100m race-simulation set
-    Proposed: 60 min pool session: 2,500m total — 400m warm-up, 3×600m @ 2:25–2:30/100m with 45-sec rest (extend rest to 60 sec if pace slips beyond 2:35/100m), 300m cool-down; this is the first true Half Oceanman race-pace rehearsal, so prioritise pacing control over speed.
-    Reason:   With the Half Oceanman 5,000m swim as the nearest race priority, this session must anchor race-pace rehearsal at 2:30/100m — structured with appropriate rest intervals given the athlete is returning from a predominantly open-water-only swim block.
+  • 2026-08-22 [CYCLING]
+    Current:  Wk9 Long Ride, 95km @ 128–177W, 240 min
+    Proposed: Add one open-water swim session in the morning (45–60 min, 1,500–2,000m at 2:25–2:30/100m in sea) before the afternoon ride, reducing the ride to 75–80km to manage total daily load — this is the Half Oceanman swim simulation window.
+    Reason:   Week 9 is 42 days from the Half Oceanman; inserting a race-pace open-water swim before the long ride builds the specific conditioning and pacing feel needed while Malta's warm sea conditions are optimal.
 
   • 2026-10-09 [SWIMMING]
-    Current:  Wk16 Pool Swim (Friday) — 60 min pool session, 2km+, pace ≤2:30/100m
-    Proposed: Rest day — no swimming 2 days before the Treviso 10K race; at most a 10-min gentle shakeout jog in the evening with 4×100m strides at race pace (5:45/km) to stay loose, followed by race-day prep routines.
-    Reason:   A 60-min swim session 2 days before the Treviso 10K creates unnecessary fatigue in the upper body and disrupts taper — mandatory pre-race scheduling conflict resolution.
+    Current:  Wk16 Pool Swim (Friday), 60 min — only 2 days before Treviso 10K on Oct 11
+    Proposed: Replace with full rest or a 15–20 min very easy shakeout jog at 7:00/km with 4×80m strides — no swimming 2 days before a run race; legs and nervous system must be fresh for race morning.
+    Reason:   Swimming 60 min two days before the Treviso 10K creates upper-body fatigue and glycogen demand that will compromise race performance on Oct 11.
 
   • 2026-10-10 [CYCLING]
-    Current:  Wk16 Long Ride — 240 min cycling session the day before Treviso 10K
-    Proposed: Full rest day — absolutely no cycling the day before a 10K race; optional 15-min easy walk in the morning for leg activation only, race-day kit preparation and nutrition planning instead.
-    Reason:   A 240-minute ride the day before the Treviso 10K would catastrophically compromise race performance — mandatory pre-race scheduling conflict resolution, athlete safety takes absolute priority.
+    Current:  Wk16 Long Ride, 240 min — only 1 day before Treviso 10K on Oct 11
+    Proposed: Replace with complete rest — no cycling, no cross-training; allow full glycogen restoration, sleep in, hydrate, and do pre-race logistics only.
+    Reason:   A 240-minute ride the day before a 10K race would catastrophically compromise leg freshness and is a mandatory pre-race conflict that must be removed entirely.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
