@@ -1,0 +1,90 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jean Triathlon AI Coaching//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-coaching-20260801-0@jean-tri
+DTSTAMP:20260801T135500Z
+DTSTART:20260801T070000
+DTEND:20260801T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest day: no activity\, focus on hydrat
+ ion\, nutrition\, a
+DESCRIPTION:Full rest day: no activity\, focus on hydration\, nutrition\, a
+ nd maximising sleep tonight — aim for 8+ hours.\n\nReason: Body battery 
+ hit 2 on July 30 and July 31 sleep was only 245 minutes\; the body is in a
+  significant recovery deficit and any movement is counterproductive.\n\nAI
+  coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260809-1@jean-tri
+DTSTAMP:20260801T135500Z
+DTSTART:20260809T070000
+DTEND:20260809T090000
+SUMMARY:[AI ADJUSTED] swimming — 45–50 min pool swim\, 1\,500–1\,800m
+  easy aerobic at 2:30–2:35/
+DESCRIPTION:45–50 min pool swim\, 1\,500–1\,800m easy aerobic at 2:30
+ –2:35/100m with focus on long-axis rotation and bilateral breathing — 
+ execute only if morning body battery ≥45.\n\nReason: The Half Oceanman 5
+ \,000m swim is the nearest race priority and swim volume has been near zer
+ o for two weeks\; replacing a duplicated long-run slot with a structured s
+ wim accelerates the most critical fitness gap.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260816-2@jean-tri
+DTSTAMP:20260801T135500Z
+DTSTART:20260816T070000
+DTEND:20260816T090000
+SUMMARY:[AI ADJUSTED] swimming — 60 min pool swim targeting 2\,000–2\,2
+ 00m at 2:28–2:30/100m: 4
+DESCRIPTION:60 min pool swim targeting 2\,000–2\,200m at 2:28–2:30/100m
+ : 400m warm-up\, 6×200m @ 2:25/100m with 20-sec rest\, 400m cool-down —
+  this is the primary session regardless of body battery gate.\n\nReason: W
+ ith the Half Oceanman 5\,000m only 7 weeks away\, swim volume must be cons
+ istently built each week and this slot should be protected as a swim rathe
+ r than a conditional replacement.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260829-3@jean-tri
+DTSTAMP:20260801T135500Z
+DTSTART:20260829T070000
+DTEND:20260829T090000
+SUMMARY:[AI ADJUSTED] swimming — Keep the 100km ride as planned in the mo
+ rning\; add a dedicat
+DESCRIPTION:Keep the 100km ride as planned in the morning\; add a dedicated
+  60 min open-water swim in the evening (2\,000–2\,500m at 2:25–2:30/10
+ 0m) as a Half Oceanman build — only if total daily load is manageable an
+ d sleep gate (≥6.5h average prior 5 nights) is met.\n\nReason: Week 10 i
+ s the last full build week before the Half Oceanman taper should begin\, a
+ nd adding an open-water swim brick alongside the long ride mirrors race-we
+ ek demands while building confidence at 5\,000m swim pace.\n\nAI coaching 
+ 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261003-4@jean-tri
+DTSTAMP:20260801T135500Z
+DTSTART:20261003T070000
+DTEND:20261003T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest day — race day for Half Oceanman
+  5\,000m swim\; no t
+DESCRIPTION:Full rest day — race day for Half Oceanman 5\,000m swim\; no 
+ training whatsoever\, focus on warm-up\, race execution\, and post-race nu
+ trition.\n\nReason: A 240-minute long ride on race day is a mandatory conf
+ lict that must be removed\; athlete safety and race performance require co
+ mplete rest the morning of the Half Oceanman.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261011-5@jean-tri
+DTSTAMP:20260801T135500Z
+DTSTART:20261011T070000
+DTEND:20261011T090000
+SUMMARY:[AI ADJUSTED] rest — Race day for Treviso 10K Tiramisu Run — re
+ place the long run
+DESCRIPTION:Race day for Treviso 10K Tiramisu Run — replace the long run 
+ entirely with a 10-minute easy jog warm-up\, strides\, race execution at 5
+ :45/km target\, and post-race cool-down walk only.\n\nReason: A 180-minute
+  long run on the day of the 10K race is a mandatory scheduling conflict th
+ at must be replaced with the race itself to avoid injury and ensure optima
+ l performance.\n\nAI coaching 2026-08-01
+END:VEVENT
+END:VCALENDAR
