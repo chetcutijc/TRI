@@ -7,56 +7,68 @@
     "The July 18 run at 179 bpm avg HR (vs 150\u2013152 bpm on other runs) suggests either excessive heat, accumulated fatigue, or a pace that is too aggressive \u2014 keep all running at HR \u2264145 bpm until sleep is consistently above 6 hours for at least 5 consecutive nights.",
     "For the Treviso 10K (71 days away), ensure the plan includes 2\u20133 race-pace intervals (5:40\u20135:50/km) per week from Week 9 onward, but only after recovery is re-established; do not introduce race-pace work while body battery is routinely below 40."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-08-01T09:21:25.718072+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-08-04",
-      "discipline": "swimming",
-      "current_session": "Wk7 Pool Swim (Tuesday) \u2014 60 min, 2km+, \u22642:30/100m",
-      "proposed_session": "Pool swim 45 min, ~1,500m easy aerobic with 400m technique drills (catch-up, fingertip drag) + 4\u00d7100m at 2:20\u20132:30/100m \u2014 reduce volume gate to 1,500m given 4-week swim absence; prioritise stroke feel over distance.",
-      "change_type": "decrease",
-      "reason": "No pool swimming has been recorded in 4 weeks and open-water sessions were short (max 2km OW on July 13), so jumping straight to 2,000m+ risks form breakdown and shoulder overuse \u2014 build back in with 1,500m before returning to full volume the following week."
-    },
-    {
-      "date": "2026-08-08",
-      "discipline": "cycling",
-      "current_session": "Wk7 Long Ride \u2014 84km @ 128\u2013160W, 240 min",
-      "proposed_session": "60\u201375 min Z1\u2013low-Z2 spin at 128\u2013145W, flat route, no distance target \u2014 treat as a systems check; only extend to 84km if body battery on waking is \u226555 AND sleep averaged \u22656.5h for Aug 4\u20137.",
-      "change_type": "decrease",
-      "reason": "Body battery has been at or near critical levels (2\u201331) for the past 5 days and the last completed long ride was July 20; a full 84km effort on depleted reserves risks compounding the fatigue hole rather than building aerobic fitness."
-    },
-    {
-      "date": "2026-08-09",
-      "discipline": "running",
-      "current_session": "Wk7 Long Run \u2014 12km @ 6:45\u20137:00/km, 80\u201385 min",
-      "proposed_session": "8km easy walk-run at 7:00\u20137:30/km, HR cap \u2264140 bpm, 55\u201365 min \u2014 gate: only run if Aug 8 ride was completed and morning body battery is \u226550; otherwise a 40-min flat walk at conversational effort.",
-      "change_type": "decrease",
-      "reason": "Running volume cannot safely step up to 12km the day after a long ride when the athlete is coming off near-zero sleep nights (41 min on July 27, 278 min on July 28) \u2014 a conservative walk-run protects against injury while re-establishing the aerobic base."
-    },
-    {
-      "date": "2026-08-21",
-      "discipline": "swimming",
-      "current_session": "Wk9 Pool Swim (Friday) \u2014 60 min, 2km+, \u22642:30/100m",
-      "proposed_session": "60 min pool session: 2,500m with Half Oceanman-specific set \u2014 400m warm-up, 3\u00d7600m @ 2:25/100m with 30-sec rest, 300m cool-down; begin race-simulation pacing to stress-test 2:30/100m target over longer continuous efforts.",
-      "change_type": "increase",
-      "reason": "With the Half Oceanman 5km swim 63 days away, Week 9 is the right inflection point to start extending continuous swim sets beyond 2km and practising race pace over longer intervals to build the confidence and aerobic capacity needed for 5,000m open water."
-    },
-    {
-      "date": "2026-10-09",
-      "discipline": "rest",
-      "current_session": "Wk16 Pool Swim (Friday) \u2014 60 min structured swim session 2 days before Treviso 10K",
-      "proposed_session": "Full rest day \u2014 no swimming, no cross-training; optional 10-min walk and light stretching only.",
-      "change_type": "replace",
-      "reason": "A 60-min pool session 2 days before a 10K race adds residual muscular fatigue and risks disrupting the taper \u2014 complete rest protects leg freshness and ensures peak neuromuscular readiness for race day."
-    },
-    {
-      "date": "2026-10-10",
-      "discipline": "rest",
-      "current_session": "Wk16 Long Ride \u2014 240 min cycling session 1 day before Treviso 10K",
-      "proposed_session": "Short 15-min shakeout run at 6:00\u20136:15/km (race pace feel, no HR pressure) + 5 min of light leg swings and hip mobility \u2014 total 20 min; no cycling at all.",
-      "change_type": "replace",
-      "reason": "A 4-hour long ride the day before a 10K race would devastate glycogen stores and leave the legs fatigued \u2014 replacing with a brief race-pace shakeout activates the neuromuscular system without accumulating fatigue."
+      "applied_at": "2026-08-01T09:34:31.207531+00:00",
+      "generated_at": "2026-08-01T09:21:25.718072+00:00",
+      "summary": "The last 4 weeks show a very fragmented training pattern dominated by chronic sleep deprivation \u2014 the majority of nights fall well below 6 hours, body battery is consistently low (frequently under 30), and the one hard running effort on July 18 at 179 bpm HR signals a red-flag overreach relative to current recovery capacity. The lone long ride on July 20 (77km, 282 min) is encouraging for Ironman base-building, but the absence of any pool swimming and the near-total training silence in the final 10 days of July indicate the body has been forced into involuntary rest rather than planned recovery. With the Half Oceanman (5km swim) just 63 days away and no pool sessions recorded in 4 weeks, the swim discipline is the most urgent priority once sleep stabilises.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-08-04",
+          "discipline": "swimming",
+          "current_session": "Wk7 Pool Swim (Tuesday) \u2014 60 min, 2km+, \u22642:30/100m",
+          "proposed_session": "Pool swim 45 min, ~1,500m easy aerobic with 400m technique drills (catch-up, fingertip drag) + 4\u00d7100m at 2:20\u20132:30/100m \u2014 reduce volume gate to 1,500m given 4-week swim absence; prioritise stroke feel over distance.",
+          "change_type": "decrease",
+          "reason": "No pool swimming has been recorded in 4 weeks and open-water sessions were short (max 2km OW on July 13), so jumping straight to 2,000m+ risks form breakdown and shoulder overuse \u2014 build back in with 1,500m before returning to full volume the following week."
+        },
+        {
+          "date": "2026-08-08",
+          "discipline": "cycling",
+          "current_session": "Wk7 Long Ride \u2014 84km @ 128\u2013160W, 240 min",
+          "proposed_session": "60\u201375 min Z1\u2013low-Z2 spin at 128\u2013145W, flat route, no distance target \u2014 treat as a systems check; only extend to 84km if body battery on waking is \u226555 AND sleep averaged \u22656.5h for Aug 4\u20137.",
+          "change_type": "decrease",
+          "reason": "Body battery has been at or near critical levels (2\u201331) for the past 5 days and the last completed long ride was July 20; a full 84km effort on depleted reserves risks compounding the fatigue hole rather than building aerobic fitness."
+        },
+        {
+          "date": "2026-08-09",
+          "discipline": "running",
+          "current_session": "Wk7 Long Run \u2014 12km @ 6:45\u20137:00/km, 80\u201385 min",
+          "proposed_session": "8km easy walk-run at 7:00\u20137:30/km, HR cap \u2264140 bpm, 55\u201365 min \u2014 gate: only run if Aug 8 ride was completed and morning body battery is \u226550; otherwise a 40-min flat walk at conversational effort.",
+          "change_type": "decrease",
+          "reason": "Running volume cannot safely step up to 12km the day after a long ride when the athlete is coming off near-zero sleep nights (41 min on July 27, 278 min on July 28) \u2014 a conservative walk-run protects against injury while re-establishing the aerobic base."
+        },
+        {
+          "date": "2026-08-21",
+          "discipline": "swimming",
+          "current_session": "Wk9 Pool Swim (Friday) \u2014 60 min, 2km+, \u22642:30/100m",
+          "proposed_session": "60 min pool session: 2,500m with Half Oceanman-specific set \u2014 400m warm-up, 3\u00d7600m @ 2:25/100m with 30-sec rest, 300m cool-down; begin race-simulation pacing to stress-test 2:30/100m target over longer continuous efforts.",
+          "change_type": "increase",
+          "reason": "With the Half Oceanman 5km swim 63 days away, Week 9 is the right inflection point to start extending continuous swim sets beyond 2km and practising race pace over longer intervals to build the confidence and aerobic capacity needed for 5,000m open water."
+        },
+        {
+          "date": "2026-10-09",
+          "discipline": "rest",
+          "current_session": "Wk16 Pool Swim (Friday) \u2014 60 min structured swim session 2 days before Treviso 10K",
+          "proposed_session": "Full rest day \u2014 no swimming, no cross-training; optional 10-min walk and light stretching only.",
+          "change_type": "replace",
+          "reason": "A 60-min pool session 2 days before a 10K race adds residual muscular fatigue and risks disrupting the taper \u2014 complete rest protects leg freshness and ensures peak neuromuscular readiness for race day."
+        },
+        {
+          "date": "2026-10-10",
+          "discipline": "rest",
+          "current_session": "Wk16 Long Ride \u2014 240 min cycling session 1 day before Treviso 10K",
+          "proposed_session": "Short 15-min shakeout run at 6:00\u20136:15/km (race pace feel, no HR pressure) + 5 min of light leg swings and hip mobility \u2014 total 20 min; no cycling at all.",
+          "change_type": "replace",
+          "reason": "A 4-hour long ride the day before a 10K race would devastate glycogen stores and leave the legs fatigued \u2014 replacing with a brief race-pace shakeout activates the neuromuscular system without accumulating fatigue."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-08-01T09:21:25.718072+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-08-01T09:34:31.207531+00:00",
+  "applied_count": 6
 }
