@@ -7,56 +7,68 @@
     "Add one open-water swim session per week from late August onward to simulate Half Oceanman race conditions in Malta's warm water, focusing on sighting technique and pacing at 2:25\u20132:30/100m over 1,500\u20132,000m efforts.",
     "For the Treviso 10K (71 days), race-pace work (5:45/km intervals) should not start until sleep and body battery are stable \u2014 defer structured speedwork until the Wk9 session on Aug 20 at the earliest, and only if wellness gates are met."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-08-01T13:18:10.087031+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-08-04",
-      "discipline": "cycling",
-      "current_session": "Wk7 Evening cycling session, 30 min, 210\u2013244W (gated at body battery \u226550, cap at 128W Z1)",
-      "proposed_session": "Skip entirely if body battery on waking is below 50; if gate is met, 25\u201330 min at 110\u2013128W (Z1 only, no tempo) \u2014 remove the 210\u2013244W target entirely this week as it is inappropriate given current fatigue state.",
-      "change_type": "decrease",
-      "reason": "Body battery has been critically low (2 on Jul 30, 5 on Jul 27) and sleep chronically short; Z3\u2013Z4 cycling power would add unabsorbable stress and delay recovery needed for the Half Oceanman swim block."
-    },
-    {
-      "date": "2026-08-09",
-      "discipline": "running",
-      "current_session": "Wk7 Long Run adjusted to 8km walk-run at 7:00\u20137:30/km, 55\u201365 min, HR cap 140 bpm",
-      "proposed_session": "Replace with a 45\u201350 min open-water or pool swim at easy aerobic effort (~2:35\u20132:40/100m) targeting 1,500\u20131,800m \u2014 skip the run entirely unless sleep averaged 6.5h for Aug 4\u20138.",
-      "change_type": "replace",
-      "reason": "With the Half Oceanman swim only 55 days away from Aug 9, substituting a Sunday run with an additional swim session accelerates the critical swim volume build without adding musculoskeletal load on a fatigued body."
-    },
-    {
-      "date": "2026-08-16",
-      "discipline": "running",
-      "current_session": "Wk8 Long Run adjusted to 16\u201317km @ 6:30\u20136:45/km, 105\u2013115 min",
-      "proposed_session": "Cap at 12\u201313km @ 6:45\u20137:00/km (85\u201390 min max), HR strictly below 145 bpm; if body battery on waking is below 50, replace with a 60 min pool swim at aerobic pace.",
-      "change_type": "decrease",
-      "reason": "Given the 4-week sleep deficit and minimal swim training, protecting recovery to allow swim volume to increase is higher priority than hitting long-run distance targets 7 weeks before the nearest race."
-    },
-    {
-      "date": "2026-08-22",
-      "discipline": "cycling",
-      "current_session": "Wk9 Long Ride, 95km @ 128\u2013177W, 240 min",
-      "proposed_session": "Add one open-water swim session in the morning (45\u201360 min, 1,500\u20132,000m at 2:25\u20132:30/100m in sea) before the afternoon ride, reducing the ride to 75\u201380km to manage total daily load \u2014 this is the Half Oceanman swim simulation window.",
-      "change_type": "replace",
-      "reason": "Week 9 is 42 days from the Half Oceanman; inserting a race-pace open-water swim before the long ride builds the specific conditioning and pacing feel needed while Malta's warm sea conditions are optimal."
-    },
-    {
-      "date": "2026-10-09",
-      "discipline": "swimming",
-      "current_session": "Wk16 Pool Swim (Friday), 60 min \u2014 only 2 days before Treviso 10K on Oct 11",
-      "proposed_session": "Replace with full rest or a 15\u201320 min very easy shakeout jog at 7:00/km with 4\u00d780m strides \u2014 no swimming 2 days before a run race; legs and nervous system must be fresh for race morning.",
-      "change_type": "replace",
-      "reason": "Swimming 60 min two days before the Treviso 10K creates upper-body fatigue and glycogen demand that will compromise race performance on Oct 11."
-    },
-    {
-      "date": "2026-10-10",
-      "discipline": "cycling",
-      "current_session": "Wk16 Long Ride, 240 min \u2014 only 1 day before Treviso 10K on Oct 11",
-      "proposed_session": "Replace with complete rest \u2014 no cycling, no cross-training; allow full glycogen restoration, sleep in, hydrate, and do pre-race logistics only.",
-      "change_type": "skip",
-      "reason": "A 240-minute ride the day before a 10K race would catastrophically compromise leg freshness and is a mandatory pre-race conflict that must be removed entirely."
+      "applied_at": "2026-08-01T13:21:58.352288+00:00",
+      "generated_at": "2026-08-01T13:18:10.087031+00:00",
+      "summary": "The last 4 weeks show a fragmented training block dominated by severe sleep deprivation \u2014 multiple nights under 3 hours and body battery readings as low as 2 \u2014 which has likely suppressed adaptation and increased injury risk significantly. Training load is inconsistent, with a dangerous HR spike on July 18 (avg 179 bpm) suggesting a near-maximal effort that was inappropriate given the fatigue context, and swim volume is minimal (only ~3.5km total) relative to the Half Oceanman 5km target 63 days away. The positive signal is the 77km cycling session on July 20 showing aerobic base, but without urgent improvements to sleep and recovery discipline, the Half Oceanman swim target of 2:30/100m is at serious risk.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-08-04",
+          "discipline": "cycling",
+          "current_session": "Wk7 Evening cycling session, 30 min, 210\u2013244W (gated at body battery \u226550, cap at 128W Z1)",
+          "proposed_session": "Skip entirely if body battery on waking is below 50; if gate is met, 25\u201330 min at 110\u2013128W (Z1 only, no tempo) \u2014 remove the 210\u2013244W target entirely this week as it is inappropriate given current fatigue state.",
+          "change_type": "decrease",
+          "reason": "Body battery has been critically low (2 on Jul 30, 5 on Jul 27) and sleep chronically short; Z3\u2013Z4 cycling power would add unabsorbable stress and delay recovery needed for the Half Oceanman swim block."
+        },
+        {
+          "date": "2026-08-09",
+          "discipline": "running",
+          "current_session": "Wk7 Long Run adjusted to 8km walk-run at 7:00\u20137:30/km, 55\u201365 min, HR cap 140 bpm",
+          "proposed_session": "Replace with a 45\u201350 min open-water or pool swim at easy aerobic effort (~2:35\u20132:40/100m) targeting 1,500\u20131,800m \u2014 skip the run entirely unless sleep averaged 6.5h for Aug 4\u20138.",
+          "change_type": "replace",
+          "reason": "With the Half Oceanman swim only 55 days away from Aug 9, substituting a Sunday run with an additional swim session accelerates the critical swim volume build without adding musculoskeletal load on a fatigued body."
+        },
+        {
+          "date": "2026-08-16",
+          "discipline": "running",
+          "current_session": "Wk8 Long Run adjusted to 16\u201317km @ 6:30\u20136:45/km, 105\u2013115 min",
+          "proposed_session": "Cap at 12\u201313km @ 6:45\u20137:00/km (85\u201390 min max), HR strictly below 145 bpm; if body battery on waking is below 50, replace with a 60 min pool swim at aerobic pace.",
+          "change_type": "decrease",
+          "reason": "Given the 4-week sleep deficit and minimal swim training, protecting recovery to allow swim volume to increase is higher priority than hitting long-run distance targets 7 weeks before the nearest race."
+        },
+        {
+          "date": "2026-08-22",
+          "discipline": "cycling",
+          "current_session": "Wk9 Long Ride, 95km @ 128\u2013177W, 240 min",
+          "proposed_session": "Add one open-water swim session in the morning (45\u201360 min, 1,500\u20132,000m at 2:25\u20132:30/100m in sea) before the afternoon ride, reducing the ride to 75\u201380km to manage total daily load \u2014 this is the Half Oceanman swim simulation window.",
+          "change_type": "replace",
+          "reason": "Week 9 is 42 days from the Half Oceanman; inserting a race-pace open-water swim before the long ride builds the specific conditioning and pacing feel needed while Malta's warm sea conditions are optimal."
+        },
+        {
+          "date": "2026-10-09",
+          "discipline": "swimming",
+          "current_session": "Wk16 Pool Swim (Friday), 60 min \u2014 only 2 days before Treviso 10K on Oct 11",
+          "proposed_session": "Replace with full rest or a 15\u201320 min very easy shakeout jog at 7:00/km with 4\u00d780m strides \u2014 no swimming 2 days before a run race; legs and nervous system must be fresh for race morning.",
+          "change_type": "replace",
+          "reason": "Swimming 60 min two days before the Treviso 10K creates upper-body fatigue and glycogen demand that will compromise race performance on Oct 11."
+        },
+        {
+          "date": "2026-10-10",
+          "discipline": "cycling",
+          "current_session": "Wk16 Long Ride, 240 min \u2014 only 1 day before Treviso 10K on Oct 11",
+          "proposed_session": "Replace with complete rest \u2014 no cycling, no cross-training; allow full glycogen restoration, sleep in, hydrate, and do pre-race logistics only.",
+          "change_type": "skip",
+          "reason": "A 240-minute ride the day before a 10K race would catastrophically compromise leg freshness and is a mandatory pre-race conflict that must be removed entirely."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-08-01T13:18:10.087031+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-08-01T13:21:58.352288+00:00",
+  "applied_count": 6
 }
