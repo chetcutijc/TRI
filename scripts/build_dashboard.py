@@ -1712,6 +1712,12 @@ def detect_race_conflicts(plan_full, races, days_before=2, max_easy_min=45):
                 continue
             if s.get("discipline") in ("rest", "race", None):
                 continue
+            # Skip the race's own entry on race day itself (e.g. a plan
+            # session literally titled "*** RACE DAY: FULL MARATHON ***")
+            # — that's the race, not a conflicting training session.
+            summary_lower = (s.get("summary") or "").lower()
+            if sdate == race_date and ("race day" in summary_lower or "***" in summary_lower):
+                continue
             dur = s.get("duration_min") or 0
             # A short easy session (e.g. a shakeout jog) close to race day is fine.
             if dur and dur <= max_easy_min:
