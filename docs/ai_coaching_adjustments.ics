@@ -4,91 +4,86 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20260802-0@jean-tri
-DTSTAMP:20260801T134029Z
-DTSTART:20260802T070000
-DTEND:20260802T090000
-SUMMARY:[AI ADJUSTED] rest — Full rest day — no structured movement\; p
- rioritise sleep and
-DESCRIPTION:Full rest day — no structured movement\; prioritise sleep and
-  horizontal recovery given body battery recorded at 2 on July 30 and only 
- 245 min sleep on July 31.\n\nReason: Body battery has been critically low 
- (0–31) across July 30–Aug 1 and sleep remains severely deficient\; eve
- n a gentle walk adds stress that cannot be absorbed and delays the recover
- y needed to begin the Half Oceanman build.\n\nAI coaching 2026-08-01
+UID:ai-coaching-20260801-0@jean-tri
+DTSTAMP:20260801T134306Z
+DTSTART:20260801T070000
+DTEND:20260801T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest day — no activity whatsoever. Bo
+ dy battery at 2 on
+DESCRIPTION:Full rest day — no activity whatsoever. Body battery at 2 on 
+ July 30 and 41 min sleep on July 27 make even a walk contraindicated\; pri
+ oritise horizontal rest and hydration only.\n\nReason: Body battery of 2 o
+ n July 30 and catastrophic sleep deprivation (41 min on July 27\, 278 min 
+ on July 28) mean any physical output today adds unabsorbable stress and in
+ creases injury risk.\n\nAI coaching 2026-08-01
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260804-1@jean-tri
-DTSTAMP:20260801T134029Z
-DTSTART:20260804T070000
-DTEND:20260804T090000
-SUMMARY:[AI ADJUSTED] cycling — Skip entirely this week regardless of bod
- y battery\; replace 
-DESCRIPTION:Skip entirely this week regardless of body battery\; replace wi
- th 15 minutes of gentle stretching or breathwork only — reintroduce cycl
- ing no earlier than Aug 8 once sleep has recovered to ≥6.5h average.\n\n
- Reason: With no cycling in the last 4 weeks and compounding sleep debt thr
- ough Aug 1\, even a Z1 spin on Aug 4 is premature\; the body battery gate 
- alone is insufficient protection when the underlying sleep deficit has not
-  been resolved.\n\nAI coaching 2026-08-01
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260809-2@jean-tri
-DTSTAMP:20260801T134029Z
+UID:ai-coaching-20260809-1@jean-tri
+DTSTAMP:20260801T134306Z
 DTSTART:20260809T070000
 DTEND:20260809T090000
-SUMMARY:[AI ADJUSTED] swimming — 45-min pool swim: 200m warm-up\, 6×200m
-  at 2:35–2:40/100m wit
-DESCRIPTION:45-min pool swim: 200m warm-up\, 6×200m at 2:35–2:40/100m wi
- th 20-sec rest\, 200m cool-down (~1\,600m total) — confirm only if avera
- ge nightly sleep Aug 4–8 exceeded 6 hours AND morning body battery ≥45
- .\n\nReason: The Half Oceanman 5\,000m swim is the nearest race and swim f
- itness is the biggest gap\; structuring this session around achievable aer
- obic swim volume (not running) directly addresses the priority discipline 
- while respecting the recovery gate.\n\nAI coaching 2026-08-01
+SUMMARY:[AI ADJUSTED] swimming — 45–50 min open-water or pool swim at e
+ asy aerobic effort\, ta
+DESCRIPTION:45–50 min open-water or pool swim at easy aerobic effort\, ta
+ rgeting 1\,500–1\,800m at 2:35/100m — execute only if average nightly 
+ sleep Aug 4–8 exceeds 6 hours and morning body battery ≥45.\n\nReason:
+  Replacing the long run with a swim session prioritises the nearest race (
+ Half Oceanman 5\,000m) while reducing impact load on a still-recovering at
+ hlete.\n\nAI coaching 2026-08-01
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260822-3@jean-tri
-DTSTAMP:20260801T134029Z
+UID:ai-coaching-20260822-2@jean-tri
+DTSTAMP:20260801T134306Z
 DTSTART:20260822T070000
 DTEND:20260822T090000
-SUMMARY:[AI ADJUSTED] swimming — Morning open-water swim 60 min\, 2\,000
- –2\,200m at 2:28–2:32/10
-DESCRIPTION:Morning open-water swim 60 min\, 2\,000–2\,200m at 2:28–2:3
- 2/100m in sea (race-condition simulation for Half Oceanman)\; afternoon ri
- de capped at 70km at 128–145W — total daily load ceiling respected.\n\
- nReason: With the Half Oceanman 6 weeks out\, this is the optimal window t
- o introduce open-water race-pace simulation at meaningful distance (2km+) 
- while the ride provides aerobic maintenance without overloading a still-re
- building system.\n\nAI coaching 2026-08-01
+SUMMARY:[AI ADJUSTED] swimming — Morning: 60 min open-water sea swim at 2
+ :25–2:30/100m target
+DESCRIPTION:Morning: 60 min open-water sea swim at 2:25–2:30/100m targeti
+ ng 2\,000m (Half Oceanman race-simulation)\; afternoon: reduce ride to 60
+ –70 min at 128–145W (Z1 only). Total daily load must not exceed athlet
+ e's current absorption capacity.\n\nReason: With Half Oceanman 41 days awa
+ y from this date\, establishing a weekly long open-water swim at race pace
+  is the highest-priority fitness adaptation needed.\n\nAI coaching 2026-08
+ -01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260829-3@jean-tri
+DTSTAMP:20260801T134306Z
+DTSTART:20260829T070000
+DTEND:20260829T090000
+SUMMARY:[AI ADJUSTED] swimming — Upgrade Friday Aug 28 pool session to a 
+ 75 min race-simulati
+DESCRIPTION:Upgrade Friday Aug 28 pool session to a 75 min race-simulation 
+ set: 500m warm-up\, 4×600m @ 2:25/100m with 30-sec rest\, 400m cool-down 
+ — total ~3\,200m\; this is the key Half Oceanman fitness test 5 weeks ou
+ t.\n\nReason: Five weeks before the Half Oceanman\, a 3\,000m+ race-pace p
+ ool session is needed to confirm 5\,000m swim fitness is on track and iden
+ tify any pacing or technique gaps.\n\nAI coaching 2026-08-01
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261003-4@jean-tri
-DTSTAMP:20260801T134029Z
+DTSTAMP:20260801T134306Z
 DTSTART:20261003T070000
 DTEND:20261003T090000
-SUMMARY:[AI ADJUSTED] rest — Full rest day — race day for Half Oceanman
-  (5\,000m open-wate
-DESCRIPTION:Full rest day — race day for Half Oceanman (5\,000m open-wate
- r swim)\; replace the long ride entirely with pre-race morning routine: li
- ght 10-min mobility\, kit check\, nutrition prep\, and race execution.\n\n
- Reason: A 240-minute long ride on the same day as the Half Oceanman race i
- s a mandatory conflict that must be removed — racing the 5\,000m swim re
- quires full freshness\, not same-day cycling fatigue.\n\nAI coaching 2026-
- 08-01
+SUMMARY:[AI ADJUSTED] rest — Full rest or very short 10-min shakeout swim
+  (200m easy) onl
+DESCRIPTION:Full rest or very short 10-min shakeout swim (200m easy) only 
+ — this is Half Oceanman race day\; the 240-min long ride must be removed
+  entirely.\n\nReason: A 240-minute cycling session scheduled on the same d
+ ay as the Half Oceanman race is a mandatory conflict that must be removed 
+ to protect athlete safety and race performance.\n\nAI coaching 2026-08-01
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261011-5@jean-tri
-DTSTAMP:20260801T134029Z
+DTSTAMP:20260801T134306Z
 DTSTART:20261011T070000
 DTEND:20261011T090000
-SUMMARY:[AI ADJUSTED] rest — Full rest day — race day for Treviso 10K T
- iramisu Run\; repla
-DESCRIPTION:Full rest day — race day for Treviso 10K Tiramisu Run\; repla
- ce the long run entirely with pre-race routine: 10-min shakeout jog (optio
- nal\, 5 min easy)\, race execution at 5:45/km target.\n\nReason: A 180-min
- ute long run on Treviso 10K race day is a mandatory pre-race conflict that
-  must be removed — running a 10K at 5:45/km pace requires fresh legs\, n
- ot same-day long-run fatigue.\n\nAI coaching 2026-08-01
+SUMMARY:[AI ADJUSTED] rest — Full rest or optional 10-min easy jog warm-u
+ p only — this is
+DESCRIPTION:Full rest or optional 10-min easy jog warm-up only — this is 
+ Treviso 10K Tiramisu Run race day\; the 180-min long run must be removed e
+ ntirely.\n\nReason: A 180-minute long run scheduled on the same day as the
+  Treviso 10K race is a mandatory conflict that must be removed to ensure t
+ he athlete arrives fresh and injury-free.\n\nAI coaching 2026-08-01
 END:VEVENT
 END:VCALENDAR
