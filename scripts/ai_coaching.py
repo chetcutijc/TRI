@@ -108,7 +108,7 @@ def detect_race_conflicts(plan_full, races, days_before=2, max_easy_min=45):
                 sdate = dt.date.fromisoformat(s["date"])
             except Exception:
                 continue
-            if not (window_start <= sdate < race_date):
+            if not (window_start <= sdate <= race_date):  # <= includes race day itself
                 continue
             if s.get("discipline") in ("rest", "race", None):
                 continue
