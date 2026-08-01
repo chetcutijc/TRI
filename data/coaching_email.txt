@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show a fragmented training block dominated by severe sleep deprivation — multiple nights under 3 hours and body battery readings as low as 2 — which has likely suppressed adaptation and increased injury risk significantly. Training load is inconsistent, with a dangerous HR spike on July 18 (avg 179 bpm) suggesting a near-maximal effort that was inappropriate given the fatigue context, and swim volume is minimal (only ~3.5km total) relative to the Half Oceanman 5km target 63 days away. The positive signal is the 77km cycling session on July 20 showing aerobic base, but without urgent improvements to sleep and recovery discipline, the Half Oceanman swim target of 2:30/100m is at serious risk.
+The last 4 weeks show a severely fragmented training block: only 9 sessions completed, dominated by open-water swims and sporadic runs, with a single long ride on July 20. Recovery metrics are critically concerning — multiple nights of under 3 hours of sleep, body battery readings regularly below 30, and a near-complete collapse in the final week of July (41 min sleep on July 27, body battery of 2 on July 30) indicate accumulated fatigue that makes meaningful training adaptation impossible right now. With the Half Oceanman 63 days away requiring a 5km open-water swim at 2:30/100m, and the Treviso 10K 71 days away at 5:45/km, the immediate priority is rebuilding sleep and recovery before resuming structured load.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all other interventions: target 7+ hours nightly for the next 2 weeks — no training session is worth completing if morning body battery is below 40, and the Half Oceanman swim requires consistent adaptation that only happens during quality sleep.
-  2. Urgently rebuild open-water and pool swim volume — with 5km to cover at 2:30/100m in 63 days, aim for at least 3 swim sessions per week totalling 6–8km, starting with the gated Aug 4 pool session and treating it as non-negotiable once body battery recovers.
-  3. Eliminate any Z4+ running efforts until sleep averages 6.5h per night consistently — the July 18 run at avg 179 bpm is a red flag and should not be repeated; all running through mid-August should stay below 145 bpm.
-  4. Add one open-water swim session per week from late August onward to simulate Half Oceanman race conditions in Malta's warm water, focusing on sighting technique and pacing at 2:25–2:30/100m over 1,500–2,000m efforts.
-  5. For the Treviso 10K (71 days), race-pace work (5:45/km intervals) should not start until sleep and body battery are stable — defer structured speedwork until the Wk9 session on Aug 20 at the earliest, and only if wellness gates are met.
+  1. Sleep is the single highest-leverage intervention right now — target 7+ hours nightly for the next 10 days before resuming any session with a training load above 60; use body battery ≥50 on waking as a daily green light to train.
+  2. Swim volume must become your training priority given the Half Oceanman (5km OW) in 63 days: aim for 3 pool sessions per week from Week 7 onward, progressively building from 1,500m to 3,000m+ per session, with at least one open-water session per week in Malta's warm sea.
+  3. The July 18 run at 179 bpm average HR (training load 208) against a backdrop of poor sleep almost certainly contributed to the crash that followed — reintroduce running conservatively at HR ≤140 bpm before adding any pace work.
+  4. Add at least one open-water swim to Week 9 (Aug 22 morning) as planned, prioritising race-simulation pacing at 2:25–2:30/100m over the bike distance that week — the swim is the limiter for your nearest A-race.
+  5. For the Treviso 10K (71 days), pace-specific work at 5:45/km should only begin once you are sleeping consistently — the Week 9 and Week 10 interval sessions in the plan are appropriately timed but are contingent on the recovery gate being met.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-08-04 [CYCLING]
-    Current:  Wk7 Evening cycling session, 30 min, 210–244W (gated at body battery ≥50, cap at 128W Z1)
-    Proposed: Skip entirely if body battery on waking is below 50; if gate is met, 25–30 min at 110–128W (Z1 only, no tempo) — remove the 210–244W target entirely this week as it is inappropriate given current fatigue state.
-    Reason:   Body battery has been critically low (2 on Jul 30, 5 on Jul 27) and sleep chronically short; Z3–Z4 cycling power would add unabsorbable stress and delay recovery needed for the Half Oceanman swim block.
+  • 2026-08-04 [SWIMMING]
+    Current:  Pool swim 45 min, ~1,500m easy aerobic with 400m technique drills + 4×100m at 2:20–2:30/100m
+    Proposed: Pool swim 45 min, 1,200–1,500m total: 300m warm-up, 6×100m at 2:25–2:30/100m with 20-sec rest (race-pace familiarisation), 300m cool-down — skip entirely if waking body battery is below 45.
+    Reason:   Introducing race-pace intervals early (even at low volume) builds 2:30/100m familiarity for the Half Oceanman 63 days away, while the reduced total volume respects the current depleted recovery state.
+
+  • 2026-08-07 [SWIMMING]
+    Current:  Pool session: min 2,000m, mix of technique drills and aerobic sets at ≤2:30/100m
+    Proposed: Pool session 55–60 min: 2,000m structured — 400m warm-up, 4×400m at 2:25–2:30/100m with 30-sec rest, 400m cool-down; prioritise consistent split holding over speed.
+    Reason:   Progressing the Friday swim to race-specific sets of 400m repeats at target Half Oceanman pace builds the aerobic repeatability needed for a 5km OW race in 9 weeks.
 
   • 2026-08-09 [RUNNING]
-    Current:  Wk7 Long Run adjusted to 8km walk-run at 7:00–7:30/km, 55–65 min, HR cap 140 bpm
-    Proposed: Replace with a 45–50 min open-water or pool swim at easy aerobic effort (~2:35–2:40/100m) targeting 1,500–1,800m — skip the run entirely unless sleep averaged 6.5h for Aug 4–8.
-    Reason:   With the Half Oceanman swim only 55 days away from Aug 9, substituting a Sunday run with an additional swim session accelerates the critical swim volume build without adding musculoskeletal load on a fatigued body.
+    Current:  Replace long run with 45–50 min OW or pool swim at easy aerobic effort, 1,500–1,800m; skip run unless sleep averaged 6.5h Aug 4–8
+    Proposed: 45–50 min open-water swim at Malta coast, 1,500–1,800m at easy 2:35–2:40/100m — this replaces the long run entirely; use the session to practice sighting, drafting position, and steady pacing rather than hitting a distance target.
+    Reason:   With the Half Oceanman as the nearest A-race and running still constrained by fatigue, substituting a second weekly OW swim accelerates swim-specific adaptation without adding run injury risk.
 
-  • 2026-08-16 [RUNNING]
-    Current:  Wk8 Long Run adjusted to 16–17km @ 6:30–6:45/km, 105–115 min
-    Proposed: Cap at 12–13km @ 6:45–7:00/km (85–90 min max), HR strictly below 145 bpm; if body battery on waking is below 50, replace with a 60 min pool swim at aerobic pace.
-    Reason:   Given the 4-week sleep deficit and minimal swim training, protecting recovery to allow swim volume to increase is higher priority than hitting long-run distance targets 7 weeks before the nearest race.
+  • 2026-08-15 [CYCLING]
+    Current:  92km @ 128–177W (Z2 Endurance), option to add 3×10min Z3 Tempo blocks
+    Proposed: 92km @ 128–160W (Z2, lower half only), no tempo blocks — treat as a pure aerobic long ride; do not add Z3 blocks this week regardless of how good you feel, as Wk8 is the first full-load week after a recovery deficit.
+    Reason:   Adding Z3 tempo in the first properly-loaded week after a severe recovery crash risks another fatigue spike; keep Week 8's long ride aerobic to ensure the subsequent run and swim sessions can also be completed.
+
+  • 2026-08-21 [SWIMMING]
+    Current:  60 min pool session: 2,500m with Half Oceanman-specific set — 400m warm-up, 3×600m @ 2:25/100m with 30-sec rest, 300m cool-down
+    Proposed: 60 min pool session: 2,500m — 400m warm-up, 3×600m @ 2:22–2:25/100m with 25-sec rest, 400m pull-buoy cool-down at relaxed pace; if splits drift beyond 2:30/100m on rep 2–3, shorten to 2×600m and add an extra 200m drill set.
+    Reason:   Tightening the rest interval to 25 seconds and adding a split-based bail-out rule makes this set a more accurate Half Oceanman race simulation while preventing over-reaching if fitness is still building.
 
   • 2026-08-22 [CYCLING]
-    Current:  Wk9 Long Ride, 95km @ 128–177W, 240 min
-    Proposed: Add one open-water swim session in the morning (45–60 min, 1,500–2,000m at 2:25–2:30/100m in sea) before the afternoon ride, reducing the ride to 75–80km to manage total daily load — this is the Half Oceanman swim simulation window.
-    Reason:   Week 9 is 42 days from the Half Oceanman; inserting a race-pace open-water swim before the long ride builds the specific conditioning and pacing feel needed while Malta's warm sea conditions are optimal.
-
-  • 2026-10-09 [SWIMMING]
-    Current:  Wk16 Pool Swim (Friday), 60 min — only 2 days before Treviso 10K on Oct 11
-    Proposed: Replace with full rest or a 15–20 min very easy shakeout jog at 7:00/km with 4×80m strides — no swimming 2 days before a run race; legs and nervous system must be fresh for race morning.
-    Reason:   Swimming 60 min two days before the Treviso 10K creates upper-body fatigue and glycogen demand that will compromise race performance on Oct 11.
-
-  • 2026-10-10 [CYCLING]
-    Current:  Wk16 Long Ride, 240 min — only 1 day before Treviso 10K on Oct 11
-    Proposed: Replace with complete rest — no cycling, no cross-training; allow full glycogen restoration, sleep in, hydrate, and do pre-race logistics only.
-    Reason:   A 240-minute ride the day before a 10K race would catastrophically compromise leg freshness and is a mandatory pre-race conflict that must be removed entirely.
+    Current:  60–75 min Z1–low-Z2 spin at 128–145W after a morning OW swim; reduce ride to 75–80km to manage total daily load
+    Proposed: Morning: 45–60 min OW swim (1,500–2,000m at 2:25–2:30/100m) as planned. Afternoon: reduce ride to 60 min flat Z1 spin at 120–135W maximum — do not target 75–80km distance, just time on the bike; total daily training load should not exceed 180.
+    Reason:   The morning OW swim is the race-priority session that day; capping the afternoon ride power and removing a distance target ensures the swim quality is not compromised by accumulated fatigue within the same day.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).

@@ -1,0 +1,96 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jean Triathlon AI Coaching//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-coaching-20260804-0@jean-tri
+DTSTAMP:20260801T132752Z
+DTSTART:20260804T070000
+DTEND:20260804T090000
+SUMMARY:[AI ADJUSTED] swimming — Pool swim 45 min\, 1\,200–1\,500m tota
+ l: 300m warm-up\, 6×100m a
+DESCRIPTION:Pool swim 45 min\, 1\,200–1\,500m total: 300m warm-up\, 6×10
+ 0m at 2:25–2:30/100m with 20-sec rest (race-pace familiarisation)\, 300m
+  cool-down — skip entirely if waking body battery is below 45.\n\nReason
+ : Introducing race-pace intervals early (even at low volume) builds 2:30/1
+ 00m familiarity for the Half Oceanman 63 days away\, while the reduced tot
+ al volume respects the current depleted recovery state.\n\nAI coaching 202
+ 6-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260807-1@jean-tri
+DTSTAMP:20260801T132752Z
+DTSTART:20260807T070000
+DTEND:20260807T090000
+SUMMARY:[AI ADJUSTED] swimming — Pool session 55–60 min: 2\,000m struct
+ ured — 400m warm-up\, 4×
+DESCRIPTION:Pool session 55–60 min: 2\,000m structured — 400m warm-up\,
+  4×400m at 2:25–2:30/100m with 30-sec rest\, 400m cool-down\; prioritis
+ e consistent split holding over speed.\n\nReason: Progressing the Friday s
+ wim to race-specific sets of 400m repeats at target Half Oceanman pace bui
+ lds the aerobic repeatability needed for a 5km OW race in 9 weeks.\n\nAI c
+ oaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260809-2@jean-tri
+DTSTAMP:20260801T132752Z
+DTSTART:20260809T070000
+DTEND:20260809T090000
+SUMMARY:[AI ADJUSTED] running — 45–50 min open-water swim at Malta coas
+ t\, 1\,500–1\,800m at ea
+DESCRIPTION:45–50 min open-water swim at Malta coast\, 1\,500–1\,800m a
+ t easy 2:35–2:40/100m — this replaces the long run entirely\; use the 
+ session to practice sighting\, drafting position\, and steady pacing rathe
+ r than hitting a distance target.\n\nReason: With the Half Oceanman as the
+  nearest A-race and running still constrained by fatigue\, substituting a 
+ second weekly OW swim accelerates swim-specific adaptation without adding 
+ run injury risk.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260815-3@jean-tri
+DTSTAMP:20260801T132752Z
+DTSTART:20260815T070000
+DTEND:20260815T090000
+SUMMARY:[AI ADJUSTED] cycling — 92km @ 128–160W (Z2\, lower half only)\
+ , no tempo blocks — tre
+DESCRIPTION:92km @ 128–160W (Z2\, lower half only)\, no tempo blocks — 
+ treat as a pure aerobic long ride\; do not add Z3 blocks this week regardl
+ ess of how good you feel\, as Wk8 is the first full-load week after a reco
+ very deficit.\n\nReason: Adding Z3 tempo in the first properly-loaded week
+  after a severe recovery crash risks another fatigue spike\; keep Week 8's
+  long ride aerobic to ensure the subsequent run and swim sessions can also
+  be completed.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260821-4@jean-tri
+DTSTAMP:20260801T132752Z
+DTSTART:20260821T070000
+DTEND:20260821T090000
+SUMMARY:[AI ADJUSTED] swimming — 60 min pool session: 2\,500m — 400m wa
+ rm-up\, 3×600m @ 2:22–2:
+DESCRIPTION:60 min pool session: 2\,500m — 400m warm-up\, 3×600m @ 2:22
+ –2:25/100m with 25-sec rest\, 400m pull-buoy cool-down at relaxed pace\;
+  if splits drift beyond 2:30/100m on rep 2–3\, shorten to 2×600m and ad
+ d an extra 200m drill set.\n\nReason: Tightening the rest interval to 25 s
+ econds and adding a split-based bail-out rule makes this set a more accura
+ te Half Oceanman race simulation while preventing over-reaching if fitness
+  is still building.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260822-5@jean-tri
+DTSTAMP:20260801T132752Z
+DTSTART:20260822T070000
+DTEND:20260822T090000
+SUMMARY:[AI ADJUSTED] cycling — Morning: 45–60 min OW swim (1\,500–2\
+ ,000m at 2:25–2:30/100m) 
+DESCRIPTION:Morning: 45–60 min OW swim (1\,500–2\,000m at 2:25–2:30/1
+ 00m) as planned. Afternoon: reduce ride to 60 min flat Z1 spin at 120–13
+ 5W maximum — do not target 75–80km distance\, just time on the bike\; 
+ total daily training load should not exceed 180.\n\nReason: The morning OW
+  swim is the race-priority session that day\; capping the afternoon ride p
+ ower and removing a distance target ensures the swim quality is not compro
+ mised by accumulated fatigue within the same day.\n\nAI coaching 2026-08-0
+ 1
+END:VEVENT
+END:VCALENDAR
