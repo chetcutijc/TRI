@@ -324,6 +324,11 @@ Rules:
 - If PRE-RACE SCHEDULING CONFLICTS lists any items, those changes are MANDATORY
   and must be included in proposed_changes even if it pushes you over 6 entries —
   athlete safety before a race takes priority over the usual limits.
+- Every proposed_change that addresses a PRE-RACE SCHEDULING CONFLICT MUST use
+  change_type "skip" — never "replace" or "decrease" for these. A session flagged
+  as a conflict is being removed entirely (converted to rest), not modified into
+  a smaller version of itself. Use "replace"/"decrease" only for ordinary
+  performance-based suggestions unrelated to a detected conflict.
 - Only propose changes where you see clear evidence (e.g. 2+ missed sessions, 
   consistent HR too high, pace trend worsening).
 - Keep proposed_changes to max 6 entries — quality over quantity.
@@ -362,6 +367,19 @@ Rules:
             "weeks_analysed":   4,
             "error":            str(e),
         }
+
+    # Safety net: even if Claude ignored the "skip" instruction above, force
+    # any proposed_change that actually addresses a detected conflict to say
+    # "skip" — the label shown to the user should always match what
+    # apply_coaching.py will actually do (which already forces rest/30min
+    # for conflict fixes regardless of the AI's stated change_type).
+    conflict_keys = {(c["session_date"], c["discipline"]) for c in conflicts}
+    for change in result.get("proposed_changes", []):
+        key = (change.get("date"), change.get("discipline"))
+        if key in conflict_keys and change.get("change_type") != "skip":
+            print(f"  Normalizing change_type for {key}: "
+                  f"'{change.get('change_type')}' -> 'skip' (matches a detected conflict)")
+            change["change_type"] = "skip"
 
     COACHING_FILE.write_text(json.dumps(result, indent=2))
     print(f"Coaching saved → {COACHING_FILE}")
