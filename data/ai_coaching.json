@@ -7,56 +7,68 @@
     "For the Treviso 10K (71 days away), incorporate 4\u20135 x 1km race-pace intervals (5:45/km) once per week from mid-August onward, but only after two consecutive weeks of solid sleep and aerobic base running.",
     "Given Malta's summer heat, schedule all key sessions (especially long rides and swims) before 8am or after 6pm to reduce cardiac drift and perceived effort \u2014 this will make the same workouts feel significantly easier."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-08-01T13:54:23.656333+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-08-01",
-      "discipline": "rest",
-      "current_session": "Wk6 Long Ride skipped \u2014 30 min rest day",
-      "proposed_session": "Full rest day: no activity, focus on hydration, nutrition, and maximising sleep tonight \u2014 aim for 8+ hours.",
-      "change_type": "replace",
-      "reason": "Body battery hit 2 on July 30 and July 31 sleep was only 245 minutes; the body is in a significant recovery deficit and any movement is counterproductive."
-    },
-    {
-      "date": "2026-08-09",
-      "discipline": "swimming",
-      "current_session": "Wk7 Long Run adjusted to 45\u201350 min open-water or pool swim, 1,500\u20131,800m at 2:35/100m",
-      "proposed_session": "45\u201350 min pool swim, 1,500\u20131,800m easy aerobic at 2:30\u20132:35/100m with focus on long-axis rotation and bilateral breathing \u2014 execute only if morning body battery \u226545.",
-      "change_type": "replace",
-      "reason": "The Half Oceanman 5,000m swim is the nearest race priority and swim volume has been near zero for two weeks; replacing a duplicated long-run slot with a structured swim accelerates the most critical fitness gap."
-    },
-    {
-      "date": "2026-08-16",
-      "discipline": "swimming",
-      "current_session": "Wk8 Long Run capped at 12\u201313km or replaced with 60 min pool swim if body battery <50",
-      "proposed_session": "60 min pool swim targeting 2,000\u20132,200m at 2:28\u20132:30/100m: 400m warm-up, 6\u00d7200m @ 2:25/100m with 20-sec rest, 400m cool-down \u2014 this is the primary session regardless of body battery gate.",
-      "change_type": "replace",
-      "reason": "With the Half Oceanman 5,000m only 7 weeks away, swim volume must be consistently built each week and this slot should be protected as a swim rather than a conditional replacement."
-    },
-    {
-      "date": "2026-08-29",
-      "discipline": "swimming",
-      "current_session": "Wk10 Long Ride 100km @ 128\u2013177W",
-      "proposed_session": "Keep the 100km ride as planned in the morning; add a dedicated 60 min open-water swim in the evening (2,000\u20132,500m at 2:25\u20132:30/100m) as a Half Oceanman build \u2014 only if total daily load is manageable and sleep gate (\u22656.5h average prior 5 nights) is met.",
-      "change_type": "add",
-      "reason": "Week 10 is the last full build week before the Half Oceanman taper should begin, and adding an open-water swim brick alongside the long ride mirrors race-week demands while building confidence at 5,000m swim pace."
-    },
-    {
-      "date": "2026-10-03",
-      "discipline": "rest",
-      "current_session": "Wk15 Long Ride (240min) \u2014 scheduled on the same day as Half Oceanman",
-      "proposed_session": "Full rest day \u2014 race day for Half Oceanman 5,000m swim; no training whatsoever, focus on warm-up, race execution, and post-race nutrition.",
-      "change_type": "replace",
-      "reason": "A 240-minute long ride on race day is a mandatory conflict that must be removed; athlete safety and race performance require complete rest the morning of the Half Oceanman."
-    },
-    {
-      "date": "2026-10-11",
-      "discipline": "rest",
-      "current_session": "Wk16 Long Run (180min) \u2014 scheduled on the same day as Treviso 10K Tiramisu Run",
-      "proposed_session": "Race day for Treviso 10K Tiramisu Run \u2014 replace the long run entirely with a 10-minute easy jog warm-up, strides, race execution at 5:45/km target, and post-race cool-down walk only.",
-      "change_type": "replace",
-      "reason": "A 180-minute long run on the day of the 10K race is a mandatory scheduling conflict that must be replaced with the race itself to avoid injury and ensure optimal performance."
+      "applied_at": "2026-08-01T13:56:26.689438+00:00",
+      "generated_at": "2026-08-01T13:54:23.656333+00:00",
+      "summary": "The last 4 weeks show a deeply fatigued athlete: sleep is chronically short (multiple nights under 5 hours, including a 41-minute night on July 27), body battery has repeatedly bottomed out below 30, and training has been very sporadic with only 9 sessions logged \u2014 no cycling or swimming at all in the final two weeks. The one positive signal is the July 20 long ride (77km) and improving swim distances in early July, but these gains are being eroded by the ongoing recovery deficit. With the Half Oceanman 5,000m swim 63 days away as the priority race, rebuilding sleep and aerobic base \u2014 particularly swim volume \u2014 must take precedence over any intensity.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-08-01",
+          "discipline": "rest",
+          "current_session": "Wk6 Long Ride skipped \u2014 30 min rest day",
+          "proposed_session": "Full rest day: no activity, focus on hydration, nutrition, and maximising sleep tonight \u2014 aim for 8+ hours.",
+          "change_type": "replace",
+          "reason": "Body battery hit 2 on July 30 and July 31 sleep was only 245 minutes; the body is in a significant recovery deficit and any movement is counterproductive."
+        },
+        {
+          "date": "2026-08-09",
+          "discipline": "swimming",
+          "current_session": "Wk7 Long Run adjusted to 45\u201350 min open-water or pool swim, 1,500\u20131,800m at 2:35/100m",
+          "proposed_session": "45\u201350 min pool swim, 1,500\u20131,800m easy aerobic at 2:30\u20132:35/100m with focus on long-axis rotation and bilateral breathing \u2014 execute only if morning body battery \u226545.",
+          "change_type": "replace",
+          "reason": "The Half Oceanman 5,000m swim is the nearest race priority and swim volume has been near zero for two weeks; replacing a duplicated long-run slot with a structured swim accelerates the most critical fitness gap."
+        },
+        {
+          "date": "2026-08-16",
+          "discipline": "swimming",
+          "current_session": "Wk8 Long Run capped at 12\u201313km or replaced with 60 min pool swim if body battery <50",
+          "proposed_session": "60 min pool swim targeting 2,000\u20132,200m at 2:28\u20132:30/100m: 400m warm-up, 6\u00d7200m @ 2:25/100m with 20-sec rest, 400m cool-down \u2014 this is the primary session regardless of body battery gate.",
+          "change_type": "replace",
+          "reason": "With the Half Oceanman 5,000m only 7 weeks away, swim volume must be consistently built each week and this slot should be protected as a swim rather than a conditional replacement."
+        },
+        {
+          "date": "2026-08-29",
+          "discipline": "swimming",
+          "current_session": "Wk10 Long Ride 100km @ 128\u2013177W",
+          "proposed_session": "Keep the 100km ride as planned in the morning; add a dedicated 60 min open-water swim in the evening (2,000\u20132,500m at 2:25\u20132:30/100m) as a Half Oceanman build \u2014 only if total daily load is manageable and sleep gate (\u22656.5h average prior 5 nights) is met.",
+          "change_type": "add",
+          "reason": "Week 10 is the last full build week before the Half Oceanman taper should begin, and adding an open-water swim brick alongside the long ride mirrors race-week demands while building confidence at 5,000m swim pace."
+        },
+        {
+          "date": "2026-10-03",
+          "discipline": "rest",
+          "current_session": "Wk15 Long Ride (240min) \u2014 scheduled on the same day as Half Oceanman",
+          "proposed_session": "Full rest day \u2014 race day for Half Oceanman 5,000m swim; no training whatsoever, focus on warm-up, race execution, and post-race nutrition.",
+          "change_type": "replace",
+          "reason": "A 240-minute long ride on race day is a mandatory conflict that must be removed; athlete safety and race performance require complete rest the morning of the Half Oceanman."
+        },
+        {
+          "date": "2026-10-11",
+          "discipline": "rest",
+          "current_session": "Wk16 Long Run (180min) \u2014 scheduled on the same day as Treviso 10K Tiramisu Run",
+          "proposed_session": "Race day for Treviso 10K Tiramisu Run \u2014 replace the long run entirely with a 10-minute easy jog warm-up, strides, race execution at 5:45/km target, and post-race cool-down walk only.",
+          "change_type": "replace",
+          "reason": "A 180-minute long run on the day of the 10K race is a mandatory scheduling conflict that must be replaced with the race itself to avoid injury and ensure optimal performance."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-08-01T13:54:23.656333+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-08-01T13:56:26.689438+00:00",
+  "applied_count": 6
 }
