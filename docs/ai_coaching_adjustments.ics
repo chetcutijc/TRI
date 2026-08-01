@@ -1,0 +1,95 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jean Triathlon AI Coaching//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-coaching-20260804-0@jean-tri
+DTSTAMP:20260801T130316Z
+DTSTART:20260804T070000
+DTEND:20260804T090000
+SUMMARY:[AI ADJUSTED] cycling — Full rest or 20-min gentle walk only — 
+ do not attempt the cy
+DESCRIPTION:Full rest or 20-min gentle walk only — do not attempt the cyc
+ ling session\; given body battery of 0–31 across July 30–August 1 and 
+ less than 5 hours sleep on multiple recent nights\, even a Z1 spin is coun
+ ter-productive this day.\n\nReason: Body battery has been critically deple
+ ted (0 on Aug 1\, 25 on July 28) and sleep is severely insufficient — no
+  cycling stimulus will be absorbed and additional stress risks compounding
+  fatigue into the Half Oceanman build.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260808-1@jean-tri
+DTSTAMP:20260801T130316Z
+DTSTART:20260808T070000
+DTEND:20260808T090000
+SUMMARY:[AI ADJUSTED] cycling — 45-min flat Z1 spin capped at 128W maximu
+ m — only execute if
+DESCRIPTION:45-min flat Z1 spin capped at 128W maximum — only execute if 
+ morning body battery is ≥55 AND sleep averaged ≥6 hours for August 4
+ –7\; otherwise replace with a 30-min easy walk. Drop the 84km distance t
+ arget entirely this week.\n\nReason: Recovery from the severe sleep defici
+ t of late July will not be complete by August 8\, so a hard cap on both du
+ ration and power protects against compounding fatigue entering the critica
+ l Half Oceanman build weeks.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260815-2@jean-tri
+DTSTAMP:20260801T130316Z
+DTSTART:20260815T070000
+DTEND:20260815T090000
+SUMMARY:[AI ADJUSTED] cycling — 70–90 min at 128–160W (low Z2)\, flat
+  route\, no distance targ
+DESCRIPTION:70–90 min at 128–160W (low Z2)\, flat route\, no distance t
+ arget — add Z3 tempo blocks only if morning body battery is ≥60 AND sl
+ eep averaged ≥6.5 hours for August 11–14\; cap at 100 min absolute max
+ imum.\n\nReason: Jumping to a 240-min ride in week 8 after the severe depl
+ etion of late July is too aggressive\; a gated\, shorter ride maintains fi
+ tness stimulus while protecting the athlete from overreach heading into th
+ e Half Oceanman peak block.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260821-3@jean-tri
+DTSTAMP:20260801T130316Z
+DTSTART:20260821T070000
+DTEND:20260821T090000
+SUMMARY:[AI ADJUSTED] swimming — 60 min pool session: 2\,500m total — 4
+ 00m warm-up\, 3×600m @ 2
+DESCRIPTION:60 min pool session: 2\,500m total — 400m warm-up\, 3×600m @
+  2:25–2:30/100m with 45-sec rest (extend rest to 60 sec if pace slips be
+ yond 2:35/100m)\, 300m cool-down\; this is the first true Half Oceanman ra
+ ce-pace rehearsal\, so prioritise pacing control over speed.\n\nReason: Wi
+ th the Half Oceanman 5\,000m swim as the nearest race priority\, this sess
+ ion must anchor race-pace rehearsal at 2:30/100m — structured with appro
+ priate rest intervals given the athlete is returning from a predominantly 
+ open-water-only swim block.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261009-4@jean-tri
+DTSTAMP:20260801T130316Z
+DTSTART:20261009T070000
+DTEND:20261009T090000
+SUMMARY:[AI ADJUSTED] swimming — Rest day — no swimming 2 days before t
+ he Treviso 10K race\; a
+DESCRIPTION:Rest day — no swimming 2 days before the Treviso 10K race\; a
+ t most a 10-min gentle shakeout jog in the evening with 4×100m strides at
+  race pace (5:45/km) to stay loose\, followed by race-day prep routines.\n
+ \nReason: A 60-min swim session 2 days before the Treviso 10K creates unne
+ cessary fatigue in the upper body and disrupts taper — mandatory pre-rac
+ e scheduling conflict resolution.\n\nAI coaching 2026-08-01
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261010-5@jean-tri
+DTSTAMP:20260801T130316Z
+DTSTART:20261010T070000
+DTEND:20261010T090000
+SUMMARY:[AI ADJUSTED] cycling — Full rest day — absolutely no cycling t
+ he day before a 10K r
+DESCRIPTION:Full rest day — absolutely no cycling the day before a 10K ra
+ ce\; optional 15-min easy walk in the morning for leg activation only\, ra
+ ce-day kit preparation and nutrition planning instead.\n\nReason: A 240-mi
+ nute ride the day before the Treviso 10K would catastrophically compromise
+  race performance — mandatory pre-race scheduling conflict resolution\, 
+ athlete safety takes absolute priority.\n\nAI coaching 2026-08-01
+END:VEVENT
+END:VCALENDAR
