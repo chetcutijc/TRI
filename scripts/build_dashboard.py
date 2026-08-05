@@ -91,6 +91,7 @@ OUT_PDF         = Path("docs/dashboard.pdf")
 # ── Race targets ────────────────────────────────────────────────────────────
 # Races live in data/races.json so you can add/edit them without touching code.
 RACES_FILE = Path("data/races.json")
+ATHLETE_NOTES_FILE = Path("data/athlete_notes.json")
 
 
 def load_races():
@@ -1350,6 +1351,125 @@ def race_cards_html(df=None):
 
 
 # ── AI Coaching section HTML ──────────────────────────────────────────────────
+def athlete_notes_manager_html():
+    """
+    Free-text context box: 'been sick this week', 'travelling Oct 1-4', etc.
+    Writes to data/athlete_notes.json via the GitHub Contents API using the
+    same browser-stored token as the Race Manager, then triggers a fresh
+    Sync Now so AI Coaching picks it up on its next run.
+    """
+    notes = []
+    if ATHLETE_NOTES_FILE.exists():
+        try:
+            notes = json.loads(ATHLETE_NOTES_FILE.read_text()).get("notes", [])
+        except Exception:
+            notes = []
+
+    cutoff = (dt.date.today() - dt.timedelta(days=14)).isoformat()
+    recent = [n for n in notes if n.get("date", "") >= cutoff]
+    recent_sorted = sorted(recent, key=lambda n: n.get("date", ""), reverse=True)
+
+    notes_html = ""
+    if recent_sorted:
+        rows = "".join(f"""<div style="display:flex;justify-content:space-between;
+                align-items:baseline;padding:6px 0;border-bottom:1px solid #f5f5f8;font-size:.82em">
+            <span><strong style="color:#9a9aaa">{n.get('date','')}</strong> — {n.get('text','')}</span>
+        </div>""" for n in recent_sorted)
+        notes_html = f"""<div style="margin-top:10px">
+            <div style="font-size:.75em;font-weight:600;color:#6b6b78;margin-bottom:4px">
+                Active context (last 14 days — auto-expires, feeds into AI Coaching):
+            </div>
+            {rows}
+        </div>"""
+    else:
+        notes_html = '<p class="subtext" style="margin-top:8px">No active notes. Anything you add here is used by AI Coaching for 14 days.</p>'
+
+    return f"""
+<div style="background:#fff;border-radius:14px;padding:18px 20px;
+            box-shadow:0 1px 3px rgba(20,20,40,.06);margin-bottom:16px">
+    <div style="font-size:.92em;font-weight:800;margin-bottom:4px">🗣️ Tell Your Coach</div>
+    <p class="subtext" style="margin:0 0 10px">
+        Add context Claude can't see in your Garmin data — illness, travel, life stress,
+        an injury niggle. This gets factored into the next AI Coaching run.
+    </p>
+    <textarea id="an-text" rows="2" placeholder="e.g. Been sick since Tuesday, low energy. Or: travelling Oct 1-4, only hotel gym access."
+        style="width:100%;padding:9px;border:1px solid #e3e3ea;border-radius:8px;
+               font-size:.95em;font-family:inherit;resize:vertical"></textarea>
+    <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn" onclick="saveAthleteNote()" style="background:#5B6EF5;font-size:.8em">
+            Save & Trigger Sync
+        </button>
+        <span id="note-status" style="font-size:.74em;color:#9a9aaa"></span>
+    </div>
+    {notes_html}
+</div>
+
+<script>
+function saveAthleteNote() {{
+    var text = document.getElementById("an-text").value.trim();
+    if (!text) {{ return; }}
+    var status = document.getElementById("note-status");
+    var token = getGhToken();
+    if (!token) {{ status.textContent = "No token provided."; status.style.color = "#FF7A59"; return; }}
+
+    var url = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/data/athlete_notes.json";
+    var headers = {{
+        "Authorization": "Bearer " + token,
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28"
+    }};
+
+    status.textContent = "Saving...";
+    status.style.color = "#9a9aaa";
+
+    fetch(url, {{ headers: headers }})
+      .then(function(res) {{
+          if (!res.ok) throw new Error("Could not read athlete_notes.json (status " + res.status + ")");
+          return res.json();
+      }})
+      .then(function(file) {{
+          var data = JSON.parse(b64decodeUtf8(file.content));
+          var today = new Date().toISOString().slice(0, 10);
+          data.notes = data.notes || [];
+          data.notes.push({{ date: today, text: text }});
+          return fetch(url, {{
+              method: "PUT",
+              headers: headers,
+              body: JSON.stringify({{
+                  message: "Add athlete note via dashboard",
+                  content: b64encodeUtf8(JSON.stringify(data, null, 2)),
+                  sha: file.sha
+              }})
+          }});
+      }})
+      .then(function(res) {{
+          if (!res.ok) {{
+              return res.json().then(function(b) {{
+                  throw new Error(res.status + ": " + (b.message || "write failed"));
+              }});
+          }}
+          document.getElementById("an-text").value = "";
+          status.textContent = "\\u2705 Saved. Triggering Sync Now so AI Coaching picks it up...";
+          status.style.color = "#00C2A8";
+          return fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+                       "/actions/workflows/sync.yml/dispatches", {{
+              method: "POST", headers: headers, body: JSON.stringify({{ ref: "main" }})
+          }});
+      }})
+      .then(function() {{
+          status.textContent = "\\u2705 Saved and Sync Now triggered \\u2014 refresh in a few minutes.";
+          status.style.color = "#00C2A8";
+      }})
+      .catch(function(err) {{
+          status.textContent = "\\u274c " + err.message;
+          status.style.color = "#FF7A59";
+          console.error(err);
+      }});
+}}
+</script>
+"""
+
+
 def coaching_html(coaching):
     """Renders the AI coaching summary + suggestions card.
     Proposed changes themselves are shown in the unified Training Plan table
@@ -1917,7 +2037,7 @@ def plan_viewer_html(plan_full, coaching=None):
         ics_button = f"""<div style="margin-bottom:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
             <button class="btn" onclick="downloadCoachingICS()"
                 style="background:#00C2A8;font-size:.8em">⬇️ Download Adjusted ICS</button>
-            <button class="btn" onclick="triggerWorkflow(\'apply_coaching.yml\', \'apply-status\', \'Apply AI Coaching\')"
+            <button class="btn" onclick="applyToDashboard()"
                 style="background:#5B6EF5;font-size:.8em">🚀 Apply to Dashboard</button>
             <span id="apply-status" style="font-size:.74em;color:#9a9aaa"></span>
         </div>
@@ -2343,6 +2463,49 @@ function triggerWorkflow(workflowFile, statusElId, label) {{
         status.style.color = "#FF7A59";
     }});
 }}
+
+// Guards "Apply to Dashboard" against the most common failure mode: tapping
+// it before a just-triggered Sync Now run has actually finished committing.
+// If Apply runs against a stale/empty ai_coaching.json, it silently does
+// nothing — this checks GitHub's own run status first and blocks with a
+// clear message instead of that silent no-op.
+function applyToDashboard() {{
+    var status = document.getElementById("apply-status");
+    var token = getGhToken();
+    if (!token) {{
+        status.textContent = "No token provided.";
+        status.style.color = "#FF7A59";
+        return;
+    }}
+    status.textContent = "Checking sync status...";
+    status.style.color = "#9a9aaa";
+
+    fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+          "/actions/workflows/sync.yml/runs?per_page=1", {{
+        headers: {{
+            "Authorization": "Bearer " + token,
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28"
+        }}
+    }}).then(function(res) {{ return res.json(); }})
+      .then(function(body) {{
+          var runs = (body && body.workflow_runs) || [];
+          var latest = runs[0];
+          if (latest && (latest.status === "in_progress" || latest.status === "queued")) {{
+              status.textContent = "\u23f3 A Sync Now run is still in progress \u2014 " +
+                  "wait for it to finish (check the Actions tab for a green check) " +
+                  "before applying, or the suggestions may be stale.";
+              status.style.color = "#FFC75A";
+              return;
+          }}
+          triggerWorkflow("apply_coaching.yml", "apply-status", "Apply AI Coaching");
+      }})
+      .catch(function() {{
+          // If the status check itself fails, don't block the user entirely —
+          // just proceed, since this is a best-effort safety check.
+          triggerWorkflow("apply_coaching.yml", "apply-status", "Apply AI Coaching");
+      }});
+}}
 </script>
 
 <h2>Race Targets</h2>
@@ -2389,6 +2552,8 @@ function triggerWorkflow(workflowFile, statusElId, label) {{
 <div class="chart-grid">{charts_html}</div>
 
 {race_conflicts_html(race_conflicts)}
+
+{athlete_notes_manager_html()}
 
 <h2>🤖 AI Coaching</h2>
 <p class="subtext">Claude analyses your last 4 weeks vs the plan every Saturday. Proposed changes are suggestions only — you download the ICS to apply them.</p>
