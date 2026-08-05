@@ -28,6 +28,21 @@ PLAN_SESSIONS_FILE = Path("data/plan_sessions.json")
 COACHING_FILE      = Path("data/ai_coaching.json")
 
 RACES_FILE = Path("data/races.json")
+ATHLETE_NOTES_FILE = Path("data/athlete_notes.json")
+
+
+def load_athlete_notes(days=14):
+    """Load athlete-reported context notes from the last N days
+    (illness, travel, life stress, etc — entered via the website)."""
+    if not ATHLETE_NOTES_FILE.exists():
+        return []
+    try:
+        notes = json.loads(ATHLETE_NOTES_FILE.read_text()).get("notes", [])
+    except Exception:
+        return []
+    cutoff = (dt.date.today() - dt.timedelta(days=days)).isoformat()
+    recent = [n for n in notes if n.get("date", "") >= cutoff]
+    return sorted(recent, key=lambda n: n.get("date", ""))
 
 
 def load_races():
@@ -225,6 +240,15 @@ def main():
     races = load_races()
     today = dt.date.today()
 
+    # Athlete-reported context (illness, travel, life stress) entered via the
+    # website — this is often more important than anything in the Garmin
+    # data, so it goes near the top of the prompt.
+    athlete_notes = load_athlete_notes(days=14)
+    if athlete_notes:
+        notes_block = "\n".join(f"- {n['date']}: {n['text']}" for n in athlete_notes)
+    else:
+        notes_block = "None reported."
+
     # Deterministic pre-race conflict detection (e.g. a long ride the night
     # before a marathon) — these are non-negotiable fixes, not suggestions
     # that depend on Claude's judgment.
@@ -293,6 +317,9 @@ UPCOMING PLAN (next 4 weeks):
 RACE TARGETS (in date order — prioritise the nearest):
 {races_block}
 
+ATHLETE-REPORTED CONTEXT (last 14 days — self-reported, not visible in Garmin data):
+{notes_block}
+
 PRE-RACE SCHEDULING CONFLICTS (auto-detected, non-negotiable):
 {conflicts_block}
 
@@ -321,6 +348,15 @@ Analyse my training and respond with ONLY this JSON structure (no extra text):
 }}
 
 Rules:
+- ATHLETE-REPORTED CONTEXT overrides normal training-load heuristics. If it
+  mentions illness, injury, or exhaustion, prioritise reducing load/intensity
+  over the next 3-7 days even if the Garmin data alone wouldn't suggest it —
+  self-reported symptoms are information the wearable can't see. If it
+  mentions travel, look at sessions falling within that date range and
+  propose realistic adjustments (e.g. shorter sessions, bodyweight strength
+  instead of gym, flag long rides that need a bike you won't have access to).
+  Reference the specific note in your "reason" field when a change is driven
+  by it, so it's clear where the suggestion came from.
 - If PRE-RACE SCHEDULING CONFLICTS lists any items, those changes are MANDATORY
   and must be included in proposed_changes even if it pushes you over 6 entries —
   athlete safety before a race takes priority over the usual limits.
