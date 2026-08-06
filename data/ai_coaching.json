@@ -7,56 +7,68 @@
     "For the week of 24 August (abroad), plan hotel-pool or open-water swims and bodyweight strength only \u2014 flag the long ride on 22 August as needing a hire bike or replacement with a long run/swim, and treat the week as a maintenance-only block.",
     "Given the illness-forced gap, the Half Oceanman 5,000m swim build will be compressed \u2014 when training resumes, prioritise swim volume above all other disciplines and aim to complete at least two open-water sessions per week in the final 6 weeks."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-08-06T11:16:42.832506+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-08-06",
-      "discipline": "strength_training",
-      "current_session": "Wk7 Gym / Strength \u2014 60 min single-arm shoulder, single-leg calf raises, landing drills, core",
-      "proposed_session": "Full rest \u2014 no training of any kind.",
-      "change_type": "skip",
-      "reason": "Athlete has been ill since 2 August and doctor has explicitly advised no sport until at least 11 August; all 6 August sessions must be skipped regardless of plan content."
-    },
-    {
-      "date": "2026-08-06",
-      "discipline": "running",
-      "current_session": "Wk7 Evening run 25 min at 6:30\u20136:50/km, HR \u2264140 bpm (gate: sleep >6h and body battery \u226545)",
-      "proposed_session": "Full rest \u2014 do not attempt even a walk today.",
-      "change_type": "skip",
-      "reason": "Doctor's advice to avoid all sport until 11 August overrides even the existing body-battery gate built into this session."
-    },
-    {
-      "date": "2026-08-07",
-      "discipline": "swimming",
-      "current_session": "Wk7 Pool Swim Friday \u2014 60 min, 2,000m+, \u22642:30/100m",
-      "proposed_session": "Full rest \u2014 postpone swim return until 11 August at earliest.",
-      "change_type": "skip",
-      "reason": "Still within the doctor-mandated no-sport window (until at least 11 August); attempting a 2,000m pool session while ill risks prolonging recovery."
-    },
-    {
-      "date": "2026-08-08",
-      "discipline": "cycling",
-      "current_session": "Wk7 Long Ride \u2014 60\u201375 min Z1\u2013low-Z2 spin at 128\u2013145W, systems check",
-      "proposed_session": "Full rest \u2014 no cycling until medical clearance is confirmed on 11 August.",
-      "change_type": "skip",
-      "reason": "Doctor's no-sport advice extends through at least 11 August; even a light spin risks immune suppression and delayed recovery from illness."
-    },
-    {
-      "date": "2026-08-09",
-      "discipline": "running",
-      "current_session": "Wk7 Sunday \u2014 45\u201350 min easy pool swim (1,500\u20131,800m at 2:30\u20132:35/100m)",
-      "proposed_session": "Full rest \u2014 this is still within the illness-recovery window.",
-      "change_type": "skip",
-      "reason": "No training before 11 August per doctor's orders; even an easy swim carries infection and fatigue risk while symptomatic."
-    },
-    {
-      "date": "2026-08-11",
-      "discipline": "running",
-      "current_session": "Wk8 Tuesday evening run \u2014 90 min at 6:30\u20136:50/km",
-      "proposed_session": "Replace with a single easy 30\u201335 min jog at HR \u2264135 bpm or, if still feeling unwell, a 30 min easy walk only \u2014 no intensity, no distance targets; treat as a return-to-training test.",
-      "change_type": "decrease",
-      "reason": "First day back after a mandatory illness-rest block; a 90-minute run after 9+ days off while recovering from illness is an injury and relapse risk \u2014 a short easy session is safer and still provides a fitness signal."
+      "applied_at": "2026-08-06T11:46:13.067924+00:00",
+      "generated_at": "2026-08-06T11:16:42.832506+00:00",
+      "summary": "The last 4 weeks show a mixed picture: good training variety with open-water swims, a solid long ride, and some running, but the athlete has been ill since 2 August with doctor's orders to avoid sport until at least 11 August \u2014 this overrides all planned sessions through that date. Sleep has been severely disrupted since late July (multiple nights under 5 hours, body battery repeatedly below 15), compounding the illness and meaning the return to training on 11 August must be gradual and gated on recovery markers. With the Half Oceanman 5,000m swim 58 days away as the priority race, the immediate focus must be full rest and illness recovery before rebuilding swim volume.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-08-06",
+          "discipline": "strength_training",
+          "current_session": "Wk7 Gym / Strength \u2014 60 min single-arm shoulder, single-leg calf raises, landing drills, core",
+          "proposed_session": "Full rest \u2014 no training of any kind.",
+          "change_type": "skip",
+          "reason": "Athlete has been ill since 2 August and doctor has explicitly advised no sport until at least 11 August; all 6 August sessions must be skipped regardless of plan content."
+        },
+        {
+          "date": "2026-08-06",
+          "discipline": "running",
+          "current_session": "Wk7 Evening run 25 min at 6:30\u20136:50/km, HR \u2264140 bpm (gate: sleep >6h and body battery \u226545)",
+          "proposed_session": "Full rest \u2014 do not attempt even a walk today.",
+          "change_type": "skip",
+          "reason": "Doctor's advice to avoid all sport until 11 August overrides even the existing body-battery gate built into this session."
+        },
+        {
+          "date": "2026-08-07",
+          "discipline": "swimming",
+          "current_session": "Wk7 Pool Swim Friday \u2014 60 min, 2,000m+, \u22642:30/100m",
+          "proposed_session": "Full rest \u2014 postpone swim return until 11 August at earliest.",
+          "change_type": "skip",
+          "reason": "Still within the doctor-mandated no-sport window (until at least 11 August); attempting a 2,000m pool session while ill risks prolonging recovery."
+        },
+        {
+          "date": "2026-08-08",
+          "discipline": "cycling",
+          "current_session": "Wk7 Long Ride \u2014 60\u201375 min Z1\u2013low-Z2 spin at 128\u2013145W, systems check",
+          "proposed_session": "Full rest \u2014 no cycling until medical clearance is confirmed on 11 August.",
+          "change_type": "skip",
+          "reason": "Doctor's no-sport advice extends through at least 11 August; even a light spin risks immune suppression and delayed recovery from illness."
+        },
+        {
+          "date": "2026-08-09",
+          "discipline": "running",
+          "current_session": "Wk7 Sunday \u2014 45\u201350 min easy pool swim (1,500\u20131,800m at 2:30\u20132:35/100m)",
+          "proposed_session": "Full rest \u2014 this is still within the illness-recovery window.",
+          "change_type": "skip",
+          "reason": "No training before 11 August per doctor's orders; even an easy swim carries infection and fatigue risk while symptomatic."
+        },
+        {
+          "date": "2026-08-11",
+          "discipline": "running",
+          "current_session": "Wk8 Tuesday evening run \u2014 90 min at 6:30\u20136:50/km",
+          "proposed_session": "Replace with a single easy 30\u201335 min jog at HR \u2264135 bpm or, if still feeling unwell, a 30 min easy walk only \u2014 no intensity, no distance targets; treat as a return-to-training test.",
+          "change_type": "decrease",
+          "reason": "First day back after a mandatory illness-rest block; a 90-minute run after 9+ days off while recovering from illness is an injury and relapse risk \u2014 a short easy session is safer and still provides a fitness signal."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-08-06T11:16:42.832506+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-08-06T11:46:13.067924+00:00",
+  "applied_count": 6
 }

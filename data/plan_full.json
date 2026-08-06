@@ -629,10 +629,10 @@
   {
     "date": "2026-08-06",
     "day": "Thursday",
-    "discipline": "strength_training",
-    "summary": "Wk7 Gym / Strength",
-    "duration_min": 60,
-    "notes": "Strength 40-50min: single-arm shoulder work (L-side bias), single-leg calf raises (L-side bias), landing/jump drills, core. Lighten load on whichever discipline is peaking that week.",
+    "discipline": "rest",
+    "summary": "Wk7 Gym / Strength (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Full rest \u2014 no training of any kind.\n\nReason: Athlete has been ill since 2 August and doctor has explicitly advised no sport until at least 11 August; all 6 August sessions must be skipped regardless of plan content.\n\nOriginal: Strength 40-50min: single-arm shoulder work (L-side bias), single-leg calf raises (L-side bias), landing/jump drills, core. Lighten load on whichever discipline is peaking that week.",
     "pace": null,
     "power": null,
     "distance": null
@@ -640,10 +640,10 @@
   {
     "date": "2026-08-06",
     "day": "Thursday",
-    "discipline": "running",
-    "summary": "Wk7 Evening session (AI adjusted) (AI adjusted)",
-    "duration_min": 25,
-    "notes": "[AI ADJUSTED] Execute only if average nightly sleep August 2\u20135 exceeds 6 hours AND morning body battery is \u226545; otherwise replace with 20\u201325 min easy walk. Keep HR \u2264140 bpm if running.\n\nReason: Adding a sleep and body battery gate ensures this confidence-builder run only proceeds when the body can actually absorb and adapt to the stimulus.\n\nOriginal: [AI ADJUSTED] 30 min easy run @ 6:45\u20137:00/km, HR \u2264145 bpm, flat route \u2014 keep this as a confidence-builder ahead of the Treviso 10K focus block starting Week 9.\n\nReason: The 90-minute session block is misleading given notes say 30\u201340 min; explicitly cap at 30 min and set conservative HR ceiling to reinforce recovery-first habits this week.\n\nOriginal: Maintenance aerobic run, 6:30-6:50/km, 30-40min, no intensity",
+    "discipline": "rest",
+    "summary": "Wk7 Evening session (AI adjusted) (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Full rest \u2014 do not attempt even a walk today.\n\nReason: Doctor's advice to avoid all sport until 11 August overrides even the existing body-battery gate built into this session.\n\nOriginal: [AI ADJUSTED] Execute only if average nightly sleep August 2\u20135 exceeds 6 hours AND morning body battery is \u226545; otherwise replace with 20\u201325 min easy walk. Keep HR \u2264140 bpm if running.\n\nReason: Adding a sleep and body battery gate ensures this confidence-builder run only proceeds when the body can actually absorb and adapt to the stimulus.\n\nOriginal: [AI ADJUSTED] 30 min easy run @ 6:45\u20137:00/km, HR \u2264145 bpm, flat route \u2014 keep this as a confidence-builder ahead of the Treviso 10K focus block starting Week 9.\n\nReason: The 90-minute session block is misleading given notes say 30\u201340 min; explicitly cap at 30 min and set conservative HR ceiling to reinforce recovery-first habits this week.\n\nOriginal: Maintenance aerobic run, 6:30-6:50/km, 30-40min, no intensity",
     "pace": "6:30\u20136:50/km",
     "power": null,
     "distance": null
@@ -662,10 +662,10 @@
   {
     "date": "2026-08-07",
     "day": "Friday",
-    "discipline": "swimming",
-    "summary": "Wk7 Pool Swim (Friday)",
-    "duration_min": 60,
-    "notes": "Pool session: min 2,000m. Mix of technique drills and aerobic sets. Pace target \u22642:30/100m",
+    "discipline": "rest",
+    "summary": "Wk7 Pool Swim (Friday) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Full rest \u2014 postpone swim return until 11 August at earliest.\n\nReason: Still within the doctor-mandated no-sport window (until at least 11 August); attempting a 2,000m pool session while ill risks prolonging recovery.\n\nOriginal: Pool session: min 2,000m. Mix of technique drills and aerobic sets. Pace target \u22642:30/100m",
     "pace": "\u22642:30/100m",
     "power": null,
     "distance": "2km+"
@@ -673,10 +673,10 @@
   {
     "date": "2026-08-08",
     "day": "Saturday",
-    "discipline": "cycling",
-    "summary": "Wk7 Long Ride \u270f\ufe0f (AI adjusted)",
-    "duration_min": 75,
-    "notes": "[AI ADJUSTED] 60\u201375 min Z1\u2013low-Z2 spin at 128\u2013145W, flat route, no distance target \u2014 treat as a systems check; only extend to 84km if body battery on waking is \u226555 AND sleep averaged \u22656.5h for Aug 4\u20137.\n\nReason: Body battery has been at or near critical levels (2\u201331) for the past 5 days and the last completed long ride was July 20; a full 84km effort on depleted reserves risks compounding the fatigue hole rather than building aerobic fitness.\n\nOriginal: [AI ADJUSTED] 84km @ 128-160W (conservative Z2), 240 min \u2014 hold power strictly at lower half of Z2 range\n\nOriginal: 88km @ 128-177W (Z2 Endurance) (long aerobic; add 3x10min 178-209W (Z3 Tempo) blocks if Bike-peak week)\nReason: Progressing to 88km before consistently completing the 84km baseline is premature given the very low recent cycling volume (one 77km ride in 4 weeks).",
+    "discipline": "rest",
+    "summary": "Wk7 Long Ride \u270f\ufe0f (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Full rest \u2014 no cycling until medical clearance is confirmed on 11 August.\n\nReason: Doctor's no-sport advice extends through at least 11 August; even a light spin risks immune suppression and delayed recovery from illness.\n\nOriginal: [AI ADJUSTED] 60\u201375 min Z1\u2013low-Z2 spin at 128\u2013145W, flat route, no distance target \u2014 treat as a systems check; only extend to 84km if body battery on waking is \u226555 AND sleep averaged \u22656.5h for Aug 4\u20137.\n\nReason: Body battery has been at or near critical levels (2\u201331) for the past 5 days and the last completed long ride was July 20; a full 84km effort on depleted reserves risks compounding the fatigue hole rather than building aerobic fitness.\n\nOriginal: [AI ADJUSTED] 84km @ 128-160W (conservative Z2), 240 min \u2014 hold power strictly at lower half of Z2 range\n\nOriginal: 88km @ 128-177W (Z2 Endurance) (long aerobic; add 3x10min 178-209W (Z3 Tempo) blocks if Bike-peak week)\nReason: Progressing to 88km before consistently completing the 84km baseline is premature given the very low recent cycling volume (one 77km ride in 4 weeks).",
     "pace": null,
     "power": "128\u2013177W",
     "distance": "88km"
@@ -684,10 +684,10 @@
   {
     "date": "2026-08-09",
     "day": "Sunday",
-    "discipline": "running",
-    "summary": "Wk7 Long Run \u270f\ufe0f (AI adjusted) (AI adjusted) (AI adjusted) (AI adjusted) (AI adjusted) (AI adjusted)",
-    "duration_min": 50,
-    "notes": "[AI ADJUSTED] 45\u201350 min easy pool swim as noted (1,500\u20131,800m at 2:30\u20132:35/100m, long-axis rotation focus) \u2014 confirm discipline as swimming not running; if body battery on waking is below 45 replace with 30 min gentle walk only.\n\nReason: The session notes already prescribe a swim but the discipline is tagged as running, which will skew load tracking; correcting this also reinforces the swim-priority message for Half Oceanman preparation.\n\nOriginal: [AI ADJUSTED] 45\u201350 min pool swim, 1,500\u20131,800m easy aerobic at 2:30\u20132:35/100m with focus on long-axis rotation and bilateral breathing \u2014 execute only if morning body battery \u226545.\n\nReason: The Half Oceanman 5,000m swim is the nearest race priority and swim volume has been near zero for two weeks; replacing a duplicated long-run slot with a structured swim accelerates the most critical fitness gap.\n\nOriginal: [AI ADJUSTED] 45\u201350 min open-water or pool swim at easy aerobic effort, targeting 1,500\u20131,800m at 2:35/100m \u2014 execute only if average nightly sleep Aug 4\u20138 exceeds 6 hours and morning body battery \u226545.\n\nReason: Replacing the long run with a swim session prioritises the nearest race (Half Oceanman 5,000m) while reducing impact load on a still-recovering athlete.\n\nOriginal: [AI ADJUSTED] Replace with a 45\u201350 min open-water or pool swim at easy aerobic effort (~2:35\u20132:40/100m) targeting 1,500\u20131,800m \u2014 skip the run entirely unless sleep averaged 6.5h for Aug 4\u20138.\n\nReason: With the Half Oceanman swim only 55 days away from Aug 9, substituting a Sunday run with an additional swim session accelerates the critical swim volume build without adding musculoskeletal load on a fatigued body.\n\nOriginal: [AI ADJUSTED] 8km easy walk-run at 7:00\u20137:30/km, HR cap \u2264140 bpm, 55\u201365 min \u2014 gate: only run if Aug 8 ride was completed and morning body battery is \u226550; otherwise a 40-min flat walk at conversational effort.\n\nReason: Running volume cannot safely step up to 12km the day after a long ride when the athlete is coming off near-zero sleep nights (41 min on July 27, 278 min on July 28) \u2014 a conservative walk-run protects against injury while re-establishing the aerobic base.\n\nOriginal: [AI ADJUSTED] 12km @ 6:45\u20137:00/km, 80\u201385 min \u2014 only attempt if the Aug 2 walk was completed, sleep has averaged 6.5h+ for Aug 2\u20138, and morning body battery is \u226555; otherwise cap at 8km easy walk-run.\n\nReason: With the Treviso 10K 56 days out at this point, a conservative long run ceiling prevents injury risk from sleep-depleted muscle recovery while still building aerobic base.\n\nOriginal: [AI ADJUSTED] 16km @ 6:30-6:45/km, 105-110 min \u2014 only extend beyond 16km if the Aug 2nd run was completed without issue and sleep has improved to 7h+ average\n\nOriginal: 18.8km @ 6:15-6:45/km (steady aerobic; negative-split last 20% if Run-peak week)\nReason: Long run distance should progress from a successfully completed shorter baseline rather than jumping from a capped 14-15km to 18.8km in one week.",
+    "discipline": "rest",
+    "summary": "Wk7 Long Run \u270f\ufe0f (AI adjusted) (AI adjusted) (AI adjusted) (AI adjusted) (AI adjusted) (AI adjusted) (AI: skipped)",
+    "duration_min": 30,
+    "notes": "[AI: SKIPPED] Full rest \u2014 this is still within the illness-recovery window.\n\nReason: No training before 11 August per doctor's orders; even an easy swim carries infection and fatigue risk while symptomatic.\n\nOriginal: [AI ADJUSTED] 45\u201350 min easy pool swim as noted (1,500\u20131,800m at 2:30\u20132:35/100m, long-axis rotation focus) \u2014 confirm discipline as swimming not running; if body battery on waking is below 45 replace with 30 min gentle walk only.\n\nReason: The session notes already prescribe a swim but the discipline is tagged as running, which will skew load tracking; correcting this also reinforces the swim-priority message for Half Oceanman preparation.\n\nOriginal: [AI ADJUSTED] 45\u201350 min pool swim, 1,500\u20131,800m easy aerobic at 2:30\u20132:35/100m with focus on long-axis rotation and bilateral breathing \u2014 execute only if morning body battery \u226545.\n\nReason: The Half Oceanman 5,000m swim is the nearest race priority and swim volume has been near zero for two weeks; replacing a duplicated long-run slot with a structured swim accelerates the most critical fitness gap.\n\nOriginal: [AI ADJUSTED] 45\u201350 min open-water or pool swim at easy aerobic effort, targeting 1,500\u20131,800m at 2:35/100m \u2014 execute only if average nightly sleep Aug 4\u20138 exceeds 6 hours and morning body battery \u226545.\n\nReason: Replacing the long run with a swim session prioritises the nearest race (Half Oceanman 5,000m) while reducing impact load on a still-recovering athlete.\n\nOriginal: [AI ADJUSTED] Replace with a 45\u201350 min open-water or pool swim at easy aerobic effort (~2:35\u20132:40/100m) targeting 1,500\u20131,800m \u2014 skip the run entirely unless sleep averaged 6.5h for Aug 4\u20138.\n\nReason: With the Half Oceanman swim only 55 days away from Aug 9, substituting a Sunday run with an additional swim session accelerates the critical swim volume build without adding musculoskeletal load on a fatigued body.\n\nOriginal: [AI ADJUSTED] 8km easy walk-run at 7:00\u20137:30/km, HR cap \u2264140 bpm, 55\u201365 min \u2014 gate: only run if Aug 8 ride was completed and morning body battery is \u226550; otherwise a 40-min flat walk at conversational effort.\n\nReason: Running volume cannot safely step up to 12km the day after a long ride when the athlete is coming off near-zero sleep nights (41 min on July 27, 278 min on July 28) \u2014 a conservative walk-run protects against injury while re-establishing the aerobic base.\n\nOriginal: [AI ADJUSTED] 12km @ 6:45\u20137:00/km, 80\u201385 min \u2014 only attempt if the Aug 2 walk was completed, sleep has averaged 6.5h+ for Aug 2\u20138, and morning body battery is \u226555; otherwise cap at 8km easy walk-run.\n\nReason: With the Treviso 10K 56 days out at this point, a conservative long run ceiling prevents injury risk from sleep-depleted muscle recovery while still building aerobic base.\n\nOriginal: [AI ADJUSTED] 16km @ 6:30-6:45/km, 105-110 min \u2014 only extend beyond 16km if the Aug 2nd run was completed without issue and sleep has improved to 7h+ average\n\nOriginal: 18.8km @ 6:15-6:45/km (steady aerobic; negative-split last 20% if Run-peak week)\nReason: Long run distance should progress from a successfully completed shorter baseline rather than jumping from a capped 14-15km to 18.8km in one week.",
     "pace": "6:15\u20136:45/km",
     "power": null,
     "distance": "18.8km"
@@ -696,9 +696,9 @@
     "date": "2026-08-11",
     "day": "Tuesday",
     "discipline": "running",
-    "summary": "Wk8 Evening session",
-    "duration_min": 90,
-    "notes": "Maintenance aerobic run, 6:30-6:50/km, 30-40min, no intensity",
+    "summary": "Wk8 Evening session (AI adjusted)",
+    "duration_min": 35,
+    "notes": "[AI ADJUSTED] Replace with a single easy 30\u201335 min jog at HR \u2264135 bpm or, if still feeling unwell, a 30 min easy walk only \u2014 no intensity, no distance targets; treat as a return-to-training test.\n\nReason: First day back after a mandatory illness-rest block; a 90-minute run after 9+ days off while recovering from illness is an injury and relapse risk \u2014 a short easy session is safer and still provides a fitness signal.\n\nOriginal: Maintenance aerobic run, 6:30-6:50/km, 30-40min, no intensity",
     "pace": "6:30\u20136:50/km",
     "power": null,
     "distance": null
