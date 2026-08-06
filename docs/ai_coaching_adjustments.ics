@@ -5,92 +5,76 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260806-0@jean-tri
-DTSTAMP:20260806T024736Z
+DTSTAMP:20260806T111713Z
 DTSTART:20260806T070000
 DTEND:20260806T090000
-SUMMARY:[AI ADJUSTED] running — Replace with 20–25 min easy walk only 
- — no running. Body bat
-DESCRIPTION:Replace with 20–25 min easy walk only — no running. Body ba
- ttery has been 11–30 for the last 4 days (Aug 2–5) and sleep has been 
- consistently under 5 hours\, meaning both gate conditions are definitively
-  not met.\n\nReason: Garmin body battery data (Aug 2: 30\, Aug 3: 11\, Aug
-  4: 11) and chronically short sleep confirm the AI-gate conditions for run
- ning are not satisfied\; walking preserves the habit without adding stress
- .\n\nAI coaching 2026-08-05
+SUMMARY:[AI ADJUSTED] strength training — Full rest — no training of an
+ y kind.
+DESCRIPTION:Full rest — no training of any kind.\n\nReason: Athlete has b
+ een ill since 2 August and doctor has explicitly advised no sport until at
+  least 11 August\; all 6 August sessions must be skipped regardless of pla
+ n content.\n\nAI coaching 2026-08-06
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260807-1@jean-tri
-DTSTAMP:20260806T024736Z
+UID:ai-coaching-20260806-1@jean-tri
+DTSTAMP:20260806T111713Z
+DTSTART:20260806T070000
+DTEND:20260806T090000
+SUMMARY:[AI ADJUSTED] running — Full rest — do not attempt even a walk 
+ today.
+DESCRIPTION:Full rest — do not attempt even a walk today.\n\nReason: Doct
+ or's advice to avoid all sport until 11 August overrides even the existing
+  body-battery gate built into this session.\n\nAI coaching 2026-08-06
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260807-2@jean-tri
+DTSTAMP:20260806T111713Z
 DTSTART:20260807T070000
 DTEND:20260807T090000
-SUMMARY:[AI ADJUSTED] swimming — Retain the pool swim but reduce to 1\,50
- 0m maximum and make i
-DESCRIPTION:Retain the pool swim but reduce to 1\,500m maximum and make it 
- entirely technique-drill focused (no aerobic sets) — keep HR below 130 b
- pm throughout\; this is the highest-priority session of the week given the
-  Half Oceanman swim goal.\n\nReason: With body battery critically low this
-  week\, a full 2km aerobic effort risks compounding fatigue\, but maintain
- ing swim frequency is essential for the 5km Half Oceanman target 59 days a
- way.\n\nAI coaching 2026-08-05
+SUMMARY:[AI ADJUSTED] swimming — Full rest — postpone swim return until
+  11 August at earliest
+DESCRIPTION:Full rest — postpone swim return until 11 August at earliest.
+ \n\nReason: Still within the doctor-mandated no-sport window (until at lea
+ st 11 August)\; attempting a 2\,000m pool session while ill risks prolongi
+ ng recovery.\n\nAI coaching 2026-08-06
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260808-2@jean-tri
-DTSTAMP:20260806T024736Z
+UID:ai-coaching-20260808-3@jean-tri
+DTSTAMP:20260806T111713Z
 DTSTART:20260808T070000
 DTEND:20260808T090000
-SUMMARY:[AI ADJUSTED] cycling — Cap at 60 min flat Z1 spin at 120–130W 
- maximum regardless of
-DESCRIPTION:Cap at 60 min flat Z1 spin at 120–130W maximum regardless of 
- battery readings — do not attempt 84km distance\; treat as legs-only mov
- ement and stop early if any perceived fatigue above RPE 4.\n\nReason: Slee
- p and body battery data for Aug 3–5 (battery 11\, 11\, null\; sleep unde
- r 5h) means the existing gate conditions are already broken\, and even the
-  minimum session should be further softened to avoid digging deeper into a
-  fatigue hole.\n\nAI coaching 2026-08-05
+SUMMARY:[AI ADJUSTED] cycling — Full rest — no cycling until medical cl
+ earance is confirmed 
+DESCRIPTION:Full rest — no cycling until medical clearance is confirmed o
+ n 11 August.\n\nReason: Doctor's no-sport advice extends through at least 
+ 11 August\; even a light spin risks immune suppression and delayed recover
+ y from illness.\n\nAI coaching 2026-08-06
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260809-3@jean-tri
-DTSTAMP:20260806T024736Z
+UID:ai-coaching-20260809-4@jean-tri
+DTSTAMP:20260806T111713Z
 DTSTART:20260809T070000
 DTEND:20260809T090000
-SUMMARY:[AI ADJUSTED] running — Execute as a 45 min easy pool swim at 2:3
- 0–2:35/100m (long-a
-DESCRIPTION:Execute as a 45 min easy pool swim at 2:30–2:35/100m (long-ax
- is rotation focus\, ~1\,500m) — confirm discipline as swimming and skip 
- the run entirely this week\; body battery is expected to still be recoveri
- ng and running adds unnecessary impact stress.\n\nReason: The session note
-  already flags this should be a swim not a run\, and given the severe fati
- gue indicators this week\, consolidating as a low-impact swim directly ser
- ves the Half Oceanman priority without adding run-stress.\n\nAI coaching 2
- 026-08-05
+SUMMARY:[AI ADJUSTED] running — Full rest — this is still within the il
+ lness-recovery window
+DESCRIPTION:Full rest — this is still within the illness-recovery window.
+ \n\nReason: No training before 11 August per doctor's orders\; even an eas
+ y swim carries infection and fatigue risk while symptomatic.\n\nAI coachin
+ g 2026-08-06
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260813-4@jean-tri
-DTSTAMP:20260806T024736Z
-DTSTART:20260813T070000
-DTEND:20260813T090000
-SUMMARY:[AI ADJUSTED] cycling — Downgrade to a 45–60 min Z2 endurance s
- pin at 128–160W with 
-DESCRIPTION:Downgrade to a 45–60 min Z2 endurance spin at 128–160W with
-  no tempo blocks — the Aug 1st ride has no record of completion and curr
- ent fatigue levels make the gate conditions unlikely to be satisfied by th
- en.\n\nReason: With no recorded training between July 25 and August 5 and 
- body battery near zero as recently as Aug 3–4\, executing 210–244W tem
- po intervals in week 8 poses a significant injury and overreach risk.\n\nA
- I coaching 2026-08-05
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260815-5@jean-tri
-DTSTAMP:20260806T024736Z
-DTSTART:20260815T070000
-DTEND:20260815T090000
-SUMMARY:[AI ADJUSTED] cycling — Reduce to 70–75km at 128–155W (Z2 onl
- y\, no tempo blocks) — t
-DESCRIPTION:Reduce to 70–75km at 128–155W (Z2 only\, no tempo blocks) 
- — this is the first genuine long ride in over 3 weeks and rebuilding aer
- obic base safely is more valuable than hitting distance targets.\n\nReason
- : The athlete's last long ride was July 20 (77km) and the intervening trai
- ning gap combined with poor recovery metrics makes a full 92km effort prem
- ature for safe adaptation.\n\nAI coaching 2026-08-05
+UID:ai-coaching-20260811-5@jean-tri
+DTSTAMP:20260806T111713Z
+DTSTART:20260811T070000
+DTEND:20260811T090000
+SUMMARY:[AI ADJUSTED] running — Replace with a single easy 30–35 min jo
+ g at HR ≤135 bpm or\, 
+DESCRIPTION:Replace with a single easy 30–35 min jog at HR ≤135 bpm or\
+ , if still feeling unwell\, a 30 min easy walk only — no intensity\, no 
+ distance targets\; treat as a return-to-training test.\n\nReason: First da
+ y back after a mandatory illness-rest block\; a 90-minute run after 9+ day
+ s off while recovering from illness is an injury and relapse risk — a sh
+ ort easy session is safer and still provides a fitness signal.\n\nAI coach
+ ing 2026-08-06
 END:VEVENT
 END:VCALENDAR
