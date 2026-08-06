@@ -1,0 +1,93 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jean Triathlon AI Coaching//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-coaching-20260811-0@jean-tri
+DTSTAMP:20260806T122626Z
+DTSTART:20260811T070000
+DTEND:20260811T090000
+SUMMARY:[AI ADJUSTED] swimming — Easy 30-min pool session\, 1\,000–1\,2
+ 00m only at comfortable e
+DESCRIPTION:Easy 30-min pool session\, 1\,000–1\,200m only at comfortable
+  effort (no pace target) — technique drills and feel-good aerobic work o
+ nly\; skip if still symptomatic.\n\nReason: Athlete has been ill since 2 A
+ ugust with doctor-mandated rest until 11 August\; a full 2\,000m session o
+ n the first day back is too aggressive and risks immune suppression and re
+ lapse.\n\nAI coaching 2026-08-06
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260813-1@jean-tri
+DTSTAMP:20260806T122626Z
+DTSTART:20260813T070000
+DTEND:20260813T090000
+SUMMARY:[AI ADJUSTED] cycling — Replace with an easy 45-min Z2 spin at 12
+ 0–150W (well below 
+DESCRIPTION:Replace with an easy 45-min Z2 spin at 120–150W (well below t
+ he 128–177W Z2 floor) — no tempo blocks regardless of gates\; treat as
+  a systems-check ride only.\n\nReason: The athlete will only be 2 days int
+ o their post-illness return and body battery has been critically low (0–
+ 11) since late July\; tempo cycling intensity this soon risks extending th
+ e recovery setback.\n\nAI coaching 2026-08-06
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260815-2@jean-tri
+DTSTAMP:20260806T122626Z
+DTSTART:20260815T070000
+DTEND:20260815T090000
+SUMMARY:[AI ADJUSTED] cycling — Reduce to 90–105 min\, 35–40km at 120
+ –150W (steady aerobic\, n
+DESCRIPTION:Reduce to 90–105 min\, 35–40km at 120–150W (steady aerobi
+ c\, no targets) — cut the session short if HR drifts above 145 bpm at an
+ y point.\n\nReason: A 4-hour ride in week 1 back from illness (with body b
+ attery still likely suppressed) carries high relapse risk\; a shorter\, lo
+ wer-intensity version protects health while beginning to rebuild aerobic b
+ ase for the Half Oceanman.\n\nAI coaching 2026-08-06
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260816-3@jean-tri
+DTSTAMP:20260806T122626Z
+DTSTART:20260816T070000
+DTEND:20260816T090000
+SUMMARY:[AI ADJUSTED] running — Keep the swim as planned (this is already
+  well-adjusted for 
+DESCRIPTION:Keep the swim as planned (this is already well-adjusted for ill
+ ness return) but cap at 1\,500m if fatigue is present after the Saturday r
+ ide\; the 19.2km run distance implied in the original summary should not b
+ e attempted this week.\n\nReason: With only 5 days back from illness and a
+  long ride the day before\, any running on Sunday of week 8 would be prema
+ ture — the swim substitution in the current plan is sensible but volume 
+ should flex downward based on how Saturday went.\n\nAI coaching 2026-08-06
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260829-4@jean-tri
+DTSTAMP:20260806T122626Z
+DTSTART:20260829T070000
+DTEND:20260829T090000
+SUMMARY:[AI ADJUSTED] cycling — Complete the 100km ride as planned if abr
+ oad logistics allow
+DESCRIPTION:Complete the 100km ride as planned if abroad logistics allow bi
+ ke access\; if no bike is available (travelling that week)\, replace with 
+ a 75-min open-water or pool swim (2\,200–2\,500m) as the primary session
+  and a 45-min easy run — flag bike access requirement before departure.\
+ n\nReason: Athlete is abroad the week of 24 August and the 100km ride on 2
+ 9 August requires a bike\; a swim-and-run alternative is realistic from cu
+ rrent fitness and keeps Half Oceanman swim volume on track without needing
+  equipment that may not be available.\n\nAI coaching 2026-08-06
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260827-5@jean-tri
+DTSTAMP:20260806T122626Z
+DTSTART:20260827T070000
+DTEND:20260827T090000
+SUMMARY:[AI ADJUSTED] strength training — Replace with 40-min bodyweight 
+ and resistance-band strength 
+DESCRIPTION:Replace with 40-min bodyweight and resistance-band strength cir
+ cuit: single-leg calf raises\, glute bridges\, shoulder stability drills (
+ L-bias)\, plank variations and core — no gym equipment required.\n\nReas
+ on: Athlete is abroad the week of 24 August and will likely not have gym a
+ ccess\; a bodyweight alternative maintains the strength stimulus without r
+ equiring facilities that won't be available.\n\nAI coaching 2026-08-06
+END:VEVENT
+END:VCALENDAR
