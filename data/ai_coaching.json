@@ -1,62 +1,62 @@
 {
-  "summary": "The last 4 weeks have been severely disrupted by illness starting around 2 August, with doctor-ordered rest through at least 11 August \u2014 body battery readings have been critically low (0\u201311) across multiple recent days, confirming the athlete is still not recovered. Prior to the illness, training was sparse but included a solid 77km cycling effort on 20 July and reasonable swim volume; however, the high HR run on 18 July (avg 179 bpm) suggests that session was executed at too high an intensity relative to recovery. The immediate priority is a careful, gated return to training from 11 August, protecting the Half Oceanman (56 days away, 5km swim) and Treviso 10K (64 days away) rather than chasing lost fitness.",
+  "summary": "The last 4 weeks show very disrupted training: only 6 sessions were logged with a dangerous spike on 18 July (avg HR 179 bpm running), followed by near-complete cessation since 25 July due to illness from 2 August, with the doctor advising no sport until at least 11 August. Sleep and body battery data paint a consistently depleted picture \u2014 the last two weeks show body battery maxes of 0\u201331 and fragmented sleep, confirming the illness is still taxing recovery. With the Half Oceanman 56 days away (5,000m swim at 2:30/100m), the immediate priority is a careful return-to-training that protects the swim block while not rushing back into volume.",
   "suggestions": [
-    "On 11 August, treat the return-to-training run as a pure wellness check: keep HR strictly under 135 bpm and shorten to 20\u201325 minutes if any fatigue or symptoms persist \u2014 do not attempt both the run and the swim on the same day if body battery is below 40 on waking.",
-    "Given the Half Oceanman swim target of 5,000m at 2:30/100m in 56 days, prioritise swimming volume over cycling and running in weeks 9\u201310: aim for at least 3 swim sessions per week totalling 6,000\u20137,000m once fully recovered, as your open-water pace data shows you averaging around 2:25\u20132:35/100m which is right on the edge of target.",
-    "Avoid any runs at or above tempo intensity (sub-5:30/km) until at least one full week of easy running has been completed post-illness \u2014 the 18 July run at 179 bpm average shows a pattern of going too hard too soon, which likely contributed to reduced resilience heading into the illness period.",
-    "For the week abroad (24\u201330 August), confirm bike access in advance; if no bike is available, substitute the Saturday long ride with a 75\u201390 min open-water or pool swim, which directly serves the Half Oceanman build and requires no equipment.",
-    "Sleep is the single biggest lever right now \u2014 multiple nights of under 5 hours in the last two weeks will slow immune recovery and block training adaptation; target 7+ hours per night as a non-negotiable gate before resuming any quality sessions."
+    "Treat 11\u201314 August as a genuine return-to-training test week: if HR exceeds 135 bpm at easy effort or body battery is below 40 at session start, downgrade to walking or rest \u2014 no ego-driven returns after illness.",
+    "Swimming is your highest-priority discipline for the Half Oceanman in 56 days; once medically cleared, build open-water volume first (targeting 3,000\u20134,000m per week by late August) before chasing cycling or run targets.",
+    "The 19 July run at avg HR 179 bpm was an outlier red flag \u2014 when you resume running, enforce a strict HR cap of \u2264135 bpm for the first 2 weeks back to rebuild aerobic base without compounding immune stress.",
+    "While abroad 24\u201330 August, prioritise open-water swimming (no bike logistics needed) and bodyweight strength; this aligns well with the Half Oceanman swim focus and removes the bike-access risk that week.",
+    "Sleep consistently below 6 hours across the last two weeks is the biggest recovery barrier \u2014 prioritise 7\u20138 hours as a non-negotiable training input before adding any intensity sessions, particularly ahead of the 5 x 1km run intervals planned for 20 August."
   ],
   "proposed_changes": [
     {
-      "date": "2026-08-11",
-      "discipline": "running",
-      "current_session": "Wk8 easy return jog 30\u201335 min at HR \u2264135 bpm or walk only",
-      "proposed_session": "20\u201325 min easy walk/jog only if body battery on waking is \u226535; if body battery is below 35, replace with a 20-min gentle walk and postpone the jog to 12 August \u2014 do not combine with the swim on the same day.",
-      "change_type": "decrease",
-      "reason": "Body battery has been at 0\u201311 for several consecutive days (Aug 3\u20136, Aug 8) and the athlete is only just reaching the end of the doctor-ordered rest window; splitting or shortening the first session reduces relapse risk."
-    },
-    {
-      "date": "2026-08-11",
-      "discipline": "swimming",
-      "current_session": "Wk8 easy 30-min pool swim, 1,000\u20131,200m, technique drills only",
-      "proposed_session": "Move to 12 August (Wednesday, nominally a rest day) and keep at 1,000m max \u2014 only if the Tuesday run/walk felt fully comfortable and body battery has recovered above 40; skip entirely if still symptomatic.",
-      "change_type": "replace",
-      "reason": "Stacking a swim on top of the first run-back session on the same day is excessive given critically depleted body battery readings through 8 August; separating them by 24 hours reduces total daily stress on an immune system still recovering from illness."
-    },
-    {
       "date": "2026-08-13",
       "discipline": "cycling",
-      "current_session": "Wk8 easy 45-min Z2 spin at 120\u2013150W as a systems-check ride",
-      "proposed_session": "Reduce to 30 min at 100\u2013130W (perceived easy, cadence 85\u201390 rpm) and skip if morning body battery is below 40 \u2014 this is still a systems-check only, not a fitness session.",
-      "change_type": "decrease",
-      "reason": "The athlete will only be 2 days into return-to-training and wellness data shows a persistent pattern of very low body battery; keeping the ride shorter and below the original adjusted target limits cumulative stress in the first week back."
+      "current_session": "Easy 45-min Z2 spin at 120\u2013150W as systems-check ride",
+      "proposed_session": "Skip the cycling session entirely and extend the strength session to 50 min with low-impact bodyweight work only \u2014 no cardiovascular load on this day.",
+      "change_type": "skip",
+      "reason": "Body battery has been 0\u201331 for 8+ consecutive days as of 8 August; adding a cycling session on day 2 back from illness (even at 120W) risks immune suppression before the sleep data shows genuine recovery has occurred."
     },
     {
-      "date": "2026-08-18",
-      "discipline": "swimming",
-      "current_session": "Wk9 Pool Swim Tuesday \u2014 min 2,000m, technique and aerobic sets at \u22642:30/100m",
-      "proposed_session": "Extend to 2,200\u20132,400m and include a 400m continuous time-trial effort at target 2:30/100m pace in the middle of the session (e.g. 400m warm-up, 4\u00d7400m with 30s rest, 200m cool-down) \u2014 this is the first Half Oceanman-specific swim stimulus.",
-      "change_type": "increase",
-      "reason": "With the Half Oceanman 5,000m swim 56 days away and the target pace at 2:30/100m, week 9 (if recovery gates are passed) is the right moment to introduce the first race-pace swim block and begin progressive distance build."
-    },
-    {
-      "date": "2026-08-22",
+      "date": "2026-08-15",
       "discipline": "cycling",
-      "current_session": "Wk9 Long Ride AI adjusted \u2014 morning OW swim 45\u201360 min then afternoon ride 75\u201380km at 128\u2013177W",
-      "proposed_session": "Keep the morning open-water swim (1,500\u20132,000m at easy effort) as the primary session; reduce the afternoon ride to 60\u201370 min / 25\u201330km at 120\u2013150W rather than 75\u201380km \u2014 cap total daily training load and cut the ride short if HR exceeds 145 bpm.",
+      "current_session": "90\u2013105 min ride, 35\u201340km at 120\u2013150W, cut short if HR > 145 bpm",
+      "proposed_session": "Cap at 60 min, 20\u201325km at 110\u2013130W on flat terrain; stop immediately if HR exceeds 140 bpm or perceived effort feels laboured \u2014 log it as a feel-check only.",
       "change_type": "decrease",
-      "reason": "This is only the second weekend back from illness and stacking a full OW swim plus a 75\u201380km ride risks an excessive single-day load spike that could trigger relapse or excessive fatigue heading into the Treviso 10K build weeks."
+      "reason": "This is only the first weekend back after 2+ weeks of illness and chronically low body battery; a 90-min ride is too ambitious for week 1 return and risks a setback ahead of the Half Oceanman build."
+    },
+    {
+      "date": "2026-08-20",
+      "discipline": "running",
+      "current_session": "4 x 1km @ 5:45/km with 90-sec walk recovery, gated on sleep and body battery \u2265 50",
+      "proposed_session": "Replace with 30\u201335 min easy jog at HR \u2264 130 bpm (no intervals); only attempt intervals if body battery has averaged \u2265 55 across 15\u201319 August AND at least 3 prior sessions completed without HR drift.",
+      "change_type": "replace",
+      "reason": "Introducing 5:45/km intervals in week 2 back from illness is too aggressive given the severely depleted recovery trend \u2014 aerobic base must be re-established before any race-pace stimulus."
+    },
+    {
+      "date": "2026-08-25",
+      "discipline": "running",
+      "current_session": "5 x 1km @ 5:40\u20135:50/km with 90-sec walk recovery, 40\u201345 min total",
+      "proposed_session": "Keep structure but reduce to 3 x 1km @ 5:50\u20136:00/km with 2-min walk recovery while abroad; execute only if previous week's sessions were completed without HR red flags \u2014 skip if fatigue persists.",
+      "change_type": "decrease",
+      "reason": "Athlete will be abroad this week (self-reported context 24 Aug) with likely disrupted sleep and no familiar training environment; reducing interval volume protects fitness without risking overreach."
+    },
+    {
+      "date": "2026-08-27",
+      "discipline": "cycling",
+      "current_session": "Maintenance endurance spin 128\u2013177W, 45\u201360 min flat/steady",
+      "proposed_session": "Replace with a 45\u201360 min open-water or pool swim (1,800\u20132,200m at easy effort, 2:30\u20132:40/100m) to maximise Half Oceanman-specific training while abroad where bike access is uncertain.",
+      "change_type": "replace",
+      "reason": "Athlete is abroad 24\u201330 August (self-reported) and bike access cannot be guaranteed; a swim session directly serves the Half Oceanman 5,000m target 5 weeks out and requires no equipment logistics."
     },
     {
       "date": "2026-08-29",
       "discipline": "cycling",
-      "current_session": "Wk10 Long Ride \u2014 100km at 128\u2013177W; if no bike available abroad, replace with 75-min swim",
-      "proposed_session": "If travelling abroad with no bike access, replace entirely with a 75\u201390 min open-water or pool swim (2,200\u20132,500m at 2:25\u20132:30/100m race pace) \u2014 this directly builds the Half Oceanman swim leg and requires no equipment; do not attempt to find a rental bike unless logistics are already confirmed.",
+      "current_session": "100km ride planned; if no bike available abroad, replace with 75-min swim",
+      "proposed_session": "Replace with a 75\u201390 min open-water swim (2,500\u20133,000m at 2:25\u20132:35/100m) as the primary session \u2014 this is the most important Half Oceanman-specific session of the month and requires no bike access.",
       "change_type": "replace",
-      "reason": "Athlete is confirmed abroad the week of 24 August; bike access is uncertain, and with the Half Oceanman 5,000m swim being the nearest race target, a swim replacement session delivers more specific race value than a logistically uncertain ride."
+      "reason": "Athlete is abroad this weekend (self-reported context) making a 100km ride logistically unrealistic; a long open-water swim of 2,500\u20133,000m directly simulates Half Oceanman conditions 7 weeks out."
     }
   ],
-  "generated_at": "2026-08-08T12:30:34.725872+00:00",
+  "generated_at": "2026-08-08T12:53:57.058117+00:00",
   "weeks_analysed": 4
 }
