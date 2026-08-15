@@ -5,97 +5,97 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260815-0@jean-tri
-DTSTAMP:20260815T012320Z
+DTSTAMP:20260815T090952Z
 DTSTART:20260815T070000
 DTEND:20260815T090000
-SUMMARY:[AI ADJUSTED] cycling — Cut to 30–40 min easy spin at 100–120
- W\, flat route\, strict H
-DESCRIPTION:Cut to 30–40 min easy spin at 100–120W\, flat route\, stric
- t HR cap of 135 bpm — treat as a systems-check ride only\, not a trainin
- g stimulus. Stop immediately if any illness symptoms resurface.\n\nReason:
-  Body battery on 15 August is recorded at 0 and sleep has been critically 
- disrupted for two weeks post-illness\; the athlete-reported sick note (no 
- sport until 11 Aug) means this is only day 4 back and the body is not read
- y for even a moderate aerobic ride.\n\nAI coaching 2026-08-15
+SUMMARY:[AI ADJUSTED] cycling — Skip entirely. Replace with 20–30 min f
+ lat walk or full rest
+DESCRIPTION:Skip entirely. Replace with 20–30 min flat walk or full rest.
+  No cycling until at least one clear day of body battery ≥55 and normal 
+ resting HR is confirmed post-illness.\n\nReason: Athlete self-reported sti
+ ll sick on 15 Aug\; wellness data shows body battery of only 58 max and se
+ verely broken sleep (401 min last night) — returning to even a reduced r
+ ide on the first day back from illness is premature and risks prolonging r
+ ecovery.\n\nAI coaching 2026-08-15
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260816-1@jean-tri
-DTSTAMP:20260815T012320Z
+DTSTAMP:20260815T090952Z
 DTSTART:20260816T070000
 DTEND:20260816T090000
-SUMMARY:[AI ADJUSTED] running — Replace the run entirely with a 30–40 m
- in easy walk or light
-DESCRIPTION:Replace the run entirely with a 30–40 min easy walk or light 
- open-water float/technique swim (no pacing targets)\; skip any structured 
- run until at least Tuesday 18 August and only if sleep gate is met (6+ hrs
- \, body battery ≥ 45 on waking).\n\nReason: Running the day after a retu
- rn ride\, less than a week out of illness with body battery at zero\, risk
- s relapse\; the athlete-reported context explicitly noted doctor's advice 
- to rest until 11 August and recovery is clearly still incomplete.\n\nAI co
+SUMMARY:[AI ADJUSTED] running — Replace with an easy 20–25 min walk/jog
+  test at fully conver
+DESCRIPTION:Replace with an easy 20–25 min walk/jog test at fully convers
+ ational effort (HR ≤135 bpm)\; if HR stays controlled and no symptoms ap
+ pear\, add a 20-min gentle pool swim (technique only\, no pace targets). S
+ top immediately if any breathlessness or elevated HR.\n\nReason: Athlete i
+ s only one day into the return from multi-week illness\; a 54-min run on d
+ ay two back is too large a jump — a short movement test gives the same r
+ eturn-to-training signal at a fraction of the physiological cost.\n\nAI co
  aching 2026-08-15
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260818-2@jean-tri
-DTSTAMP:20260815T012320Z
-DTSTART:20260818T070000
-DTEND:20260818T090000
-SUMMARY:[AI ADJUSTED] running — Retain the sleep gate condition strictly 
- (6.5 h avg sleep 15
-DESCRIPTION:Retain the sleep gate condition strictly (6.5 h avg sleep 15–
- 18 Aug AND body battery ≥ 50 on waking 18 Aug)\; if gate is NOT met\, re
- place entirely with 20–25 min easy jog at 6:30–7:00/km with no structu
- re. Do not attempt intervals until gate is confirmed.\n\nReason: Given the
-  severity and duration of the sleep disruption through mid-August\, the pr
- obability of the sleep gate being met on 18 August is low — building in 
- a clear downgrade path prevents the athlete from pushing through intervals
-  on inadequate recovery.\n\nAI coaching 2026-08-15
+UID:ai-coaching-20260820-2@jean-tri
+DTSTAMP:20260815T090952Z
+DTSTART:20260820T070000
+DTEND:20260820T090000
+SUMMARY:[AI ADJUSTED] running — Replace with a continuous 25–30 min eas
+ y jog at 6:30–7:00/km
+DESCRIPTION:Replace with a continuous 25–30 min easy jog at 6:30–7:00/k
+ m (HR ≤140 bpm) — no intervals. Intervals require a fitness base that 
+ has effectively been zeroed by 3.5 weeks of illness\; Zone 2 continuity is
+  the only appropriate stimulus this week.\n\nReason: Post-illness detraini
+ ng means lactate threshold capacity will be significantly reduced\; introd
+ ucing 5:45/km intervals in week one back risks injury and excessive fatigu
+ e before the Half Oceanman build has even begun.\n\nAI coaching 2026-08-15
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260822-3@jean-tri
-DTSTAMP:20260815T012320Z
+DTSTAMP:20260815T090952Z
 DTSTART:20260822T070000
 DTEND:20260822T090000
-SUMMARY:[AI ADJUSTED] cycling — Cap the ride at 60 min / ~35–40 km at 1
- 28–150W (lower half o
-DESCRIPTION:Cap the ride at 60 min / ~35–40 km at 128–150W (lower half 
- of Z2) with no morning swim added this week\; save the swim-plus-ride bric
- k format for week 10 once a full week of consistent sleep and training has
-  been re-established.\n\nReason: Stacking a swim-brick onto a long ride in
-  the first full training week back from illness adds unnecessary compoundi
- ng load before baseline fitness has been re-confirmed.\n\nAI coaching 2026
- -08-15
+SUMMARY:[AI ADJUSTED] cycling — Cap at 60 min indoors or on a flat route 
+ at 110–130W (well b
+DESCRIPTION:Cap at 60 min indoors or on a flat route at 110–130W (well be
+ low Z2 ceiling)\; target HR 125–138 bpm throughout. Ignore the 95km dist
+ ance marker — at this recovery stage duration and HR control matter\, no
+ t distance.\n\nReason: 95km implies ~3+ hours at normal pace which is far 
+ beyond appropriate loading one week post-illness\; a controlled 60-min aer
+ obic spin at reduced power is sufficient to restart cycling fitness withou
+ t accumulating excessive fatigue ahead of the Half Oceanman build.\n\nAI c
+ oaching 2026-08-15
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260829-4@jean-tri
-DTSTAMP:20260815T012320Z
-DTSTART:20260829T070000
-DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] cycling — Explicitly plan for the no-bike scenario 
- given the athlete i
-DESCRIPTION:Explicitly plan for the no-bike scenario given the athlete is c
- onfirmed abroad 24–30 August: replace with a 75–90 min open-water or p
- ool swim (2\,200–2\,500 m at 2:25–2:30/100m) as the primary session 
- — this directly serves the Half Oceanman 5\,000m swim target and should 
- be treated as a priority\, not a fallback.\n\nReason: Athlete-reported con
- text confirms travel the week of 24 August\; bike access abroad is uncerta
- in\, and proactively scheduling the swim replacement maximises Half Oceanm
- an readiness (nearest race\, 49 days away) rather than risking a missed lo
- ng session.\n\nAI coaching 2026-08-15
+UID:ai-coaching-20260825-4@jean-tri
+DTSTAMP:20260815T090952Z
+DTSTART:20260825T070000
+DTEND:20260825T090000
+SUMMARY:[AI ADJUSTED] running — Replace with 35 min easy continuous run a
+ t 6:15–6:30/km (HR 
+DESCRIPTION:Replace with 35 min easy continuous run at 6:15–6:30/km (HR 
+ ≤142 bpm). If this goes well with no cardiac drift\, a single 1km effort
+  at 5:50/km can be added at the end as a controlled stimulus — but only 
+ one\, not five.\n\nReason: With the Treviso 10K 57 days away and the athle
+ te coming off prolonged illness\, introducing a full interval session in w
+ eek two of return (and while abroad) risks injury and poor quality\; one e
+ asy run with an optional single effort builds pace confidence without over
+ cooking a fragile system.\n\nAI coaching 2026-08-15
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260829-5@jean-tri
-DTSTAMP:20260815T012320Z
+DTSTAMP:20260815T090952Z
 DTSTART:20260829T070000
 DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] swimming — Skip the added evening swim on this date
-  entirely — if the r
-DESCRIPTION:Skip the added evening swim on this date entirely — if the ri
- de is replaced by a single morning swim (2\,200–2\,500 m) as proposed ab
- ove\, a second swim the same evening is excessive for a week still in reco
- very build\; consolidate to one quality swim session of 75–90 min.\n\nRe
- ason: Doubling swim sessions on the same day during a travel week coming o
- ff illness risks fatigue accumulation without proportional fitness return\
- , and the single longer swim already covers the Half Oceanman volume targe
- t for this week.\n\nAI coaching 2026-08-15
+SUMMARY:[AI ADJUSTED] cycling — Execute the swim replacement as primary (
+ 2\,000–2\,500m open w
+DESCRIPTION:Execute the swim replacement as primary (2\,000–2\,500m open 
+ water or pool at easy effort\, no pace targets) since the athlete is abroa
+ d this week. If a bike is available\, limit to 60 min easy spin at 110–1
+ 40W rather than 100km — total weekly load coming off illness must remain
+  conservative.\n\nReason: Athlete confirmed travel week of 24 Aug\; bike a
+ ccess is uncertain\, and a 100km ride in week three of illness recovery wo
+ uld represent a large\, poorly-timed load spike — the swim replacement d
+ irectly serves the Half Oceanman goal and is the safer\, more productive o
+ ption.\n\nAI coaching 2026-08-15
 END:VEVENT
 END:VCALENDAR
