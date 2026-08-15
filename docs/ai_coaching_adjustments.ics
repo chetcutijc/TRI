@@ -1,0 +1,94 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jean Triathlon AI Coaching//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ai-coaching-20260816-0@jean-tri
+DTSTAMP:20260815T101126Z
+DTSTART:20260816T070000
+DTEND:20260816T090000
+SUMMARY:[AI ADJUSTED] running — 20-min flat walk only — no jogging yet.
+  Body battery reached
+DESCRIPTION:20-min flat walk only — no jogging yet. Body battery reached 
+ only 58 on 15 Aug after illness\; confirm HR and symptoms are fully settle
+ d before any running impact. If walk feels effortless and HR stays ≤105\
+ , add 10 min easy pool technique swimming only.\n\nReason: Athlete self-re
+ ported still sick on 15 Aug and body battery hit only 58 after a full rest
+  day — jogging impact is premature\; a walk-only test is the safest firs
+ t step back.\n\nAI coaching 2026-08-15
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260818-1@jean-tri
+DTSTAMP:20260815T101126Z
+DTSTART:20260818T070000
+DTEND:20260818T090000
+SUMMARY:[AI ADJUSTED] cycling — Cap at 40 min easy spin at 100–120W (we
+ ll below Z2)\, indoors
+DESCRIPTION:Cap at 40 min easy spin at 100–120W (well below Z2)\, indoors
+  only\, HR ≤130 bpm — stop immediately if HR drifts or fatigue appears
+ . Skip if body battery that morning is below 50.\n\nReason: Athlete is onl
+ y 3–4 days into return from 3.5-week illness\; 90 min at Z2 is far too l
+ arge a first cycling load and risks relapse.\n\nAI coaching 2026-08-15
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260822-2@jean-tri
+DTSTAMP:20260815T101126Z
+DTSTART:20260822T070000
+DTEND:20260822T090000
+SUMMARY:[AI ADJUSTED] cycling — Retain 60 min cap at 110–125W but make 
+ it conditional: only 
+DESCRIPTION:Retain 60 min cap at 110–125W but make it conditional: only e
+ xecute if both Tuesday cycling and Thursday easy run have been completed w
+ ithout issue and body battery on Saturday morning is ≥55. If battery is 
+ below 55\, replace with a 30 min flat walk.\n\nReason: Adding a conditiona
+ l gate ensures the athlete does not push into a long ride too soon after i
+ llness — self-reported slow return on 15 Aug means each session must be 
+ earned by prior recovery markers.\n\nAI coaching 2026-08-15
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260823-3@jean-tri
+DTSTAMP:20260815T101126Z
+DTSTART:20260823T070000
+DTEND:20260823T090000
+SUMMARY:[AI ADJUSTED] running — Replace with 35–45 min easy jog at 6:45
+ –7:15/km (HR ≤135 bpm
+DESCRIPTION:Replace with 35–45 min easy jog at 6:45–7:15/km (HR ≤135 
+ bpm) — approximately 5–6km. A near-3-hour long run one week after retu
+ rning from serious illness is a significant injury and relapse risk\; rebu
+ ild distance progressively.\n\nReason: 18.5km in week 1 of return from a 3
+ .5-week illness is disproportionate\; a short easy jog protects health and
+  still delivers the first real running stimulus of the comeback.\n\nAI coa
+ ching 2026-08-15
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260829-4@jean-tri
+DTSTAMP:20260815T101126Z
+DTSTART:20260829T070000
+DTEND:20260829T090000
+SUMMARY:[AI ADJUSTED] cycling — Skip the cycling session entirely this da
+ y. Athlete is abroa
+DESCRIPTION:Skip the cycling session entirely this day. Athlete is abroad t
+ he week of 24 Aug — bike access is unlikely and attempting a long ride i
+ n an unfamiliar environment during recovery week 2 adds unnecessary risk. 
+ Replace with 30 min bodyweight strength or full rest.\n\nReason: Athlete s
+ elf-reported being abroad week of 24 Aug with no confirmed bike access\; s
+ kipping avoids a logistical gap becoming a training stress during a still-
+ fragile return phase.\n\nAI coaching 2026-08-15
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260830-5@jean-tri
+DTSTAMP:20260815T101126Z
+DTSTART:20260830T070000
+DTEND:20260830T090000
+SUMMARY:[AI ADJUSTED] running — Cap at 60–70 min easy run at 6:30–7:0
+ 0/km (approximately 9–1
+DESCRIPTION:Cap at 60–70 min easy run at 6:30–7:00/km (approximately 9
+ –10km)\, abroad-friendly flat route. This is week 2 of return\; doubling
+  last week's run distance is sufficient progression without overreaching.\
+ n\nReason: A 19km long run in week 2 of illness recovery is excessive\; ca
+ pping at ~10km keeps the Half Oceanman build on track while preventing a s
+ etback that could cost far more than one session.\n\nAI coaching 2026-08-1
+ 5
+END:VEVENT
+END:VCALENDAR
