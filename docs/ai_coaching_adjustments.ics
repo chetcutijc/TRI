@@ -5,86 +5,93 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260823-0@jean-tri
-DTSTAMP:20260822T122246Z
+DTSTAMP:20260822T124423Z
 DTSTART:20260823T070000
 DTEND:20260823T090000
-SUMMARY:[AI ADJUSTED] running — Easy aerobic jog of 45–55 min at 6:30
- –7:00/km (HR ≤138 bpm)\;
-DESCRIPTION:Easy aerobic jog of 45–55 min at 6:30–7:00/km (HR ≤138 bp
- m)\; stop immediately if cardiac drift occurs. No distance target.\n\nReas
- on: After weeks of near-zero training due to illness (self-reported 15 Aug
- ) and consistently depleted body battery\, jumping straight to a 180-min l
- ong run poses a significant injury and overload risk — a short easy run 
- rebuilds the habit safely.\n\nAI coaching 2026-08-22
+SUMMARY:[AI ADJUSTED] running — Easy aerobic run of 60–70 min at 6:30
+ –6:50/km\, HR ≤138 bpm. 
+DESCRIPTION:Easy aerobic run of 60–70 min at 6:30–6:50/km\, HR ≤138 b
+ pm. Stop immediately if HR drifts upward without pace change (cardiac drif
+ t = still not recovered). No distance target.\n\nReason: Athlete reported 
+ illness on 15 Aug and has logged virtually no training in 4 weeks\; jumpin
+ g straight into a 180-min long run risks setback — a short easy run is b
+ oth safer and diagnostically useful for gauging recovery state.\n\nAI coac
+ hing 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260827-1@jean-tri
-DTSTAMP:20260822T122246Z
+DTSTAMP:20260822T124423Z
 DTSTART:20260827T070000
 DTEND:20260827T090000
-SUMMARY:[AI ADJUSTED] cycling — Cap at 50 min at the lower end of Z2 (128
- –145W)\, flat effort
-DESCRIPTION:Cap at 50 min at the lower end of Z2 (128–145W)\, flat effort
- \, HR ≤138 bpm. Stop at any sign of fatigue accumulation.\n\nReason: Two
-  weeks post-illness with only one low-load session completed\, jumping to 
- a full 90-min Z2 ride risks extending the recovery hole — 50 min achieve
- s the aerobic stimulus without the fatigue cost.\n\nAI coaching 2026-08-22
+SUMMARY:[AI ADJUSTED] cycling — Shorten to 50–55 min at 110–140W (low
+ er Z2 only)\; stop if HR
+DESCRIPTION:Shorten to 50–55 min at 110–140W (lower Z2 only)\; stop if 
+ HR exceeds 145 bpm at these watts. Do not attempt the full 90-min block th
+ is week.\n\nReason: Following illness and near-zero training load for 4 we
+ eks\, a 90-min Z2 ride mid-week is too large a jump — 50 min at controll
+ ed intensity keeps the aerobic stimulus without overloading a system still
+  rebuilding.\n\nAI coaching 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260829-2@jean-tri
-DTSTAMP:20260822T122246Z
+UID:ai-coaching-20260828-2@jean-tri
+DTSTAMP:20260822T124423Z
+DTSTART:20260828T070000
+DTEND:20260828T090000
+SUMMARY:[AI ADJUSTED] swimming — Retain as the anchor session of the week
+ . Aim for 3\,000–3\,50
+DESCRIPTION:Retain as the anchor session of the week. Aim for 3\,000–3\,5
+ 00m total with 2×750m continuous swims at 2:25–2:30/100m as the core se
+ t\, surrounded by easy warm-up/cool-down. If fatigue is high on the day\, 
+ reduce continuous efforts to 2×500m but keep total time at 75 min.\n\nRea
+ son: With 42 days to the Half Oceanman 5000m swim and almost no training l
+ ogged\, this session is the single highest-leverage fitness opportunity th
+ is week and must be protected — framing it around continuous 750m blocks
+  builds race-specific endurance most efficiently.\n\nAI coaching 2026-08-2
+ 2
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260829-3@jean-tri
+DTSTAMP:20260822T124423Z
 DTSTART:20260829T070000
 DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] cycling — Keep the 60 min easy ride (≤130W) as th
- e sole session for th
-DESCRIPTION:Keep the 60 min easy ride (≤130W) as the sole session for the
-  day\; drop the added evening swim entirely this week.\n\nReason: Doubling
-  up on the same day (ride + 2\,000–2\,500m swim) is excessive load for a
- n athlete only just returning from illness — the Friday race-simulation 
- swim is the higher-priority swim session and must be protected by keeping 
- Saturday light.\n\nAI coaching 2026-08-22
+SUMMARY:[AI ADJUSTED] cycling — Keep as 60 min easy at 110–130W. Skip t
+ he AI-added evening o
+DESCRIPTION:Keep as 60 min easy at 110–130W. Skip the AI-added evening op
+ en-water swim on this day — doing swim + bike on the same day is appropr
+ iate only once weekly volume is re-established. Focus Saturday on the ride
+  only.\n\nReason: The AI-added 60-min evening swim creates a double-sessio
+ n day that is premature given the athlete is still in early recovery from 
+ illness\; the Friday race-simulation swim is the swim priority this weeken
+ d.\n\nAI coaching 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260830-3@jean-tri
-DTSTAMP:20260822T122246Z
+UID:ai-coaching-20260830-4@jean-tri
+DTSTAMP:20260822T124423Z
 DTSTART:20260830T070000
 DTEND:20260830T090000
-SUMMARY:[AI ADJUSTED] running — Easy aerobic run of 60–75 min at 6:30
- –7:00/km (HR ≤140 bpm)\;
-DESCRIPTION:Easy aerobic run of 60–75 min at 6:30–7:00/km (HR ≤140 bp
- m)\; extend to 90 min only if the first hour felt genuinely comfortable wi
- th no drift.\n\nReason: A 19km long run in Week 10\, following three weeks
-  of essentially no running due to illness\, is an acute load spike that sh
- arply increases injury risk — a stepped re-introduction to long running 
- is essential before returning to full distances.\n\nAI coaching 2026-08-22
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260903-4@jean-tri
-DTSTAMP:20260822T122246Z
-DTSTART:20260903T070000
-DTEND:20260903T090000
-SUMMARY:[AI ADJUSTED] running — Replace with 35 min easy run at 6:15–6:
- 30/km (HR ≤142 bpm) p
-DESCRIPTION:Replace with 35 min easy run at 6:15–6:30/km (HR ≤142 bpm) 
- plus 2×5 min at 5:50/km with 3 min easy recovery — no full tempo block 
- yet.\n\nReason: Introducing sustained tempo effort in Week 11 is premature
-  given the detraining and illness block\; short controlled pickups maintai
- n running economy without the physiological demand of a full tempo run on 
- undertrained legs.\n\nAI coaching 2026-08-22
+SUMMARY:[AI ADJUSTED] running — Cap at 90 min easy at 6:30–6:50/km (app
+ roximately 12–13km). 
+DESCRIPTION:Cap at 90 min easy at 6:30–6:50/km (approximately 12–13km).
+  Negative-split approach only if feeling genuinely strong in the final 20 
+ min. Rebuild long run length by ~15 min per week from here.\n\nReason: A 1
+ 9km long run the week after returning from illness (with a curtailed long 
+ run the previous Sunday) would represent a >100% single-week load jump —
+  90 min is a meaningful stimulus while keeping injury risk low.\n\nAI coac
+ hing 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260905-5@jean-tri
-DTSTAMP:20260822T122246Z
+DTSTAMP:20260822T124423Z
 DTSTART:20260905T070000
 DTEND:20260905T090000
-SUMMARY:[AI ADJUSTED] cycling — Cap at 150 min (approx 65–70km) at 128
- –155W\; no Z3 blocks. E
-DESCRIPTION:Cap at 150 min (approx 65–70km) at 128–155W\; no Z3 blocks.
-  Extend to 180 min only if HR remains stable and RPE is genuinely easy thr
- oughout.\n\nReason: A 240-min long ride would be the biggest single traini
- ng load since illness and risks a setback three weeks before the Half Ocea
- nman — stepping up to 150 min first maintains the build without over-str
- essing an athlete still re-establishing base fitness.\n\nAI coaching 2026-
- 08-22
+SUMMARY:[AI ADJUSTED] cycling — Reduce to 150–180 min (approximately 65
+ –75km) at 128–160W\; i
+DESCRIPTION:Reduce to 150–180 min (approximately 65–75km) at 128–160W
+ \; include 2×10 min at 170–177W in the middle if the first hour feels c
+ ontrolled. This is a stepping-stone week\, not yet a full peak long ride.\
+ n\nReason: Jumping from near-zero training to a 4-hour long ride in week 1
+ 1 after illness is high injury/fatigue risk\; a 2.5–3 hour controlled ri
+ de preserves the aerobic stimulus while allowing the body to re-adapt prog
+ ressively.\n\nAI coaching 2026-08-22
 END:VEVENT
 END:VCALENDAR
