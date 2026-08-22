@@ -4,88 +4,89 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20260816-0@jean-tri
-DTSTAMP:20260821T125332Z
-DTSTART:20260816T070000
-DTEND:20260816T090000
-SUMMARY:[AI ADJUSTED] running — 20–25 min flat walk only (no jogging) a
- t fully conversationa
-DESCRIPTION:20–25 min flat walk only (no jogging) at fully conversational
-  effort\; if body battery on waking is below 40\, replace with full rest. 
- No run target today.\n\nReason: Athlete reported still sick on 15 August 
- — a walk/jog test is premature on day 1 back\; walking only reduces rela
- pse risk while allowing a genuine first assessment of readiness.\n\nAI coa
- ching 2026-08-15
+UID:ai-coaching-20260823-0@jean-tri
+DTSTAMP:20260822T012207Z
+DTSTART:20260823T070000
+DTEND:20260823T090000
+SUMMARY:[AI ADJUSTED] running — Replace with an easy 60–70 min continuo
+ us run at 6:30–7:00/k
+DESCRIPTION:Replace with an easy 60–70 min continuous run at 6:30–7:00/
+ km (HR ≤138 bpm)\; stop immediately if cardiac drift appears. No distanc
+ e target.\n\nReason: After three weeks of near-zero training and self-repo
+ rted illness (15 Aug)\, a 180-min long run carries significant injury and 
+ overreach risk — a short easy run re-establishes the habit without stres
+ sing an under-recovered system.\n\nAI coaching 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260822-1@jean-tri
-DTSTAMP:20260821T125332Z
+DTSTAMP:20260822T012207Z
 DTSTART:20260822T070000
 DTEND:20260822T090000
-SUMMARY:[AI ADJUSTED] cycling — Cap at 45 min easy spin at 100–120W (HR
-  ≤130 bpm)\; stop earl
-DESCRIPTION:Cap at 45 min easy spin at 100–120W (HR ≤130 bpm)\; stop ea
- rly if HR drifts above 135 or perceived effort rises. Do not target durati
- on — quality of recovery response is the metric.\n\nReason: With only a 
- few days back from illness\, 60 minutes remains ambitious\; a 45-minute ce
- iling with a conservative power cap better protects against setback while 
- still providing a meaningful aerobic stimulus.\n\nAI coaching 2026-08-15
+SUMMARY:[AI ADJUSTED] cycling — Reduce to 40 min very easy spin at 90–1
+ 10W (HR ≤125 bpm) or 
+DESCRIPTION:Reduce to 40 min very easy spin at 90–110W (HR ≤125 bpm) or
+  skip entirely if body battery on waking is below 30.\n\nReason: Body batt
+ ery has been consistently in single digits to low 30s through 21 August\; 
+ even the already-adjusted recovery ride risks being too stimulating if fat
+ igue has not resolved overnight.\n\nAI coaching 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260823-2@jean-tri
-DTSTAMP:20260821T125332Z
-DTSTART:20260823T070000
-DTEND:20260823T090000
-SUMMARY:[AI ADJUSTED] running — Replace with 45–55 min easy continuous 
- jog at 6:45–7:15/km (
-DESCRIPTION:Replace with 45–55 min easy continuous jog at 6:45–7:15/km 
- (HR ≤135 bpm)\; walk breaks permitted freely. 18.5km is not achievable s
- afely one week post-illness.\n\nReason: Athlete has had effectively zero s
- tructured running for 3.5+ weeks due to illness\; jumping to a 180-min lon
- g run risks injury and relapse — a 50-min easy effort rebuilds the habit
-  safely.\n\nAI coaching 2026-08-15
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260825-3@jean-tri
-DTSTAMP:20260821T125332Z
+UID:ai-coaching-20260825-2@jean-tri
+DTSTAMP:20260822T012207Z
 DTSTART:20260825T070000
 DTEND:20260825T090000
-SUMMARY:[AI ADJUSTED] running — 35 min easy run at 6:30–7:00/km (HR ≤
- 140 bpm)\; omit the opti
-DESCRIPTION:35 min easy run at 6:30–7:00/km (HR ≤140 bpm)\; omit the op
- tional 1km stimulus entirely this week — two solid easy weeks must be lo
- gged before any intensity is reintroduced.\n\nReason: Athlete is abroad th
- is week and recovering from illness\; maintaining pure easy aerobic runnin
- g without intensity additions protects the return trajectory per athlete-r
- eported context from 15 August.\n\nAI coaching 2026-08-15
+SUMMARY:[AI ADJUSTED] running — Keep the 35 min easy run at 6:30–7:00/k
+ m (HR ≤135 bpm)\; omit
+DESCRIPTION:Keep the 35 min easy run at 6:30–7:00/km (HR ≤135 bpm)\; om
+ it the strides entirely this week — no intensity until at least two cons
+ ecutive days of body battery above 50.\n\nReason: Athlete is still in earl
+ y return-to-training phase post-illness\; adding any speed stimulus before
+  base aerobic function is restored risks a setback and would eat into the 
+ already narrow Half Oceanman preparation window.\n\nAI coaching 2026-08-22
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260829-4@jean-tri
-DTSTAMP:20260821T125332Z
+UID:ai-coaching-20260829-3@jean-tri
+DTSTAMP:20260822T012207Z
 DTSTART:20260829T070000
 DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] cycling — Skip cycling entirely this day (athlete i
- s abroad without ac
-DESCRIPTION:Skip cycling entirely this day (athlete is abroad without acces
- s to their bike)\; replace with 60 min open-water or pool swim at easy eff
- ort (2:30–2:40/100m\, technique focus) as the primary aerobic session.\n
- \nReason: Athlete is abroad the week of 24 August with no bike access — 
- swim is the most race-critical discipline for Half Oceanman and should tak
- e priority when cycling is unavailable.\n\nAI coaching 2026-08-15
+SUMMARY:[AI ADJUSTED] cycling — Cap the ride at 45–60 min at 110–130W
+  (Z1–low Z2)\; drop the 
+DESCRIPTION:Cap the ride at 45–60 min at 110–130W (Z1–low Z2)\; drop 
+ the evening open-water swim addition — do not attempt a double-disciplin
+ e day until weekly training load has been re-established for at least 10 d
+ ays.\n\nReason: Adding a second discipline session on the same day (ride +
+  open-water swim) is premature given the three-week training gap and incom
+ plete wellness recovery evident through 22 August.\n\nAI coaching 2026-08-
+ 22
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260830-5@jean-tri
-DTSTAMP:20260821T125332Z
+UID:ai-coaching-20260830-4@jean-tri
+DTSTAMP:20260822T012207Z
 DTSTART:20260830T070000
 DTEND:20260830T090000
-SUMMARY:[AI ADJUSTED] running — Cap at 60–70 min easy run at 6:30–7:0
- 0/km (HR ≤138 bpm)\; neg
-DESCRIPTION:Cap at 60–70 min easy run at 6:30–7:00/km (HR ≤138 bpm)\;
-  negative split structure dropped. This is only the athlete's second week 
- back and the second long-run attempt post-illness.\n\nReason: Progressing 
- from a ~50-min long run in week 9 to a full 19km in week 10 is an excessiv
- e jump for an athlete returning from 3.5 weeks of illness\; a 65-min ceili
- ng maintains week-on-week progression without overreach.\n\nAI coaching 20
- 26-08-15
+SUMMARY:[AI ADJUSTED] running — Replace with a 75–90 min easy run at 6:
+ 30–7:00/km (HR ≤140 b
+DESCRIPTION:Replace with a 75–90 min easy run at 6:30–7:00/km (HR ≤14
+ 0 bpm)\; if the Tuesday run this week felt controlled with no excessive fa
+ tigue\, extend to 100 min maximum.\n\nReason: Jumping straight to 19km lon
+ g runs in Week 10 after a multi-week illness absence risks overuse injury\
+ ; building incrementally from ~70 min this weekend protects the athlete ah
+ ead of the Half Oceanman in 42 days.\n\nAI coaching 2026-08-22
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260828-5@jean-tri
+DTSTAMP:20260822T012207Z
+DTSTART:20260828T070000
+DTEND:20260828T090000
+SUMMARY:[AI ADJUSTED] swimming — Retain this session as the week's swim p
+ riority but restruct
+DESCRIPTION:Retain this session as the week's swim priority but restructure
+  to 60 min: 400m warm-up\, 4×400m at 2:30/100m with 30s rest\, 200m cool-
+ down (~2\,200m total) — full race-simulation can return in Week 11 once 
+ swim fitness baseline is confirmed.\n\nReason: With the Half Oceanman 5\,0
+ 00m swim as the primary race target in 42 days\, swim fitness must be rebu
+ ilt carefully — a slightly reduced but race-pace-structured session this
+  week establishes the benchmark without overcooking an athlete returning f
+ rom illness.\n\nAI coaching 2026-08-22
 END:VEVENT
 END:VCALENDAR
