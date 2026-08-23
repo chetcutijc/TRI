@@ -236,5 +236,22 @@
     "elevation_gain": 192.0,
     "avg_pace": 1.0199999809265137,
     "vo2max_estimate": null
+  },
+  "24076261246": {
+    "id": 24076261246,
+    "name": "Naxxar Open Water Swimming",
+    "type": "open_water_swimming",
+    "start": "2026-08-22 18:04:50",
+    "duration_s": 561.6190185546875,
+    "distance_m": 351.260009765625,
+    "calories": 87.0,
+    "avg_hr": 120.0,
+    "max_hr": 136.0,
+    "training_load": 10.702194213867188,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.625,
+    "vo2max_estimate": null
   }
 }
