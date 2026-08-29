@@ -5,88 +5,89 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260829-0@jean-tri
-DTSTAMP:20260829T155927Z
+DTSTAMP:20260829T162548Z
 DTSTART:20260829T070000
 DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] cycling — 45-minute easy Z2 spin at 128–150W only
-  — no distance target
-DESCRIPTION:45-minute easy Z2 spin at 128–150W only — no distance targe
- t\, focus on leg activation and keeping HR below 140bpm. Skip if body batt
- ery is under 40 on waking.\n\nReason: Only one training session logged in 
- 4 weeks following illness (reported 15 Aug) and chronically low body batte
- ry\; jumping straight into a 100km ride risks injury or setback before the
-  Half Oceanman.\n\nAI coaching 2026-08-29
+SUMMARY:[AI ADJUSTED] cycling — Replace with a 45-minute very easy Z1–Z
+ 2 spin (90–130W\, flat
+DESCRIPTION:Replace with a 45-minute very easy Z1–Z2 spin (90–130W\, fl
+ at route) or rest entirely — no 100km target today\; body battery is at 
+ 38 and training load has been near zero for 4 weeks post-illness.\n\nReaso
+ n: Athlete reported illness on 15 Aug and has logged only one 9-minute ses
+ sion since\; jumping into a 60–100 min ride risks re-injury and sets bac
+ k the swim rebuild needed for the Half Oceanman in 35 days.\n\nAI coaching
+  2026-08-29
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260829-1@jean-tri
-DTSTAMP:20260829T155927Z
+DTSTAMP:20260829T162548Z
 DTSTART:20260829T070000
 DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] swimming — 30–40 min easy open-water swim\, 1\,00
- 0–1\,500m at fully comfor
-DESCRIPTION:30–40 min easy open-water swim\, 1\,000–1\,500m at fully co
- mfortable effort (no pace target) — treat as reactivation\, not a fitnes
- s session.\n\nReason: Post-illness return with near-zero training load in 
- 4 weeks\; attempting 2\,500m at race pace on the first proper training day
-  risks fatigue accumulation and discouragement — build confidence first.
- \n\nAI coaching 2026-08-29
+SUMMARY:[AI ADJUSTED] swimming — 30–40 min easy open-water or pool swim
+ \, 1\,200–1\,500m at comf
+DESCRIPTION:30–40 min easy open-water or pool swim\, 1\,200–1\,500m at 
+ comfortable effort (no pace target) — focus on re-establishing feel for 
+ the water after illness layoff.\n\nReason: Jumping straight to 2\,500m at 
+ race pace after 4 weeks of near-zero swimming post-illness is too aggressi
+ ve\; a lower-volume reintroduction protects health while kickstarting the 
+ swim build for the Half Oceanman.\n\nAI coaching 2026-08-29
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260830-2@jean-tri
-DTSTAMP:20260829T155927Z
+DTSTAMP:20260829T162548Z
 DTSTART:20260830T070000
 DTEND:20260830T090000
-SUMMARY:[AI ADJUSTED] running — 12–14km easy aerobic run @ 6:30–7:00/
- km — treat as a fitness
-DESCRIPTION:12–14km easy aerobic run @ 6:30–7:00/km — treat as a fitn
- ess check\; stop early if HR trends high or pace is forced. No negative-sp
- lit attempt.\n\nReason: Following illness and four weeks of essentially ze
- ro training\, jumping to a 19km long run creates significant injury risk a
- nd excessive fatigue that would compromise the following week's swim-focus
- ed build toward the Half Oceanman.\n\nAI coaching 2026-08-29
+SUMMARY:[AI ADJUSTED] running — Easy 40–50 min run @ 6:30–7:00/km (ap
+ prox. 6–7km) — treat as
+DESCRIPTION:Easy 40–50 min run @ 6:30–7:00/km (approx. 6–7km) — tre
+ at as a movement check-in\, not a long run\; stop early if any fatigue or 
+ illness symptoms return.\n\nReason: A 19km long run the day after returnin
+ g from near-zero training load and illness is a significant injury risk\; 
+ a short easy run reintroduces running stress safely while protecting recov
+ ery ahead of the swim-focused build.\n\nAI coaching 2026-08-29
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260905-3@jean-tri
-DTSTAMP:20260829T155927Z
+UID:ai-coaching-20260903-3@jean-tri
+DTSTAMP:20260829T162548Z
+DTSTART:20260903T070000
+DTEND:20260903T090000
+SUMMARY:[AI ADJUSTED] running — Replace with aerobic run 6:10–6:30/km\,
+  30–35 min — no tempo 
+DESCRIPTION:Replace with aerobic run 6:10–6:30/km\, 30–35 min — no te
+ mpo intensity\; assess how legs feel after the week 10 reintroduction befo
+ re adding threshold stress.\n\nReason: Returning from 4 weeks of illness-e
+ nforced rest (reported 15 Aug)\, inserting a hard tempo block in the first
+  full training week carries a high injury and relapse risk — aerobic run
+ ning consolidates the base without the intensity spike.\n\nAI coaching 202
+ 6-08-29
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260904-4@jean-tri
+DTSTAMP:20260829T162548Z
+DTSTART:20260904T070000
+DTEND:20260904T090000
+SUMMARY:[AI ADJUSTED] swimming — Pool swim 2\,000m including 6×200m at 2
+ :25–2:30/100m with 30s
+DESCRIPTION:Pool swim 2\,000m including 6×200m at 2:25–2:30/100m with 30
+ s rest — first race-pace exposure to benchmark fitness and build confide
+ nce for the Half Oceanman 5\,000m swim.\n\nReason: With the Half Oceanman 
+ 31 days away at race time\, a structured pace set this week gives early fe
+ edback on where swim fitness stands after the illness break and informs an
+ y further adjustments.\n\nAI coaching 2026-08-29
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260905-5@jean-tri
+DTSTAMP:20260829T162548Z
 DTSTART:20260905T070000
 DTEND:20260905T090000
-SUMMARY:[AI ADJUSTED] cycling — 75–90km @ 128–160W (lower end of Z2 o
- nly)\, cap at 200 min — 
-DESCRIPTION:75–90km @ 128–160W (lower end of Z2 only)\, cap at 200 min 
- — omit Z3 Tempo blocks this week\; treat as aerobic base re-establishmen
- t.\n\nReason: With only one week of return-to-training before this ride\, 
- a full 105km effort is premature\; a modest reduction protects recovery ca
- pacity needed for the three swim sessions per week required to prepare for
-  the Half Oceanman swim.\n\nAI coaching 2026-08-29
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260906-4@jean-tri
-DTSTAMP:20260829T155927Z
-DTSTART:20260906T070000
-DTEND:20260906T090000
-SUMMARY:[AI ADJUSTED] running — 15–16km @ 6:30–6:45/km — steady aer
- obic effort\, no negative 
-DESCRIPTION:15–16km @ 6:30–6:45/km — steady aerobic effort\, no negat
- ive split\; use HR cap of 150bpm as the primary guide.\n\nReason: Building
-  run volume too quickly after an illness-disrupted block risks injury\; a 
- conservative week 11 long run still progresses fitness while keeping energ
- y available for the swim-priority sessions targeting the Half Oceanman.\n\
- nAI coaching 2026-08-29
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260919-5@jean-tri
-DTSTAMP:20260829T155927Z
-DTSTART:20260919T070000
-DTEND:20260919T090000
-SUMMARY:[AI ADJUSTED] cycling — 90km easy Z2 ride @ 128–165W\, 180 min 
- maximum — this is the 
-DESCRIPTION:90km easy Z2 ride @ 128–165W\, 180 min maximum — this is th
- e final long ride before the Half Oceanman (35 days away)\; replace volume
-  with a 30-min open-water confidence swim in the afternoon (1\,500–2\,00
- 0m easy) to simulate race familiarity.\n\nReason: With the Half Oceanman o
- nly ~16 days away at this point\, a 115km bike effort risks accumulated fa
- tigue that undermines taper quality and swim readiness — a reduced ride 
- plus open-water swim better serves race preparation.\n\nAI coaching 2026-0
- 8-29
+SUMMARY:[AI ADJUSTED] cycling — Reduce to 75–90 km @ 128–160W (Z2 onl
+ y\, no tempo blocks)\, ap
+DESCRIPTION:Reduce to 75–90 km @ 128–160W (Z2 only\, no tempo blocks)\,
+  approximately 180–200 min — still a meaningful aerobic stimulus witho
+ ut overreaching in the first full week back.\n\nReason: A 105km ride in we
+ ek 11 is a large jump from essentially zero training load\; a shorter Z2 r
+ ide builds aerobic base appropriately and protects recovery capacity neede
+ d to sustain the swim frequency required for the Half Oceanman.\n\nAI coac
+ hing 2026-08-29
 END:VEVENT
 END:VCALENDAR
