@@ -4,94 +4,83 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20260823-0@jean-tri
-DTSTAMP:20260828T215326Z
-DTSTART:20260823T070000
-DTEND:20260823T090000
-SUMMARY:[AI ADJUSTED] running — Easy aerobic run of 60–70 min at 6:30
- –6:50/km\, HR ≤138 bpm. 
-DESCRIPTION:Easy aerobic run of 60–70 min at 6:30–6:50/km\, HR ≤138 b
- pm. Stop immediately if HR drifts upward without pace change (cardiac drif
- t = still not recovered). No distance target.\n\nReason: Athlete reported 
- illness on 15 Aug and has logged virtually no training in 4 weeks\; jumpin
- g straight into a 180-min long run risks setback — a short easy run is b
- oth safer and diagnostically useful for gauging recovery state.\n\nAI coac
- hing 2026-08-22
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260827-1@jean-tri
-DTSTAMP:20260828T215326Z
-DTSTART:20260827T070000
-DTEND:20260827T090000
-SUMMARY:[AI ADJUSTED] cycling — Shorten to 50–55 min at 110–140W (low
- er Z2 only)\; stop if HR
-DESCRIPTION:Shorten to 50–55 min at 110–140W (lower Z2 only)\; stop if 
- HR exceeds 145 bpm at these watts. Do not attempt the full 90-min block th
- is week.\n\nReason: Following illness and near-zero training load for 4 we
- eks\, a 90-min Z2 ride mid-week is too large a jump — 50 min at controll
- ed intensity keeps the aerobic stimulus without overloading a system still
-  rebuilding.\n\nAI coaching 2026-08-22
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260828-2@jean-tri
-DTSTAMP:20260828T215326Z
-DTSTART:20260828T070000
-DTEND:20260828T090000
-SUMMARY:[AI ADJUSTED] swimming — Retain as the anchor session of the week
- . Aim for 3\,000–3\,50
-DESCRIPTION:Retain as the anchor session of the week. Aim for 3\,000–3\,5
- 00m total with 2×750m continuous swims at 2:25–2:30/100m as the core se
- t\, surrounded by easy warm-up/cool-down. If fatigue is high on the day\, 
- reduce continuous efforts to 2×500m but keep total time at 75 min.\n\nRea
- son: With 42 days to the Half Oceanman 5000m swim and almost no training l
- ogged\, this session is the single highest-leverage fitness opportunity th
- is week and must be protected — framing it around continuous 750m blocks
-  builds race-specific endurance most efficiently.\n\nAI coaching 2026-08-2
- 2
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260829-3@jean-tri
-DTSTAMP:20260828T215326Z
+UID:ai-coaching-20260829-0@jean-tri
+DTSTAMP:20260829T061753Z
 DTSTART:20260829T070000
 DTEND:20260829T090000
-SUMMARY:[AI ADJUSTED] cycling — Keep as 60 min easy at 110–130W. Skip t
- he AI-added evening o
-DESCRIPTION:Keep as 60 min easy at 110–130W. Skip the AI-added evening op
- en-water swim on this day — doing swim + bike on the same day is appropr
- iate only once weekly volume is re-established. Focus Saturday on the ride
-  only.\n\nReason: The AI-added 60-min evening swim creates a double-sessio
- n day that is premature given the athlete is still in early recovery from 
- illness\; the Friday race-simulation swim is the swim priority this weeken
- d.\n\nAI coaching 2026-08-22
+SUMMARY:[AI ADJUSTED] cycling — 45-minute very easy spin at 100–130W (p
+ ure aerobic flush\, no
+DESCRIPTION:45-minute very easy spin at 100–130W (pure aerobic flush\, no
+  targets) — skip the 100 km distance entirely.\n\nReason: The athlete ha
+ s had near-zero training for 4 weeks post-illness and body battery is chro
+ nically depleted\; attempting a 100 km effort on the first day back risks 
+ setback rather than adaptation.\n\nAI coaching 2026-08-29
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260830-4@jean-tri
-DTSTAMP:20260828T215326Z
+UID:ai-coaching-20260829-1@jean-tri
+DTSTAMP:20260829T061753Z
+DTSTART:20260829T070000
+DTEND:20260829T090000
+SUMMARY:[AI ADJUSTED] swimming — 30-minute easy open-water swim (~1\,000
+ –1\,200m)\, purely to re
+DESCRIPTION:30-minute easy open-water swim (~1\,000–1\,200m)\, purely to 
+ re-establish feel for the water — no pace target\, no distance pressure.
+ \n\nReason: With the Half Oceanman 35 days away\, reintroducing open-water
+  swimming is correct\, but the volume and pace targets are too aggressive 
+ for a first session back after 4 weeks of illness-related inactivity.\n\nA
+ I coaching 2026-08-29
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260830-2@jean-tri
+DTSTAMP:20260829T061753Z
 DTSTART:20260830T070000
 DTEND:20260830T090000
-SUMMARY:[AI ADJUSTED] running — Cap at 90 min easy at 6:30–6:50/km (app
- roximately 12–13km). 
-DESCRIPTION:Cap at 90 min easy at 6:30–6:50/km (approximately 12–13km).
-  Negative-split approach only if feeling genuinely strong in the final 20 
- min. Rebuild long run length by ~15 min per week from here.\n\nReason: A 1
- 9km long run the week after returning from illness (with a curtailed long 
- run the previous Sunday) would represent a >100% single-week load jump —
-  90 min is a meaningful stimulus while keeping injury risk low.\n\nAI coac
- hing 2026-08-22
+SUMMARY:[AI ADJUSTED] running — Easy aerobic run of 10–12 km at 6:45–
+ 7:15/km\, stopping immed
+DESCRIPTION:Easy aerobic run of 10–12 km at 6:45–7:15/km\, stopping imm
+ ediately if fatigue or discomfort arises.\n\nReason: Jumping to 19 km afte
+ r 4 weeks of essentially zero running following illness is a significant i
+ njury and relapse risk\; a half-distance effort rebuilds continuity safely
+ .\n\nAI coaching 2026-08-29
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260905-5@jean-tri
-DTSTAMP:20260828T215326Z
+UID:ai-coaching-20260905-3@jean-tri
+DTSTAMP:20260829T061753Z
 DTSTART:20260905T070000
 DTEND:20260905T090000
-SUMMARY:[AI ADJUSTED] cycling — Reduce to 150–180 min (approximately 65
- –75km) at 128–160W\; i
-DESCRIPTION:Reduce to 150–180 min (approximately 65–75km) at 128–160W
- \; include 2×10 min at 170–177W in the middle if the first hour feels c
- ontrolled. This is a stepping-stone week\, not yet a full peak long ride.\
- n\nReason: Jumping from near-zero training to a 4-hour long ride in week 1
- 1 after illness is high injury/fatigue risk\; a 2.5–3 hour controlled ri
- de preserves the aerobic stimulus while allowing the body to re-adapt prog
- ressively.\n\nAI coaching 2026-08-22
+SUMMARY:[AI ADJUSTED] cycling — 75–90 km at 128–155W (lower end of Z2
+  only)\, capping ride ti
+DESCRIPTION:75–90 km at 128–155W (lower end of Z2 only)\, capping ride 
+ time at 180 min — no Z3 blocks.\n\nReason: Given only one easy bike sess
+ ion planned for Wk10 re-entry\, jumping straight to a full 105 km / 4-hour
+  ride in Wk11 is too large a single-week load increase for someone returni
+ ng from extended illness.\n\nAI coaching 2026-08-29
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260906-4@jean-tri
+DTSTAMP:20260829T061753Z
+DTSTART:20260906T070000
+DTEND:20260906T090000
+SUMMARY:[AI ADJUSTED] running — 14–15 km at 6:30–6:50/km (approx 100 
+ min) — steady aerobic\, 
+DESCRIPTION:14–15 km at 6:30–6:50/km (approx 100 min) — steady aerobi
+ c\, no negative-split attempt.\n\nReason: With a reduced Wk10 long run as 
+ the starting point\, a moderate step up to 14–15 km is appropriate progr
+ essive overload\; the full 19.5 km would exceed a safe 10% weekly volume i
+ ncrease from a near-zero base.\n\nAI coaching 2026-08-29
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260912-5@jean-tri
+DTSTAMP:20260829T061753Z
+DTSTART:20260912T070000
+DTEND:20260912T090000
+SUMMARY:[AI ADJUSTED] cycling — 90–100 km at 128–177W including 2×10
+  min at 178–200W tempo b
+DESCRIPTION:90–100 km at 128–177W including 2×10 min at 178–200W tem
+ po blocks — begin adding controlled intensity ahead of the Half Oceanman
+  on ~3 Oct.\n\nReason: By Wk12 the athlete should have rebuilt aerobic con
+ tinuity sufficiently to tolerate some tempo stimulus\, but keeping distanc
+ e at 90–100 km rather than 110 km preserves recovery capacity with the H
+ alf Oceanman now only ~21 days away.\n\nAI coaching 2026-08-29
 END:VEVENT
 END:VCALENDAR
