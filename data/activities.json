@@ -253,5 +253,22 @@
     "elevation_gain": null,
     "avg_pace": 0.625,
     "vo2max_estimate": null
+  },
+  "24171179868": {
+    "id": 24171179868,
+    "name": "Indoor Cycling",
+    "type": "indoor_cycling",
+    "start": "2026-08-30 12:42:37",
+    "duration_s": 2730.446044921875,
+    "distance_m": 20003.1796875,
+    "calories": 407.0,
+    "avg_hr": 132.0,
+    "max_hr": 160.0,
+    "training_load": 32.321044921875,
+    "avg_power": 123.0,
+    "normalized_power": 127.0,
+    "elevation_gain": null,
+    "avg_pace": 7.326000213623047,
+    "vo2max_estimate": 44.0
   }
 }
