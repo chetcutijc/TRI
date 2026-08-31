@@ -7,56 +7,68 @@
     "Your open-water swim pace on 30 Aug was ~28:47/100m at HR 161, which is very high intensity for that pace \u2014 focus on relaxed, efficient technique in pool sessions (bilateral breathing, long catch, controlled effort) to lower your HR at race pace before the Half Oceanman.",
     "The Wk13 long run (20.5km on 20 Sept) falls only 14 days before the Half Oceanman and is too much volume at this fitness level \u2014 flag this to reduce significantly to 10\u201312km easy to arrive at the race with fresh legs."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-08-31T23:30:19.735401+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-09-01",
-      "discipline": "cycling",
-      "current_session": "90 min steady endurance at 128\u2013177W (Z2) into Z3 Tempo, 50\u201360 min",
-      "proposed_session": "60 min easy spin at 110\u2013140W (Z1\u2013low Z2 only), no tempo blocks \u2014 treat as legs-activation after a long gap in training",
-      "change_type": "decrease",
-      "reason": "Only 3 sessions in 4 weeks means the body is deconditioned relative to plan assumptions; jumping straight into 90 min with Z3 blocks risks injury or excessive fatigue that derails the re-entry week."
-    },
-    {
-      "date": "2026-09-05",
-      "discipline": "cycling",
-      "current_session": "AI-adjusted 80km @ 128\u2013155W, cap 180 min",
-      "proposed_session": "60\u201370km @ 120\u2013145W (low Z2 only), cap at 150 min \u2014 keep it comfortable and stop if fatigue accumulates",
-      "change_type": "decrease",
-      "reason": "Chronic sleep deprivation (body battery frequently below 20) and near-zero training base mean even the AI-adjusted ride risks overcooking a detraining athlete in their first big weekend session back."
-    },
-    {
-      "date": "2026-09-06",
-      "discipline": "running",
-      "current_session": "AI-adjusted 13\u201314km @ 6:30\u20136:45/km, cap 90 min",
-      "proposed_session": "8\u201310km @ 6:45\u20137:00/km (pure easy aerobic), cap at 60 min \u2014 no pace pressure",
-      "change_type": "decrease",
-      "reason": "Following a reduced long ride on a low training base, 13\u201314km is still too large a first long run; a shorter, truly easy effort reduces injury risk and sets a sustainable weekly pattern heading into the Half Oceanman block."
-    },
-    {
-      "date": "2026-09-19",
-      "discipline": "cycling",
-      "current_session": "AI-adjusted 90km @ 128\u2013155W, cap 180 min, no Z3 blocks",
-      "proposed_session": "60km @ 120\u2013145W, cap at 120 min \u2014 prioritise feel over distance with race 15 days away",
-      "change_type": "decrease",
-      "reason": "15 days out from the Half Oceanman and coming off a low-volume 4-week block, a long 90km ride risks accumulated fatigue that won't fully clear before race day given the poor recovery baseline evident in wellness data."
-    },
-    {
-      "date": "2026-09-20",
-      "discipline": "running",
-      "current_session": "20.5km @ 6:15\u20136:45/km, 180 min",
-      "proposed_session": "10\u201312km @ 6:45\u20137:00/km easy, cap at 75 min \u2014 protect legs ahead of Half Oceanman swim race",
-      "change_type": "decrease",
-      "reason": "A 20.5km long run only 14 days before the Half Oceanman is excessive given the athlete's current fitness level and will not recover in time; the race is a swim event so leg freshness is secondary, but musculoskeletal stress from a big run can still impair race-day performance."
-    },
-    {
-      "date": "2026-09-18",
-      "discipline": "swimming",
-      "current_session": "AI-adjusted 3,000\u20133,500m with 2,000m continuous block @ 2:30/100m then 4\u00d7200m @ 2:25/100m",
-      "proposed_session": "2,500\u20133,000m total: warm-up drills, one 1,000m continuous block @ 2:30/100m, then 4\u00d7200m @ 2:25/100m with full rest \u2014 reduce continuous block length given low swim base",
-      "change_type": "decrease",
-      "reason": "With only ~2km of swimming logged in the past 4 weeks, a 2,000m continuous block 15 days before the race is a large aerobic demand on an underprepared swimmer; halving the continuous block still builds race-specific feel without the injury or fatigue cost."
+      "applied_at": "2026-08-31T23:32:39.317722+00:00",
+      "generated_at": "2026-08-31T23:30:19.735401+00:00",
+      "summary": "Training volume over the last 4 weeks has been critically low \u2014 only 3 sessions logged (one short open-water swim, one indoor ride, and one longer open-water swim), representing a significant under-training relative to the plan's demands. Sleep is consistently poor, averaging under 6 hours most nights, and body battery readings are frequently very low (below 30), indicating chronic under-recovery. With the Half Oceanman 5km swim just 33 days away, the priority must be re-establishing consistency immediately, particularly in the water, while managing fatigue carefully.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-09-01",
+          "discipline": "cycling",
+          "current_session": "90 min steady endurance at 128\u2013177W (Z2) into Z3 Tempo, 50\u201360 min",
+          "proposed_session": "60 min easy spin at 110\u2013140W (Z1\u2013low Z2 only), no tempo blocks \u2014 treat as legs-activation after a long gap in training",
+          "change_type": "decrease",
+          "reason": "Only 3 sessions in 4 weeks means the body is deconditioned relative to plan assumptions; jumping straight into 90 min with Z3 blocks risks injury or excessive fatigue that derails the re-entry week."
+        },
+        {
+          "date": "2026-09-05",
+          "discipline": "cycling",
+          "current_session": "AI-adjusted 80km @ 128\u2013155W, cap 180 min",
+          "proposed_session": "60\u201370km @ 120\u2013145W (low Z2 only), cap at 150 min \u2014 keep it comfortable and stop if fatigue accumulates",
+          "change_type": "decrease",
+          "reason": "Chronic sleep deprivation (body battery frequently below 20) and near-zero training base mean even the AI-adjusted ride risks overcooking a detraining athlete in their first big weekend session back."
+        },
+        {
+          "date": "2026-09-06",
+          "discipline": "running",
+          "current_session": "AI-adjusted 13\u201314km @ 6:30\u20136:45/km, cap 90 min",
+          "proposed_session": "8\u201310km @ 6:45\u20137:00/km (pure easy aerobic), cap at 60 min \u2014 no pace pressure",
+          "change_type": "decrease",
+          "reason": "Following a reduced long ride on a low training base, 13\u201314km is still too large a first long run; a shorter, truly easy effort reduces injury risk and sets a sustainable weekly pattern heading into the Half Oceanman block."
+        },
+        {
+          "date": "2026-09-19",
+          "discipline": "cycling",
+          "current_session": "AI-adjusted 90km @ 128\u2013155W, cap 180 min, no Z3 blocks",
+          "proposed_session": "60km @ 120\u2013145W, cap at 120 min \u2014 prioritise feel over distance with race 15 days away",
+          "change_type": "decrease",
+          "reason": "15 days out from the Half Oceanman and coming off a low-volume 4-week block, a long 90km ride risks accumulated fatigue that won't fully clear before race day given the poor recovery baseline evident in wellness data."
+        },
+        {
+          "date": "2026-09-20",
+          "discipline": "running",
+          "current_session": "20.5km @ 6:15\u20136:45/km, 180 min",
+          "proposed_session": "10\u201312km @ 6:45\u20137:00/km easy, cap at 75 min \u2014 protect legs ahead of Half Oceanman swim race",
+          "change_type": "decrease",
+          "reason": "A 20.5km long run only 14 days before the Half Oceanman is excessive given the athlete's current fitness level and will not recover in time; the race is a swim event so leg freshness is secondary, but musculoskeletal stress from a big run can still impair race-day performance."
+        },
+        {
+          "date": "2026-09-18",
+          "discipline": "swimming",
+          "current_session": "AI-adjusted 3,000\u20133,500m with 2,000m continuous block @ 2:30/100m then 4\u00d7200m @ 2:25/100m",
+          "proposed_session": "2,500\u20133,000m total: warm-up drills, one 1,000m continuous block @ 2:30/100m, then 4\u00d7200m @ 2:25/100m with full rest \u2014 reduce continuous block length given low swim base",
+          "change_type": "decrease",
+          "reason": "With only ~2km of swimming logged in the past 4 weeks, a 2,000m continuous block 15 days before the race is a large aerobic demand on an underprepared swimmer; halving the continuous block still builds race-specific feel without the injury or fatigue cost."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-08-31T23:30:19.735401+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-08-31T23:32:39.317722+00:00",
+  "applied_count": 6
 }
