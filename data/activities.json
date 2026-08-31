@@ -270,5 +270,22 @@
     "elevation_gain": null,
     "avg_pace": 7.326000213623047,
     "vo2max_estimate": 44.0
+  },
+  "24175883571": {
+    "id": 24175883571,
+    "name": "San Pawl il-Bahar Open Water Swimming",
+    "type": "open_water_swimming",
+    "start": "2026-08-30 18:43:32",
+    "duration_s": 2732.047119140625,
+    "distance_m": 1581.43994140625,
+    "calories": 623.0,
+    "avg_hr": 161.0,
+    "max_hr": 184.0,
+    "training_load": 188.87344360351562,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.5789999961853027,
+    "vo2max_estimate": null
   }
 }
