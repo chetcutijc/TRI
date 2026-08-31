@@ -978,6 +978,10 @@ function updateRacesFile(mutator, successMsg) {{
 
     fetch(url, {{ headers: headers }})
       .then(function(res) {{
+          if (res.status === 401 || res.status === 403) {{
+              localStorage.removeItem("gh_pat_apply_coaching");
+              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
+          }}
           if (!res.ok) throw new Error("Could not read races.json (status " + res.status + ")");
           return res.json();
       }})
@@ -998,6 +1002,10 @@ function updateRacesFile(mutator, successMsg) {{
       }})
       .then(function(res) {{
           if (res === null) return;
+          if (res.status === 401 || res.status === 403) {{
+              localStorage.removeItem("gh_pat_apply_coaching");
+              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
+          }}
           if (!res.ok) {{
               return res.json().then(function(b) {{
                   throw new Error(res.status + ": " + (b.message || "write failed"));
@@ -1424,6 +1432,10 @@ function saveAthleteNote() {{
 
     fetch(url, {{ headers: headers }})
       .then(function(res) {{
+          if (res.status === 401 || res.status === 403) {{
+              localStorage.removeItem("gh_pat_apply_coaching");
+              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
+          }}
           if (!res.ok) throw new Error("Could not read athlete_notes.json (status " + res.status + ")");
           return res.json();
       }})
@@ -1443,6 +1455,10 @@ function saveAthleteNote() {{
           }});
       }})
       .then(function(res) {{
+          if (res.status === 401 || res.status === 403) {{
+              localStorage.removeItem("gh_pat_apply_coaching");
+              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
+          }}
           if (!res.ok) {{
               return res.json().then(function(b) {{
                   throw new Error(res.status + ": " + (b.message || "write failed"));
@@ -2438,13 +2454,18 @@ function triggerWorkflow(workflowFile, statusElId, label) {{
             return;
         }}
         if (res.status === 401 || res.status === 403) {{
+            // Clear the bad token immediately, regardless of whether we can
+            // parse GitHub's error body — otherwise a retry silently reuses
+            // the same broken token with no prompt to fix it.
+            localStorage.removeItem("gh_pat_apply_coaching");
             res.json().then(function(body) {{
                 var msg = (body && body.message) ? body.message : "permission denied";
                 status.textContent = "\u274c " + res.status + ": " + msg +
-                    " \u2014 your token may be missing a required permission.";
+                    " \u2014 token cleared, tap the button again to paste a new one.";
                 status.style.color = "#FF7A59";
             }}).catch(function() {{
-                status.textContent = "\u274c Token invalid, expired, or missing permissions.";
+                status.textContent = "\u274c Token invalid, expired, or missing permissions " +
+                    "\u2014 token cleared, tap the button again to paste a new one.";
                 status.style.color = "#FF7A59";
             }});
             return;
