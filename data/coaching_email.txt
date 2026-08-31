@@ -1,49 +1,49 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-08-29
+   Generated: 2026-08-31
    33 days to Half Oceanman  |  41 days to Treviso 10K Tiramisu Run  |  160 days to Marathon  |  293 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show critically low training volume — only a single 9-minute open-water swim is logged — almost certainly explained by the illness reported on 15 August. Sleep is consistently poor (most nights under 6 hours, many under 5) and body battery is chronically depleted, confirming the body is still recovering rather than absorbing training stress. With the Half Oceanman 5,000m swim just 35 days away, the immediate priority is rebuilding swim volume carefully and safely before attempting any intensity.
+Training volume over the last 4 weeks has been very low — only 3 sessions recorded (one short open-water swim, one indoor ride, and one harder open-water swim on 30 August), which is well below what the plan prescribes. Sleep quality is consistently poor, with most nights under 6 hours and body battery readings frequently in the low-to-mid range, suggesting chronic under-recovery. With the Half Oceanman swim (5,000m) just 33 days away, the priority must shift immediately to rebuilding swim-specific volume and aerobic base while protecting recovery.
 
 COACHING SUGGESTIONS:
-  1. Prioritise swim volume above all other disciplines this week and next: the Half Oceanman is 35 days away and the 5,000m distance requires at minimum 3 swim sessions per week hitting 2,000–2,500m each — start conservative given the recent illness and ramp weekly.
-  2. Sleep is the single biggest limiter right now — most nights are under 5.5 hours and body battery rarely exceeds 60; aim for a strict 7–8 hour sleep window to allow any training to actually produce adaptation before the race.
-  3. Do not attempt the planned 100km long ride today (29 Aug) at full distance; your body battery is at 38–60 and you have had essentially zero training load for 4 weeks — treat this weekend as a reintroduction block, not a training block.
-  4. For the Half Oceanman swim target of 2:30/100m, include at least one pace-specific set per week (e.g. 6×200m at 2:25–2:30/100m with 30s rest) from week 11 onward to build confidence at race pace before the taper.
-  5. Hold off on full tempo run intensity (5:35–5:50/km blocks) until at least week 12 given the post-illness return; replace week 11 Thursday tempo with a comfortable aerobic 30–35 min run at 6:15–6:30/km to assess run legs safely.
+  1. With the Half Oceanman 5,000m swim 33 days away, your swim volume is the most urgent gap — commit to both pool sessions each week (Tuesday and Friday) and target at least 2,000m per session, building toward 3,000m by mid-September to give yourself confidence at race pace of 2:30/100m.
+  2. Your average sleep is well under 7 hours on most nights and body battery is regularly below 40 — prioritise 7–8 hours of sleep as non-negotiable, as no training adaptation can outpace chronic sleep debt at this stage of your build.
+  3. The open-water swim on 30 August produced a training load of 189 and average HR of 161 — treat this week's Tuesday swim as technique-focused rather than hard effort, easing back into pool rhythm before ramping intensity in Weeks 12–13.
+  4. The Treviso 10K is 41 days away (one week after the Half Oceanman) — the tempo run sessions in Weeks 11 and 12 (5:35–5:50/km) align well with your 5:45/km race target, so hit these consistently and they double as race-specific prep.
+  5. Given the very low recent training load, avoid jumping straight into the full 240-minute long ride on Saturday 5 September — treat Week 11 as a re-entry week, keeping efforts controlled at the lower end of prescribed power zones.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-08-29 [CYCLING]
-    Current:  Wk10 Long Ride — 60 min bike or 2,000–2,500m swim replacement at easy effort
-    Proposed: Replace with a 45-minute very easy Z1–Z2 spin (90–130W, flat route) or rest entirely — no 100km target today; body battery is at 38 and training load has been near zero for 4 weeks post-illness.
-    Reason:   Athlete reported illness on 15 Aug and has logged only one 9-minute session since; jumping into a 60–100 min ride risks re-injury and sets back the swim rebuild needed for the Half Oceanman in 35 days.
+  • 2026-09-05 [CYCLING]
+    Current:  105km long ride @ 128–177W, 240 min
+    Proposed: 80km @ 128–155W (lower half of Z2 only), cap at 180 min — no Z3 Tempo blocks this week
+    Reason:   Only 3 sessions logged in 4 weeks means fitness base is lower than the plan assumes; a reduced re-entry long ride avoids injury or burnout while rebuilding aerobic volume safely.
 
-  • 2026-08-29 [SWIMMING]
-    Current:  AI-added 60 min open-water swim, 2,000–2,500m at 2:25–2:30/100m in the evening
-    Proposed: 30–40 min easy open-water or pool swim, 1,200–1,500m at comfortable effort (no pace target) — focus on re-establishing feel for the water after illness layoff.
-    Reason:   Jumping straight to 2,500m at race pace after 4 weeks of near-zero swimming post-illness is too aggressive; a lower-volume reintroduction protects health while kickstarting the swim build for the Half Oceanman.
-
-  • 2026-08-30 [RUNNING]
-    Current:  Wk10 Long Run — 19.0km @ 6:15–6:45/km, 180 min
-    Proposed: Easy 40–50 min run @ 6:30–7:00/km (approx. 6–7km) — treat as a movement check-in, not a long run; stop early if any fatigue or illness symptoms return.
-    Reason:   A 19km long run the day after returning from near-zero training load and illness is a significant injury risk; a short easy run reintroduces running stress safely while protecting recovery ahead of the swim-focused build.
-
-  • 2026-09-03 [RUNNING]
-    Current:  Wk11 Evening Tempo run — 5:35–5:50/km, 30–40 min continuous
-    Proposed: Replace with aerobic run 6:10–6:30/km, 30–35 min — no tempo intensity; assess how legs feel after the week 10 reintroduction before adding threshold stress.
-    Reason:   Returning from 4 weeks of illness-enforced rest (reported 15 Aug), inserting a hard tempo block in the first full training week carries a high injury and relapse risk — aerobic running consolidates the base without the intensity spike.
+  • 2026-09-06 [RUNNING]
+    Current:  19.5km long run @ 6:15–6:45/km, 180 min
+    Proposed: 13–14km @ 6:30–6:45/km (comfortable aerobic), cap at 90 min
+    Reason:   Following a reduced long ride the day before and a very low training base, cutting the long run volume prevents excessive fatigue and reduces injury risk in a re-entry week.
 
   • 2026-09-04 [SWIMMING]
-    Current:  Wk11 Pool Swim (Friday) — 2km+ at ≤2:30/100m
-    Proposed: Pool swim 2,000m including 6×200m at 2:25–2:30/100m with 30s rest — first race-pace exposure to benchmark fitness and build confidence for the Half Oceanman 5,000m swim.
-    Reason:   With the Half Oceanman 31 days away at race time, a structured pace set this week gives early feedback on where swim fitness stands after the illness break and informs any further adjustments.
+    Current:  Pool swim 2km+ @ ≤2:30/100m, 60 min
+    Proposed: Pool swim 2,200–2,500m with emphasis on technique drills (catch, pull, bilateral breathing) and 6×100m @ 2:25/100m — build feel before race-pace sets next week
+    Reason:   With the Half Oceanman 5,000m swim 33 days away and almost no recent swim training, technique consolidation this session sets a better foundation than simply hitting minimum distance at pace.
 
-  • 2026-09-05 [CYCLING]
-    Current:  Wk11 Long Ride — 105km @ 128–177W, 240 min
-    Proposed: Reduce to 75–90 km @ 128–160W (Z2 only, no tempo blocks), approximately 180–200 min — still a meaningful aerobic stimulus without overreaching in the first full week back.
-    Reason:   A 105km ride in week 11 is a large jump from essentially zero training load; a shorter Z2 ride builds aerobic base appropriately and protects recovery capacity needed to sustain the swim frequency required for the Half Oceanman.
+  • 2026-09-11 [SWIMMING]
+    Current:  Pool swim 2km+ @ ≤2:30/100m, 60 min
+    Proposed: Pool swim 2,500–3,000m including a continuous 1,500m aerobic block @ 2:30/100m to simulate open-water sustained effort
+    Reason:   The Half Oceanman 5,000m swim is 22 days away from this date — a longer continuous set this week begins bridging the gap between pool sessions and race-distance demands.
+
+  • 2026-09-18 [SWIMMING]
+    Current:  Pool swim 2km+ @ ≤2:30/100m, 60 min
+    Proposed: Pool swim 3,000–3,500m with a 2,000m continuous block @ 2:30/100m, then 4×200m race-pace efforts @ 2:25/100m
+    Reason:   15 days before the Half Oceanman, this is the last high-volume swim session before a taper — building to 3,000–3,500m now confirms race readiness and builds confidence for the 5,000m distance.
+
+  • 2026-09-19 [CYCLING]
+    Current:  115km long ride @ 128–177W, 240 min
+    Proposed: 90km @ 128–155W, cap at 180 min — no Z3 blocks; keep legs fresh ahead of Half Oceanman on ~4 October
+    Reason:   With the Half Oceanman swim race 15 days away, reducing long-ride load this weekend protects swim-specific freshness and prevents cumulative fatigue from compromising race performance.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
