@@ -460,5 +460,35 @@
     "sleep_score": null,
     "body_battery_max": 51,
     "body_battery_min": 29
+  },
+  "2026-09-05": {
+    "sleep_duration_min": null,
+    "sleep_score": null,
+    "body_battery_max": 21,
+    "body_battery_min": 1
+  },
+  "2026-09-04": {
+    "sleep_duration_min": null,
+    "sleep_score": null,
+    "body_battery_max": 0,
+    "body_battery_min": 55
+  },
+  "2026-09-03": {
+    "sleep_duration_min": 238.0,
+    "sleep_score": null,
+    "body_battery_max": 42,
+    "body_battery_min": 39
+  },
+  "2026-09-02": {
+    "sleep_duration_min": 294.0,
+    "sleep_score": null,
+    "body_battery_max": 59,
+    "body_battery_min": 71
+  },
+  "2026-09-01": {
+    "sleep_duration_min": 320.6,
+    "sleep_score": null,
+    "body_battery_max": 59,
+    "body_battery_min": 62
   }
 }
