@@ -462,10 +462,10 @@
     "body_battery_min": 29
   },
   "2026-09-05": {
-    "sleep_duration_min": null,
+    "sleep_duration_min": 242.0,
     "sleep_score": null,
-    "body_battery_max": 21,
-    "body_battery_min": 1
+    "body_battery_max": 46,
+    "body_battery_min": 58
   },
   "2026-09-04": {
     "sleep_duration_min": null,

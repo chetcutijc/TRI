@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-Training volume over the last 4 weeks has been extremely low — just three sessions totalling roughly 100 minutes — against a backdrop of chronic sleep deprivation, with most nights averaging under 6 hours and body battery frequently in the 10–40 range. With the Half Oceanman 5,000m swim only 28 days away and an open-water swim base of just 2km completed recently, the swim discipline is the most urgent underprepared area. The upcoming plan has been sensibly adjusted in places, but some sessions still carry excessive volume or intensity given the athlete's current recovery status.
+Training volume over the last 4 weeks has been extremely low — just 4 sessions totalling roughly 158 minutes of meaningful work — with no cycling or running recorded and swim volume far below what is needed for a 5,000m open-water race in 28 days. Wellness data paints a concerning picture: sleep is chronically short (often 3–5 hours, frequently below 4), body battery is regularly in the 10–40 range, and there are multiple near-zero days, indicating the body is carrying significant accumulated fatigue. The priority right now must be sleep and recovery first, then a careful, progressive ramp in swim volume over the next 3–4 weeks to give the Half Oceanman the best possible preparation.
 
 COACHING SUGGESTIONS:
-  1. Make sleep the top priority for the next 7–10 days — body battery has been near zero on multiple occasions and no amount of training will compensate for chronic under-recovery at this level; aim for a minimum 7 hours per night as a non-negotiable.
-  2. Swim frequency must increase immediately to 4 sessions per week through to race week: the Half Oceanman 5,000m swim is 28 days away and your current open-water base is only 2km, so pool continuity (not just volume) is critical to building confidence at race pace.
-  3. Keep this weekend's long ride (Sep 5) in the 60–70km range at low Z2 as already adjusted, but be prepared to cut it short if HR drifts above 140 bpm — a fatigued body in Malta's September heat will accumulate load faster than the numbers suggest.
-  4. The Wk12 long ride (Sep 12, 110km/240 min) and long run (Sep 13, 20km) are back-to-back big days only 20 days before the Half Oceanman — given the very low training base, consider capping the long ride at 80–90km and the long run at 14–15km to avoid arriving at race week already depleted.
-  5. In the final 7 days before the Half Oceanman (from Sep 26 onward), shift to full taper mode: one short pool swim with race-pace efforts, one easy 45-min spin, and complete rest 2 days before — do not attempt the planned 120km ride or 21km run in that window.
+  1. Sleep is the single biggest limiter right now — body battery is consistently below 40 and sleep duration averages under 5.5 hours; target a minimum of 7 hours per night this week before adding any training stress.
+  2. Swim volume is critically low for a 5,000m race in 28 days: prioritise getting in the water 3 times per week immediately, building toward a 2,500–3,000m continuous or near-continuous session by race week at ≤2:30/100m.
+  3. Treat the Wk12 long ride (110km, 240 min on 12 Sep) as a firm cap of 90 min / 60km given the near-zero training base — the plan's AI-adjusted Wk13 long ride (60km, 120 min) is already well-calibrated for this phase.
+  4. The Wk12 long run on 13 Sep (20km, 180 min) is excessive given zero running has been recorded in 4 weeks — cap it at 10–12km easy to avoid injury ahead of both the Half Oceanman swim and the Treviso 10K.
+  5. In the final 7 days before the Half Oceanman (from 27 Sep), reduce all non-swim sessions to easy maintenance only and do one final open-water 2,000m dress-rehearsal swim on ~30 Sep to build confidence in race conditions.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-09-08 [RUNNING]
-    Current:  Wk12 Tempo run 90 min, 5:35–5:50/km, 30–40 min continuous
-    Proposed: Replace with a 45-min easy aerobic run at 6:45–7:00/km, HR cap 140 bpm — no tempo work this week.
-    Reason:   Coming off near-zero training for 4 weeks with chronically depleted body battery, jumping straight into tempo intensity risks injury and will not produce a fitness benefit — aerobic base must be rebuilt first.
-
   • 2026-09-12 [CYCLING]
-    Current:  Wk12 Long Ride 110km @ 128–177W, 240 min
-    Proposed: Cap at 80–85km @ 120–145W (low Z2 only), 150–170 min maximum — no Z3 tempo blocks.
-    Reason:   20 days out from the Half Oceanman with a 4-week near-zero training base, a 240-min ride would create excessive fatigue that cannot be absorbed before race day.
+    Current:  Wk12 Long Ride: 110km @ 128–177W, 240 min
+    Proposed: 60–70km @ 120–145W (low Z2), hard cap at 90 minutes — stop earlier if HR drifts or fatigue accumulates
+    Reason:   Zero cycling has been recorded in the last 4 weeks; jumping straight to a 4-hour, 110km ride from a near-zero base risks injury and excessive fatigue 21 days before the Half Oceanman.
 
   • 2026-09-13 [RUNNING]
-    Current:  Wk12 Long Run 20km @ 6:15–6:45/km, 180 min
-    Proposed: 14–15km @ 6:45–7:00/km easy, cap at 100 min — flat route, no pace pressure.
-    Reason:   Running a 20km long run the day after a reduced long ride, only 19 days before the Half Oceanman, is excessive given the athlete's current fitness base and risks arriving at race week injured or overtired.
-
-  • 2026-09-26 [CYCLING]
-    Current:  Wk14 Long Ride 120km @ 128–177W, 240 min
-    Proposed: Skip entirely or replace with a 45-min very easy spin at 100–120W — this falls 7 days before the Half Oceanman swim race.
-    Reason:   A 240-min ride 7 days before the Half Oceanman (Oct 3) would prevent proper taper and leave the athlete carrying residual fatigue into the race.
-
-  • 2026-09-27 [RUNNING]
-    Current:  Wk14 Long Run 21km @ 6:15–6:45/km, 180 min
-    Proposed: Replace with a 30–35 min easy jog at 7:00/km — legs-fresh maintenance only, 6 days before race.
-    Reason:   A 21km long run 6 days before the Half Oceanman swim race would leave the athlete fatigued on race morning; a short easy jog maintains movement without accumulating load.
+    Current:  Wk12 Long Run: 20km @ 6:15–6:45/km, 180 min
+    Proposed: 10–12km @ 6:45–7:00/km easy aerobic, hard cap at 75 minutes — no pace pressure
+    Reason:   No running has been recorded in the last 4 weeks; a 20km first long run 20 days before the Half Oceanman and 23 days before Treviso 10K creates serious injury and fatigue risk.
 
   • 2026-09-15 [CYCLING]
-    Current:  Wk13 Intervals 5×5 min @ 210–244W (Z4 Threshold), 90 min total
-    Proposed: Replace with 60 min steady Z2 endurance at 130–150W — preserve aerobic quality without threshold stress 18 days before race.
-    Reason:   Z4 threshold intervals 18 days before the Half Oceanman provide no meaningful race-specific benefit for a 5,000m swim event and add recovery debt that compresses the taper window.
+    Current:  Wk13 Evening session: 5×5min intervals @ 210–244W (Z4 Threshold), 60–75 min
+    Proposed: 40–50 min steady Z2 @ 128–160W — remove threshold intervals entirely this week
+    Reason:   Threshold intervals are inappropriate with a near-zero 4-week training base, chronically low body battery, and 18 days to race — aerobic consolidation is the priority, not intensity.
+
+  • 2026-09-24 [CYCLING]
+    Current:  Wk14 Evening session: 5×5min intervals @ 210–244W (Z4 Threshold), 60–75 min
+    Proposed: 30–40 min very easy spin @ 110–130W (active recovery) — no intensity 9 days before Half Oceanman
+    Reason:   Nine days out from the Half Oceanman, threshold cycling intervals risk residual fatigue going into race week; legs should be feeling fresh and responsive, not loaded.
+
+  • 2026-09-26 [CYCLING]
+    Current:  Wk14 Long Ride: 120km @ 128–177W, 240 min
+    Proposed: 45–60 min easy spin @ 120–140W, flat route — purely to keep legs moving, no distance target
+    Reason:   A 4-hour, 120km ride 7 days before the Half Oceanman is a race-week threat — at this point in the taper, volume should be sharply reduced to arrive fresh.
+
+  • 2026-09-27 [RUNNING]
+    Current:  Wk14 Long Run: 21km @ 6:15–6:45/km, 180 min
+    Proposed: 8–10km easy jog @ 7:00/km, cap at 60 min — final easy aerobic flush before race week
+    Reason:   A 21km long run 6 days before the Half Oceanman swim race is excessive and risks leaving the athlete fatigued on race day; a short easy jog maintains aerobic stimulus without accumulating load.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
