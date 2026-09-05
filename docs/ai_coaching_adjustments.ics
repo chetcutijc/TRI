@@ -5,80 +5,80 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260912-0@jean-tri
-DTSTAMP:20260905T141902Z
+DTSTAMP:20260905T145040Z
 DTSTART:20260912T070000
 DTEND:20260912T090000
-SUMMARY:[AI ADJUSTED] cycling — 60–70km @ 120–145W (low Z2)\, hard ca
- p at 90 minutes — stop e
-DESCRIPTION:60–70km @ 120–145W (low Z2)\, hard cap at 90 minutes — st
- op earlier if HR drifts or fatigue accumulates\n\nReason: Zero cycling has
-  been recorded in the last 4 weeks\; jumping straight to a 4-hour\, 110km 
- ride from a near-zero base risks injury and excessive fatigue 21 days befo
- re the Half Oceanman.\n\nAI coaching 2026-09-05
+SUMMARY:[AI ADJUSTED] cycling — 70–80km @ 120–145W (low Z2 only)\, ca
+ pped at 165 min — no tem
+DESCRIPTION:70–80km @ 120–145W (low Z2 only)\, capped at 165 min — no
+  tempo blocks this week given near-zero cycling base over the past 4 weeks
+ \n\nReason: Only one 46-min indoor ride logged in the past 4 weeks makes a
+  110km/4-hour ride an unjustifiable load spike that risks deep fatigue 20 
+ days before the Half Oceanman.\n\nAI coaching 2026-09-05
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260913-1@jean-tri
-DTSTAMP:20260905T141902Z
+DTSTAMP:20260905T145040Z
 DTSTART:20260913T070000
 DTEND:20260913T090000
-SUMMARY:[AI ADJUSTED] running — 10–12km @ 6:45–7:00/km easy aerobic\,
-  hard cap at 75 minutes 
-DESCRIPTION:10–12km @ 6:45–7:00/km easy aerobic\, hard cap at 75 minute
- s — no pace pressure\n\nReason: No running has been recorded in the last
-  4 weeks\; a 20km first long run 20 days before the Half Oceanman and 23 d
- ays before Treviso 10K creates serious injury and fatigue risk.\n\nAI coac
- hing 2026-09-05
+SUMMARY:[AI ADJUSTED] running — 14–16km @ 6:45–7:00/km easy\, capped 
+ at 100 min — no pace pre
+DESCRIPTION:14–16km @ 6:45–7:00/km easy\, capped at 100 min — no pace
+  pressure\, purely aerobic\n\nReason: No running activity is recorded in t
+ he last 4 weeks\, making a 20km long run an injury risk and a recovery bur
+ den that would compromise swim training quality in the critical weeks befo
+ re the Half Oceanman.\n\nAI coaching 2026-09-05
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260915-2@jean-tri
-DTSTAMP:20260905T141902Z
-DTSTART:20260915T070000
-DTEND:20260915T090000
-SUMMARY:[AI ADJUSTED] cycling — 40–50 min steady Z2 @ 128–160W — re
- move threshold intervals 
-DESCRIPTION:40–50 min steady Z2 @ 128–160W — remove threshold interva
- ls entirely this week\n\nReason: Threshold intervals are inappropriate wit
- h a near-zero 4-week training base\, chronically low body battery\, and 18
-  days to race — aerobic consolidation is the priority\, not intensity.\n
- \nAI coaching 2026-09-05
+UID:ai-coaching-20260919-2@jean-tri
+DTSTAMP:20260905T145040Z
+DTSTART:20260919T070000
+DTEND:20260919T090000
+SUMMARY:[AI ADJUSTED] cycling — 45–50km @ 120–140W\, capped at 100 mi
+ n — reduce further given
+DESCRIPTION:45–50km @ 120–140W\, capped at 100 min — reduce further g
+ iven this is 14 days from the Half Oceanman and the body needs to be fresh
+ ening\, not loading\n\nReason: With the Half Oceanman 14 days out and a ve
+ ry low base\, keeping this ride conservative protects the athlete's abilit
+ y to complete quality swim sessions in the final two weeks of prep.\n\nAI 
+ coaching 2026-09-05
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260924-3@jean-tri
-DTSTAMP:20260905T141902Z
-DTSTART:20260924T070000
-DTEND:20260924T090000
-SUMMARY:[AI ADJUSTED] cycling — 30–40 min very easy spin @ 110–130W (
- active recovery) — no i
-DESCRIPTION:30–40 min very easy spin @ 110–130W (active recovery) — n
- o intensity 9 days before Half Oceanman\n\nReason: Nine days out from the 
- Half Oceanman\, threshold cycling intervals risk residual fatigue going in
- to race week\; legs should be feeling fresh and responsive\, not loaded.\n
- \nAI coaching 2026-09-05
+UID:ai-coaching-20260920-3@jean-tri
+DTSTAMP:20260905T145040Z
+DTSTART:20260920T070000
+DTEND:20260920T090000
+SUMMARY:[AI ADJUSTED] running — 8–10km @ 7:00/km easy\, capped at 60 mi
+ n — shorten further to
+DESCRIPTION:8–10km @ 7:00/km easy\, capped at 60 min — shorten further 
+ to protect legs ahead of the final race-prep swim week\n\nReason: 13 days 
+ before the Half Oceanman\, running should be minimal maintenance only so t
+ hat swim sessions in the final week can be completed with maximum quality 
+ and energy.\n\nAI coaching 2026-09-05
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260926-4@jean-tri
-DTSTAMP:20260905T141902Z
+DTSTAMP:20260905T145040Z
 DTSTART:20260926T070000
 DTEND:20260926T090000
-SUMMARY:[AI ADJUSTED] cycling — 45–60 min easy spin @ 120–140W\, flat
-  route — purely to keep 
-DESCRIPTION:45–60 min easy spin @ 120–140W\, flat route — purely to k
- eep legs moving\, no distance target\n\nReason: A 4-hour\, 120km ride 7 da
- ys before the Half Oceanman is a race-week threat — at this point in the
-  taper\, volume should be sharply reduced to arrive fresh.\n\nAI coaching 
- 2026-09-05
+SUMMARY:[AI ADJUSTED] cycling — Skip entirely — replace with full rest 
+ or a 20–30 min very e
+DESCRIPTION:Skip entirely — replace with full rest or a 20–30 min very 
+ easy flat spin at under 100W as a leg flush only\n\nReason: This falls 7 d
+ ays before the Half Oceanman\; a 4-hour ride at this point would leave the
+  athlete fatigued through race day and should be removed from the taper we
+ ek entirely.\n\nAI coaching 2026-09-05
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260927-5@jean-tri
-DTSTAMP:20260905T141902Z
+DTSTAMP:20260905T145040Z
 DTSTART:20260927T070000
 DTEND:20260927T090000
-SUMMARY:[AI ADJUSTED] running — 8–10km easy jog @ 7:00/km\, cap at 60 m
- in — final easy aerobi
-DESCRIPTION:8–10km easy jog @ 7:00/km\, cap at 60 min — final easy aero
- bic flush before race week\n\nReason: A 21km long run 6 days before the Ha
- lf Oceanman swim race is excessive and risks leaving the athlete fatigued 
- on race day\; a short easy jog maintains aerobic stimulus without accumula
- ting load.\n\nAI coaching 2026-09-05
+SUMMARY:[AI ADJUSTED] running — Skip entirely — replace with full rest 
+ or a 20-min easy walk
+DESCRIPTION:Skip entirely — replace with full rest or a 20-min easy walk/
+ mobility session\n\nReason: A 21km long run 6 days before the Half Oceanma
+ n is incompatible with arriving fresh\; this must be removed from the tape
+ r week to protect race-day performance.\n\nAI coaching 2026-09-05
 END:VEVENT
 END:VCALENDAR
