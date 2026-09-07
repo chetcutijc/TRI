@@ -455,12 +455,31 @@ def _target_str(ps):
     return " · ".join(parts) or ps.get("summary", "")
 
 
+def safe_round(x, ndigits=None):
+    """round() that never crashes on NaN — plain round(nan) raises
+    ValueError: cannot convert float NaN to integer (a real Python gotcha:
+    `if x:` treats NaN as truthy, so naive None/falsy guards don't catch it).
+    Returns None for NaN/None input instead."""
+    if x is None:
+        return None
+    try:
+        if x != x:  # NaN is the only value that isn't equal to itself
+            return None
+    except TypeError:
+        return None
+    return round(x, ndigits)
+
+
 def _evaluate(ps, act, disc):
-    actual_dur = round(act["duration_min"])
-    actual_dist_km = round(act["distance_km"], 1) if act.get("distance_km") else None
+    actual_dur = safe_round(act["duration_min"]) or 0
+    actual_dist_km = safe_round(act.get("distance_km"), 1)
     actual_pace = speed_to_pace(act.get("avg_pace")) if disc in ("running", "swimming") else None
     actual_power = act.get("avg_power") if disc == "cycling" else None
-    actual_speed_kmh = round(act.get("avg_pace", 0) * 3.6, 1) if disc == "cycling" and act.get("avg_pace") else None
+    if actual_power is not None and actual_power != actual_power:  # NaN check
+        actual_power = None
+    actual_speed_kmh = None
+    if disc == "cycling" and act.get("avg_pace"):
+        actual_speed_kmh = safe_round(act.get("avg_pace", 0) * 3.6, 1)
     planned_dur = ps.get("planned_duration_min")
     planned_dist = ps.get("target_distance_km")
 
@@ -532,20 +551,24 @@ def _evaluate(ps, act, disc):
         pace_str = fmt_pace(actual_pace)
         if ps.get("pace_low_sec_km"):
             mid = (ps["pace_low_sec_km"] + ps["pace_high_sec_km"]) / 2
-            d = round(actual_pace - mid)
-            pace_str += f" ({'+' if d>0 else ''}{d}s vs target)"
+            d = safe_round(actual_pace - mid)
+            if d is not None:
+                pace_str += f" ({'+' if d>0 else ''}{d}s vs target)"
         parts.append(pace_str)
 
     if disc == "cycling":
         if actual_speed_kmh:
             parts.append(f"{actual_speed_kmh} km/h")
         if actual_power:
-            pwr = f"{round(actual_power)}W"
-            if ps.get("power_low_w"):
-                mid = (ps["power_low_w"] + ps["power_high_w"]) / 2
-                d = round(actual_power - mid)
-                pwr += f" ({'+' if d>0 else ''}{d}W vs target)"
-            parts.append(pwr)
+            pwr_val = safe_round(actual_power)
+            if pwr_val is not None:
+                pwr = f"{pwr_val}W"
+                if ps.get("power_low_w"):
+                    mid = (ps["power_low_w"] + ps["power_high_w"]) / 2
+                    d = safe_round(actual_power - mid)
+                    if d is not None:
+                        pwr += f" ({'+' if d>0 else ''}{d}W vs target)"
+                parts.append(pwr)
 
     if disc == "swimming" and actual_pace:
         p100 = actual_pace / 10
