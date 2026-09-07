@@ -304,5 +304,22 @@
     "elevation_gain": null,
     "avg_pace": 0.5820000171661377,
     "vo2max_estimate": null
+  },
+  "24266376831": {
+    "id": 24266376831,
+    "name": "Swieqi Road Cycling",
+    "type": "road_biking",
+    "start": "2026-09-06 07:27:44",
+    "duration_s": 13433.6787109375,
+    "distance_m": 66669.78125,
+    "calories": 1720.0,
+    "avg_hr": 131.0,
+    "max_hr": 173.0,
+    "training_load": 115.48123168945312,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": 630.0,
+    "avg_pace": 4.9629998207092285,
+    "vo2max_estimate": null
   }
 }
