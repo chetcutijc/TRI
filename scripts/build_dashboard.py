@@ -17,6 +17,26 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from plotly.subplots import make_subplots
 
+# ── NaN-safe round() ──────────────────────────────────────────────────────────
+# Plain round(nan) with no ndigits raises "ValueError: cannot convert float NaN
+# to integer" — a real Python gotcha, since `if x:` treats NaN as truthy (unlike
+# 0 or None), so ordinary falsy-guards don't protect against it. Garmin activity
+# data legitimately has NaN for missing fields (e.g. avg_power on a session with
+# no power meter, avg_hr with no HR strap) — this has already crashed the build
+# twice in two different call sites. Rather than hunt down every individual
+# round() call across the file, override the builtin itself so ANY call to
+# round() anywhere below is automatically safe, for good.
+_builtin_round = round
+
+
+def round(number, ndigits=None):  # noqa: A001 — intentional shadow of builtin
+    try:
+        if number != number:  # NaN is the only value that isn't equal to itself
+            return 0 if ndigits is None else 0.0
+    except TypeError:
+        pass  # not a number (e.g. None) — let the builtin raise its normal error
+    return _builtin_round(number, ndigits)
+
 
 def make_touch_icon_b64(canvas=180, bg="#5B6EF5"):
     """Generate a triathlon composite emoji home-screen icon as base64 PNG.
