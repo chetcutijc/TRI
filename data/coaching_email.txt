@@ -1,49 +1,49 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-09-07
+   Generated: 2026-09-08
    25 days to Half Oceanman  |  33 days to Treviso 10K Tiramisu Run  |  152 days to Marathon  |  285 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-Training volume over the last 4 weeks has been very low — only 5 sessions totalling around 6.5 hours — which is well below what's needed for a Half Oceanman 5,000m swim in 26 days. Sleep data is consistently poor (averaging under 6 hours most nights, with several nights under 5 hours) and body battery frequently sits in the 20–50 range, indicating chronic under-recovery that is likely suppressing both training capacity and adaptation. The open-water swim pace of ~28–29 min/km is significantly slower than the 2:30/100m (25:00/km) race target, making swim-specific work the most urgent priority heading into race week.
+Over the last 4 weeks, training volume has been low and inconsistent, with sleep chronically short (many nights under 6 hours, several under 5) and body battery frequently depleted — pointing to accumulated fatigue that will cap adaptation. The swim base is the most pressing concern: only three open-water sessions totalling ~4km logged, with average pace around 28:30/100m, well outside the 2:30/100m target for the Half Oceanman 5,000m swim in 25 days. Cycling shows reasonable aerobic base (2+ hour rides at Z2) but running is completely absent from the last 4 weeks, which needs addressing ahead of the Treviso 10K in 33 days.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all else this week — body battery data shows sustained low readings (frequently 12–46) driven by consistent 3–5 hour nights; even adding 60–90 minutes of sleep per night will improve adaptation from the sessions you do complete.
-  2. The 5,000m swim race target at 2:30/100m requires sustained open-water pace — your recent OW swims averaged ~28:45/km (~2:53/100m), so this week's pool sessions should include longer continuous aerobic blocks (1,000–1,500m unbroken) at 2:30/100m to close that gap before taper week.
-  3. Keep the Tuesday tempo run on 8 Sep but cap the continuous effort at 20–25 minutes rather than 30–40 minutes given low body battery (30) and poor recent sleep — quality over duration this close to a race.
-  4. The Saturday 110km long ride on 12 Sep is well-timed as a final aerobic stimulus before the Half Oceanman taper, but keep watts firmly in Z2 (128–160W) and cut short if fatigue accumulates — arriving rested at the swim start matters more than ride volume.
-  5. After the Half Oceanman swim on 3 Oct, allow 3–5 days of genuine recovery before resuming structured training — a 5km open-water race is a meaningful effort and the Treviso 10K is only 8 days later, so the post-race week must be light.
+  1. Prioritise pool swimming this week and next — with 25 days to the Half Oceanman 5,000m, every pool session matters; hit the planned 2,500–3,000m sessions and focus on holding 2:30/100m pace for extended continuous blocks to build confidence for the race distance.
+  2. Protect sleep aggressively for the next 3 weeks — with body battery routinely peaking below 60 and multiple nights under 5 hours, recovery is compromised; aim for a consistent 7–8 hours before and after key sessions to allow adaptation and arrive at race day with a full battery.
+  3. Reintroduce running this week with the planned Tuesday tempo session but treat it as an aerobic effort (keep HR controlled, 5:50/km end of the range) given zero running load in the last 4 weeks — avoid aggressive intensity until the legs show they can handle consecutive sessions.
+  4. For the Half Oceanman taper week (Wk15), Sunday's 21.5km long run the day after the race is excessive for recovery — this should be replaced with a gentle shakeout or full rest to protect both race performance and post-race recovery.
+  5. The planned Wk13 Saturday ride is already AI-adjusted to 60km/120 min at reduced power, which is appropriate — honour this cap and resist extending it, as arriving at the Half Oceanman with heavy legs from a long ride 13 days prior would directly compromise swim performance.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-09-08 [RUNNING]
-    Current:  Tempo run 90 min, 5:35–5:50/km, 30–40 min continuous
-    Proposed: Tempo run 60 min total: 10 min easy warm-up, 20–25 min continuous at 5:35–5:50/km, 10 min easy cool-down — stop the continuous block early if HR exceeds 170 bpm
-    Reason:   Body battery was only 30 on 7 Sep after poor sleep (230 min) and a 224-min ride the day before; shortening the tempo block reduces injury risk and cumulative fatigue 26 days out from the Half Oceanman swim.
-
-  • 2026-09-12 [CYCLING]
-    Current:  110km long ride @ 128–177W, 240 min, add 3x10 min Z3 blocks if bike-peak week
-    Proposed: 90–100km @ 128–160W (lower half of Z2 only), cap at 210 min — omit Z3 tempo blocks entirely this week
-    Reason:   With the Half Oceanman swim 21 days away and chronic under-recovery visible in sleep and body battery data, keeping this ride strictly in lower Z2 preserves aerobic stimulus without accumulating the fatigue that Z3 blocks would add at this stage.
+    Current:  Wk12 Evening session — Tempo run 5:35–5:50/km, 30–40min continuous, 90min slot
+    Proposed: Easy-to-moderate aerobic run 35–40min @ 5:50–6:10/km, HR cap 145bpm — no true tempo effort; treat as a return-to-run session given zero running in the last 4 weeks.
+    Reason:   No running has been logged in the last 4 weeks, so launching straight into 30–40min of tempo pace risks injury or excessive soreness that would compromise the rest of the week's key sessions.
 
   • 2026-09-13 [RUNNING]
-    Current:  20km long run @ 6:15–6:45/km, 180 min
-    Proposed: 14–15km @ 6:30–6:45/km, cap at 100 min — easy conversational effort, no negative-split push
-    Reason:   A full 20km long run the day after a long ride, with the Half Oceanman swim 20 days away, risks excessive leg fatigue and compounds the under-recovery pattern already shown in the wellness data — a shorter run still maintains run-base continuity.
+    Current:  Wk12 Long Run — 20.0km @ 6:15–6:45/km, 180min
+    Proposed: 12–14km @ 6:30–6:45/km, cap at 90–95min — comfortable aerobic effort, flat route, stop if legs feel heavy.
+    Reason:   With zero running base in the last 4 weeks and the Half Oceanman swim just 22 days away, a 20km long run this weekend risks injury or excessive fatigue at exactly the point the athlete should be building swim-specific sharpness.
 
-  • 2026-09-19 [CYCLING]
-    Current:  [AI ADJUSTED] 60km @ 120–145W, cap at 120 min
-    Proposed: 45km @ 120–140W, cap at 90 min — purely aerobic spin, stop early if fatigue or HR climbs
-    Reason:   At 15 days out from the Half Oceanman the priority is showing up to the swim fresh; trimming this already-adjusted ride by an additional 15–20 min further protects leg freshness without sacrificing aerobic maintenance.
+  • 2026-09-26 [CYCLING]
+    Current:  Wk14 Long Ride — 120km @ 128–177W, 240min
+    Proposed: 80–90km @ 128–160W, cap at 180min — include 2×10min @ 178–200W tempo blocks mid-ride to maintain quality without excessive fatigue load 7 days from race.
+    Reason:   A 4-hour, 120km ride only 7 days before the Half Oceanman 5,000m swim is too heavy a load; reducing to 3 hours preserves aerobic stimulus while ensuring the athlete arrives at race week with fresh legs and shoulders.
 
-  • 2026-09-20 [RUNNING]
-    Current:  [AI ADJUSTED] 10–12km @ 6:45–7:00/km, cap at 75 min
-    Proposed: 8–10km @ 6:45–7:00/km, cap at 60 min — flat easy effort, HR ≤ 135 bpm throughout
-    Reason:   14 days before the Half Oceanman swim, keeping the long run under 60 minutes ensures legs are not carrying residual soreness into the final pre-race taper week.
+  • 2026-09-27 [RUNNING]
+    Current:  Wk14 Long Run — 21.0km @ 6:15–6:45/km, 180min
+    Proposed: 10–12km @ 6:30–7:00/km, cap at 75min — easy aerobic, no surges, prioritise feel over distance.
+    Reason:   Running 21km six days before the Half Oceanman creates unnecessary fatigue and potential muscle soreness that would directly affect swim performance on race day.
+
+  • 2026-10-03 [REST]
+    Current:  Wk15 Long Ride — already AI-skipped (race day, Half Oceanman 5,000m swim)
+    Proposed: Race day — Half Oceanman 5,000m swim. Full rest otherwise; light warm-up swim only pre-race. No training.
+    Reason:   Race day conflict — the Half Oceanman 5,000m swim takes place on this date and no training should be scheduled around it.
 
   • 2026-10-04 [RUNNING]
-    Current:  21.5km long run @ 6:15–6:45/km, 180 min
-    Proposed: Easy 30–40 min jog at 7:00+/km, HR ≤ 130 bpm — this is one day after the Half Oceanman swim race and the Treviso 10K is 6 days away; treat this as active recovery only
-    Reason:   Running 21.5km the day after a 5,000m open-water race would severely compromise recovery for the Treviso 10K on 10 Oct — a short easy jog promotes blood flow without adding meaningful fatigue.
+    Current:  Wk15 Long Run — 21.5km @ 6:15–6:45/km, 180min (day after Half Oceanman race)
+    Proposed: Full rest or optional 20–25min very easy walk/jog @ 7:30+/km — no structured running, focus on post-race recovery and nutrition.
+    Reason:   Running 21.5km the day after a 5,000m open-water race will severely compromise recovery and risks injury; the body needs at minimum 24–48 hours of genuine rest post-race before any meaningful training.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
