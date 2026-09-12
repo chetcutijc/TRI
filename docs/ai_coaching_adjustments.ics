@@ -5,82 +5,83 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260913-0@jean-tri
-DTSTAMP:20260912T034715Z
+DTSTAMP:20260912T144327Z
 DTSTART:20260913T070000
 DTEND:20260913T090000
-SUMMARY:[AI ADJUSTED] running — 12km easy @ 6:45–7:00/km\, cap at 85 mi
- n\, flat route\, HR ≤140
-DESCRIPTION:12km easy @ 6:45–7:00/km\, cap at 85 min\, flat route\, HR 
- ≤140 bpm — no negative-split effort\n\nReason: Chronic sleep debt and 
- body battery consistently below 50 make a 20km long run today high-injury-
- risk with only 21 days to the Half Oceanman swim\; a shortened easy run pr
- eserves aerobic stimulus without compounding fatigue.\n\nAI coaching 2026-
- 09-12
+SUMMARY:[AI ADJUSTED] running — Easy 10km run @ 6:45–7:00/km\, cap at 7
+ 0 min — flat\, conversa
+DESCRIPTION:Easy 10km run @ 6:45–7:00/km\, cap at 70 min — flat\, conve
+ rsational effort\, HR ≤135 bpm\n\nReason: A 20km long run today\, 21 day
+ s out from the Half Oceanman\, accumulates unnecessary residual fatigue wi
+ thout delivering adaptations that will aid the swim race\; a short easy ru
+ n maintains run feel without cost.\n\nAI coaching 2026-09-12
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260924-1@jean-tri
-DTSTAMP:20260912T034715Z
+UID:ai-coaching-20260918-1@jean-tri
+DTSTAMP:20260912T144327Z
+DTSTART:20260918T070000
+DTEND:20260918T090000
+SUMMARY:[AI ADJUSTED] swimming — 2\,000m pool session: 400m warm-up drill
+ s\, then 3×500m contin
+DESCRIPTION:2\,000m pool session: 400m warm-up drills\, then 3×500m contin
+ uous @ 2:30/100m with 60s rest — focus on smooth rhythm and pacing\, not
+  speed\n\nReason: With only 14 days to the 5\,000m swim race\, building co
+ nfidence in sustained continuous swimming at race pace is more valuable th
+ an short fast intervals\; the 3×500m format bridges current 2km open-wate
+ r sessions toward race distance.\n\nAI coaching 2026-09-12
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20260924-2@jean-tri
+DTSTAMP:20260912T144327Z
 DTSTART:20260924T070000
 DTEND:20260924T090000
-SUMMARY:[AI ADJUSTED] cycling — 45 min Z2 maintenance spin @ 128–155W\,
-  flat/steady\, HR ≤135 
-DESCRIPTION:45 min Z2 maintenance spin @ 128–155W\, flat/steady\, HR ≤1
- 35 bpm — no threshold work\n\nReason: With the Half Oceanman just 8 days
-  away on Oct 2\, a Z4 threshold cycling session at this point risks residu
- al leg fatigue and undermines the taper\; a Z2 spin preserves fitness with
- out accumulating stress.\n\nAI coaching 2026-09-12
+SUMMARY:[AI ADJUSTED] cycling — Easy endurance spin 45–50 min @ 120–1
+ 45W (Z2)\, flat\, HR ≤135
+DESCRIPTION:Easy endurance spin 45–50 min @ 120–145W (Z2)\, flat\, HR 
+ ≤135 bpm — no intensity whatsoever\n\nReason: Threshold cycling interv
+ als 9 days before the Half Oceanman generate fatigue that cannot be cleare
+ d in time and provide no meaningful swim-specific benefit\; replacing with
+  easy spinning maintains bike feel without cost.\n\nAI coaching 2026-09-12
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260926-2@jean-tri
-DTSTAMP:20260912T034715Z
+UID:ai-coaching-20260926-3@jean-tri
+DTSTAMP:20260912T144327Z
 DTSTART:20260926T070000
 DTEND:20260926T090000
-SUMMARY:[AI ADJUSTED] cycling — 60–70km @ 120–145W\, cap at 150 min\,
-  no tempo blocks — keep i
-DESCRIPTION:60–70km @ 120–145W\, cap at 150 min\, no tempo blocks — k
- eep it purely aerobic and comfortable\n\nReason: A 4-hour ride 6 days befo
- re the Half Oceanman swim race would leave the athlete carrying fatigue in
- to race week\; halving the duration protects freshness while maintaining a
- erobic feel.\n\nAI coaching 2026-09-12
+SUMMARY:[AI ADJUSTED] cycling — 70km @ 128–150W (Z2 low)\, cap at 150 m
+ in — controlled effort
+DESCRIPTION:70km @ 128–150W (Z2 low)\, cap at 150 min — controlled effo
+ rt\, no tempo blocks\n\nReason: A 4-hour 120km ride 7 days before the Half
+  Oceanman is the highest single load in the pre-race week and would leave 
+ the athlete carrying significant fatigue into race day\; a shorter capped 
+ ride maintains aerobic stimulus without the recovery cost.\n\nAI coaching 
+ 2026-09-12
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20260927-3@jean-tri
-DTSTAMP:20260912T034715Z
+UID:ai-coaching-20260927-4@jean-tri
+DTSTAMP:20260912T144327Z
 DTSTART:20260927T070000
 DTEND:20260927T090000
-SUMMARY:[AI ADJUSTED] running — 10km easy @ 6:45–7:00/km\, cap at 70 mi
- n\, flat\, HR ≤135 bpm
-DESCRIPTION:10km easy @ 6:45–7:00/km\, cap at 70 min\, flat\, HR ≤135 b
- pm\n\nReason: Five days out from the Half Oceanman\, a 21km long run creat
- es unnecessary leg fatigue — a short easy jog keeps the body moving with
- out compromising race-day readiness.\n\nAI coaching 2026-09-12
+SUMMARY:[AI ADJUSTED] running — Easy 8km @ 6:50–7:10/km\, cap at 55 min
+ \, flat route\, HR ≤130 
+DESCRIPTION:Easy 8km @ 6:50–7:10/km\, cap at 55 min\, flat route\, HR ≤
+ 130 bpm — legs-feel check only\n\nReason: A 21km long run 6 days before 
+ the Half Oceanman swim race is excessive and would leave the athlete arriv
+ ing at the start line with unrecovered legs\; a short easy jog keeps the r
+ outine without adding fatigue.\n\nAI coaching 2026-09-12
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261004-4@jean-tri
-DTSTAMP:20260912T034715Z
+UID:ai-coaching-20261004-5@jean-tri
+DTSTAMP:20260912T144327Z
 DTSTART:20261004T070000
 DTEND:20261004T090000
-SUMMARY:[AI ADJUSTED] running — 12–13km easy @ 6:45–7:15/km\, cap at 
- 85 min — post-race recov
-DESCRIPTION:12–13km easy @ 6:45–7:15/km\, cap at 85 min — post-race r
- ecovery run\, focus on feel not pace\n\nReason: The day after a 5\,000m op
- en-water race\, a 21.5km long run is excessive and risks injury going into
-  the Treviso 10K just 6 days later\; a short easy run aids recovery while 
- keeping the legs moving.\n\nAI coaching 2026-09-12
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260915-5@jean-tri
-DTSTAMP:20260912T034715Z
-DTSTART:20260915T070000
-DTEND:20260915T090000
-SUMMARY:[AI ADJUSTED] swimming — 2\,200m total: 400m warm-up drills\, the
- n 3×500m continuous @ 
-DESCRIPTION:2\,200m total: 400m warm-up drills\, then 3×500m continuous @ 
- 2:35–2:40/100m with 60s full rest — prioritise aerobic continuity and 
- rhythm over pace targets given the elevated swim HR data\n\nReason: Recent
-  open-water swims show avg HR of 160–161 bpm indicating the athlete is w
- orking hard to cover even moderate distances\; shifting to controlled cont
- inuous blocks at a slightly relaxed pace builds confidence and aerobic eff
- iciency for the 5\,000m race.\n\nAI coaching 2026-09-12
+SUMMARY:[AI ADJUSTED] running — Easy recovery run 6–8km @ 7:00–7:15/k
+ m\, cap at 50 min\, flat 
+DESCRIPTION:Easy recovery run 6–8km @ 7:00–7:15/km\, cap at 50 min\, fl
+ at and HR ≤125 bpm — post Half Oceanman active recovery only\n\nReason
+ : The day after the Half Oceanman 5\,000m swim race the athlete will need 
+ active recovery\, not a 21.5km long run\; a short easy jog aids blood flow
+  and keeps the Treviso 10K taper on track without adding stress 6 days bef
+ ore the run race.\n\nAI coaching 2026-09-12
 END:VEVENT
 END:VCALENDAR
