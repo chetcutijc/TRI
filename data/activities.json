@@ -440,5 +440,22 @@
     "elevation_gain": 708.0,
     "avg_pace": 4.380000114440918,
     "vo2max_estimate": null
+  },
+  "24447034470": {
+    "id": 24447034470,
+    "name": "Qala Road Cycling",
+    "type": "road_biking",
+    "start": "2026-09-21 10:47:06",
+    "duration_s": 5285.8408203125,
+    "distance_m": 24857.73046875,
+    "calories": 1038.0,
+    "avg_hr": null,
+    "max_hr": null,
+    "training_load": 0.0,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": 393.0,
+    "avg_pace": 4.703000068664551,
+    "vo2max_estimate": null
   }
 }
