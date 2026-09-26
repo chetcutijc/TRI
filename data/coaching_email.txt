@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-Over the last 4 weeks you've accumulated a solid cycling base (4–5 road rides, including two 200+ min efforts) with consistent open-water swimming, but running has been almost entirely absent — only one run recorded at a very high HR (169 bpm for 10km at 6:15/km), which signals the legs are not yet adapted to running load. Sleep is chronically short (many nights under 6 hours, several under 4.5 hours) and body battery regularly sits in the 40–60 range, suggesting accumulated fatigue that needs managing carefully with two races in the next 15 days. The Half Oceanman 5 km swim in 7 days is the immediate priority; your open-water pace (~28–31 min/km) implies significant room to close to the 2:30/100m target, and a clean taper this week is more valuable than any additional training stimulus.
+Over the last 4 weeks you have logged solid cycling volume (4–5 rides/week, including long efforts of 60–67 km) and three open-water swims of up to 2 km, but running is virtually absent — just one 10 km run at a very high HR (169 bpm), which signals poor running fitness relative to your upcoming Treviso 10K. Sleep is chronically short (most nights 3.5–6.5 hrs, well below the 7–9 hr optimal) and body battery has repeatedly bottomed out near zero, indicating accumulated fatigue that must be respected this week before two races in quick succession. The Half Oceanman 5,000 m swim is only 7 days away and should be the immediate priority, with the Treviso 10K 8 days later demanding a careful balance between race-day freshness and minimal running stimulation.
 
 COACHING SUGGESTIONS:
-  1. Protect sleep above everything else this week — you have multiple nights under 5 hours recorded; even one extra hour per night before the Half Oceanman will do more for your race result than any training session.
-  2. Today's planned 120 km long ride (Wk14) should be cut to 60–75 km at pure Z2 (128–150 W) with no tempo blocks — your body battery is at 0–2 this morning and a 4-hour effort 7 days out from the swim race risks carrying residual fatigue into race day.
-  3. Tomorrow's planned 21 km long run should be replaced with a 30–40 min very easy jog (7:00+/km, HR ≤130) — with only one run in 4 weeks and a 10K race in 15 days, a 21 km effort now risks injury or excessive soreness ahead of Treviso.
-  4. For the Half Oceanman swim: seed yourself conservatively, sight frequently (Malta/open-water conditions), and aim for even splits across the 5 km — your recent HR data shows you go out hard (avg 160–161 bpm) so consciously hold back the first 1,000 m.
-  5. After the Half Oceanman (Oct 3), prioritise 2 full rest days before resuming any training — the plan already builds in a 21.5 km long run on Oct 4 which should be skipped or converted to an easy 30-min walk/jog given back-to-back race efforts.
+  1. Prioritise sleep above all other recovery interventions this week — target 7.5+ hours every night before the Half Oceanman; with body battery repeatedly at 0–2, no session is worth cutting sleep short for.
+  2. Your only run in 4 weeks was at 169 bpm average, indicating running is your weakest and most stressful discipline right now — for the Treviso 10K, aim for a conservative 6:00–6:15/km race pace rather than the planned 5:45/km to avoid blowing up.
+  3. Continue Z2 cycling to maintain your strongest discipline's aerobic base, but cap all rides this week at 90 minutes maximum and avoid any tempo or Z3 blocks until after both races.
+  4. For the Half Oceanman swim, do one short confidence-builder open-water or pool session mid-week (20–25 min, easy pace, no hard sets) to stay loose, then full rest the day before the race — your swim fitness is clearly your strongest asset.
+  5. After both races are done (from Oct 13), reintroduce running gradually with 2–3 easy runs per week before attempting the planned interval sessions — jumping straight into 6×800 m intervals in Wk16/17 with only one run in the past month is a significant injury risk.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-09-26 [CYCLING]
-    Current:  Wk14 Long Ride — 120 km @ 128–177 W (Z2), 240 min, with optional 3x10 min Z3 tempo blocks
-    Proposed: Shortened long ride — 60–70 km @ 128–150 W (pure Z2 only, no tempo blocks), ~90–100 min; stop early if HR drifts above 140 bpm
-    Reason:   Body battery is recorded at 0–2 this morning and the Half Oceanman swim is 7 days away — a full 4-hour ride with tempo intervals would generate unnecessary fatigue that cannot be cleared before race day.
+    Current:  Wk14 Long Ride (AI adjusted) — 60–70 km @ 128–150 W, ~90–100 min, Z2 only
+    Proposed: Skip entirely — full rest day. Body battery recorded at 0–2 this morning and you have two races within 7–15 days; any meaningful load today only deepens fatigue without adding fitness.
+    Reason:   Body battery at 0–2 on the morning of the ride (the lowest recorded in the dataset) makes any training counterproductive and increases injury risk ahead of the Half Oceanman in 7 days.
 
   • 2026-09-27 [RUNNING]
-    Current:  Wk14 Long Run — 21.0 km @ 6:15–6:45/km, 180 min
-    Proposed: Easy shakeout jog — 30–35 min @ 7:00–7:30/km, HR ≤130 bpm, flat route; treat as legs-flush rather than a training stimulus
-    Reason:   Only one run in 4 weeks (at very high HR) means a 21 km long run carries a high injury risk and will leave significant residual fatigue heading into both the Half Oceanman and the Treviso 10K.
+    Current:  Wk14 Long Run (AI adjusted) — easy shakeout jog 30–35 min @ 7:00–7:30/km, HR ≤130 bpm
+    Proposed: 15-min very easy walk/jog at 8:00+/km on flat ground, HR ≤120 bpm — purely to shake out legs after yesterday's rest; stop immediately if any fatigue or soreness is felt.
+    Reason:   With only one run in 4 weeks and body battery just recovering from zero, 35 minutes is still too much stimulus — a short leg-flush is sufficient to stay mobile without adding stress before two imminent races.
 
-  • 2026-10-03 [REST]
-    Current:  Wk15 Long Ride — AI already marked as skipped for Half Oceanman race day
-    Proposed: Full rest — race day for Half Oceanman 5,000 m swim; execute warm-up, race, and focus on post-race fuelling and recovery only
-    Reason:   Race day conflict — Half Oceanman 5,000 m swim takes place on this date and no training should be attempted.
+  • 2026-09-29 [CYCLING]
+    Current:  Wk15 Evening session — maintenance endurance spin 128–177 W (Z2), 45–60 min
+    Proposed: Reduce to 30–40 min easy spin at 100–128 W (low Z1/Z2 border), keeping HR firmly below 130 bpm — treat as active recovery, not a training stimulus.
+    Reason:   With the Half Oceanman swim on Oct 2–3 and body battery still recovering, the priority this week is freshness; a shorter, easier spin maintains leg feel without adding meaningful load.
 
-  • 2026-10-04 [RUNNING]
-    Current:  Wk15 Long Run — 21.5 km @ 6:15–6:45/km, 180 min
-    Proposed: Full rest or 20–25 min very easy walk/jog at 8:00+/km — no structured running session the day after a 5 km open-water race
-    Reason:   Racing 5 km open water the day before leaves the body in a recovery state; attempting a 21.5 km long run 24 hours post-race risks injury and undermines the Treviso 10K taper 9 days later.
+  • 2026-10-06 [RUNNING]
+    Current:  Wk16 Evening session — intervals 6×800 m @ 4:55–5:10/km, 2 min jog recovery, 45–55 min total
+    Proposed: Replace with an easy aerobic run of 35–40 min @ 6:30–7:00/km, HR ≤140 bpm, flat route — no intervals. This is the first proper run since the Treviso 10K race and the body needs to ease back in.
+    Reason:   Jumping straight to 800 m intervals three days after racing a 10K, with only one training run in the past 5 weeks, is a high injury risk — an easy aerobic run re-establishes the base safely.
 
-  • 2026-10-10 [REST]
-    Current:  Wk16 Long Ride — AI already marked as race day for Treviso 10K Tiramisu Run
-    Proposed: Race day for Treviso 10K — 10-min easy jog warm-up, 4×100 m strides, race at 5:45/km target pace, post-race cool-down walk; no cycling
-    Reason:   Race day conflict — Treviso 10K Tiramisu Run takes place on this date and replaces all planned training.
+  • 2026-10-15 [RUNNING]
+    Current:  Wk17 Evening session — intervals 6×800 m @ 4:55–5:10/km, 2 min jog recovery, 45–55 min total
+    Proposed: Reduce to 4×600 m @ 5:20–5:30/km with 90 sec jog recovery, total ~35 min including warm-up and cool-down — a gentler introduction to quality running before resuming full interval blocks.
+    Reason:   Given the near-complete absence of running in the last month, a reduced interval session in Wk17 builds running quality progressively and lowers the risk of soft-tissue injury as you rebuild toward the marathon block.
 
-  • 2026-10-11 [REST]
-    Current:  Wk16 Long Run — AI already marked as skipped for Treviso 10K race day
-    Proposed: Full rest — post-race recovery day after Treviso 10K; optional 15-min gentle walk and light stretching only
-    Reason:   Race day conflict confirmed — athlete races the Treviso 10K on Oct 10 and requires a full rest day on Oct 11 to recover before resuming Wk17 training.
+  • 2026-10-18 [RUNNING]
+    Current:  Wk17 Long Run — 17.6 km @ 6:15–6:45/km, ~180 min
+    Proposed: Cap the long run at 12–13 km @ 6:30–7:00/km (approximately 80–90 min), keeping HR below 145 bpm throughout — prioritise time on feet over distance.
+    Reason:   With running fitness currently very low (one run in 4 weeks at very high HR), jumping to a 17.6 km long run in the first proper training week risks injury; 12–13 km is a safer and still productive stimulus.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
