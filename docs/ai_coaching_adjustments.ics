@@ -5,88 +5,85 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20260926-0@jean-tri
-DTSTAMP:20260926T152732Z
+DTSTAMP:20260926T160224Z
 DTSTART:20260926T070000
 DTEND:20260926T090000
-SUMMARY:[AI ADJUSTED] cycling — Skip entirely — full rest day. Body bat
- tery recorded at 0–2 
-DESCRIPTION:Skip entirely — full rest day. Body battery recorded at 0–2
-  this morning and you have two races within 7–15 days\; any meaningful l
- oad today only deepens fatigue without adding fitness.\n\nReason: Body bat
- tery at 0–2 on the morning of the ride (the lowest recorded in the datas
- et) makes any training counterproductive and increases injury risk ahead o
- f the Half Oceanman in 7 days.\n\nAI coaching 2026-09-26
+SUMMARY:[AI ADJUSTED] cycling — Shorten further to 45–50 min easy spin 
+ at 120–135 W (pure Z2
+DESCRIPTION:Shorten further to 45–50 min easy spin at 120–135 W (pure Z
+ 2 floor)\, flat route\, stop immediately if HR exceeds 135 bpm — treat a
+ s circulation/flush only\, not a training stimulus.\n\nReason: Body batter
+ y recorded at 0–2 this morning indicates severe accumulated fatigue with
+  the Half Oceanman only 7 days away\; any meaningful training load today r
+ isks digging the hole deeper.\n\nAI coaching 2026-09-26
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260927-1@jean-tri
-DTSTAMP:20260926T152732Z
+DTSTAMP:20260926T160224Z
 DTSTART:20260927T070000
 DTEND:20260927T090000
-SUMMARY:[AI ADJUSTED] running — 15-min very easy walk/jog at 8:00+/km on 
- flat ground\, HR ≤12
-DESCRIPTION:15-min very easy walk/jog at 8:00+/km on flat ground\, HR ≤12
- 0 bpm — purely to shake out legs after yesterday's rest\; stop immediate
- ly if any fatigue or soreness is felt.\n\nReason: With only one run in 4 w
- eeks and body battery just recovering from zero\, 35 minutes is still too 
- much stimulus — a short leg-flush is sufficient to stay mobile without a
- dding stress before two imminent races.\n\nAI coaching 2026-09-26
+SUMMARY:[AI ADJUSTED] running — Keep as planned: 25–30 min walk/jog at 
+ 7:30–8:00/km\, strictl
+DESCRIPTION:Keep as planned: 25–30 min walk/jog at 7:30–8:00/km\, stric
+ tly HR ≤125 bpm\; if body battery has not recovered above 40 by morning\
+ , replace with a 20-min flat walk only.\n\nReason: With only one run in 4 
+ weeks at very high HR and continuing low body battery\, even this easy jog
+  should be gated on morning recovery status to avoid compounding fatigue 6
+  days before the swim race.\n\nAI coaching 2026-09-26
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20260929-2@jean-tri
-DTSTAMP:20260926T152732Z
+DTSTAMP:20260926T160224Z
 DTSTART:20260929T070000
 DTEND:20260929T090000
-SUMMARY:[AI ADJUSTED] cycling — Reduce to 30–40 min easy spin at 100–
- 128 W (low Z1/Z2 border
-DESCRIPTION:Reduce to 30–40 min easy spin at 100–128 W (low Z1/Z2 borde
- r)\, keeping HR firmly below 130 bpm — treat as active recovery\, not a 
- training stimulus.\n\nReason: With the Half Oceanman swim on Oct 2–3 and
-  body battery still recovering\, the priority this week is freshness\; a s
- horter\, easier spin maintains leg feel without adding meaningful load.\n\
- nAI coaching 2026-09-26
+SUMMARY:[AI ADJUSTED] cycling — Cap at 35–40 min at 120–135 W (low Z2
+  only)\, no intervals\, n
+DESCRIPTION:Cap at 35–40 min at 120–135 W (low Z2 only)\, no intervals\
+ , no tempo\; if legs feel flat after the weekend\, convert to full rest.\n
+ \nReason: This falls only 4 days before the Half Oceanman 5\,000 m race 
+ — any session above easy recovery intensity risks arriving at the start 
+ line pre-fatigued.\n\nAI coaching 2026-09-26
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261006-3@jean-tri
-DTSTAMP:20260926T152732Z
+UID:ai-coaching-20260929-3@jean-tri
+DTSTAMP:20260926T160224Z
+DTSTART:20260929T070000
+DTEND:20260929T090000
+SUMMARY:[AI ADJUSTED] swimming — Reduce to 1\,200–1\,500 m total: 400 m
+  easy warm-up\, 4×100 m a
+DESCRIPTION:Reduce to 1\,200–1\,500 m total: 400 m easy warm-up\, 4×100 
+ m at race pace (2:30/100 m) with 30 s rest\, 200–400 m easy cool-down 
+ — no hard aerobic sets\; focus on feel and rhythm\, not volume.\n\nReaso
+ n: A full 2\,000 m aerobic session 4 days before a 5\,000 m race will leav
+ e residual muscular fatigue in the water\; a short sharpener preserves fee
+ l without accumulating load.\n\nAI coaching 2026-09-26
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261006-4@jean-tri
+DTSTAMP:20260926T160224Z
 DTSTART:20261006T070000
 DTEND:20261006T090000
-SUMMARY:[AI ADJUSTED] running — Replace with an easy aerobic run of 35–
- 40 min @ 6:30–7:00/km
-DESCRIPTION:Replace with an easy aerobic run of 35–40 min @ 6:30–7:00/k
- m\, HR ≤140 bpm\, flat route — no intervals. This is the first proper 
- run since the Treviso 10K race and the body needs to ease back in.\n\nReas
- on: Jumping straight to 800 m intervals three days after racing a 10K\, wi
- th only one training run in the past 5 weeks\, is a high injury risk — a
- n easy aerobic run re-establishes the base safely.\n\nAI coaching 2026-09-
- 26
+SUMMARY:[AI ADJUSTED] running — Replace with 35–40 min easy run at 6:30
+ –7:00/km\, HR ≤145 bpm
+DESCRIPTION:Replace with 35–40 min easy run at 6:30–7:00/km\, HR ≤145
+  bpm\, no intervals — this is 3 days post-Half Oceanman and 4 days pre-T
+ reviso 10K\; treat as a gentle re-activation of running legs only.\n\nReas
+ on: Running hard intervals 3 days after a 5 km open-water race and 4 days 
+ before a 10K road race sandwiches the body between two stressors with no r
+ ecovery buffer\, significantly increasing injury and underperformance risk
+ .\n\nAI coaching 2026-09-26
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261015-4@jean-tri
-DTSTAMP:20260926T152732Z
-DTSTART:20261015T070000
-DTEND:20261015T090000
-SUMMARY:[AI ADJUSTED] running — Reduce to 4×600 m @ 5:20–5:30/km with 
- 90 sec jog recovery\, t
-DESCRIPTION:Reduce to 4×600 m @ 5:20–5:30/km with 90 sec jog recovery\, 
- total ~35 min including warm-up and cool-down — a gentler introduction t
- o quality running before resuming full interval blocks.\n\nReason: Given t
- he near-complete absence of running in the last month\, a reduced interval
-  session in Wk17 builds running quality progressively and lowers the risk 
- of soft-tissue injury as you rebuild toward the marathon block.\n\nAI coac
- hing 2026-09-26
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261018-5@jean-tri
-DTSTAMP:20260926T152732Z
-DTSTART:20261018T070000
-DTEND:20261018T090000
-SUMMARY:[AI ADJUSTED] running — Cap the long run at 12–13 km @ 6:30–7
- :00/km (approximately 8
-DESCRIPTION:Cap the long run at 12–13 km @ 6:30–7:00/km (approximately 
- 80–90 min)\, keeping HR below 145 bpm throughout — prioritise time on 
- feet over distance.\n\nReason: With running fitness currently very low (on
- e run in 4 weeks at very high HR)\, jumping to a 17.6 km long run in the f
- irst proper training week risks injury\; 12–13 km is a safer and still p
- roductive stimulus.\n\nAI coaching 2026-09-26
+UID:ai-coaching-20261008-5@jean-tri
+DTSTAMP:20260926T160224Z
+DTSTART:20261008T070000
+DTEND:20261008T090000
+SUMMARY:[AI ADJUSTED] strength training — Skip entirely — full rest day
+ \; optional 10 min of gentle sta
+DESCRIPTION:Skip entirely — full rest day\; optional 10 min of gentle sta
+ tic stretching and foam rolling only\, no loading.\n\nReason: Strength tra
+ ining including jump and landing drills 2 days before the Treviso 10K will
+  leave neuromuscular fatigue in the legs at the start line\, undermining r
+ ace performance.\n\nAI coaching 2026-09-26
 END:VEVENT
 END:VCALENDAR
