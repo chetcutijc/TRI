@@ -4,85 +4,81 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20260919-0@jean-tri
-DTSTAMP:20260925T165032Z
-DTSTART:20260919T070000
-DTEND:20260919T090000
-SUMMARY:[AI ADJUSTED] cycling — 60–70 min easy Z2 spin at 120–140W\, 
- flat terrain\, perceived 
-DESCRIPTION:60–70 min easy Z2 spin at 120–140W\, flat terrain\, perceiv
- ed effort only — no distance target\, stop at first sign of fatigue.\n\n
- Reason: 13 days out from the Half Oceanman with chronically poor sleep\, e
- ven a 120-min capped ride accumulates meaningful leg fatigue\; 60–70 min
-  preserves aerobic stimulus while protecting freshness.\n\nAI coaching 202
- 6-09-19
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260920-1@jean-tri
-DTSTAMP:20260925T165032Z
-DTSTART:20260920T070000
-DTEND:20260920T090000
-SUMMARY:[AI ADJUSTED] running — Easy 8–10km run at 6:45–7:15/km\, HR 
- ≤135bpm\, walk-break if n
-DESCRIPTION:Easy 8–10km run at 6:45–7:15/km\, HR ≤135bpm\, walk-break
-  if needed — cap at 55 minutes and stop early if legs feel heavy from ye
- sterday's ride.\n\nReason: 12 days before the swim race a 75-min run remai
- ns higher than necessary\; reducing to 55 min ensures the athlete enters r
- ace week with fully recovered legs and no added DOMS risk.\n\nAI coaching 
- 2026-09-19
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260922-2@jean-tri
-DTSTAMP:20260925T165032Z
-DTSTART:20260922T070000
-DTEND:20260922T090000
-SUMMARY:[AI ADJUSTED] swimming — 2\,000m pool session focused on race-pac
- e rehearsal: 400m war
-DESCRIPTION:2\,000m pool session focused on race-pace rehearsal: 400m warm-
- up\, 8×100m @ 2:25–2:30/100m with 20s rest\, 400m cool-down — total ~
- 2\,000m\; note the race-pace feel in each rep.\n\nReason: Open-water data 
- shows current pace is 28–31 min/km vs the 2:30/100m race target\; a stru
- ctured 100m pace-rep set this week is the single highest-value session bef
- ore taper begins.\n\nAI coaching 2026-09-19
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260924-3@jean-tri
-DTSTAMP:20260925T165032Z
-DTSTART:20260924T070000
-DTEND:20260924T090000
-SUMMARY:[AI ADJUSTED] cycling — Skip entirely — convert to full rest or
-  a maximum 20-min eas
-DESCRIPTION:Skip entirely — convert to full rest or a maximum 20-min easy
-  legs-out spin at 90–110W\, no intervals whatsoever.\n\nReason: Z4 thres
- hold cycling 9 days before the Half Oceanman adds residual muscular fatigu
- e with zero race-specific benefit for a swim event\; rest here is worth mo
- re than fitness.\n\nAI coaching 2026-09-19
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260926-4@jean-tri
-DTSTAMP:20260925T165032Z
+UID:ai-coaching-20260926-0@jean-tri
+DTSTAMP:20260926T041019Z
 DTSTART:20260926T070000
 DTEND:20260926T090000
-SUMMARY:[AI ADJUSTED] cycling — 45–60 min easy Z2 spin at 128–150W on
-  flat roads — this is r
-DESCRIPTION:45–60 min easy Z2 spin at 128–150W on flat roads — this i
- s race week (7 days out)\; volume drops sharply and no tempo blocks.\n\nRe
- ason: A 4-hour\, 120km ride 7 days before the Half Oceanman would leave me
- aningful fatigue in the legs and cardiovascular system right at the point 
- taper should be at its deepest.\n\nAI coaching 2026-09-19
+SUMMARY:[AI ADJUSTED] cycling — Shortened long ride — 60–70 km @ 128
+ –150 W (pure Z2 only\, no
+DESCRIPTION:Shortened long ride — 60–70 km @ 128–150 W (pure Z2 only\
+ , no tempo blocks)\, ~90–100 min\; stop early if HR drifts above 140 bpm
+ \n\nReason: Body battery is recorded at 0–2 this morning and the Half Oc
+ eanman swim is 7 days away — a full 4-hour ride with tempo intervals wou
+ ld generate unnecessary fatigue that cannot be cleared before race day.\n\
+ nAI coaching 2026-09-26
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261004-5@jean-tri
-DTSTAMP:20260925T165032Z
+UID:ai-coaching-20260927-1@jean-tri
+DTSTAMP:20260926T041019Z
+DTSTART:20260927T070000
+DTEND:20260927T090000
+SUMMARY:[AI ADJUSTED] running — Easy shakeout jog — 30–35 min @ 7:00
+ –7:30/km\, HR ≤130 bpm\, f
+DESCRIPTION:Easy shakeout jog — 30–35 min @ 7:00–7:30/km\, HR ≤130 
+ bpm\, flat route\; treat as legs-flush rather than a training stimulus\n\n
+ Reason: Only one run in 4 weeks (at very high HR) means a 21 km long run c
+ arries a high injury risk and will leave significant residual fatigue head
+ ing into both the Half Oceanman and the Treviso 10K.\n\nAI coaching 2026-0
+ 9-26
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261003-2@jean-tri
+DTSTAMP:20260926T041019Z
+DTSTART:20261003T070000
+DTEND:20261003T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest — race day for Half Oceanman 5\,
+ 000 m swim\; execute
+DESCRIPTION:Full rest — race day for Half Oceanman 5\,000 m swim\; execut
+ e warm-up\, race\, and focus on post-race fuelling and recovery only\n\nRe
+ ason: Race day conflict — Half Oceanman 5\,000 m swim takes place on thi
+ s date and no training should be attempted.\n\nAI coaching 2026-09-26
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261004-3@jean-tri
+DTSTAMP:20260926T041019Z
 DTSTART:20261004T070000
 DTEND:20261004T090000
-SUMMARY:[AI ADJUSTED] running — Full rest day — no running. Athlete rac
- ed the Half Oceanman 
-DESCRIPTION:Full rest day — no running. Athlete raced the Half Oceanman 5
- \,000m swim on Oct 3\; allow 48 hours of passive recovery before resuming 
- any training ahead of the Treviso 10K on Oct 10.\n\nReason: Running 21.5km
-  the day after a 5\,000m open-water race risks injury and suppresses recov
- ery at exactly the wrong time with the Treviso 10K only 6 days later.\n\nA
- I coaching 2026-09-19
+SUMMARY:[AI ADJUSTED] running — Full rest or 20–25 min very easy walk/j
+ og at 8:00+/km — no s
+DESCRIPTION:Full rest or 20–25 min very easy walk/jog at 8:00+/km — no 
+ structured running session the day after a 5 km open-water race\n\nReason:
+  Racing 5 km open water the day before leaves the body in a recovery state
+ \; attempting a 21.5 km long run 24 hours post-race risks injury and under
+ mines the Treviso 10K taper 9 days later.\n\nAI coaching 2026-09-26
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261010-4@jean-tri
+DTSTAMP:20260926T041019Z
+DTSTART:20261010T070000
+DTEND:20261010T090000
+SUMMARY:[AI ADJUSTED] rest — Race day for Treviso 10K — 10-min easy jog
+  warm-up\, 4×100 m 
+DESCRIPTION:Race day for Treviso 10K — 10-min easy jog warm-up\, 4×100 m
+  strides\, race at 5:45/km target pace\, post-race cool-down walk\; no cyc
+ ling\n\nReason: Race day conflict — Treviso 10K Tiramisu Run takes place
+  on this date and replaces all planned training.\n\nAI coaching 2026-09-26
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261011-5@jean-tri
+DTSTAMP:20260926T041019Z
+DTSTART:20261011T070000
+DTEND:20261011T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest — post-race recovery day after T
+ reviso 10K\; option
+DESCRIPTION:Full rest — post-race recovery day after Treviso 10K\; option
+ al 15-min gentle walk and light stretching only\n\nReason: Race day confli
+ ct confirmed — athlete races the Treviso 10K on Oct 10 and requires a fu
+ ll rest day on Oct 11 to recover before resuming Wk17 training.\n\nAI coac
+ hing 2026-09-26
 END:VEVENT
 END:VCALENDAR

@@ -457,5 +457,22 @@
     "elevation_gain": 393.0,
     "avg_pace": 4.703000068664551,
     "vo2max_estimate": null
+  },
+  "24497122212": {
+    "id": 24497122212,
+    "name": "Attard Running",
+    "type": "running",
+    "start": "2026-09-25 19:20:07",
+    "duration_s": 3752.700927734375,
+    "distance_m": 10002.66015625,
+    "calories": 863.0,
+    "avg_hr": 169.0,
+    "max_hr": 192.0,
+    "training_load": 244.6595916748047,
+    "avg_power": 333.0,
+    "normalized_power": 340.0,
+    "elevation_gain": 62.0,
+    "avg_pace": 2.6649999618530273,
+    "vo2max_estimate": 44.0
   }
 }
