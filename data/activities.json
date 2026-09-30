@@ -491,5 +491,22 @@
     "elevation_gain": null,
     "avg_pace": 0.0,
     "vo2max_estimate": null
+  },
+  "24545663128": {
+    "id": 24545663128,
+    "name": "Cardio",
+    "type": "indoor_cardio",
+    "start": "2026-09-29 19:04:32",
+    "duration_s": 4648.44580078125,
+    "distance_m": 0.0,
+    "calories": 571.0,
+    "avg_hr": 127.0,
+    "max_hr": 204.0,
+    "training_load": 153.84771728515625,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.0,
+    "vo2max_estimate": null
   }
 }
