@@ -4,86 +4,83 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20260926-0@jean-tri
-DTSTAMP:20261002T173835Z
-DTSTART:20260926T070000
-DTEND:20260926T090000
-SUMMARY:[AI ADJUSTED] cycling — Shorten further to 45–50 min easy spin 
- at 120–135 W (pure Z2
-DESCRIPTION:Shorten further to 45–50 min easy spin at 120–135 W (pure Z
- 2 floor)\, flat route\, stop immediately if HR exceeds 135 bpm — treat a
- s circulation/flush only\, not a training stimulus.\n\nReason: Body batter
- y recorded at 0–2 this morning indicates severe accumulated fatigue with
-  the Half Oceanman only 7 days away\; any meaningful training load today r
- isks digging the hole deeper.\n\nAI coaching 2026-09-26
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260927-1@jean-tri
-DTSTAMP:20261002T173835Z
-DTSTART:20260927T070000
-DTEND:20260927T090000
-SUMMARY:[AI ADJUSTED] running — Keep as planned: 25–30 min walk/jog at 
- 7:30–8:00/km\, strictl
-DESCRIPTION:Keep as planned: 25–30 min walk/jog at 7:30–8:00/km\, stric
- tly HR ≤125 bpm\; if body battery has not recovered above 40 by morning\
- , replace with a 20-min flat walk only.\n\nReason: With only one run in 4 
- weeks at very high HR and continuing low body battery\, even this easy jog
-  should be gated on morning recovery status to avoid compounding fatigue 6
-  days before the swim race.\n\nAI coaching 2026-09-26
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260929-2@jean-tri
-DTSTAMP:20261002T173835Z
-DTSTART:20260929T070000
-DTEND:20260929T090000
-SUMMARY:[AI ADJUSTED] cycling — Cap at 35–40 min at 120–135 W (low Z2
-  only)\, no intervals\, n
-DESCRIPTION:Cap at 35–40 min at 120–135 W (low Z2 only)\, no intervals\
- , no tempo\; if legs feel flat after the weekend\, convert to full rest.\n
- \nReason: This falls only 4 days before the Half Oceanman 5\,000 m race 
- — any session above easy recovery intensity risks arriving at the start 
- line pre-fatigued.\n\nAI coaching 2026-09-26
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20260929-3@jean-tri
-DTSTAMP:20261002T173835Z
-DTSTART:20260929T070000
-DTEND:20260929T090000
-SUMMARY:[AI ADJUSTED] swimming — Reduce to 1\,200–1\,500 m total: 400 m
-  easy warm-up\, 4×100 m a
-DESCRIPTION:Reduce to 1\,200–1\,500 m total: 400 m easy warm-up\, 4×100 
- m at race pace (2:30/100 m) with 30 s rest\, 200–400 m easy cool-down 
- — no hard aerobic sets\; focus on feel and rhythm\, not volume.\n\nReaso
- n: A full 2\,000 m aerobic session 4 days before a 5\,000 m race will leav
- e residual muscular fatigue in the water\; a short sharpener preserves fee
- l without accumulating load.\n\nAI coaching 2026-09-26
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261006-4@jean-tri
-DTSTAMP:20261002T173835Z
+UID:ai-coaching-20261006-0@jean-tri
+DTSTAMP:20261003T042729Z
 DTSTART:20261006T070000
 DTEND:20261006T090000
-SUMMARY:[AI ADJUSTED] running — Replace with 35–40 min easy run at 6:30
- –7:00/km\, HR ≤145 bpm
-DESCRIPTION:Replace with 35–40 min easy run at 6:30–7:00/km\, HR ≤145
-  bpm\, no intervals — this is 3 days post-Half Oceanman and 4 days pre-T
- reviso 10K\; treat as a gentle re-activation of running legs only.\n\nReas
- on: Running hard intervals 3 days after a 5 km open-water race and 4 days 
- before a 10K road race sandwiches the body between two stressors with no r
- ecovery buffer\, significantly increasing injury and underperformance risk
- .\n\nAI coaching 2026-09-26
+SUMMARY:[AI ADJUSTED] running — Replace with 30–35 min very easy jog at
+  6:45–7:15/km — no in
+DESCRIPTION:Replace with 30–35 min very easy jog at 6:45–7:15/km — no
+  intervals\; this is race-week prep for Treviso 10K on Oct 10.\n\nReason: 
+ Running a hard interval session 4 days before the Treviso 10K risks accumu
+ lated leg fatigue and a poor race result\; easy aerobic running keeps legs
+  ticking over without adding stress.\n\nAI coaching 2026-10-03
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261008-5@jean-tri
-DTSTAMP:20261002T173835Z
+UID:ai-coaching-20261006-1@jean-tri
+DTSTAMP:20261003T042729Z
+DTSTART:20261006T070000
+DTEND:20261006T090000
+SUMMARY:[AI ADJUSTED] swimming — Shorten to 1\,200–1\,500 m easy techni
+ que-focused swim at comf
+DESCRIPTION:Shorten to 1\,200–1\,500 m easy technique-focused swim at com
+ fortable effort — no hard sets\; reduce total training stress in Treviso
+  race week.\n\nReason: Maintaining swim volume in the days before a 10K ru
+ n race adds unnecessary fatigue when the priority discipline this week is 
+ running.\n\nAI coaching 2026-10-03
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261008-2@jean-tri
+DTSTAMP:20261003T042729Z
 DTSTART:20261008T070000
 DTEND:20261008T090000
-SUMMARY:[AI ADJUSTED] strength training — Skip entirely — full rest day
- \; optional 10 min of gentle sta
-DESCRIPTION:Skip entirely — full rest day\; optional 10 min of gentle sta
- tic stretching and foam rolling only\, no loading.\n\nReason: Strength tra
- ining including jump and landing drills 2 days before the Treviso 10K will
-  leave neuromuscular fatigue in the legs at the start line\, undermining r
- ace performance.\n\nAI coaching 2026-09-26
+SUMMARY:[AI ADJUSTED] strength training — Reduce to 20–25 min very ligh
+ t activation only: bodyweight s
+DESCRIPTION:Reduce to 20–25 min very light activation only: bodyweight si
+ ngle-leg calf raises\, hip mobility\, and core breathing — skip all heav
+ y loading 2 days before Treviso 10K.\n\nReason: Heavy strength work 48 hou
+ rs before a race leaves muscles sore and legs heavy\; a brief activation s
+ ession maintains neuromuscular readiness without fatigue cost.\n\nAI coach
+ ing 2026-10-03
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261008-3@jean-tri
+DTSTAMP:20261003T042729Z
+DTSTART:20261008T070000
+DTEND:20261008T090000
+SUMMARY:[AI ADJUSTED] cycling — Skip entirely — no cycling session 2 da
+ ys before Treviso 10K
+DESCRIPTION:Skip entirely — no cycling session 2 days before Treviso 10K\
+ ; legs need to be fully fresh.\n\nReason: Adding a 90-min bike session two
+  days out from the 10K race will accumulate residual muscular fatigue that
+  compromises race-day running performance.\n\nAI coaching 2026-10-03
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261015-4@jean-tri
+DTSTAMP:20261003T042729Z
+DTSTART:20261015T070000
+DTEND:20261015T090000
+SUMMARY:[AI ADJUSTED] running — Replace with 4×800 m at 5:00–5:15/km w
+ ith 90-sec jog recover
+DESCRIPTION:Replace with 4×800 m at 5:00–5:15/km with 90-sec jog recover
+ y\, total ~45 min — reduced volume as first quality run session in the p
+ ost-race recovery week following Treviso.\n\nReason: Jumping straight back
+  to 6 reps of hard intervals the Thursday after a 10K race risks overloadi
+ ng underdeveloped run fitness\; starting with 4 reps is a safer re-introdu
+ ction.\n\nAI coaching 2026-10-03
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261018-5@jean-tri
+DTSTAMP:20261003T042729Z
+DTSTART:20261018T070000
+DTEND:20261018T090000
+SUMMARY:[AI ADJUSTED] running — Cap at 12–13 km at 6:30–7:00/km (appr
+ ox 80–90 min) — do not 
+DESCRIPTION:Cap at 12–13 km at 6:30–7:00/km (approx 80–90 min) — do
+  not attempt the full planned distance the week after racing the Treviso 1
+ 0K.\n\nReason: Given only one run in the past 4 weeks and a 10K race on Oc
+ t 10\, jumping to a 17.6 km long run 8 days later is a large spike in runn
+ ing load that increases injury risk significantly.\n\nAI coaching 2026-10-
+ 03
 END:VEVENT
 END:VCALENDAR

@@ -1,62 +1,62 @@
 {
-  "summary": "Over the last 4 weeks your training has been heavily cycling-biased with solid aerobic bike volume (multiple rides 60\u2013225 min), but running is critically under-represented \u2014 only one run in the entire block, executed at a very high average HR of 169 bpm. Sleep is consistently short (most nights 230\u2013415 min, well below the 7\u20138 h optimal), body battery remains low-to-moderate throughout, and the two recent days showing battery values of 0\u20132 are a clear fatigue red flag. With the Half Oceanman 5,000 m swim just 7 days away, the priority is to protect freshness and execute a confident taper, then use the following week to safely absorb the race before the Treviso 10K on Oct 10.",
+  "summary": "Over the last 4 weeks training volume has been moderate but inconsistent, with notable gaps in running (only one run recorded) and swimming while cycling has dominated. Sleep is chronically short \u2014 most nights sitting at 3\u20134 hours rather than the recommended 7\u20138 \u2014 and body battery scores are persistently low, signalling accumulated fatigue that needs addressing before the Half Oceanman today and the Treviso 10K in 8 days. The single run on 25 Sep showed a very high HR of 169 bpm at a modest 6:15/km pace, suggesting running-specific fitness needs careful rebuilding rather than aggressive interval work in the near term.",
   "suggestions": [
-    "Sleep is your biggest limiter right now \u2014 most nights are under 6 hours and body battery is chronically suppressed; aim for at least 7.5 hours tonight and every night through race week, as no training session can compensate for this level of sleep deficit before a 5 km open-water race.",
-    "Your sole run in 4 weeks was at 169 bpm average (likely near max), so do not attempt any quality running before the Treviso 10K \u2014 the shakeout jogs already planned at 7:00+/km and \u2264130 bpm are exactly right; stick strictly to those targets and abort if HR climbs.",
-    "For the Half Oceanman 5,000 m swim, your open-water pace has been 28\u201331 min/km (roughly 2:50\u20133:10/100 m), which is slower than the 2:30/100 m target \u2014 factor a realistic 42\u201348 min finish for the 5 km and pace the first 1,500 m conservatively to avoid blowing up.",
-    "After the Half Oceanman on Oct 3, take at least 2 full rest days (Oct 4\u20135) before resuming any structured training \u2014 a 5 km open-water race is a significant physiological stress and you need those days to be truly fresh for the Treviso 10K eight days later.",
-    "From Week 17 onward, running intervals at 4:55\u20135:10/km are aggressive given your current running fitness; consider starting the first session at 5:20\u20135:30/km and only tightening pace once HR at that effort settles below 160 bpm."
+    "Today is race day for the Half Oceanman 5,000 m swim \u2014 focus entirely on warm-up, race execution, and post-race fuelling; avoid any additional training load whatsoever.",
+    "With the Treviso 10K only 8 days away, treat the next 8 days as a mini-taper: keep all sessions short and easy, avoid high-intensity intervals (especially the Wk16 6\u00d7800 m session on Oct 6), and prioritise sleep above 7 hours per night to allow body battery to recover from its chronically low state.",
+    "Chronic sleep deprivation (averaging ~5.5 hrs/night across 4 weeks) is the single biggest limiter visible in your data \u2014 address this immediately by targeting a minimum 7 hours; without this, no training prescription will yield the intended adaptation.",
+    "Running fitness appears underdeveloped relative to the 5:45/km Treviso target \u2014 your only run in 4 weeks was at 169 bpm average for 6:15/km, so arrive at the 10K start line fresh rather than chasing fitness with hard sessions this week.",
+    "From Wk17 onwards (post-Treviso), prioritise re-introducing structured running at 2\u20133 sessions per week with one quality session and one long run, as the marathon and Ironman run targets require a sustained build that is currently absent from recent training."
   ],
   "proposed_changes": [
     {
-      "date": "2026-09-26",
-      "discipline": "cycling",
-      "current_session": "Wk14 Long Ride (AI adjusted) \u2014 60\u201370 km @ 128\u2013150 W, ~90\u2013100 min, Z2 only, stop if HR >140 bpm",
-      "proposed_session": "Shorten further to 45\u201350 min easy spin at 120\u2013135 W (pure Z2 floor), flat route, stop immediately if HR exceeds 135 bpm \u2014 treat as circulation/flush only, not a training stimulus.",
-      "change_type": "decrease",
-      "reason": "Body battery recorded at 0\u20132 this morning indicates severe accumulated fatigue with the Half Oceanman only 7 days away; any meaningful training load today risks digging the hole deeper."
-    },
-    {
-      "date": "2026-09-27",
+      "date": "2026-10-06",
       "discipline": "running",
-      "current_session": "Wk14 Long Run (AI adjusted) \u2014 30\u201335 min shakeout @ 7:00\u20137:30/km, HR \u2264130 bpm, flat",
-      "proposed_session": "Keep as planned: 25\u201330 min walk/jog at 7:30\u20138:00/km, strictly HR \u2264125 bpm; if body battery has not recovered above 40 by morning, replace with a 20-min flat walk only.",
-      "change_type": "decrease",
-      "reason": "With only one run in 4 weeks at very high HR and continuing low body battery, even this easy jog should be gated on morning recovery status to avoid compounding fatigue 6 days before the swim race."
-    },
-    {
-      "date": "2026-09-29",
-      "discipline": "cycling",
-      "current_session": "Wk15 Evening session \u2014 maintenance endurance spin 128\u2013177 W, 45\u201360 min",
-      "proposed_session": "Cap at 35\u201340 min at 120\u2013135 W (low Z2 only), no intervals, no tempo; if legs feel flat after the weekend, convert to full rest.",
-      "change_type": "decrease",
-      "reason": "This falls only 4 days before the Half Oceanman 5,000 m race \u2014 any session above easy recovery intensity risks arriving at the start line pre-fatigued."
-    },
-    {
-      "date": "2026-09-29",
-      "discipline": "swimming",
-      "current_session": "Wk15 Pool Swim (Tuesday) \u2014 min 2,000 m, technique drills + aerobic sets, \u22642:30/100 m",
-      "proposed_session": "Reduce to 1,200\u20131,500 m total: 400 m easy warm-up, 4\u00d7100 m at race pace (2:30/100 m) with 30 s rest, 200\u2013400 m easy cool-down \u2014 no hard aerobic sets; focus on feel and rhythm, not volume.",
-      "change_type": "decrease",
-      "reason": "A full 2,000 m aerobic session 4 days before a 5,000 m race will leave residual muscular fatigue in the water; a short sharpener preserves feel without accumulating load."
+      "current_session": "Wk16 Evening session \u2014 6\u00d7800 m intervals at 4:55\u20135:10/km, 90 min total",
+      "proposed_session": "Replace with 30\u201335 min very easy jog at 6:45\u20137:15/km \u2014 no intervals; this is race-week prep for Treviso 10K on Oct 10.",
+      "change_type": "replace",
+      "reason": "Running a hard interval session 4 days before the Treviso 10K risks accumulated leg fatigue and a poor race result; easy aerobic running keeps legs ticking over without adding stress."
     },
     {
       "date": "2026-10-06",
-      "discipline": "running",
-      "current_session": "Wk16 Evening session \u2014 6\u00d7800 m intervals @ 4:55\u20135:10/km, 2 min jog recovery, 45\u201355 min total",
-      "proposed_session": "Replace with 35\u201340 min easy run at 6:30\u20137:00/km, HR \u2264145 bpm, no intervals \u2014 this is 3 days post-Half Oceanman and 4 days pre-Treviso 10K; treat as a gentle re-activation of running legs only.",
-      "change_type": "replace",
-      "reason": "Running hard intervals 3 days after a 5 km open-water race and 4 days before a 10K road race sandwiches the body between two stressors with no recovery buffer, significantly increasing injury and underperformance risk."
+      "discipline": "swimming",
+      "current_session": "Wk16 Pool Swim (Tuesday) \u2014 2 km+ at \u22642:30/100 m, 60 min",
+      "proposed_session": "Shorten to 1,200\u20131,500 m easy technique-focused swim at comfortable effort \u2014 no hard sets; reduce total training stress in Treviso race week.",
+      "change_type": "decrease",
+      "reason": "Maintaining swim volume in the days before a 10K run race adds unnecessary fatigue when the priority discipline this week is running."
     },
     {
       "date": "2026-10-08",
       "discipline": "strength_training",
-      "current_session": "Wk16 Gym / Strength \u2014 40\u201350 min: shoulder, single-leg calf raises, landing/jump drills, core",
-      "proposed_session": "Skip entirely \u2014 full rest day; optional 10 min of gentle static stretching and foam rolling only, no loading.",
+      "current_session": "Wk16 Gym / Strength \u2014 60 min full strength session",
+      "proposed_session": "Reduce to 20\u201325 min very light activation only: bodyweight single-leg calf raises, hip mobility, and core breathing \u2014 skip all heavy loading 2 days before Treviso 10K.",
+      "change_type": "decrease",
+      "reason": "Heavy strength work 48 hours before a race leaves muscles sore and legs heavy; a brief activation session maintains neuromuscular readiness without fatigue cost."
+    },
+    {
+      "date": "2026-10-08",
+      "discipline": "cycling",
+      "current_session": "Wk16 Evening session \u2014 90 min Z2 endurance spin at 128\u2013177 W",
+      "proposed_session": "Skip entirely \u2014 no cycling session 2 days before Treviso 10K; legs need to be fully fresh.",
       "change_type": "skip",
-      "reason": "Strength training including jump and landing drills 2 days before the Treviso 10K will leave neuromuscular fatigue in the legs at the start line, undermining race performance."
+      "reason": "Adding a 90-min bike session two days out from the 10K race will accumulate residual muscular fatigue that compromises race-day running performance."
+    },
+    {
+      "date": "2026-10-15",
+      "discipline": "running",
+      "current_session": "Wk17 Evening session \u2014 6\u00d7800 m intervals at 4:55\u20135:10/km, 90 min",
+      "proposed_session": "Replace with 4\u00d7800 m at 5:00\u20135:15/km with 90-sec jog recovery, total ~45 min \u2014 reduced volume as first quality run session in the post-race recovery week following Treviso.",
+      "change_type": "replace",
+      "reason": "Jumping straight back to 6 reps of hard intervals the Thursday after a 10K race risks overloading underdeveloped run fitness; starting with 4 reps is a safer re-introduction."
+    },
+    {
+      "date": "2026-10-18",
+      "discipline": "running",
+      "current_session": "Wk17 Long Run \u2014 17.6 km at 6:15\u20136:45/km, 180 min",
+      "proposed_session": "Cap at 12\u201313 km at 6:30\u20137:00/km (approx 80\u201390 min) \u2014 do not attempt the full planned distance the week after racing the Treviso 10K.",
+      "change_type": "decrease",
+      "reason": "Given only one run in the past 4 weeks and a 10K race on Oct 10, jumping to a 17.6 km long run 8 days later is a large spike in running load that increases injury risk significantly."
     }
   ],
-  "generated_at": "2026-09-26T16:01:42.111801+00:00",
+  "generated_at": "2026-10-03T04:26:54.828854+00:00",
   "weeks_analysed": 4
 }
