@@ -5,45 +5,45 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-Over the last 4 weeks training volume has been moderate but inconsistent, with notable gaps in running (only one run recorded) and swimming while cycling has dominated. Sleep is chronically short — most nights sitting at 3–4 hours rather than the recommended 7–8 — and body battery scores are persistently low, signalling accumulated fatigue that needs addressing before the Half Oceanman today and the Treviso 10K in 8 days. The single run on 25 Sep showed a very high HR of 169 bpm at a modest 6:15/km pace, suggesting running-specific fitness needs careful rebuilding rather than aggressive interval work in the near term.
+Over the last 4 weeks training has been heavily swim and bike dominant with only one run logged (10km at 169bpm avg HR, a high-effort effort that signals running fitness is underdeveloped relative to race targets). Sleep is chronically short — the majority of nights fall below 300 minutes, with several dipping below 210 minutes — and body battery scores are consistently low, suggesting accumulated fatigue that could compromise race performance and injury resilience. The Half Oceanman 5km open-water swim is today (Oct 3), so the immediate priority shifts to the Treviso 10K in 8 days, for which the athlete needs a controlled mini-taper starting now.
 
 COACHING SUGGESTIONS:
-  1. Today is race day for the Half Oceanman 5,000 m swim — focus entirely on warm-up, race execution, and post-race fuelling; avoid any additional training load whatsoever.
-  2. With the Treviso 10K only 8 days away, treat the next 8 days as a mini-taper: keep all sessions short and easy, avoid high-intensity intervals (especially the Wk16 6×800 m session on Oct 6), and prioritise sleep above 7 hours per night to allow body battery to recover from its chronically low state.
-  3. Chronic sleep deprivation (averaging ~5.5 hrs/night across 4 weeks) is the single biggest limiter visible in your data — address this immediately by targeting a minimum 7 hours; without this, no training prescription will yield the intended adaptation.
-  4. Running fitness appears underdeveloped relative to the 5:45/km Treviso target — your only run in 4 weeks was at 169 bpm average for 6:15/km, so arrive at the 10K start line fresh rather than chasing fitness with hard sessions this week.
-  5. From Wk17 onwards (post-Treviso), prioritise re-introducing structured running at 2–3 sessions per week with one quality session and one long run, as the marathon and Ironman run targets require a sustained build that is currently absent from recent training.
+  1. Prioritise sleep above all else this week — aim for 7+ hours nightly before the Treviso 10K; chronically short sleep (many nights under 4 hours) is the single biggest recovery limiter visible in the data.
+  2. For Treviso 10K (Oct 10), target 5:45/km conservatively given only one run in 4 weeks; start controlled and negative-split the back half rather than chasing the target pace from the gun.
+  3. Reintroduce running progressively after Treviso — the 169bpm avg HR on your only recent 10km run at 6:15/km pace indicates you are currently aerobically deconditioned for running; build gently with 2–3 easy runs per week before resuming intervals.
+  4. The Tuesday Oct 6 interval session (6×800m at 4:55–5:10/km) falls 4 days after today's 5km open-water race and 4 days before Treviso — this is too intense given both the residual swim fatigue and the pre-race taper window; replace with an easy shakeout.
+  5. Power data is missing on all outdoor rides — adding a power meter or regularly using the indoor trainer with ERG mode would allow much more precise Z2 compliance and remove the guesswork from your Ironman bike build.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-10-06 [RUNNING]
-    Current:  Wk16 Evening session — 6×800 m intervals at 4:55–5:10/km, 90 min total
-    Proposed: Replace with 30–35 min very easy jog at 6:45–7:15/km — no intervals; this is race-week prep for Treviso 10K on Oct 10.
-    Reason:   Running a hard interval session 4 days before the Treviso 10K risks accumulated leg fatigue and a poor race result; easy aerobic running keeps legs ticking over without adding stress.
+    Current:  Wk16 Evening session — 6×800m intervals at 4:55–5:10/km, 90 min total
+    Proposed: Easy 25–30 min shakeout jog at 6:30–7:00/km, flat, HR under 140bpm — no intervals
+    Reason:   Running hard intervals 4 days after a 5km open-water race and 4 days before Treviso 10K is a textbook over-intensity error inside a taper window; easy movement aids recovery without digging a deeper hole.
 
   • 2026-10-06 [SWIMMING]
-    Current:  Wk16 Pool Swim (Tuesday) — 2 km+ at ≤2:30/100 m, 60 min
-    Proposed: Shorten to 1,200–1,500 m easy technique-focused swim at comfortable effort — no hard sets; reduce total training stress in Treviso race week.
-    Reason:   Maintaining swim volume in the days before a 10K run race adds unnecessary fatigue when the priority discipline this week is running.
-
-  • 2026-10-08 [STRENGTH TRAINING]
-    Current:  Wk16 Gym / Strength — 60 min full strength session
-    Proposed: Reduce to 20–25 min very light activation only: bodyweight single-leg calf raises, hip mobility, and core breathing — skip all heavy loading 2 days before Treviso 10K.
-    Reason:   Heavy strength work 48 hours before a race leaves muscles sore and legs heavy; a brief activation session maintains neuromuscular readiness without fatigue cost.
+    Current:  Wk16 Pool Swim (Tuesday) — 2km+ at ≤2:30/100m
+    Proposed: Skip — full rest or 20-min gentle walk only
+    Reason:   Swimming the day of today's Half Oceanman race and then returning to the pool 3 days later adds unnecessary fatigue in the Treviso taper window; the body needs absorption time, not another swim load.
 
   • 2026-10-08 [CYCLING]
-    Current:  Wk16 Evening session — 90 min Z2 endurance spin at 128–177 W
-    Proposed: Skip entirely — no cycling session 2 days before Treviso 10K; legs need to be fully fresh.
-    Reason:   Adding a 90-min bike session two days out from the 10K race will accumulate residual muscular fatigue that compromises race-day running performance.
+    Current:  Wk16 Evening session — Z2 maintenance spin 128–177W, 45–60 min
+    Proposed: Reduce to 20–25 min very easy spin below 128W (Z1 recovery only), cadence drills, no tempo effort
+    Reason:   Two days before Treviso 10K the legs need to feel light; even a gentle Z2 spin accumulates residual fatigue that can blunt race-day sharpness for an athlete with limited recent run volume.
 
-  • 2026-10-15 [RUNNING]
-    Current:  Wk17 Evening session — 6×800 m intervals at 4:55–5:10/km, 90 min
-    Proposed: Replace with 4×800 m at 5:00–5:15/km with 90-sec jog recovery, total ~45 min — reduced volume as first quality run session in the post-race recovery week following Treviso.
-    Reason:   Jumping straight back to 6 reps of hard intervals the Thursday after a 10K race risks overloading underdeveloped run fitness; starting with 4 reps is a safer re-introduction.
+  • 2026-10-08 [STRENGTH TRAINING]
+    Current:  Wk16 Gym / Strength — 40–50 min full strength session
+    Proposed: Skip gym session entirely — substitute 10 min of light mobility and leg swings only
+    Reason:   Strength training induces 24–48hr muscular fatigue; performing it 2 days before a 10K race on an already under-run athlete significantly increases injury risk and reduces race-day leg freshness.
+
+  • 2026-10-13 [CYCLING]
+    Current:  Wk17 Evening session — Z2 maintenance spin 128–177W, 45–60 min
+    Proposed: Easy 30–35 min run at 6:30–7:00/km (conversational pace, HR under 145bpm) to begin re-establishing running frequency post-Treviso
+    Reason:   With only one run logged in 4 weeks and a marathon 127 days away, replacing one weekly bike maintenance spin with an easy aerobic run accelerates the necessary shift toward higher run frequency without adding overall load.
 
   • 2026-10-18 [RUNNING]
-    Current:  Wk17 Long Run — 17.6 km at 6:15–6:45/km, 180 min
-    Proposed: Cap at 12–13 km at 6:30–7:00/km (approx 80–90 min) — do not attempt the full planned distance the week after racing the Treviso 10K.
-    Reason:   Given only one run in the past 4 weeks and a 10K race on Oct 10, jumping to a 17.6 km long run 8 days later is a large spike in running load that increases injury risk significantly.
+    Current:  Wk17 Long Run — 17.6km at 6:15–6:45/km
+    Proposed: Cap at 12–13km at 6:30–6:45/km (strictly aerobic, conversational effort, no negative-split attempt)
+    Reason:   Given only one run in the last 4 weeks at a high HR, jumping straight to a 17.6km long run after Treviso 10K the previous weekend risks injury and excessive soreness; a reduced but consistent long run restarts the running base safely.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).

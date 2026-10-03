@@ -5,82 +5,81 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20261006-0@jean-tri
-DTSTAMP:20261003T042729Z
+DTSTAMP:20261003T153010Z
 DTSTART:20261006T070000
 DTEND:20261006T090000
-SUMMARY:[AI ADJUSTED] running — Replace with 30–35 min very easy jog at
-  6:45–7:15/km — no in
-DESCRIPTION:Replace with 30–35 min very easy jog at 6:45–7:15/km — no
-  intervals\; this is race-week prep for Treviso 10K on Oct 10.\n\nReason: 
- Running a hard interval session 4 days before the Treviso 10K risks accumu
- lated leg fatigue and a poor race result\; easy aerobic running keeps legs
-  ticking over without adding stress.\n\nAI coaching 2026-10-03
+SUMMARY:[AI ADJUSTED] running — Easy 25–30 min shakeout jog at 6:30–7
+ :00/km\, flat\, HR under 
+DESCRIPTION:Easy 25–30 min shakeout jog at 6:30–7:00/km\, flat\, HR und
+ er 140bpm — no intervals\n\nReason: Running hard intervals 4 days after 
+ a 5km open-water race and 4 days before Treviso 10K is a textbook over-int
+ ensity error inside a taper window\; easy movement aids recovery without d
+ igging a deeper hole.\n\nAI coaching 2026-10-03
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261006-1@jean-tri
-DTSTAMP:20261003T042729Z
+DTSTAMP:20261003T153010Z
 DTSTART:20261006T070000
 DTEND:20261006T090000
-SUMMARY:[AI ADJUSTED] swimming — Shorten to 1\,200–1\,500 m easy techni
- que-focused swim at comf
-DESCRIPTION:Shorten to 1\,200–1\,500 m easy technique-focused swim at com
- fortable effort — no hard sets\; reduce total training stress in Treviso
-  race week.\n\nReason: Maintaining swim volume in the days before a 10K ru
- n race adds unnecessary fatigue when the priority discipline this week is 
- running.\n\nAI coaching 2026-10-03
+SUMMARY:[AI ADJUSTED] swimming — Skip — full rest or 20-min gentle walk
+  only
+DESCRIPTION:Skip — full rest or 20-min gentle walk only\n\nReason: Swimmi
+ ng the day of today's Half Oceanman race and then returning to the pool 3 
+ days later adds unnecessary fatigue in the Treviso taper window\; the body
+  needs absorption time\, not another swim load.\n\nAI coaching 2026-10-03
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261008-2@jean-tri
-DTSTAMP:20261003T042729Z
+DTSTAMP:20261003T153010Z
 DTSTART:20261008T070000
 DTEND:20261008T090000
-SUMMARY:[AI ADJUSTED] strength training — Reduce to 20–25 min very ligh
- t activation only: bodyweight s
-DESCRIPTION:Reduce to 20–25 min very light activation only: bodyweight si
- ngle-leg calf raises\, hip mobility\, and core breathing — skip all heav
- y loading 2 days before Treviso 10K.\n\nReason: Heavy strength work 48 hou
- rs before a race leaves muscles sore and legs heavy\; a brief activation s
- ession maintains neuromuscular readiness without fatigue cost.\n\nAI coach
- ing 2026-10-03
+SUMMARY:[AI ADJUSTED] cycling — Reduce to 20–25 min very easy spin belo
+ w 128W (Z1 recovery o
+DESCRIPTION:Reduce to 20–25 min very easy spin below 128W (Z1 recovery on
+ ly)\, cadence drills\, no tempo effort\n\nReason: Two days before Treviso 
+ 10K the legs need to feel light\; even a gentle Z2 spin accumulates residu
+ al fatigue that can blunt race-day sharpness for an athlete with limited r
+ ecent run volume.\n\nAI coaching 2026-10-03
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261008-3@jean-tri
-DTSTAMP:20261003T042729Z
+DTSTAMP:20261003T153010Z
 DTSTART:20261008T070000
 DTEND:20261008T090000
-SUMMARY:[AI ADJUSTED] cycling — Skip entirely — no cycling session 2 da
- ys before Treviso 10K
-DESCRIPTION:Skip entirely — no cycling session 2 days before Treviso 10K\
- ; legs need to be fully fresh.\n\nReason: Adding a 90-min bike session two
-  days out from the 10K race will accumulate residual muscular fatigue that
-  compromises race-day running performance.\n\nAI coaching 2026-10-03
+SUMMARY:[AI ADJUSTED] strength training — Skip gym session entirely — s
+ ubstitute 10 min of light mobil
+DESCRIPTION:Skip gym session entirely — substitute 10 min of light mobili
+ ty and leg swings only\n\nReason: Strength training induces 24–48hr musc
+ ular fatigue\; performing it 2 days before a 10K race on an already under-
+ run athlete significantly increases injury risk and reduces race-day leg f
+ reshness.\n\nAI coaching 2026-10-03
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261015-4@jean-tri
-DTSTAMP:20261003T042729Z
-DTSTART:20261015T070000
-DTEND:20261015T090000
-SUMMARY:[AI ADJUSTED] running — Replace with 4×800 m at 5:00–5:15/km w
- ith 90-sec jog recover
-DESCRIPTION:Replace with 4×800 m at 5:00–5:15/km with 90-sec jog recover
- y\, total ~45 min — reduced volume as first quality run session in the p
- ost-race recovery week following Treviso.\n\nReason: Jumping straight back
-  to 6 reps of hard intervals the Thursday after a 10K race risks overloadi
- ng underdeveloped run fitness\; starting with 4 reps is a safer re-introdu
- ction.\n\nAI coaching 2026-10-03
+UID:ai-coaching-20261013-4@jean-tri
+DTSTAMP:20261003T153010Z
+DTSTART:20261013T070000
+DTEND:20261013T090000
+SUMMARY:[AI ADJUSTED] cycling — Easy 30–35 min run at 6:30–7:00/km (c
+ onversational pace\, HR 
+DESCRIPTION:Easy 30–35 min run at 6:30–7:00/km (conversational pace\, H
+ R under 145bpm) to begin re-establishing running frequency post-Treviso\n\
+ nReason: With only one run logged in 4 weeks and a marathon 127 days away\
+ , replacing one weekly bike maintenance spin with an easy aerobic run acce
+ lerates the necessary shift toward higher run frequency without adding ove
+ rall load.\n\nAI coaching 2026-10-03
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261018-5@jean-tri
-DTSTAMP:20261003T042729Z
+DTSTAMP:20261003T153010Z
 DTSTART:20261018T070000
 DTEND:20261018T090000
-SUMMARY:[AI ADJUSTED] running — Cap at 12–13 km at 6:30–7:00/km (appr
- ox 80–90 min) — do not 
-DESCRIPTION:Cap at 12–13 km at 6:30–7:00/km (approx 80–90 min) — do
-  not attempt the full planned distance the week after racing the Treviso 1
- 0K.\n\nReason: Given only one run in the past 4 weeks and a 10K race on Oc
- t 10\, jumping to a 17.6 km long run 8 days later is a large spike in runn
- ing load that increases injury risk significantly.\n\nAI coaching 2026-10-
- 03
+SUMMARY:[AI ADJUSTED] running — Cap at 12–13km at 6:30–6:45/km (stric
+ tly aerobic\, conversati
+DESCRIPTION:Cap at 12–13km at 6:30–6:45/km (strictly aerobic\, conversa
+ tional effort\, no negative-split attempt)\n\nReason: Given only one run i
+ n the last 4 weeks at a high HR\, jumping straight to a 17.6km long run af
+ ter Treviso 10K the previous weekend risks injury and excessive soreness\;
+  a reduced but consistent long run restarts the running base safely.\n\nAI
+  coaching 2026-10-03
 END:VEVENT
 END:VCALENDAR

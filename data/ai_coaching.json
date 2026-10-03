@@ -1,62 +1,62 @@
 {
-  "summary": "Over the last 4 weeks training volume has been moderate but inconsistent, with notable gaps in running (only one run recorded) and swimming while cycling has dominated. Sleep is chronically short \u2014 most nights sitting at 3\u20134 hours rather than the recommended 7\u20138 \u2014 and body battery scores are persistently low, signalling accumulated fatigue that needs addressing before the Half Oceanman today and the Treviso 10K in 8 days. The single run on 25 Sep showed a very high HR of 169 bpm at a modest 6:15/km pace, suggesting running-specific fitness needs careful rebuilding rather than aggressive interval work in the near term.",
+  "summary": "Over the last 4 weeks training has been heavily swim and bike dominant with only one run logged (10km at 169bpm avg HR, a high-effort effort that signals running fitness is underdeveloped relative to race targets). Sleep is chronically short \u2014 the majority of nights fall below 300 minutes, with several dipping below 210 minutes \u2014 and body battery scores are consistently low, suggesting accumulated fatigue that could compromise race performance and injury resilience. The Half Oceanman 5km open-water swim is today (Oct 3), so the immediate priority shifts to the Treviso 10K in 8 days, for which the athlete needs a controlled mini-taper starting now.",
   "suggestions": [
-    "Today is race day for the Half Oceanman 5,000 m swim \u2014 focus entirely on warm-up, race execution, and post-race fuelling; avoid any additional training load whatsoever.",
-    "With the Treviso 10K only 8 days away, treat the next 8 days as a mini-taper: keep all sessions short and easy, avoid high-intensity intervals (especially the Wk16 6\u00d7800 m session on Oct 6), and prioritise sleep above 7 hours per night to allow body battery to recover from its chronically low state.",
-    "Chronic sleep deprivation (averaging ~5.5 hrs/night across 4 weeks) is the single biggest limiter visible in your data \u2014 address this immediately by targeting a minimum 7 hours; without this, no training prescription will yield the intended adaptation.",
-    "Running fitness appears underdeveloped relative to the 5:45/km Treviso target \u2014 your only run in 4 weeks was at 169 bpm average for 6:15/km, so arrive at the 10K start line fresh rather than chasing fitness with hard sessions this week.",
-    "From Wk17 onwards (post-Treviso), prioritise re-introducing structured running at 2\u20133 sessions per week with one quality session and one long run, as the marathon and Ironman run targets require a sustained build that is currently absent from recent training."
+    "Prioritise sleep above all else this week \u2014 aim for 7+ hours nightly before the Treviso 10K; chronically short sleep (many nights under 4 hours) is the single biggest recovery limiter visible in the data.",
+    "For Treviso 10K (Oct 10), target 5:45/km conservatively given only one run in 4 weeks; start controlled and negative-split the back half rather than chasing the target pace from the gun.",
+    "Reintroduce running progressively after Treviso \u2014 the 169bpm avg HR on your only recent 10km run at 6:15/km pace indicates you are currently aerobically deconditioned for running; build gently with 2\u20133 easy runs per week before resuming intervals.",
+    "The Tuesday Oct 6 interval session (6\u00d7800m at 4:55\u20135:10/km) falls 4 days after today's 5km open-water race and 4 days before Treviso \u2014 this is too intense given both the residual swim fatigue and the pre-race taper window; replace with an easy shakeout.",
+    "Power data is missing on all outdoor rides \u2014 adding a power meter or regularly using the indoor trainer with ERG mode would allow much more precise Z2 compliance and remove the guesswork from your Ironman bike build."
   ],
   "proposed_changes": [
     {
       "date": "2026-10-06",
       "discipline": "running",
-      "current_session": "Wk16 Evening session \u2014 6\u00d7800 m intervals at 4:55\u20135:10/km, 90 min total",
-      "proposed_session": "Replace with 30\u201335 min very easy jog at 6:45\u20137:15/km \u2014 no intervals; this is race-week prep for Treviso 10K on Oct 10.",
+      "current_session": "Wk16 Evening session \u2014 6\u00d7800m intervals at 4:55\u20135:10/km, 90 min total",
+      "proposed_session": "Easy 25\u201330 min shakeout jog at 6:30\u20137:00/km, flat, HR under 140bpm \u2014 no intervals",
       "change_type": "replace",
-      "reason": "Running a hard interval session 4 days before the Treviso 10K risks accumulated leg fatigue and a poor race result; easy aerobic running keeps legs ticking over without adding stress."
+      "reason": "Running hard intervals 4 days after a 5km open-water race and 4 days before Treviso 10K is a textbook over-intensity error inside a taper window; easy movement aids recovery without digging a deeper hole."
     },
     {
       "date": "2026-10-06",
       "discipline": "swimming",
-      "current_session": "Wk16 Pool Swim (Tuesday) \u2014 2 km+ at \u22642:30/100 m, 60 min",
-      "proposed_session": "Shorten to 1,200\u20131,500 m easy technique-focused swim at comfortable effort \u2014 no hard sets; reduce total training stress in Treviso race week.",
-      "change_type": "decrease",
-      "reason": "Maintaining swim volume in the days before a 10K run race adds unnecessary fatigue when the priority discipline this week is running."
-    },
-    {
-      "date": "2026-10-08",
-      "discipline": "strength_training",
-      "current_session": "Wk16 Gym / Strength \u2014 60 min full strength session",
-      "proposed_session": "Reduce to 20\u201325 min very light activation only: bodyweight single-leg calf raises, hip mobility, and core breathing \u2014 skip all heavy loading 2 days before Treviso 10K.",
-      "change_type": "decrease",
-      "reason": "Heavy strength work 48 hours before a race leaves muscles sore and legs heavy; a brief activation session maintains neuromuscular readiness without fatigue cost."
+      "current_session": "Wk16 Pool Swim (Tuesday) \u2014 2km+ at \u22642:30/100m",
+      "proposed_session": "Skip \u2014 full rest or 20-min gentle walk only",
+      "change_type": "skip",
+      "reason": "Swimming the day of today's Half Oceanman race and then returning to the pool 3 days later adds unnecessary fatigue in the Treviso taper window; the body needs absorption time, not another swim load."
     },
     {
       "date": "2026-10-08",
       "discipline": "cycling",
-      "current_session": "Wk16 Evening session \u2014 90 min Z2 endurance spin at 128\u2013177 W",
-      "proposed_session": "Skip entirely \u2014 no cycling session 2 days before Treviso 10K; legs need to be fully fresh.",
-      "change_type": "skip",
-      "reason": "Adding a 90-min bike session two days out from the 10K race will accumulate residual muscular fatigue that compromises race-day running performance."
+      "current_session": "Wk16 Evening session \u2014 Z2 maintenance spin 128\u2013177W, 45\u201360 min",
+      "proposed_session": "Reduce to 20\u201325 min very easy spin below 128W (Z1 recovery only), cadence drills, no tempo effort",
+      "change_type": "decrease",
+      "reason": "Two days before Treviso 10K the legs need to feel light; even a gentle Z2 spin accumulates residual fatigue that can blunt race-day sharpness for an athlete with limited recent run volume."
     },
     {
-      "date": "2026-10-15",
-      "discipline": "running",
-      "current_session": "Wk17 Evening session \u2014 6\u00d7800 m intervals at 4:55\u20135:10/km, 90 min",
-      "proposed_session": "Replace with 4\u00d7800 m at 5:00\u20135:15/km with 90-sec jog recovery, total ~45 min \u2014 reduced volume as first quality run session in the post-race recovery week following Treviso.",
+      "date": "2026-10-08",
+      "discipline": "strength_training",
+      "current_session": "Wk16 Gym / Strength \u2014 40\u201350 min full strength session",
+      "proposed_session": "Skip gym session entirely \u2014 substitute 10 min of light mobility and leg swings only",
+      "change_type": "skip",
+      "reason": "Strength training induces 24\u201348hr muscular fatigue; performing it 2 days before a 10K race on an already under-run athlete significantly increases injury risk and reduces race-day leg freshness."
+    },
+    {
+      "date": "2026-10-13",
+      "discipline": "cycling",
+      "current_session": "Wk17 Evening session \u2014 Z2 maintenance spin 128\u2013177W, 45\u201360 min",
+      "proposed_session": "Easy 30\u201335 min run at 6:30\u20137:00/km (conversational pace, HR under 145bpm) to begin re-establishing running frequency post-Treviso",
       "change_type": "replace",
-      "reason": "Jumping straight back to 6 reps of hard intervals the Thursday after a 10K race risks overloading underdeveloped run fitness; starting with 4 reps is a safer re-introduction."
+      "reason": "With only one run logged in 4 weeks and a marathon 127 days away, replacing one weekly bike maintenance spin with an easy aerobic run accelerates the necessary shift toward higher run frequency without adding overall load."
     },
     {
       "date": "2026-10-18",
       "discipline": "running",
-      "current_session": "Wk17 Long Run \u2014 17.6 km at 6:15\u20136:45/km, 180 min",
-      "proposed_session": "Cap at 12\u201313 km at 6:30\u20137:00/km (approx 80\u201390 min) \u2014 do not attempt the full planned distance the week after racing the Treviso 10K.",
+      "current_session": "Wk17 Long Run \u2014 17.6km at 6:15\u20136:45/km",
+      "proposed_session": "Cap at 12\u201313km at 6:30\u20136:45/km (strictly aerobic, conversational effort, no negative-split attempt)",
       "change_type": "decrease",
-      "reason": "Given only one run in the past 4 weeks and a 10K race on Oct 10, jumping to a 17.6 km long run 8 days later is a large spike in running load that increases injury risk significantly."
+      "reason": "Given only one run in the last 4 weeks at a high HR, jumping straight to a 17.6km long run after Treviso 10K the previous weekend risks injury and excessive soreness; a reduced but consistent long run restarts the running base safely."
     }
   ],
-  "generated_at": "2026-10-03T04:26:54.828854+00:00",
+  "generated_at": "2026-10-03T15:29:36.222621+00:00",
   "weeks_analysed": 4
 }

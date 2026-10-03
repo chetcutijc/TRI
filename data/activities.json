@@ -508,5 +508,22 @@
     "elevation_gain": null,
     "avg_pace": 0.0,
     "vo2max_estimate": null
+  },
+  "24587620031": {
+    "id": 24587620031,
+    "name": "Malta Majjistral Open Water Swimming",
+    "type": "open_water_swimming",
+    "start": "2026-10-03 09:01:10",
+    "duration_s": 9197.6591796875,
+    "distance_m": 5209.8798828125,
+    "calories": 1270.0,
+    "avg_hr": 136.0,
+    "max_hr": 168.0,
+    "training_load": 158.71536254882812,
+    "avg_power": null,
+    "normalized_power": null,
+    "elevation_gain": null,
+    "avg_pace": 0.5659999847412109,
+    "vo2max_estimate": null
   }
 }
