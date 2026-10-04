@@ -7,56 +7,68 @@
     "On race day (Oct 10) target 5:45/km but be prepared to go slightly more conservative in the first 3 km given the lack of recent run-specific training \u2014 a positive split 10K risks blowing up without a solid recent base.",
     "Post-Treviso, gradually rebuild running volume through weeks 17\u201318 with the weekly long runs in the plan, and consider adding a second run day per week to address the clear run-frequency deficit before the marathon block begins."
   ],
-  "proposed_changes": [
+  "proposed_changes": [],
+  "generated_at": "2026-10-03T15:56:17.489107+00:00",
+  "weeks_analysed": 4,
+  "history": [
     {
-      "date": "2026-10-04",
-      "discipline": "rest",
-      "current_session": "Wk15 Long Run (AI adjusted) \u2014 25 min very easy walk/jog at 8:00+/km post-race",
-      "proposed_session": "Full rest only \u2014 no walking or jogging. Today is 5 km open-water race recovery; keep feet up, prioritise nutrition, hydration, and sleep.",
-      "change_type": "decrease",
-      "reason": "After a 5 km open-water race on already chronically low sleep and depleted body battery, even 25 minutes of movement is unnecessary stress \u2014 complete rest accelerates recovery ahead of the 10K in 6 days."
-    },
-    {
-      "date": "2026-10-06",
-      "discipline": "running",
-      "current_session": "Wk16 Evening session \u2014 6 \u00d7 800 m intervals at 4:55\u20135:10/km, 90 min total",
-      "proposed_session": "3 \u00d7 800 m at 5:10\u20135:20/km with 90 sec standing recovery, total ~30 min including warm-up and cool-down; cut session short if HR exceeds 160 bpm.",
-      "change_type": "decrease",
-      "reason": "With only one run in 4 weeks (at 169 bpm average) and the 10K just 4 days away, a full 6-rep interval session risks excessive neuromuscular fatigue at exactly the wrong moment \u2014 a reduced stimulus maintains sharpness without digging a hole."
-    },
-    {
-      "date": "2026-10-06",
-      "discipline": "swimming",
-      "current_session": "Wk16 Pool Swim (Tuesday) \u2014 2 km+ at \u22642:30/100 m",
-      "proposed_session": "Skip the pool swim \u2014 single training session day only (the shortened run); legs and shoulders need to consolidate recovery from today's open-water race.",
-      "change_type": "skip",
-      "reason": "Doubling up run intervals and a 2 km swim session just 3 days post-race and 4 days pre-race overloads recovery; swimming adds little 10K-specific benefit and risks carry-over fatigue into race day."
-    },
-    {
-      "date": "2026-10-08",
-      "discipline": "cycling",
-      "current_session": "Wk16 Evening session \u2014 Z2 maintenance spin 128\u2013177 W, 45\u201360 min",
-      "proposed_session": "Skip the evening cycling spin entirely \u2014 strength session only (shortened to 30 min, bodyweight/low-load core and single-leg work only).",
-      "change_type": "skip",
-      "reason": "Two days before the 10K, any additional endurance load on top of strength work increases pre-race fatigue without meaningful fitness gain at this stage of the taper."
-    },
-    {
-      "date": "2026-10-13",
-      "discipline": "running",
-      "current_session": "Wk17 \u2014 no dedicated easy run scheduled post-Treviso 10K recovery",
-      "proposed_session": "Add a 30 min easy recovery run at 7:00\u20137:30/km on Tuesday October 13 in place of or before the evening cycling spin \u2014 this reintroduces gentle run stimulus after the race.",
-      "change_type": "add",
-      "reason": "After the 10K race there is no run until Thursday's intervals in week 17; a short Tuesday easy run bridges the gap and prevents the legs going stale before the interval session."
-    },
-    {
-      "date": "2026-10-18",
-      "discipline": "running",
-      "current_session": "Wk17 Long Run \u2014 17.6 km at 6:15\u20136:45/km, 180 min",
-      "proposed_session": "Cap at 13\u201314 km at 6:30\u20137:00/km (approximately 90\u2013100 min) \u2014 do not attempt the full 17.6 km this soon after back-to-back race weeks with low sleep and minimal run base.",
-      "change_type": "decrease",
-      "reason": "With only one run in the last 4 weeks and two races in consecutive weekends, jumping straight to a 17.6 km long run carries significant injury risk \u2014 a shorter aerobic run rebuilds the base safely and still supports the marathon block ahead."
+      "applied_at": "2026-10-04T09:42:34.824191+00:00",
+      "generated_at": "2026-10-03T15:56:17.489107+00:00",
+      "summary": "The last 4 weeks show a predominantly bike-heavy and swim-focused block with very limited running (only one run recorded at a high HR of 169 bpm for 10 km at 6:15/km), which is concerning given the Treviso 10K in 8 days. Sleep quality is consistently poor \u2014 most nights average 3\u20134 hours, well below the 7\u20138 hours needed for adequate recovery \u2014 and body battery scores regularly dip to very low levels, suggesting accumulated fatigue. Today's 5 km open-water race (Half Oceanman) is the immediate priority; the week after must balance post-race recovery with a controlled, low-stress taper into the Treviso 10K on October 10.",
+      "applied_count": 6,
+      "changes": [
+        {
+          "date": "2026-10-04",
+          "discipline": "rest",
+          "current_session": "Wk15 Long Run (AI adjusted) \u2014 25 min very easy walk/jog at 8:00+/km post-race",
+          "proposed_session": "Full rest only \u2014 no walking or jogging. Today is 5 km open-water race recovery; keep feet up, prioritise nutrition, hydration, and sleep.",
+          "change_type": "decrease",
+          "reason": "After a 5 km open-water race on already chronically low sleep and depleted body battery, even 25 minutes of movement is unnecessary stress \u2014 complete rest accelerates recovery ahead of the 10K in 6 days."
+        },
+        {
+          "date": "2026-10-06",
+          "discipline": "running",
+          "current_session": "Wk16 Evening session \u2014 6 \u00d7 800 m intervals at 4:55\u20135:10/km, 90 min total",
+          "proposed_session": "3 \u00d7 800 m at 5:10\u20135:20/km with 90 sec standing recovery, total ~30 min including warm-up and cool-down; cut session short if HR exceeds 160 bpm.",
+          "change_type": "decrease",
+          "reason": "With only one run in 4 weeks (at 169 bpm average) and the 10K just 4 days away, a full 6-rep interval session risks excessive neuromuscular fatigue at exactly the wrong moment \u2014 a reduced stimulus maintains sharpness without digging a hole."
+        },
+        {
+          "date": "2026-10-06",
+          "discipline": "swimming",
+          "current_session": "Wk16 Pool Swim (Tuesday) \u2014 2 km+ at \u22642:30/100 m",
+          "proposed_session": "Skip the pool swim \u2014 single training session day only (the shortened run); legs and shoulders need to consolidate recovery from today's open-water race.",
+          "change_type": "skip",
+          "reason": "Doubling up run intervals and a 2 km swim session just 3 days post-race and 4 days pre-race overloads recovery; swimming adds little 10K-specific benefit and risks carry-over fatigue into race day."
+        },
+        {
+          "date": "2026-10-08",
+          "discipline": "cycling",
+          "current_session": "Wk16 Evening session \u2014 Z2 maintenance spin 128\u2013177 W, 45\u201360 min",
+          "proposed_session": "Skip the evening cycling spin entirely \u2014 strength session only (shortened to 30 min, bodyweight/low-load core and single-leg work only).",
+          "change_type": "skip",
+          "reason": "Two days before the 10K, any additional endurance load on top of strength work increases pre-race fatigue without meaningful fitness gain at this stage of the taper."
+        },
+        {
+          "date": "2026-10-13",
+          "discipline": "running",
+          "current_session": "Wk17 \u2014 no dedicated easy run scheduled post-Treviso 10K recovery",
+          "proposed_session": "Add a 30 min easy recovery run at 7:00\u20137:30/km on Tuesday October 13 in place of or before the evening cycling spin \u2014 this reintroduces gentle run stimulus after the race.",
+          "change_type": "add",
+          "reason": "After the 10K race there is no run until Thursday's intervals in week 17; a short Tuesday easy run bridges the gap and prevents the legs going stale before the interval session."
+        },
+        {
+          "date": "2026-10-18",
+          "discipline": "running",
+          "current_session": "Wk17 Long Run \u2014 17.6 km at 6:15\u20136:45/km, 180 min",
+          "proposed_session": "Cap at 13\u201314 km at 6:30\u20137:00/km (approximately 90\u2013100 min) \u2014 do not attempt the full 17.6 km this soon after back-to-back race weeks with low sleep and minimal run base.",
+          "change_type": "decrease",
+          "reason": "With only one run in the last 4 weeks and two races in consecutive weekends, jumping straight to a 17.6 km long run carries significant injury risk \u2014 a shorter aerobic run rebuilds the base safely and still supports the marathon block ahead."
+        }
+      ],
+      "unmatched": []
     }
   ],
-  "generated_at": "2026-10-03T15:56:17.489107+00:00",
-  "weeks_analysed": 4
+  "applied_at": "2026-10-04T09:42:34.824191+00:00",
+  "applied_count": 6
 }
