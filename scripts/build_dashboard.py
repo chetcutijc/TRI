@@ -1157,7 +1157,7 @@ def race_total_distance_km(race):
     return total if have_any else None
 
 
-def compute_race_prediction(race, df):
+def compute_race_prediction(race, df, as_of=None):
     """
     Rough finish-time estimate per discipline, based on your average pace/power/speed
     over the last 4 weeks of actual Garmin activities, applied to the race's distances.
@@ -1173,7 +1173,10 @@ def compute_race_prediction(race, df):
     if not dist or df is None or df.empty:
         return None
 
-    recent = df[df["start"] >= (dt.datetime.now() - dt.timedelta(weeks=4))]
+    # as_of = race date for past races: only use the 4 weeks BEFORE race day,
+    # so the race itself and post-race training can't distort the prediction.
+    end = dt.datetime.combine(as_of, dt.time.min) if as_of else dt.datetime.now()
+    recent = df[(df["start"] >= end - dt.timedelta(weeks=4)) & (df["start"] < end)]
     if recent.empty:
         return None
 
@@ -1268,6 +1271,349 @@ def compute_race_target_time(race):
         return None
 
     return {"total_sec": total_sec, "total": fmt_hms(total_sec), "parts": parts}
+
+
+def fmt_delta(sec):
+    """Signed time difference, e.g. -2:15 (faster) or +1:03:20 (slower)."""
+    if sec is None:
+        return "\u2014"
+    sign = "\u2212" if sec < 0 else "+"
+    return sign + (fmt_hms(abs(sec)) or "0:00")
+
+
+def compute_race_actual(race, df):
+    """
+    What actually happened on race day, from Garmin activities on that date.
+    Per discipline, takes the LONGEST activity of that type that day, so a
+    warm-up jog or shakeout swim isn't mistaken for the race itself.
+
+    Triathlon caveat: if Garmin logs the race as separate swim/bike/run
+    activities, the total is the sum of legs and EXCLUDES transitions. If it's
+    one combined multisport activity, only the total is available.
+    """
+    if df is None or df.empty:
+        return None
+    dist = race.get("distances", {}) or {}
+    day = df[df["start"].dt.date == race["date"]]
+    if day.empty:
+        return None
+
+    legs = [("swim_m", "swimming", "\U0001F3CA", "Swim"),
+            ("bike_km", "cycling", "\U0001F6B4", "Bike"),
+            ("run_km", "running", "\U0001F3C3", "Run")]
+    parts, total_sec, found = [], 0, 0
+    for key, disc, emoji, label in legs:
+        if not dist.get(key):
+            continue
+        acts = day[day["type"] == disc]
+        if acts.empty:
+            continue
+        a = acts.loc[acts["duration_min"].idxmax()]
+        sec = (a["duration_min"] or 0) * 60
+        speed = a.get("avg_pace")
+        if speed is None or speed != speed or speed <= 0.1:
+            pace = "\u2014"
+        elif disc == "running":
+            pace = fmt_pace(1000 / speed)
+        elif disc == "swimming":
+            m, s = divmod(round(100 / speed), 60)
+            pace = f"{m}:{s:02d}/100m"
+        else:
+            pace = f"{speed * 3.6:.1f}km/h"
+        parts.append((emoji, label, pace, fmt_hms(sec)))
+        total_sec += sec
+        found += 1
+
+    if found:
+        expected = sum(1 for k, *_ in legs if dist.get(k))
+        return {"total_sec": total_sec, "total": fmt_hms(total_sec), "parts": parts,
+                "partial": found < expected, "legs_separate": True}
+
+    # No per-discipline match: fall back to a combined multisport activity
+    multi = day[day["type"].astype(str).str.contains("multi|triathlon", case=False, na=False)]
+    if not multi.empty:
+        a = multi.loc[multi["duration_min"].idxmax()]
+        sec = (a["duration_min"] or 0) * 60
+        return {"total_sec": sec, "total": fmt_hms(sec), "parts": [],
+                "partial": False, "legs_separate": False}
+    return None
+
+
+RACE_DEBRIEFS_FILE = Path("data/race_debriefs.json")
+
+_LEG_MAP = [("swim_m", "swimming", "\U0001F3CA", "Swim", 1 / 1000),
+            ("bike_km", "cycling", "\U0001F6B4", "Bike", 1),
+            ("run_km", "running", "\U0001F3C3", "Run", 1)]
+
+
+def race_key(race):
+    return f"{race['date'].isoformat()}|{race['name']}"
+
+
+def load_race_debriefs():
+    if RACE_DEBRIEFS_FILE.exists():
+        try:
+            return json.loads(RACE_DEBRIEFS_FILE.read_text())
+        except Exception:
+            return {}
+    return {}
+
+
+def _load_sum(sessions):
+    """Training load if Garmin provided it, otherwise fall back to minutes."""
+    tl = sessions["training_load"].dropna() if "training_load" in sessions else []
+    if len(tl):
+        return float(tl.sum())
+    return float(sessions["duration_min"].fillna(0).sum())
+
+
+def compute_race_buildup(race, df, wellness=None, plan_full=None, weeks=6):
+    """
+    Deterministic analysis of the build-up to a past race. Observations are
+    heuristics, not proof — a single race can't establish cause and effect.
+    Returns dict, or None if there's no data to analyse.
+    """
+    if df is None or df.empty:
+        return None
+    dist = race.get("distances", {}) or {}
+    race_date = race["date"]
+    start = race_date - dt.timedelta(weeks=weeks)
+    win = df[(df["start"].dt.date >= start) & (df["start"].dt.date < race_date)]
+    race_day = df[df["start"].dt.date == race_date]
+
+    legs, obs = [], []
+    for key, disc, emoji, label, to_km in _LEG_MAP:
+        if not dist.get(key):
+            continue
+        race_km = dist[key] * to_km
+        s = win[win["type"] == disc]
+        longest = float(s["distance_km"].max()) if not s.empty and s["distance_km"].notna().any() else 0.0
+        longest_pct = round(100 * longest / race_km) if race_km else None
+
+        r = race_day[race_day["type"] == disc]
+        r = r.loc[r["duration_min"].idxmax()] if not r.empty else None
+
+        train_speed = s["avg_pace"].dropna()
+        train_speed = train_speed[train_speed > 0.1].mean() if len(train_speed) else None
+        race_speed = r["avg_pace"] if r is not None else None
+        if race_speed is not None and (race_speed != race_speed or race_speed <= 0.1):
+            race_speed = None
+        speed_gain = (round(100 * (race_speed / train_speed - 1))
+                      if race_speed and train_speed and train_speed == train_speed else None)
+
+        train_hr = s["avg_hr"].dropna().mean() if not s.empty else None
+        race_hr = r["avg_hr"] if r is not None else None
+        hr_gap = (round(race_hr - train_hr)
+                  if race_hr is not None and train_hr is not None
+                  and race_hr == race_hr and train_hr == train_hr else None)
+
+        legs.append({"emoji": emoji, "label": label, "sessions": len(s),
+                     "km": round(float(s["distance_km"].fillna(0).sum()), 1),
+                     "longest_km": round(longest, 1), "race_km": round(race_km, 1),
+                     "longest_pct": longest_pct, "speed_gain_pct": speed_gain,
+                     "hr_gap": hr_gap})
+
+        # Longest-session readiness only matters for longer events
+        if race_km >= 15 and longest_pct is not None:
+            if longest_pct < 60:
+                obs.append(("\u26a0\ufe0f", f"{label}: longest build-up session was {longest_pct}% of race distance "
+                            f"({longest:.1f} of {race_km:.1f}km) \u2014 likely under-prepared for the distance."))
+            elif longest_pct >= 75:
+                obs.append(("\u2705", f"{label}: longest session reached {longest_pct}% of race distance."))
+        if speed_gain is not None and speed_gain >= 5:
+            obs.append(("\u2139\ufe0f", f"{label}: raced {speed_gain}% faster than your average training pace."))
+        if hr_gap is not None:
+            if hr_gap >= 15:
+                obs.append(("\u2139\ufe0f", f"{label}: race HR was {hr_gap} bpm above training average \u2014 a genuine hard effort."))
+            elif hr_gap <= 3:
+                obs.append(("\u2139\ufe0f", f"{label}: race HR only {hr_gap:+d} bpm vs training \u2014 possibly held back, or HR data unreliable."))
+
+    # Taper: race-week load vs average of the 3 weeks before it
+    last7 = win[win["start"].dt.date >= race_date - dt.timedelta(days=7)]
+    prior = win[(win["start"].dt.date >= race_date - dt.timedelta(days=28)) &
+                (win["start"].dt.date < race_date - dt.timedelta(days=7))]
+    taper_ratio = None
+    if not prior.empty:
+        prior_weekly = _load_sum(prior) / 3
+        if prior_weekly > 0:
+            taper_ratio = round(_load_sum(last7) / prior_weekly, 2)
+    long_event = any(l["race_km"] >= 15 for l in legs)
+    if taper_ratio is not None:
+        pct = round(100 * (1 - taper_ratio))
+        if taper_ratio > 0.9 and long_event:
+            obs.append(("\u26a0\ufe0f", f"No real taper: race-week load was {round(100*taper_ratio)}% of normal."))
+        elif 0.35 <= taper_ratio <= 0.8:
+            obs.append(("\u2705", f"Taper: race-week load dropped {pct}% \u2014 within a typical range."))
+        elif taper_ratio < 0.35:
+            obs.append(("\u26a0\ufe0f", f"Race-week load dropped {pct}% \u2014 sharper than a normal taper (illness, travel, or under-training?)."))
+
+    # Plan compliance across the build-up
+    compliance = None
+    if plan_full:
+        planned = [s for s in plan_full
+                   if s.get("discipline") not in ("rest", "race", "other", None)
+                   and start.isoformat() <= s.get("date", "") < race_date.isoformat()]
+        done = 0
+        for s in planned:
+            sd = dt.date.fromisoformat(s["date"])
+            m = df[(df["type"] == s["discipline"]) &
+                   (df["start"].dt.date >= sd - dt.timedelta(days=1)) &
+                   (df["start"].dt.date <= sd + dt.timedelta(days=1))]
+            done += 0 if m.empty else 1
+        if planned:
+            compliance = round(100 * done / len(planned))
+            icon = "\u2705" if compliance >= 80 else "\u26a0\ufe0f" if compliance >= 60 else "\u274c"
+            obs.append((icon, f"Completed {done} of {len(planned)} planned sessions ({compliance}%) in the {weeks} weeks before."))
+
+    # Race-week sleep vs baseline
+    sleep_week = sleep_base = None
+    if wellness is not None and not wellness.empty and "sleep_duration_min" in wellness.columns:
+        w = wellness.dropna(subset=["sleep_duration_min"])
+        rw = w[(w["date"].dt.date >= race_date - dt.timedelta(days=7)) & (w["date"].dt.date < race_date)]
+        bw = w[(w["date"].dt.date >= race_date - dt.timedelta(days=35)) &
+               (w["date"].dt.date < race_date - dt.timedelta(days=7))]
+        if not rw.empty:
+            sleep_week = round(rw["sleep_duration_min"].mean() / 60, 1)
+        if not bw.empty:
+            sleep_base = round(bw["sleep_duration_min"].mean() / 60, 1)
+        if sleep_week is not None and sleep_base is not None and sleep_week < sleep_base - 0.5:
+            obs.append(("\u26a0\ufe0f", f"Race-week sleep averaged {sleep_week}h vs your usual {sleep_base}h."))
+
+    if not legs and compliance is None:
+        return None
+    return {"weeks": weeks, "legs": legs, "taper_ratio": taper_ratio,
+            "compliance_pct": compliance, "sleep_race_week_h": sleep_week,
+            "sleep_baseline_h": sleep_base, "observations": obs}
+
+
+def race_buildup_html(race, df):
+    """Collapsible build-up analysis + saved AI debrief for a past race."""
+    b = compute_race_buildup(race, df, load_wellness(), load_plan_full())
+    debrief = load_race_debriefs().get(race_key(race))
+    if not b and not debrief:
+        return ""
+
+    rows = ""
+    for l in (b or {}).get("legs", []):
+        lp = f'{l["longest_pct"]}%' if l["longest_pct"] is not None else "\u2014"
+        sg = f'{l["speed_gain_pct"]:+d}%' if l["speed_gain_pct"] is not None else "\u2014"
+        hg = f'{l["hr_gap"]:+d}' if l["hr_gap"] is not None else "\u2014"
+        rows += (f'<tr><td>{l["emoji"]} {l["label"]}</td><td>{l["sessions"]} / {l["km"]}km</td>'
+                 f'<td>{l["longest_km"]}km ({lp})</td><td>{sg}</td><td>{hg}</td></tr>')
+    table = ""
+    if rows:
+        table = ('<table class="table" style="font-size:.85em;margin:6px 0">'
+                 '<tr><th>Leg</th><th>Sessions / Vol</th><th>Longest</th>'
+                 '<th>Race vs train pace</th><th>Race vs train HR</th></tr>' + rows + '</table>')
+
+    obs = "".join(f'<div style="font-size:.8em;margin:3px 0">{i} {txt}</div>'
+                  for i, txt in (b or {}).get("observations", []))
+
+    debrief_html = ""
+    if debrief:
+        def ul(items):
+            return "".join(f"<li>{x}</li>" for x in items or [])
+        debrief_html = f"""
+        <div style="margin-top:8px;padding-top:8px;border-top:1px solid #e3e3ea">
+            <div style="font-size:.8em;font-weight:800;margin-bottom:4px">\U0001F916 Coach debrief</div>
+            <div style="font-size:.82em;margin-bottom:6px">{debrief.get("headline","")}</div>
+            <div style="font-size:.76em;font-weight:700;color:#00A888">Went well</div>
+            <ul style="font-size:.78em;margin:2px 0 6px 16px">{ul(debrief.get("went_well"))}</ul>
+            <div style="font-size:.76em;font-weight:700;color:#FF7A59">To improve</div>
+            <ul style="font-size:.78em;margin:2px 0 6px 16px">{ul(debrief.get("to_improve"))}</ul>
+            <div style="font-size:.76em;font-weight:700;color:#5B6EF5">For the next race</div>
+            <ul style="font-size:.78em;margin:2px 0 0 16px">{ul(debrief.get("next_race"))}</ul>
+        </div>"""
+    else:
+        debrief_html = ('<p style="font-size:.7em;color:#bbb;margin-top:6px">AI debrief is generated on the '
+                        'next sync (once per race).</p>')
+
+    weeks = (b or {}).get("weeks", 6)
+    return f"""
+    <details style="background:#f8f8fc;border-radius:8px;padding:8px 10px;margin:6px 0">
+        <summary style="font-size:.78em;font-weight:800;cursor:pointer">\U0001F4CB Build-up analysis ({weeks} weeks)</summary>
+        {table}
+        {obs}
+        <p style="font-size:.66em;color:#bbb;margin:4px 0 0">Observations are heuristics from one race \u2014
+        likely factors, not proven causes. Pacing within the race (splits) isn't available.</p>
+        {debrief_html}
+    </details>"""
+
+
+def race_result_html(race, df):
+    """Post-race comparison box: target vs predicted (as of race eve) vs actual."""
+    target     = compute_race_target_time(race)
+    prediction = compute_race_prediction(race, df, as_of=race["date"])
+    actual     = compute_race_actual(race, df)
+
+    if not actual:
+        return ('<div style="background:#f8f8fc;border-radius:8px;padding:8px 10px;margin:6px 0;'
+                'font-size:.78em;color:#9a9aaa">No Garmin activity found on race day \u2014 '
+                'nothing to compare yet.</div>')
+
+    def verdict(ref, label):
+        if not ref:
+            return ""
+        d = actual["total_sec"] - ref["total_sec"]
+        col = "#00A888" if d <= 0 else "#FF7A59"
+        word = "faster" if d <= 0 else "slower"
+        return (f'<div style="font-size:.78em;color:{col};font-weight:700">'
+                f'{fmt_delta(d)} vs {label} ({word})</div>')
+
+    leg_rows = ""
+    if actual["parts"] and len(actual["parts"]) + (0 if not target else 0) > 0:
+        t_by = {l: (p, tm) for _, l, p, tm in (target["parts"] if target else [])}
+        p_by = {l: (p, tm) for _, l, p, tm in (prediction["parts"] if prediction else [])}
+        for emoji, label, a_pace, a_time in actual["parts"]:
+            tp, tt = t_by.get(label, ("\u2014", "\u2014"))
+            pp, pt = p_by.get(label, ("\u2014", "\u2014"))
+            leg_rows += f"""<tr>
+                <td style="font-size:.76em;font-weight:600;color:#555;padding:3px 4px">{emoji} {label}</td>
+                <td style="font-size:.76em;color:#5B6EF5;text-align:right;padding:3px 4px">{tt}<br><span style="color:#9a9aaa">{tp}</span></td>
+                <td style="font-size:.76em;color:#00C2A8;text-align:right;padding:3px 4px">{pt}<br><span style="color:#9a9aaa">{pp}</span></td>
+                <td style="font-size:.76em;color:#1a1a22;font-weight:700;text-align:right;padding:3px 4px">{a_time}<br><span style="color:#9a9aaa;font-weight:400">{a_pace}</span></td>
+            </tr>"""
+
+    # Precomputed outside the f-string: Python 3.11 (used by GitHub Actions)
+    # forbids backslashes like "\u2014" inside f-string {expressions}.
+    dash = "\u2014"
+    t_total = target["total"] if target else dash
+    p_total = ("~" + prediction["total"]) if prediction else dash
+    total_row = f"""<tr style="border-top:1px solid #e3e3ea">
+        <td style="font-size:.8em;font-weight:800;padding:5px 4px">Total</td>
+        <td style="font-size:.82em;font-weight:800;color:#5B6EF5;text-align:right;padding:5px 4px">{t_total}</td>
+        <td style="font-size:.82em;font-weight:800;color:#00C2A8;text-align:right;padding:5px 4px">{p_total}</td>
+        <td style="font-size:.82em;font-weight:800;text-align:right;padding:5px 4px">{actual["total"]}</td>
+    </tr>"""
+
+    notes = []
+    if actual["legs_separate"] and len(actual["parts"]) > 1:
+        notes.append("Total is the sum of legs and excludes transitions.")
+    if not actual["legs_separate"]:
+        notes.append("Logged as one multisport activity, so per-leg splits aren't available.")
+    if actual["partial"]:
+        notes.append("Some legs had no matching Garmin activity on race day.")
+    note_html = (f'<p style="font-size:.68em;color:#bbb;margin:4px 0 0">{" ".join(notes)}</p>'
+                 if notes else "")
+
+    return f"""
+    <div style="background:#f8f8fc;border-radius:8px;padding:8px 10px;margin:6px 0">
+        <div style="font-size:.72em;font-weight:800;text-transform:uppercase;color:#6b6b78;margin-bottom:4px">
+            \U0001F3C1 Race Result</div>
+        <table style="width:100%;border-collapse:collapse">
+            <tr>
+                <td></td>
+                <td style="font-size:.64em;color:#5B6EF5;text-align:right;font-weight:700;text-transform:uppercase">Target</td>
+                <td style="font-size:.64em;color:#00C2A8;text-align:right;font-weight:700;text-transform:uppercase">Predicted</td>
+                <td style="font-size:.64em;color:#1a1a22;text-align:right;font-weight:700;text-transform:uppercase">Actual</td>
+            </tr>
+            {leg_rows}
+            {total_row}
+        </table>
+        <div style="margin-top:6px">{verdict(target, "target")}{verdict(prediction, "predicted")}</div>
+        <p style="font-size:.66em;color:#bbb;margin:4px 0 0">Predicted uses only the 4 weeks before race day.</p>
+        {note_html}
+    </div>"""
 
 
 def race_cards_html(df=None):
@@ -1380,6 +1726,9 @@ def race_cards_html(df=None):
                     'margin:6px 0;display:flex;flex-direction:column;gap:4px">'
                     + "".join(rows) + "</div>"
                 )
+
+        if days < 0:
+            time_html = race_result_html(r, df) + race_buildup_html(r, df)
 
         color = "#00C2A8" if days > 90 else "#FFC75A" if days > 30 else "#FF7A59"
 
@@ -2719,7 +3068,9 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log, plan_full=No
     for r in RACES:
         d = days_until(r["date"])
         target     = compute_race_target_time(r)
-        prediction = compute_race_prediction(r, df)
+        # Past races: predict from the 4 weeks BEFORE race day, not today
+        prediction = compute_race_prediction(r, df, as_of=r["date"] if d < 0 else None)
+        actual     = compute_race_actual(r, df) if d < 0 else None
         days_str   = f"In {d} days" if d > 0 else "RACE DAY!" if d == 0 else f"{abs(d)} days ago"
         col = "#00C2A8" if d > 90 else "#FFC75A" if d > 30 else "#FF7A59"
 
@@ -2728,6 +3079,11 @@ def build_print_html(df, plan, wellness, plan_sessions, manual_log, plan_full=No
             times += f'<div style="color:#5B6EF5;font-weight:700">Target: {target["total"]}</div>'
         if prediction:
             times += f'<div style="color:#00C2A8;font-weight:700">Predicted: ~{prediction["total"]}</div>'
+        if actual:
+            times += f'<div style="font-weight:800">Actual: {actual["total"]}</div>'
+            if target:
+                delta = fmt_delta(actual["total_sec"] - target["total_sec"])
+                times += f'<div style="font-size:7.5pt;color:#666">{delta} vs target</div>'
 
         race_html += f"""<div class="rcard">
             <div style="font-size:13pt">{r['emoji']}</div>
