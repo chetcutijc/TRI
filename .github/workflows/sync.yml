@@ -62,6 +62,12 @@ jobs:
           echo "Running AI coaching analysis (DOW=$DOW, trigger=${{ github.event_name }})..."
           python scripts/ai_coaching.py
 
+      - name: Generate post-race debriefs (once per race)
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/race_debrief.py
+
       - name: Build HTML dashboard
         run: python scripts/build_dashboard.py
 
@@ -116,10 +122,9 @@ jobs:
         run: |
           git config user.name "garmin-bot"
           git config user.email "actions@github.com"
-          git add data/activities.json data/wellness.json \
-                  docs/index.html docs/print.html docs/dashboard.pdf \
-                  docs/ai_coaching_adjustments.ics \
-                  data/ai_coaching.json data/coaching_email.txt || true
+          # Stage whole folders: an explicit file list fails ENTIRELY (stages nothing)
+          # if any listed file doesn't exist, e.g. the .ics when there are no suggestions.
+          git add -A data/ docs/
           if ! git diff --quiet --cached; then
             git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git pull origin main --no-rebase -X ours
