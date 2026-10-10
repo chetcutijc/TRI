@@ -4,88 +4,86 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20261010-0@jean-tri
-DTSTAMP:20261010T105648Z
-DTSTART:20261010T070000
-DTEND:20261010T090000
-SUMMARY:[AI ADJUSTED] rest — Race day as planned — keep warm-up to 10 m
- in easy jog plus 3
-DESCRIPTION:Race day as planned — keep warm-up to 10 min easy jog plus 3
- –4 strides only\; target 5:45–5:50/km and do not go out faster than 5:
- 40/km in the first kilometre\; cool-down walk 10–15 min post-finish.\n\n
- Reason: With only one run logged in 4 weeks and chronic sleep deficit\, a 
- conservative early pace protects against blow-up given the limited run-spe
- cific conditioning.\n\nAI coaching 2026-10-10
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261013-1@jean-tri
-DTSTAMP:20261010T105648Z
+UID:ai-coaching-20261013-0@jean-tri
+DTSTAMP:20261010T165617Z
 DTSTART:20261013T070000
 DTEND:20261013T090000
-SUMMARY:[AI ADJUSTED] running — Drop the AI-added run session entirely on
-  Oct 13 — keep the 
-DESCRIPTION:Drop the AI-added run session entirely on Oct 13 — keep the p
- ool swim (2km\, technique focus) and reduce the cycling spin to 45 min at 
- Z1 (<128W) only\; three sessions on day 3 post-race is too much.\n\nReason
- : Stacking a run\, bike\, and swim three days after a race with pre-existi
- ng sleep debt risks compounding fatigue rather than allowing true recovery
- .\n\nAI coaching 2026-10-10
+SUMMARY:[AI ADJUSTED] running — Remove the AI-added run session entirely\
+ ; keep only the pool
+DESCRIPTION:Remove the AI-added run session entirely\; keep only the pool s
+ wim and the easy cycling spin on Oct 13 — this is sufficient stimulus tw
+ o days after racing\n\nReason: Three sessions on one day two days post-rac
+ e with chronically low sleep is excessive\; the easy bike and swim provide
+  adequate stimulus without accumulating further fatigue on the run legs.\n
+ \nAI coaching 2026-10-10
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261015-2@jean-tri
-DTSTAMP:20261010T105648Z
+UID:ai-coaching-20261015-1@jean-tri
+DTSTAMP:20261010T165617Z
 DTSTART:20261015T070000
 DTEND:20261015T090000
-SUMMARY:[AI ADJUSTED] running — Replace with a steady aerobic run of 35
- –40 min at 6:30–7:00/
-DESCRIPTION:Replace with a steady aerobic run of 35–40 min at 6:30–7:00
- /km — no intervals this session\; save intensity for the following week 
- once post-race recovery is confirmed.\n\nReason: Only 5 days post-race wit
- h a very thin recent run base\, high-intensity 800m intervals carry meanin
- gful injury and overreach risk before fitness has been re-established.\n\n
- AI coaching 2026-10-10
+SUMMARY:[AI ADJUSTED] running — Replace with 40 min easy run at 6:30–7:
+ 00/km — no intervals 
+DESCRIPTION:Replace with 40 min easy run at 6:30–7:00/km — no intervals
+  this week\; reintroduce structured run quality in Wk18 once sleep and rec
+ overy have stabilised post-race\n\nReason: Running base is minimal after o
+ nly one run logged in four weeks and chronic sleep debt\; jumping straight
+  into 800m intervals four days post-race risks injury and poor adaptation.
+ \n\nAI coaching 2026-10-10
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261017-2@jean-tri
+DTSTAMP:20261010T165617Z
+DTSTART:20261017T070000
+DTEND:20261017T090000
+SUMMARY:[AI ADJUSTED] cycling — Cap at 60km at 128–177W (Z2) only — s
+ kip the tempo blocks th
+DESCRIPTION:Cap at 60km at 128–177W (Z2) only — skip the tempo blocks t
+ his week\; build back to 80km+ in Wk18 after post-race recovery is confirm
+ ed\n\nReason: With the 5K open-water swim race on Oct 25 only 8 days away 
+ and accumulated fatigue from the race and sleep deficit\, a shorter aerobi
+ c ride preserves freshness without sacrificing fitness.\n\nAI coaching 202
+ 6-10-10
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261018-3@jean-tri
-DTSTAMP:20261010T105648Z
+DTSTAMP:20261010T165617Z
 DTSTART:20261018T070000
 DTEND:20261018T090000
-SUMMARY:[AI ADJUSTED] running — Cap at 10–11 km at 6:45–7:00/km (~70
- –75 min) — build conserv
-DESCRIPTION:Cap at 10–11 km at 6:45–7:00/km (~70–75 min) — build co
- nservatively back to long-run distance over 2–3 weeks rather than jumpin
- g straight to 13 km on the first long run back.\n\nReason: With only one r
- un in the past 4 weeks and post-race fatigue\, jumping to 13–14 km risks
-  soft-tissue overload\; 10–11 km is a safer starting point to rebuild ae
- robic run base.\n\nAI coaching 2026-10-10
+SUMMARY:[AI ADJUSTED] running — Further cap at 10–11km at 6:45–7:00/k
+ m — prioritise easy aer
+DESCRIPTION:Further cap at 10–11km at 6:45–7:00/km — prioritise easy 
+ aerobic time on feet rather than distance given the race on Oct 10 and the
+  swim race on Oct 25 approaching\n\nReason: Back-to-back race weeks with a
+  5K open-water swim on Oct 25 means this long run sits in the middle of tw
+ o events\; keeping it shorter protects freshness for the swim race while s
+ till building run habit.\n\nAI coaching 2026-10-10
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261024-4@jean-tri
-DTSTAMP:20261010T105648Z
+UID:ai-coaching-20261023-4@jean-tri
+DTSTAMP:20261010T165617Z
+DTSTART:20261023T070000
+DTEND:20261023T090000
+SUMMARY:[AI ADJUSTED] rest — Full rest only — cancel the Friday pool sw
+ im session and tre
+DESCRIPTION:Full rest only — cancel the Friday pool swim session and trea
+ t Oct 23 as a complete rest day ahead of the Saturday ride and Sunday 5K o
+ pen-water race\n\nReason: Swimming 2km the day before a 5K open-water race
+  risks arriving with fatigued shoulders and reduced feel for the water\; a
+  full rest day maximises race-day performance.\n\nAI coaching 2026-10-10
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261024-5@jean-tri
+DTSTAMP:20261010T165617Z
 DTSTART:20261024T070000
 DTEND:20261024T090000
-SUMMARY:[AI ADJUSTED] cycling — Shorten to 50–55 km @ 128–160W (lower
-  Z2)\, approximately 180
-DESCRIPTION:Shorten to 50–55 km @ 128–160W (lower Z2)\, approximately 1
- 80–200 min — the day before the 5K open water race\, prioritise leg fr
- eshness over training stimulus.\n\nReason: A full 60 km ride the day befor
- e the 5K Open Water race will accumulate fatigue that undermines your swim
-  performance\; a shorter\, easier spin maintains aerobic stimulus without 
- compromising race readiness.\n\nAI coaching 2026-10-10
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261025-5@jean-tri
-DTSTAMP:20261010T105648Z
-DTSTART:20261025T070000
-DTEND:20261025T090000
-SUMMARY:[AI ADJUSTED] swimming — Race as planned — arrive 45 min early\
- , do a 400–600m warm-up
-DESCRIPTION:Race as planned — arrive 45 min early\, do a 400–600m warm-
- up swim if conditions allow\, seed conservatively in the first 500m to avo
- id blowing up\, and target a negative-split effort across the 5km.\n\nReas
- on: Given recent open water sessions of 5.2 km (153 min) and 2.0 km (63 mi
- n)\, the distance is within reach but pacing strategy is critical — star
- ting conservatively will produce a better overall time given the athlete's
-  aerobic swim base.\n\nAI coaching 2026-10-10
+SUMMARY:[AI ADJUSTED] cycling — Replace with a short 30–40 min easy spi
+ n at under 128W (Z1) 
+DESCRIPTION:Replace with a short 30–40 min easy spin at under 128W (Z1) w
+ ith a few light cadence drills — legs stay loose without generating mean
+ ingful fatigue ahead of race day\n\nReason: A 60km ride the day before a p
+ riority open-water swim race will leave the athlete tired\; a brief Z1 sha
+ keout is sufficient to stay active without compromising Sunday's effort.\n
+ \nAI coaching 2026-10-10
 END:VEVENT
 END:VCALENDAR

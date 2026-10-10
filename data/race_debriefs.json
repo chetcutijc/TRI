@@ -1,0 +1,21 @@
+{
+  "2026-10-03|Half Oceanman": {
+    "headline": "You finished the 5 km Half Oceanman swim in 2:33:18 (2:57/100 m), beating your training-pace prediction of 2:29:55 by only 3\u00bd minutes but landing 28 minutes short of your 2:05 target \u2014 a result that is hard to separate from a 6-week build in which only 18% of planned sessions were completed and race-week sleep averaged just 4.5 hours.",
+    "went_well": [
+      "You edged your naive training-pace prediction (2:33:18 vs 2:29:55), meaning race-day conditions or adrenaline offset at least some of the fitness deficit \u2014 a modest but real positive given the preparation.",
+      "Your race pace of 2:57/100 m was 3 seconds per 100 m faster than your average training pace of 3:00/100 m (speed gain of +2% in real terms, though logged as -2% \u2014 worth verifying the sign), showing you can lift slightly above training speed on race day.",
+      "Taper execution was reasonable: a 47% load reduction in race week sits within the normal 40\u201360% range, so at least the final week was managed sensibly despite the chaotic wider build."
+    ],
+    "to_improve": [
+      "Volume and consistency were the clearest structural problem: 7 of 40 planned sessions completed (18%) across 6 weeks, with only 5.9 km total swim training for a 5 km race \u2014 your longest single session was 2.0 km, just 40% of race distance. You effectively went into a 5 km event having never swum beyond 40% of that distance in training.",
+      "Race-week sleep of 4.5 hours against a baseline of 5.8 hours is a meaningful drop; while one data point cannot prove it cost you time, chronic sleep restriction is consistently associated with impaired endurance performance and perceived effort \u2014 worth actively protecting in future race weeks.",
+      "The 28-minute gap between actual (2:33:18) and target (2:05:00) reflects a target that required 2:30/100 m pace \u2014 27 seconds per 100 m faster than your recent training average of 3:00/100 m. Future targets should be anchored to demonstrated training paces, not aspirational ones, so race-week decisions are based on realistic benchmarks."
+    ],
+    "next_race": [
+      "The Treviso 10K Tiramisu Run is tomorrow (2026-10-11), so training changes are irrelevant \u2014 treat today as full rest, prioritise eating and hydrating well, and aim for the best sleep you can manage tonight; do not attempt any shake-out effort that adds fatigue.",
+      "Set a conservative pace target for tomorrow based on recent run training data, not ambition \u2014 your body has just completed a 5 km open-water swim race and is carrying accumulated fatigue from a low-compliance build.",
+      "Use the 120 days to the February marathon as a genuine reset: establish a sustainable weekly session floor (even 2\u20133 consistent sessions per week would be a major improvement on 18% compliance) rather than loading a high planned volume you cannot hit."
+    ],
+    "generated_at": "2026-10-10T16:56:16.920293+00:00"
+  }
+}
