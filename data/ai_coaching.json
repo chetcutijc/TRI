@@ -1,62 +1,62 @@
 {
-  "summary": "Over the last 4 weeks, training has been inconsistent across all three disciplines, with sleep chronically short (many nights under 4 hours) and body battery frequently depleted, indicating significant accumulated fatigue. Running volume is very low relative to both the imminent Treviso 10K and the marathon target, with only one run session logged in the period. Bike work has been the most consistent discipline, while swim volume picked up late in the block with a strong 5.2km open-water session on Oct 3.",
+  "summary": "Over the last 4 weeks, training has been inconsistent and fragmented, with only 9 sessions logged across all three disciplines and no clear weekly structure emerging. Sleep is a significant concern \u2014 the majority of nights fall well below the 7-hour minimum, with several nights under 4 hours and body battery readings frequently in the low-to-mid range, indicating chronic under-recovery. With the Marathon 120 days away as the priority race, run volume is critically low (only one running session logged at a high HR of 169 bpm for just 10km), and this needs to be addressed carefully given the fatigue picture.",
   "suggestions": [
-    "Tomorrow's Treviso 10K falls after a week of minimal structured training and poor sleep \u2014 aim for a controlled, even-paced effort around 5:45\u20135:55/km rather than going out hard; treat it as a quality tempo stimulus rather than an all-out race.",
-    "Sleep is the single biggest limiter in this block: averaging under 4 hours on many nights is undermining adaptation and recovery \u2014 prioritise 7\u20138 hours nightly starting tonight and through the post-race recovery week.",
-    "Running volume is critically low heading into a marathon block \u2014 after the Treviso race and one full recovery day, gradually reintroduce easy running 3x per week from Oct 13 onwards, building from 30\u201340 min easy efforts before reintroducing intervals.",
-    "The 5K open-water swim race on Oct 25 is only 2 weeks away \u2014 ensure the Wk17 long ride on Oct 17 does not leave you fatigued heading into race week, and treat Oct 23\u201324 as low-stress days to arrive fresh for the swim.",
-    "Consider dropping the AI-added third session on Oct 13 (easy run) given three sessions are already stacked on that Tuesday post-race \u2014 consolidate to swim plus easy bike only to avoid overcrowding recovery."
+    "Prioritise sleep as a performance variable \u2014 consistently hitting 7+ hours per night will do more for your marathon preparation over the next 4 months than any single session; consider setting a hard cut-off time for evening activities.",
+    "Run frequency needs to increase gradually toward marathon prep: aim for 3 runs per week by late October, but keep easy runs truly easy (HR below 145 bpm, ~7:00\u20137:30/km) given the current fatigue baseline.",
+    "The Oct 25 5K Open Water Swim race is well-timed as a swim fitness check \u2014 taper swim volume slightly in the 2 days prior and treat it as a hard effort, but don't let it compromise the weekend long run recovery cycle heading into marathon build.",
+    "With no power data on the bike and no structured cycling intervals logged, consider adding at least one session per week with perceived-effort Z2 targets (conversational pace) to build aerobic base for the Ironman bike leg without adding excessive fatigue.",
+    "The Tuesday Oct 13 triple-session (cycling + swimming + running) is overly ambitious given your current sleep and fatigue levels \u2014 consolidate to two disciplines maximum on any single day to avoid accumulated strain."
   ],
   "proposed_changes": [
     {
       "date": "2026-10-13",
       "discipline": "running",
-      "current_session": "AI-added 30 min easy recovery run at 7:00\u20137:30/km stacked alongside cycling and swimming on the same Tuesday",
-      "proposed_session": "Remove the AI-added run session entirely; keep only the pool swim and the easy cycling spin on Oct 13 \u2014 this is sufficient stimulus two days after racing",
+      "current_session": "AI-added 30\u201360 min easy recovery run at 7:00\u20137:30/km on top of cycling and swimming sessions",
+      "proposed_session": "Remove the AI-added run entirely on this day \u2014 complete the swim session only (drop the evening cycling spin too if fatigue is present); save run stimulus for Thursday",
       "change_type": "skip",
-      "reason": "Three sessions on one day two days post-race with chronically low sleep is excessive; the easy bike and swim provide adequate stimulus without accumulating further fatigue on the run legs."
+      "reason": "Three sessions in one day is excessive given chronic sleep deficit (multiple nights under 4 hours in recent weeks) and low body battery readings \u2014 recovery must take priority on the first day back after race week."
     },
     {
       "date": "2026-10-15",
       "discipline": "running",
-      "current_session": "6\u00d7800m intervals at 4:55\u20135:10/km, total 45\u201355 min",
-      "proposed_session": "Replace with 40 min easy run at 6:30\u20137:00/km \u2014 no intervals this week; reintroduce structured run quality in Wk18 once sleep and recovery have stabilised post-race",
+      "current_session": "Intervals: 6x800m @ 4:55\u20135:10/km with 2 min jog recovery, total 45\u201355 min",
+      "proposed_session": "Replace with a steady aerobic run of 35\u201340 min at 6:30\u20137:00/km \u2014 no intervals this week; reintroduce structured run stimulus gently before escalating to interval work",
       "change_type": "replace",
-      "reason": "Running base is minimal after only one run logged in four weeks and chronic sleep debt; jumping straight into 800m intervals four days post-race risks injury and poor adaptation."
-    },
-    {
-      "date": "2026-10-17",
-      "discipline": "cycling",
-      "current_session": "80km long ride at 128\u2013177W (Z2), with optional 3\u00d710 min Z3 tempo blocks",
-      "proposed_session": "Cap at 60km at 128\u2013177W (Z2) only \u2014 skip the tempo blocks this week; build back to 80km+ in Wk18 after post-race recovery is confirmed",
-      "change_type": "decrease",
-      "reason": "With the 5K open-water swim race on Oct 25 only 8 days away and accumulated fatigue from the race and sleep deficit, a shorter aerobic ride preserves freshness without sacrificing fitness."
+      "reason": "Only one run has been logged in the past 4 weeks and it was performed at a very high HR (169 bpm); jumping straight into 6x800m intervals risks injury and excessive fatigue given the deconditioning and poor sleep trend."
     },
     {
       "date": "2026-10-18",
       "discipline": "running",
-      "current_session": "Long run capped at 13\u201314km at 6:30\u20137:00/km (AI adjusted from 17.6km)",
-      "proposed_session": "Further cap at 10\u201311km at 6:45\u20137:00/km \u2014 prioritise easy aerobic time on feet rather than distance given the race on Oct 10 and the swim race on Oct 25 approaching",
+      "current_session": "Long run adjusted to 13\u201314 km at 6:30\u20137:00/km (90\u2013100 min)",
+      "proposed_session": "Cap at 10\u201311 km at 6:45\u20137:15/km (approximately 75\u201380 min) \u2014 prioritise completing it feeling comfortable over hitting distance targets",
       "change_type": "decrease",
-      "reason": "Back-to-back race weeks with a 5K open-water swim on Oct 25 means this long run sits in the middle of two events; keeping it shorter protects freshness for the swim race while still building run habit."
+      "reason": "With minimal run base logged, low sleep scores persisting, and a 5K swim race the following weekend, a conservative long run protects against injury and ensures adequate recovery heading into race week."
     },
     {
-      "date": "2026-10-23",
-      "discipline": "rest",
-      "current_session": "Rest / easy day with optional light movement; pool swim also scheduled on this Friday",
-      "proposed_session": "Full rest only \u2014 cancel the Friday pool swim session and treat Oct 23 as a complete rest day ahead of the Saturday ride and Sunday 5K open-water race",
-      "change_type": "replace",
-      "reason": "Swimming 2km the day before a 5K open-water race risks arriving with fatigued shoulders and reduced feel for the water; a full rest day maximises race-day performance."
+      "date": "2026-10-20",
+      "discipline": "running",
+      "current_session": "Intervals: 6x800m @ 4:55\u20135:10/km with 2 min jog recovery, total 45\u201355 min",
+      "proposed_session": "Reduce to 4x800m @ 5:10\u20135:25/km with 90 sec jog recovery \u2014 slightly reduced volume and pace to build interval tolerance progressively ahead of the marathon block",
+      "change_type": "decrease",
+      "reason": "This is only the second structured run week after a long gap; gradually introducing interval work at a manageable dose reduces injury risk while still delivering the run stimulus needed for the marathon 120 days away."
     },
     {
       "date": "2026-10-24",
       "discipline": "cycling",
-      "current_session": "60km long ride at 128\u2013177W (Z2) the day before the 5K open-water swim race",
-      "proposed_session": "Replace with a short 30\u201340 min easy spin at under 128W (Z1) with a few light cadence drills \u2014 legs stay loose without generating meaningful fatigue ahead of race day",
+      "current_session": "60 km long ride @ 128\u2013177W (Z2 Endurance), 240 min",
+      "proposed_session": "Shorten to 45\u201360 min easy spin at Z1\u2013low Z2 (<160W), treating this as a leg-opener before Sunday's 5K open water swim race",
       "change_type": "decrease",
-      "reason": "A 60km ride the day before a priority open-water swim race will leave the athlete tired; a brief Z1 shakeout is sufficient to stay active without compromising Sunday's effort."
+      "reason": "The day before a priority swim race, a full 4-hour long ride would leave residual fatigue in the legs and shoulders \u2014 a short activation spin preserves freshness for race day."
+    },
+    {
+      "date": "2026-11-01",
+      "discipline": "running",
+      "current_session": "Long run 18.8 km @ 6:15\u20136:45/km, 180 min",
+      "proposed_session": "Cap at 15\u201316 km @ 6:30\u20136:50/km (approximately 105\u2013115 min) \u2014 build toward the planned distance progressively rather than jumping to 18.8 km",
+      "change_type": "decrease",
+      "reason": "Given the very low run volume in the past 4 weeks, progressing directly to an 18.8 km long run within 3 weeks of restarting structured running is too aggressive for safe marathon preparation \u2014 a stepped build is essential to avoid injury."
     }
   ],
-  "generated_at": "2026-10-10T16:55:24.825090+00:00",
+  "generated_at": "2026-10-10T16:58:32.558528+00:00",
   "weeks_analysed": 4
 }
