@@ -9,6 +9,7 @@ Required GitHub Secrets:
 """
 
 import os
+import sys
 import json
 import datetime as dt
 from pathlib import Path
@@ -20,20 +21,72 @@ DATA_FILE = DATA_DIR / "activities.json"
 TOKEN_DIR = Path(".garmin_tokens")  # cached session, see workflow for persistence
 
 
+class GarminRateLimited(Exception):
+    """Garmin returned 429 — back off rather than retrying."""
+
+
+def _is_rate_limited(exc):
+    """Walk the exception chain looking for a 429 / Too Many Requests.
+    The 429 is often buried in a nested cause, not the top-level message."""
+    seen = set()
+    while exc is not None and id(exc) not in seen:
+        seen.add(id(exc))
+        msg = str(exc).lower()
+        if "429" in msg or "too many requests" in msg or "rate limit" in msg:
+            return True
+        exc = exc.__cause__ or exc.__context__
+    return False
+
+
+def _save_tokens(client):
+    """Persist the session so the next run can resume instead of logging in.
+    Version-tolerant: older garminconnect exposes client.garth.dump(); newer
+    versions removed .garth. Never crash the sync just because saving failed."""
+    TOKEN_DIR.mkdir(exist_ok=True)
+    for attr in ("garth", "client"):
+        obj = getattr(client, attr, None)
+        dump = getattr(obj, "dump", None) if obj is not None else None
+        if callable(dump):
+            try:
+                dump(str(TOKEN_DIR))
+                print(f"Saved Garmin session tokens (via client.{attr}.dump).")
+                return
+            except Exception as e:
+                print(f"WARNING: token save via client.{attr}.dump failed: {e}")
+    print("WARNING: no token-save method found on this garminconnect version — "
+          "session not cached. Next run will need a fresh login.")
+
+
 def get_client():
     email = os.environ["GARMIN_EMAIL"]
     password = os.environ["GARMIN_PASSWORD"]
 
     client = Garmin(email, password)
 
-    # Try resuming a cached session first (avoids repeated fresh logins)
-    try:
-        client.login(str(TOKEN_DIR))
-    except Exception:
-        client.login()
-        TOKEN_DIR.mkdir(exist_ok=True)
-        client.garth.dump(str(TOKEN_DIR))
+    # 1. Resume cached session if we have one
+    if TOKEN_DIR.exists() and any(TOKEN_DIR.iterdir()):
+        try:
+            client.login(str(TOKEN_DIR))
+            print("Resumed cached Garmin session.")
+            _save_tokens(client)  # refresh the cache with any renewed tokens
+            return client
+        except Exception as e:
+            if _is_rate_limited(e):
+                # Do NOT immediately retry with a fresh login — that doubles the
+                # requests Garmin is already throttling and prolongs the block.
+                raise GarminRateLimited(str(e)) from e
+            print(f"Cached session unusable ({type(e).__name__}) — trying one fresh login.")
 
+    # 2. One fresh credential login
+    client = Garmin(email, password)
+    try:
+        client.login()
+    except Exception as e:
+        if _is_rate_limited(e):
+            raise GarminRateLimited(str(e)) from e
+        raise  # wrong password etc. — fail loudly, don't hide it
+    print("Fresh Garmin login succeeded.")
+    _save_tokens(client)
     return client
 
 
@@ -118,9 +171,28 @@ def load_existing_wellness():
     return {}
 
 
+def _set_github_env(new_data):
+    if "GITHUB_ENV" in os.environ:
+        with open(os.environ["GITHUB_ENV"], "a") as env_file:
+            env_file.write(f"GARMIN_NEW_DATA={'true' if new_data else 'false'}\n")
+
+
 def main():
     DATA_DIR.mkdir(exist_ok=True)
-    client = get_client()
+
+    try:
+        client = get_client()
+    except GarminRateLimited:
+        # Garmin is throttling logins. Exit cleanly so the rest of the workflow
+        # still rebuilds the dashboard from the data we already have, instead of
+        # the whole run failing. The block typically clears on its own within hours.
+        print("=" * 60)
+        print("Garmin rate-limited the login (429). Skipping this fetch —")
+        print("dashboard will rebuild from existing data. Do NOT spam Sync Now;")
+        print("it resets the throttle window. Next scheduled run will retry.")
+        print("=" * 60)
+        _set_github_env(False)
+        sys.exit(0)
 
     store = load_existing()
     recent = fetch_recent_activities(client, days_back=14, limit=50)
@@ -143,13 +215,8 @@ def main():
     print(f"Synced. {new_count} new activities. {len(store)} total stored. "
           f"Wellness updated for {len(fresh_wellness)} days.")
 
-    # ── NEW: Tell GitHub Actions if new activities were found ──
-    if "GITHUB_ENV" in os.environ:
-        with open(os.environ["GITHUB_ENV"], "a") as env_file:
-            if new_count > 0:
-                env_file.write("GARMIN_NEW_DATA=true\n")
-            else:
-                env_file.write("GARMIN_NEW_DATA=false\n")
+    _set_github_env(new_count > 0)
+
 
 if __name__ == "__main__":
     main()
