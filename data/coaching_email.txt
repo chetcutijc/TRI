@@ -1,49 +1,49 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-10-03
-   7 days to Treviso 10K Tiramisu Run  |  126 days to Marathon  |  259 days to Ironman Italy Cervia
+   Generated: 2026-10-10
+   1 days to Treviso 10K Tiramisu Run  |  120 days to Marathon  |  253 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show a predominantly bike-heavy and swim-focused block with very limited running (only one run recorded at a high HR of 169 bpm for 10 km at 6:15/km), which is concerning given the Treviso 10K in 8 days. Sleep quality is consistently poor — most nights average 3–4 hours, well below the 7–8 hours needed for adequate recovery — and body battery scores regularly dip to very low levels, suggesting accumulated fatigue. Today's 5 km open-water race (Half Oceanman) is the immediate priority; the week after must balance post-race recovery with a controlled, low-stress taper into the Treviso 10K on October 10.
+Over the last 4 weeks, training has been fragmented and inconsistent across all three disciplines, with a clear underrepresentation of running (only one run recorded) and notably poor sleep — multiple nights under 4 hours and very low body battery readings suggest accumulated fatigue rather than adequate recovery. The Treviso 10K is tomorrow, so the priority now is arriving as fresh as possible given the limited run base and residual fatigue. Looking ahead, the 5K Open Water Swim on October 25 is the next significant event and swim volume is the one area showing some recent commitment, which is encouraging.
 
 COACHING SUGGESTIONS:
-  1. Prioritise sleep above all else this coming week — your body battery has been critically low (hitting 0–7 on multiple days) and no amount of training will compensate for chronic sleep deprivation of 3–4 hours per night.
-  2. For the Treviso 10K taper, keep Tuesday's interval session very short and controlled (3–4 × 800 m max, not 6), then go fully easy Thursday–Friday; your one recent run was already at 169 bpm so the nervous system is not fresh.
-  3. Add at least one easy 20–30 min shakeout run between now and October 9 to keep run legs feeling sharp without accumulating fatigue — your running volume has been near zero for weeks.
-  4. On race day (Oct 10) target 5:45/km but be prepared to go slightly more conservative in the first 3 km given the lack of recent run-specific training — a positive split 10K risks blowing up without a solid recent base.
-  5. Post-Treviso, gradually rebuild running volume through weeks 17–18 with the weekly long runs in the plan, and consider adding a second run day per week to address the clear run-frequency deficit before the marathon block begins.
+  1. For tomorrow's Treviso 10K, given only one run in 4 weeks (10km at 6:15/km with HR of 169), temper expectations slightly — target 5:45–5:50/km and let the first 3km feel easy before committing to pace, as your run fitness may not support a hard effort from the gun.
+  2. Sleep is a critical limiter right now — multiple nights of under 3.5 hours and body battery readings near zero (Sep 27, Sep 30, Oct 3) indicate you are chronically under-recovered; prioritise getting 7–8 hours in the nights leading to and following the race.
+  3. After the race, resist the urge to resume full training load immediately — take at least 2–3 days of genuinely easy or rest-only activity before reintroducing any intensity, particularly the Thursday intervals planned for Oct 15.
+  4. With the 5K Open Water Swim on October 25, continue prioritising pool sessions on Oct 13 and Oct 16 but focus on pacing and efficiency rather than volume, targeting 2:20–2:25/100m to build race-specific rhythm.
+  5. Running volume needs urgent rebuilding after the Ironman block — the single 10km run in 4 weeks is too sparse for the marathon target at 5:45/km; from week 17 onwards, aim for at least 3 runs per week even if two of them are short easy efforts of 30–40 minutes.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-10-04 [REST]
-    Current:  Wk15 Long Run (AI adjusted) — 25 min very easy walk/jog at 8:00+/km post-race
-    Proposed: Full rest only — no walking or jogging. Today is 5 km open-water race recovery; keep feet up, prioritise nutrition, hydration, and sleep.
-    Reason:   After a 5 km open-water race on already chronically low sleep and depleted body battery, even 25 minutes of movement is unnecessary stress — complete rest accelerates recovery ahead of the 10K in 6 days.
-
-  • 2026-10-06 [RUNNING]
-    Current:  Wk16 Evening session — 6 × 800 m intervals at 4:55–5:10/km, 90 min total
-    Proposed: 3 × 800 m at 5:10–5:20/km with 90 sec standing recovery, total ~30 min including warm-up and cool-down; cut session short if HR exceeds 160 bpm.
-    Reason:   With only one run in 4 weeks (at 169 bpm average) and the 10K just 4 days away, a full 6-rep interval session risks excessive neuromuscular fatigue at exactly the wrong moment — a reduced stimulus maintains sharpness without digging a hole.
-
-  • 2026-10-06 [SWIMMING]
-    Current:  Wk16 Pool Swim (Tuesday) — 2 km+ at ≤2:30/100 m
-    Proposed: Skip the pool swim — single training session day only (the shortened run); legs and shoulders need to consolidate recovery from today's open-water race.
-    Reason:   Doubling up run intervals and a 2 km swim session just 3 days post-race and 4 days pre-race overloads recovery; swimming adds little 10K-specific benefit and risks carry-over fatigue into race day.
-
-  • 2026-10-08 [CYCLING]
-    Current:  Wk16 Evening session — Z2 maintenance spin 128–177 W, 45–60 min
-    Proposed: Skip the evening cycling spin entirely — strength session only (shortened to 30 min, bodyweight/low-load core and single-leg work only).
-    Reason:   Two days before the 10K, any additional endurance load on top of strength work increases pre-race fatigue without meaningful fitness gain at this stage of the taper.
+  • 2026-10-10 [REST]
+    Current:  Wk16 rest day — plan notes race day with 10-min jog warm-up, 4×100m strides, race at 5:45/km, post-race cool-down
+    Proposed: Race day as planned — keep warm-up to 10 min easy jog plus 3–4 strides only; target 5:45–5:50/km and do not go out faster than 5:40/km in the first kilometre; cool-down walk 10–15 min post-finish.
+    Reason:   With only one run logged in 4 weeks and chronic sleep deficit, a conservative early pace protects against blow-up given the limited run-specific conditioning.
 
   • 2026-10-13 [RUNNING]
-    Current:  Wk17 — no dedicated easy run scheduled post-Treviso 10K recovery
-    Proposed: Add a 30 min easy recovery run at 7:00–7:30/km on Tuesday October 13 in place of or before the evening cycling spin — this reintroduces gentle run stimulus after the race.
-    Reason:   After the 10K race there is no run until Thursday's intervals in week 17; a short Tuesday easy run bridges the gap and prevents the legs going stale before the interval session.
+    Current:  AI-added 30–60 min easy recovery run at 7:00–7:30/km plus evening cycling spin and pool swim on the same day
+    Proposed: Drop the AI-added run session entirely on Oct 13 — keep the pool swim (2km, technique focus) and reduce the cycling spin to 45 min at Z1 (<128W) only; three sessions on day 3 post-race is too much.
+    Reason:   Stacking a run, bike, and swim three days after a race with pre-existing sleep debt risks compounding fatigue rather than allowing true recovery.
+
+  • 2026-10-15 [RUNNING]
+    Current:  Wk17 intervals: 6×800m @ 4:55–5:10/km, 2 min jog recovery, total 45–55 min
+    Proposed: Replace with a steady aerobic run of 35–40 min at 6:30–7:00/km — no intervals this session; save intensity for the following week once post-race recovery is confirmed.
+    Reason:   Only 5 days post-race with a very thin recent run base, high-intensity 800m intervals carry meaningful injury and overreach risk before fitness has been re-established.
 
   • 2026-10-18 [RUNNING]
-    Current:  Wk17 Long Run — 17.6 km at 6:15–6:45/km, 180 min
-    Proposed: Cap at 13–14 km at 6:30–7:00/km (approximately 90–100 min) — do not attempt the full 17.6 km this soon after back-to-back race weeks with low sleep and minimal run base.
-    Reason:   With only one run in the last 4 weeks and two races in consecutive weekends, jumping straight to a 17.6 km long run carries significant injury risk — a shorter aerobic run rebuilds the base safely and still supports the marathon block ahead.
+    Current:  Wk17 Long Run — AI adjusted to 13–14 km at 6:30–7:00/km, ~90–100 min
+    Proposed: Cap at 10–11 km at 6:45–7:00/km (~70–75 min) — build conservatively back to long-run distance over 2–3 weeks rather than jumping straight to 13 km on the first long run back.
+    Reason:   With only one run in the past 4 weeks and post-race fatigue, jumping to 13–14 km risks soft-tissue overload; 10–11 km is a safer starting point to rebuild aerobic run base.
+
+  • 2026-10-24 [CYCLING]
+    Current:  Wk18 Long Ride — 60 km @ 128–177W (Z2), 240 min
+    Proposed: Shorten to 50–55 km @ 128–160W (lower Z2), approximately 180–200 min — the day before the 5K open water race, prioritise leg freshness over training stimulus.
+    Reason:   A full 60 km ride the day before the 5K Open Water race will accumulate fatigue that undermines your swim performance; a shorter, easier spin maintains aerobic stimulus without compromising race readiness.
+
+  • 2026-10-25 [SWIMMING]
+    Current:  Wk18 Race Day — 5K Open Water Swim, 180 min
+    Proposed: Race as planned — arrive 45 min early, do a 400–600m warm-up swim if conditions allow, seed conservatively in the first 500m to avoid blowing up, and target a negative-split effort across the 5km.
+    Reason:   Given recent open water sessions of 5.2 km (153 min) and 2.0 km (63 min), the distance is within reach but pacing strategy is critical — starting conservatively will produce a better overall time given the athlete's aerobic swim base.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
