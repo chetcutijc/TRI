@@ -1,17 +1,5 @@
 [
   {
-    "name": "Treviso 10K Tiramisu Run",
-    "emoji": "🍰",
-    "date": "2026-10-11",
-    "note": "",
-    "distances": {
-      "run_km": 10
-    },
-    "targets": {
-      "run_pace_sec_km": 345
-    }
-  },
-  {
     "name": "Half Oceanman",
     "emoji": "🏊‍♂️",
     "date": "2026-10-03",
