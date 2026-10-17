@@ -4,84 +4,83 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20261013-0@jean-tri
-DTSTAMP:20261016T161849Z
-DTSTART:20261013T070000
-DTEND:20261013T090000
-SUMMARY:[AI ADJUSTED] running — 30 min easy jog at 7:00–7:30/km as a st
- andalone morning sess
-DESCRIPTION:30 min easy jog at 7:00–7:30/km as a standalone morning sessi
- on\; remove the evening cycling spin this day to avoid stacking 3 sessions
-  on a return-to-run day\n\nReason: With only one run logged in 4 weeks and
-  chronic sleep deficit\, stacking a run\, bike\, and swim on a single day 
- risks overloading a body that is already under-recovered.\n\nAI coaching 2
- 026-10-10
+UID:ai-coaching-20261017-0@jean-tri
+DTSTAMP:20261017T033521Z
+DTSTART:20261017T070000
+DTEND:20261017T090000
+SUMMARY:[AI ADJUSTED] cycling — 60km @ 128–155W (lower Z2 only)\, cap a
+ t 150 minutes\, no Temp
+DESCRIPTION:60km @ 128–155W (lower Z2 only)\, cap at 150 minutes\, no Tem
+ po blocks — pure aerobic flush ahead of race week\n\nReason: With the 5K
+  Open Water Swim race just 8 days away and recent chronic sleep deprivatio
+ n (multiple nights under 3.5 hours)\, a 4-hour ride at full planned intens
+ ity risks compounding fatigue and compromising race-day readiness.\n\nAI c
+ oaching 2026-10-17
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261015-1@jean-tri
-DTSTAMP:20261016T161849Z
-DTSTART:20261015T070000
-DTEND:20261015T090000
-SUMMARY:[AI ADJUSTED] running — Continuous easy aerobic run 40–45 min a
- t 6:30–7:00/km — no i
-DESCRIPTION:Continuous easy aerobic run 40–45 min at 6:30–7:00/km — n
- o intervals\; focus on rebuilding run consistency and aerobic base\n\nReas
- on: Only one run in the past 4 weeks at HR 169 bpm shows a very low run ba
- se — introducing 800 m intervals this early risks injury and excessive f
- atigue before the Oct 25 OWS race.\n\nAI coaching 2026-10-10
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261018-2@jean-tri
-DTSTAMP:20261016T161849Z
+UID:ai-coaching-20261018-1@jean-tri
+DTSTAMP:20261017T033521Z
 DTSTART:20261018T070000
 DTEND:20261018T090000
-SUMMARY:[AI ADJUSTED] running — Easy long run 10–12 km at 6:45–7:15/k
- m (~75–85 min) — furthe
-DESCRIPTION:Easy long run 10–12 km at 6:45–7:15/km (~75–85 min) — f
- urther reduced given near-zero run base over the past month and pre-OWS ra
- ce week beginning\n\nReason: With the 5K OWS race on Oct 25\, this is the 
- penultimate long run before race week\; keeping it conservative protects f
- reshness and avoids leg fatigue carrying into the swim race.\n\nAI coachin
- g 2026-10-10
+SUMMARY:[AI ADJUSTED] running — 12km at 6:45–7:00/km\, approximately 80
+ –85 minutes — stay at 
+DESCRIPTION:12km at 6:45–7:00/km\, approximately 80–85 minutes — stay
+  at the conservative lower bound of the AI adjustment\n\nReason: Ongoing s
+ leep deficit and low body battery readings mean conserving energy the week
+ end before race week is more valuable than maximising run distance.\n\nAI 
+ coaching 2026-10-17
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261024-3@jean-tri
-DTSTAMP:20261016T161849Z
-DTSTART:20261024T070000
-DTEND:20261024T090000
-SUMMARY:[AI ADJUSTED] cycling — 40 km easy spin @ 128–150W (lower Z2 on
- ly)\, 90–100 min maxim
-DESCRIPTION:40 km easy spin @ 128–150W (lower Z2 only)\, 90–100 min max
- imum — no tempo blocks\; race-eve activation only\n\nReason: This is the
-  day before the 5K Open Water Swim race — a shorter\, easier ride preser
- ves leg and systemic freshness without compromising the race-day performan
- ce.\n\nAI coaching 2026-10-10
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261020-4@jean-tri
-DTSTAMP:20261016T161849Z
+UID:ai-coaching-20261020-2@jean-tri
+DTSTAMP:20261017T033521Z
 DTSTART:20261020T070000
 DTEND:20261020T090000
-SUMMARY:[AI ADJUSTED] running — Easy continuous run 35–40 min at 6:30
- –7:00/km — aerobic base
-DESCRIPTION:Easy continuous run 35–40 min at 6:30–7:00/km — aerobic b
- ase building only\, no intervals in OWS race week\n\nReason: Running inter
- vals in the same week as the Oct 25 OWS race adds unnecessary stress\; an 
- easy aerobic run maintains run stimulus without compromising swim race rea
- diness.\n\nAI coaching 2026-10-10
+SUMMARY:[AI ADJUSTED] running — Replace with a 30–35 min easy aerobic r
+ un at 6:45–7:15/km — 
+DESCRIPTION:Replace with a 30–35 min easy aerobic run at 6:45–7:15/km 
+ — no intervals this close to race day\n\nReason: Running intervals 5 day
+ s before an open water swim race add unnecessary neuromuscular fatigue wit
+ h no fitness benefit in this short window — easy aerobic running maintai
+ ns feel without the cost.\n\nAI coaching 2026-10-17
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261022-3@jean-tri
+DTSTAMP:20261017T033521Z
+DTSTART:20261022T070000
+DTEND:20261022T090000
+SUMMARY:[AI ADJUSTED] cycling — Shorten to 30 min easy spin at <128W (Z1 
+ only)\, legs-only ca
+DESCRIPTION:Shorten to 30 min easy spin at <128W (Z1 only)\, legs-only cade
+ nce drill focus — pure activation\, not load\n\nReason: Three days befor
+ e a 5K open water swim race\, cycling should serve only to keep the legs m
+ oving without adding fatigue\; Z2 intensity is unnecessary this close to r
+ ace day.\n\nAI coaching 2026-10-17
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261024-4@jean-tri
+DTSTAMP:20261017T033521Z
+DTSTART:20261024T070000
+DTEND:20261024T090000
+SUMMARY:[AI ADJUSTED] cycling — Replace with a 20–25 min very easy pre-
+ race spin at <120W — 
+DESCRIPTION:Replace with a 20–25 min very easy pre-race spin at <120W —
+  activation only\, then rest for race day tomorrow\n\nReason: A 60km ride 
+ the day before a 5K open water swim race would significantly compromise ra
+ ce-day performance\; the day before any race should be near-complete rest 
+ or a brief activation only.\n\nAI coaching 2026-10-17
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261101-5@jean-tri
-DTSTAMP:20261016T161849Z
+DTSTAMP:20261017T033521Z
 DTSTART:20261101T070000
 DTEND:20261101T090000
-SUMMARY:[AI ADJUSTED] running — Long run 16–17 km @ 6:20–6:50/km\, ~1
- 05–115 min — progressive
-DESCRIPTION:Long run 16–17 km @ 6:20–6:50/km\, ~105–115 min — progr
- essive build capped below plan target given the very low run base establis
- hed over the past month\n\nReason: Jumping to 18.8 km long run after only 
- one run logged in the past 4 weeks and a race the previous Sunday is too a
- ggressive — a slightly shorter long run reduces injury risk while still 
- progressing Marathon base building.\n\nAI coaching 2026-10-10
+SUMMARY:[AI ADJUSTED] running — Cap at 15km @ 6:30–6:45/km (~100 min) 
+ — do not attempt 18.8k
+DESCRIPTION:Cap at 15km @ 6:30–6:45/km (~100 min) — do not attempt 18.8
+ km the day after a 90km bike ride and one week post-race\n\nReason: Coming
+  off the October 25th swim race and a 90km Saturday ride\, jumping to 18.8
+ km risks injury given the demonstrated pattern of sleep disruption and low
+  recovery capacity — building to this distance should be gradual.\n\nAI 
+ coaching 2026-10-17
 END:VEVENT
 END:VCALENDAR
