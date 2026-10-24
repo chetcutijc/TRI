@@ -1,49 +1,34 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-10-17
-   107 days to Marathon  |  240 days to Ironman Italy Cervia
+   Generated: 2026-10-24
+   106 days to Marathon  |  239 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-The last 4 weeks show an inconsistent training block with very low volume overall — only 8 sessions logged, dominated by indoor cardio (likely yoga/pilates) and two open-water swims, with a single run and limited cycling. Sleep is severely compromised, with multiple nights under 4 hours and body battery frequently depleted, indicating accumulated fatigue that must be addressed before the 5K Open Water race on October 25. The nearest priority race (5K OW Swim, 8 days away) is reasonably supported by two recent open-water swims including a 5.2km effort on Oct 3, but run and bike volume is far below what the marathon and Ironman targets will eventually demand.
+Training volume over the last 4 weeks has been very low, with only three recorded sessions — two indoor cardio efforts and one open water swim — suggesting significant under-training relative to the upcoming 5K Open Water Race on 25 October and the Marathon 106 days away. Wellness data from late September shows consistently poor sleep (frequently under 4 hours) and critically low body battery readings, which likely explains the reduced training output. With the 5K open water race tomorrow, the priority is arriving fresh; the Marathon build must begin in earnest from next week.
 
 COACHING SUGGESTIONS:
-  1. Sleep is your biggest performance limiter right now — multiple nights of 3 hours or less and near-zero body battery readings suggest you are chronically under-recovered; prioritise 7–8 hours per night this week as non-negotiable race prep for October 25.
-  2. Your Oct 3 open-water 5.2km at 136bpm avg is a solid confidence builder for the 5K race — do one short, race-pace open-water or pool session (1,500–2,000m) mid-week to stay sharp without accumulating fatigue before Oct 25.
-  3. Run mileage is critically low for a sub-4h marathon in 113 days — after the 5K swim race, build a consistent run frequency of 3 sessions per week immediately, keeping easy runs at 6:30–7:00/km to establish the aerobic base before introducing pace work.
-  4. The Oct 17 long ride (80km, 240 min) falls the day before the AI-adjusted long run and only 8 days before a race — keep the ride but cap it at 60–70km and strictly hold Z2 watts (128–177W) with no tempo blocks this week to protect freshness for Oct 25.
-  5. Power data on the Sep 25 run shows 333W with avg HR 169 and pace only 6:15/km — this disproportionately high effort-to-pace ratio suggests either significant fatigue or elevated stress on that day; monitor run HR trends closely and avoid repeating high-HR efforts at slow paces, as this pattern can signal overreach.
+  1. Tomorrow's 5K open water race (25 Oct) is your nearest target — treat today's long ride as a very easy activation spin of 30–40 minutes at low Z2 (128–145W) rather than the full 60km, to preserve legs and energy for race day.
+  2. Your recent sleep data shows chronic short sleep (as low as 186–218 min per night) which is a major recovery limiter — prioritise getting 7–8 hours of sleep every night this week to arrive at the race and the training block ahead in better condition.
+  3. From Week 19 onward, the Marathon 106 days away must drive your run build — protect your long runs (18.8km, 20km) and ensure Tuesday/Thursday run sessions are completed consistently, as recent weeks show little to no run volume logged.
+  4. Pool swim sessions in Weeks 19–22 are set at ≤2:30/100m; given your recent open water pace of ~29:26/km (~2:57/100m), focus the drill component on stroke efficiency and catch technique to close the gap before the Marathon block fully displaces swim volume.
+  5. Bike interval work in Week 20 (5x5min @ Z4, 210–244W) will be a significant intensity spike given recent low training load — ensure you complete the Week 19 long ride and easy spin first, and reduce reps to 3–4x5min if fatigue is high entering that week.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-10-17 [CYCLING]
-    Current:  Wk17 Long Ride: 80km @ 128–177W (Z2), 240 min, with optional 3x10min Z3 Tempo blocks
-    Proposed: Reduce to 65km @ 128–177W (Z2 only, no tempo blocks), ~195 min — flat terrain to keep HR controlled
-    Reason:   Race is 8 days away and sleep/body battery data show chronic under-recovery; reducing ride volume protects freshness for the Oct 25 5K OW Swim without sacrificing aerobic stimulus.
-
-  • 2026-10-18 [RUNNING]
-    Current:  Wk17 Long Run (AI adjusted): 13–14km @ 6:30–7:00/km, ~90–100 min
-    Proposed: Cap at 10–11km @ 6:45–7:00/km, ~70–75 min — fully flat, stop if HR exceeds 160bpm
-    Reason:   Back-to-back Saturday ride and Sunday run the week before the swim race adds unnecessary cumulative fatigue; a shorter, relaxed run keeps the legs ticking without compromising race-week recovery.
-
-  • 2026-10-20 [RUNNING]
-    Current:  Wk18 Evening session: 6x800m @ 4:55–5:10/km intervals, total 45–55 min
-    Proposed: Replace with an easy 25–30 min jog @ 6:45–7:15/km plus 4x20-sec strides — no interval effort this close to race day
-    Reason:   Interval session 5 days before the 5K OW Swim race risks leg fatigue and elevated systemic stress during what should be a taper week.
-
-  • 2026-10-22 [CYCLING]
-    Current:  Wk18 Evening session: Maintenance endurance spin 128–177W (Z2), 45–60 min
-    Proposed: Shorten to 30–35 min easy spin at <128W (Z1 recovery), cadence drills only — treat as activation not training
-    Reason:   Three days before a 5K open-water race, any cycling should be purely restorative; Z2 effort at this point extends recovery time unnecessarily.
-
   • 2026-10-24 [CYCLING]
-    Current:  Wk18 Long Ride: 60km @ 128–177W (Z2), 240 min
-    Proposed: Skip — rest day the day before the 5K OW Swim race
-    Reason:   A 60km ride the day before a 5K open-water race will leave the athlete fatigued for their race start; full rest or a 10-min easy walk is optimal.
+    Current:  Wk18 Long Ride — 60km @ 128–177W (Z2), 240 min, optional 3x10min Z3 blocks
+    Proposed: Short activation ride — 30–40 min @ 128–145W (low Z2), flat effort, no tempo blocks, stop well before fatigue
+    Reason:   Race day is tomorrow (5K Open Water Swim); a full 60km ride the day before risks unnecessary fatigue and undermines race performance.
+
+  • 2026-10-31 [CYCLING]
+    Current:  Wk19 Long Ride — 90km @ 128–177W (Z2), 240 min
+    Proposed: Long ride 60–70km @ 128–177W (Z2), ~180–200 min — build back gradually given the very low training load logged over the past 4 weeks
+    Reason:   Recent training volume has been very low (only 3 sessions in 4 weeks), making a jump to 90km in the first full training week post-race a significant overreach risk.
 
   • 2026-11-01 [RUNNING]
-    Current:  Wk19 Long Run: 18.8km @ 6:15–6:45/km, 180 min
-    Proposed: Cap at 15km @ 6:30–6:50/km (~100 min) — progressive build, do not attempt 18.8km until consistent weekly run volume is re-established post-race
-    Reason:   Given the critically low run training volume over the past 4 weeks, jumping to 18.8km the week after a race creates a significant injury risk; 15km is a safer progression toward the marathon base needed in 113 days.
+    Current:  Wk19 Long Run — 18.8km @ 6:15–6:45/km, 180 min
+    Proposed: Long run 14–16km @ 6:30–7:00/km, easy aerobic effort — consolidate fitness before pushing distance given near-zero recent run volume
+    Reason:   No run activity is visible in the last 4 weeks of data; jumping straight to 18.8km on back-to-back long days (Saturday long ride + Sunday long run) risks injury given the detraining evident in recent weeks.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
