@@ -1,46 +1,30 @@
 {
-  "summary": "Training data for the last 4 weeks shows only a single open-water swim session (5.2km, 153 min on Oct 3), with virtually no wellness data recorded \u2014 this makes it very difficult to assess fatigue, recovery, or training load trends. The absence of cycling and running sessions in the log is a significant concern given that the Marathon is just 99 days away and requires a consistent, progressive run build starting now. With the 10K race on November 8 as the nearest event in the plan, the priority this week should be controlled aerobic sharpening rather than heavy load.",
+  "summary": "Training data for the last 4 weeks shows only a single open-water swim session (5.2km, 153 min), with no cycling, running, or strength sessions logged and almost entirely absent wellness data \u2014 this is a very low training load heading into a busy upcoming block. The nearest priority race is the Marathon in 99 days, targeting sub-4h (5:45/km), which requires consistent multi-disciplinary volume and progressive run build starting now. With the 10K race on 2026-11-08 also imminent, the focus should be on arriving at that race fresh while rebuilding aerobic base across all three disciplines.",
   "suggestions": [
-    "With the Marathon 99 days away, begin logging all three disciplines consistently every week \u2014 missing data prevents accurate load monitoring and makes it impossible to detect overtraining or under-recovery.",
-    "The November 8 10K race is your nearest event: ensure the Wk20 long ride on Nov 7 (the day before) is kept easy and genuinely aerobic \u2014 do not add Z3 Tempo blocks that day regardless of whether it is a bike-peak week.",
-    "Reconnect your Garmin sleep tracking \u2014 sleep score and body battery data are completely absent for the entire 4-week window, removing a key early-warning signal for accumulated fatigue heading into race week.",
-    "Your open-water swim pace of ~29:26/km (~2:57/100m) is slower than the \u22642:30/100m pool target in the plan; prioritise technique drills and consistent pool sessions to close this gap before the Ironman build begins.",
-    "For the Marathon target (sub-4h, ~5:45/km), ensure the Wk21 and Wk22 long runs (20km and 20.6km) are executed at the prescribed 6:15\u20136:45/km \u2014 these are the most important aerobic stimulus sessions in the current 4-week window."
+    "Prioritise consistency across all three disciplines immediately \u2014 with only one session logged in four weeks, the biggest risk to both the 10K on 8 Nov and the Marathon is detraining; stick rigidly to the upcoming plan as written for the next two weeks.",
+    "For the 10K race on 8 November, treat the Wk20 long ride on 7 Nov as a relaxed, easy-effort spin rather than a full 60km effort \u2014 arriving at race day with fresh legs matters more than completing the full ride distance.",
+    "Begin incorporating marathon-specific aerobic run volume from Wk21 onward \u2014 the 20km long runs in the plan are excellent base work, but ensure pace stays honest (6:15\u20136:45/km) rather than creeping faster, as aerobic conditioning is the limiting factor right now.",
+    "Track sleep and body battery consistently \u2014 nearly all wellness data is missing across the entire 4-week window, making it impossible to assess recovery quality; even manual logging will help calibrate training load decisions.",
+    "The swim pace in the open-water session (29:26/km \u2248 ~2:57/100m) is above the pool target of \u22642:30/100m, so prioritise technique-focused pool sessions in Wk20 and Wk21 to close that gap ahead of the Ironman build later."
   ],
   "proposed_changes": [
     {
       "date": "2026-11-07",
       "discipline": "cycling",
-      "current_session": "Wk20 Long Ride \u2014 60km @ 128\u2013177W (Z2), option to add 3x10min Z3 Tempo blocks if bike-peak week",
-      "proposed_session": "60km @ 128\u2013155W (lower Z2 only), no Tempo blocks \u2014 cap effort at 2.5 hours and include a proper cool-down. No Z3 additions today regardless of peak-week designation.",
+      "current_session": "Wk20 Long Ride: 60km @ 128\u2013177W (Z2 Endurance), 240 min",
+      "proposed_session": "Easy recovery spin: 30\u201340km @ 128\u2013150W (low Z2), 60\u201375 min only \u2014 keep it very relaxed the day before the 10K race.",
       "change_type": "decrease",
-      "reason": "This ride falls the day before the 10K race on Nov 8; keeping it genuinely easy preserves leg freshness and reduces injury risk on race day."
+      "reason": "Riding 60km the day before the 10K race risks carrying fatigue into race day; reducing to a short, easy flush ride protects race-day freshness without losing the aerobic stimulus."
     },
     {
       "date": "2026-11-08",
       "discipline": "running",
-      "current_session": "Wk20 Race Day 10K \u2014 goal pace ~5:35\u20135:50/km, target sub-50 min, duration listed as 180 min",
-      "proposed_session": "10K Race as planned at 5:35\u20135:50/km target; treat the 180-min block as race + warm-up/cool-down only \u2014 do not add any additional running volume before or after the race.",
-      "change_type": "replace",
-      "reason": "The 180-min duration is excessive for a 10K race day; capping the block at race + 15-min warm-up + 10-min cool-down prevents unnecessary fatigue accumulation the day after the long ride."
-    },
-    {
-      "date": "2026-11-10",
-      "discipline": "cycling",
-      "current_session": "Wk21 Maintenance endurance spin, 128\u2013177W, 45\u201360 min",
-      "proposed_session": "Easy active recovery spin only \u2014 30\u201340 min at 100\u2013130W (Z1), no intervals or sustained Z2 effort.",
+      "current_session": "Wk20 Race Day 10K: goal pace 5:35\u20135:50/km, target sub-50 min, 180 min block",
+      "proposed_session": "10K Race as planned: warm-up 10\u201315 min easy, race 5:35\u20135:50/km, cool-down 10 min easy jog \u2014 total active time ~60 min, not 180 min.",
       "change_type": "decrease",
-      "reason": "This session falls just two days after the 10K race; reducing intensity allows proper recovery before the Wk21 interval and long-ride block."
-    },
-    {
-      "date": "2026-11-12",
-      "discipline": "running",
-      "current_session": "Wk21 Intervals \u2014 6x800m @ 4:55\u20135:10/km, 2 min jog recovery, 45\u201355 min total",
-      "proposed_session": "Reduce to 4x800m @ 4:55\u20135:10/km with 2 min jog recovery if legs still feel heavy from the 10K; otherwise execute the full 6x800m as written.",
-      "change_type": "decrease",
-      "reason": "Only 4 days post-race, leg fatigue may compromise interval quality \u2014 a conditional reduction protects against injury while keeping the stimulus if recovery has been good."
+      "reason": "The 180-min duration block is likely a plan placeholder \u2014 actual race-day execution should total ~60 min of activity to avoid unnecessary fatigue that would impact the following week's training."
     }
   ],
-  "generated_at": "2026-10-31T04:42:26.546650+00:00",
+  "generated_at": "2026-10-31T16:59:54.612047+00:00",
   "weeks_analysed": 4
 }

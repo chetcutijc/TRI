@@ -5,54 +5,29 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20261107-0@jean-tri
-DTSTAMP:20261031T044256Z
+DTSTAMP:20261031T170018Z
 DTSTART:20261107T070000
 DTEND:20261107T090000
-SUMMARY:[AI ADJUSTED] cycling — 60km @ 128–155W (lower Z2 only)\, no Te
- mpo blocks — cap effor
-DESCRIPTION:60km @ 128–155W (lower Z2 only)\, no Tempo blocks — cap eff
- ort at 2.5 hours and include a proper cool-down. No Z3 additions today reg
- ardless of peak-week designation.\n\nReason: This ride falls the day befor
- e the 10K race on Nov 8\; keeping it genuinely easy preserves leg freshnes
- s and reduces injury risk on race day.\n\nAI coaching 2026-10-31
+SUMMARY:[AI ADJUSTED] cycling — Easy recovery spin: 30–40km @ 128–150
+ W (low Z2)\, 60–75 min o
+DESCRIPTION:Easy recovery spin: 30–40km @ 128–150W (low Z2)\, 60–75 m
+ in only — keep it very relaxed the day before the 10K race.\n\nReason: R
+ iding 60km the day before the 10K race risks carrying fatigue into race da
+ y\; reducing to a short\, easy flush ride protects race-day freshness with
+ out losing the aerobic stimulus.\n\nAI coaching 2026-10-31
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261108-1@jean-tri
-DTSTAMP:20261031T044256Z
+DTSTAMP:20261031T170018Z
 DTSTART:20261108T070000
 DTEND:20261108T090000
-SUMMARY:[AI ADJUSTED] running — 10K Race as planned at 5:35–5:50/km tar
- get\; treat the 180-mi
-DESCRIPTION:10K Race as planned at 5:35–5:50/km target\; treat the 180-mi
- n block as race + warm-up/cool-down only — do not add any additional run
- ning volume before or after the race.\n\nReason: The 180-min duration is e
- xcessive for a 10K race day\; capping the block at race + 15-min warm-up +
-  10-min cool-down prevents unnecessary fatigue accumulation the day after 
- the long ride.\n\nAI coaching 2026-10-31
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261110-2@jean-tri
-DTSTAMP:20261031T044256Z
-DTSTART:20261110T070000
-DTEND:20261110T090000
-SUMMARY:[AI ADJUSTED] cycling — Easy active recovery spin only — 30–4
- 0 min at 100–130W (Z1)\,
-DESCRIPTION:Easy active recovery spin only — 30–40 min at 100–130W (Z
- 1)\, no intervals or sustained Z2 effort.\n\nReason: This session falls ju
- st two days after the 10K race\; reducing intensity allows proper recovery
-  before the Wk21 interval and long-ride block.\n\nAI coaching 2026-10-31
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261112-3@jean-tri
-DTSTAMP:20261031T044256Z
-DTSTART:20261112T070000
-DTEND:20261112T090000
-SUMMARY:[AI ADJUSTED] running — Reduce to 4x800m @ 4:55–5:10/km with 2 
- min jog recovery if l
-DESCRIPTION:Reduce to 4x800m @ 4:55–5:10/km with 2 min jog recovery if le
- gs still feel heavy from the 10K\; otherwise execute the full 6x800m as wr
- itten.\n\nReason: Only 4 days post-race\, leg fatigue may compromise inter
- val quality — a conditional reduction protects against injury while keep
- ing the stimulus if recovery has been good.\n\nAI coaching 2026-10-31
+SUMMARY:[AI ADJUSTED] running — 10K Race as planned: warm-up 10–15 min 
+ easy\, race 5:35–5:50/
+DESCRIPTION:10K Race as planned: warm-up 10–15 min easy\, race 5:35–5:5
+ 0/km\, cool-down 10 min easy jog — total active time ~60 min\, not 180 m
+ in.\n\nReason: The 180-min duration block is likely a plan placeholder —
+  actual race-day execution should total ~60 min of activity to avoid unnec
+ essary fatigue that would impact the following week's training.\n\nAI coac
+ hing 2026-10-31
 END:VEVENT
 END:VCALENDAR
