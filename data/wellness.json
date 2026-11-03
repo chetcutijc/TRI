@@ -838,5 +838,11 @@
     "sleep_score": null,
     "body_battery_max": null,
     "body_battery_min": null
+  },
+  "2026-11-03": {
+    "sleep_duration_min": null,
+    "sleep_score": null,
+    "body_battery_max": null,
+    "body_battery_min": null
   }
 }
