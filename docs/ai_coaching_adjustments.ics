@@ -4,30 +4,44 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20261107-0@jean-tri
-DTSTAMP:20261106T190313Z
-DTSTART:20261107T070000
-DTEND:20261107T090000
-SUMMARY:[AI ADJUSTED] cycling — Easy recovery spin: 30–40km @ 128–150
- W (low Z2)\, 60–75 min o
-DESCRIPTION:Easy recovery spin: 30–40km @ 128–150W (low Z2)\, 60–75 m
- in only — keep it very relaxed the day before the 10K race.\n\nReason: R
- iding 60km the day before the 10K race risks carrying fatigue into race da
- y\; reducing to a short\, easy flush ride protects race-day freshness with
- out losing the aerobic stimulus.\n\nAI coaching 2026-10-31
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261108-1@jean-tri
-DTSTAMP:20261106T190313Z
+UID:ai-coaching-20261108-0@jean-tri
+DTSTAMP:20261107T051351Z
 DTSTART:20261108T070000
 DTEND:20261108T090000
-SUMMARY:[AI ADJUSTED] running — 10K Race as planned: warm-up 10–15 min 
- easy\, race 5:35–5:50/
-DESCRIPTION:10K Race as planned: warm-up 10–15 min easy\, race 5:35–5:5
- 0/km\, cool-down 10 min easy jog — total active time ~60 min\, not 180 m
- in.\n\nReason: The 180-min duration block is likely a plan placeholder —
-  actual race-day execution should total ~60 min of activity to avoid unnec
- essary fatigue that would impact the following week's training.\n\nAI coac
- hing 2026-10-31
+SUMMARY:[AI ADJUSTED] running — Run the 10K race at a controlled effort 
+ — aim for even split
+DESCRIPTION:Run the 10K race at a controlled effort — aim for even splits
+  around 5:45–5:50/km rather than chasing sub-50min\, treating it as a fi
+ tness test given no recent training data is available.\n\nReason: With zer
+ o logged training over the past 4 weeks\, an all-out race effort carries a
+  high injury risk\; a controlled time-trial approach gives useful benchmar
+ k data while protecting the Marathon block.\n\nAI coaching 2026-11-07
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261114-1@jean-tri
+DTSTAMP:20261107T051351Z
+DTSTART:20261114T070000
+DTEND:20261114T090000
+SUMMARY:[AI ADJUSTED] cycling — Complete 80–90km strictly at Z2 (128–
+ 177W) only — skip the Z
+DESCRIPTION:Complete 80–90km strictly at Z2 (128–177W) only — skip th
+ e Z3 Tempo blocks entirely this week.\n\nReason: Following the 10K race on
+  Sunday and no logged training baseline\, adding Tempo blocks in the first
+  long ride back risks excessive cumulative fatigue heading into a building
+  marathon block.\n\nAI coaching 2026-11-07
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261115-2@jean-tri
+DTSTAMP:20261107T051351Z
+DTSTART:20261115T070000
+DTEND:20261115T090000
+SUMMARY:[AI ADJUSTED] running — Reduce to 16–17km @ 6:30–6:45/km (top
+  of the easy range)\, ke
+DESCRIPTION:Reduce to 16–17km @ 6:30–6:45/km (top of the easy range)\, 
+ keeping it fully aerobic and cutting short if legs feel heavy from the rac
+ e on Sunday.\n\nReason: Running 20km the week after a 10K race with no rec
+ ent training history logged is a large jump\; a shorter aerobic long run r
+ educes injury risk while still building the aerobic base needed for the Ma
+ rathon.\n\nAI coaching 2026-11-07
 END:VEVENT
 END:VCALENDAR

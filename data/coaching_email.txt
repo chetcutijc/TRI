@@ -1,29 +1,34 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-10-31
-   93 days to Marathon  |  226 days to Ironman Italy Cervia
+   Generated: 2026-11-07
+   92 days to Marathon  |  225 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-Training data for the last 4 weeks shows only a single open-water swim session (5.2km, 153 min), with no cycling, running, or strength sessions logged and almost entirely absent wellness data — this is a very low training load heading into a busy upcoming block. The nearest priority race is the Marathon in 99 days, targeting sub-4h (5:45/km), which requires consistent multi-disciplinary volume and progressive run build starting now. With the 10K race on 2026-11-08 also imminent, the focus should be on arriving at that race fresh while rebuilding aerobic base across all three disciplines.
+No training or wellness data has been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a Marathon 92 days away targeting sub-4h (5:45/km), this is a critical build period and consistency starting now is essential. The upcoming plan is well-structured, but the lack of any logged activity means we must assume a de-trained baseline and approach the next weeks with controlled, honest effort.
 
 COACHING SUGGESTIONS:
-  1. Prioritise consistency across all three disciplines immediately — with only one session logged in four weeks, the biggest risk to both the 10K on 8 Nov and the Marathon is detraining; stick rigidly to the upcoming plan as written for the next two weeks.
-  2. For the 10K race on 8 November, treat the Wk20 long ride on 7 Nov as a relaxed, easy-effort spin rather than a full 60km effort — arriving at race day with fresh legs matters more than completing the full ride distance.
-  3. Begin incorporating marathon-specific aerobic run volume from Wk21 onward — the 20km long runs in the plan are excellent base work, but ensure pace stays honest (6:15–6:45/km) rather than creeping faster, as aerobic conditioning is the limiting factor right now.
-  4. Track sleep and body battery consistently — nearly all wellness data is missing across the entire 4-week window, making it impossible to assess recovery quality; even manual logging will help calibrate training load decisions.
-  5. The swim pace in the open-water session (29:26/km ≈ ~2:57/100m) is above the pool target of ≤2:30/100m, so prioritise technique-focused pool sessions in Wk20 and Wk21 to close that gap ahead of the Ironman build later.
+  1. Prioritise completing the 10K race on 2026-11-08 at a controlled, honest effort — use it as a fitness benchmark rather than an all-out race, since there is no recent training data to gauge current form.
+  2. With 92 days to the Marathon, your Tuesday and Thursday running sessions are your most important training touchpoints — treat the 6x800m intervals (Wk21, Wk22) as the primary quality sessions and don't sacrifice them for cycling or social commitments.
+  3. Begin logging sleep and body battery data consistently from this week onwards — without wellness metrics, it's impossible to detect overreaching or under-recovery before it becomes an injury or illness.
+  4. On the long Saturday rides (100–115km), keep strictly to Z2 power (128–177W) until you have at least 2–3 weeks of logged data; do not add the Z3 Tempo blocks until you can confirm recovery is adequate between sessions.
+  5. Given the Marathon target of sub-4h (5:45/km), ensure Sunday long runs are completed at the prescribed 6:15–6:45/km — running too fast on these aerobic sessions is the most common mistake at this stage of a marathon build and increases injury risk.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-11-07 [CYCLING]
-    Current:  Wk20 Long Ride: 60km @ 128–177W (Z2 Endurance), 240 min
-    Proposed: Easy recovery spin: 30–40km @ 128–150W (low Z2), 60–75 min only — keep it very relaxed the day before the 10K race.
-    Reason:   Riding 60km the day before the 10K race risks carrying fatigue into race day; reducing to a short, easy flush ride protects race-day freshness without losing the aerobic stimulus.
-
   • 2026-11-08 [RUNNING]
-    Current:  Wk20 Race Day 10K: goal pace 5:35–5:50/km, target sub-50 min, 180 min block
-    Proposed: 10K Race as planned: warm-up 10–15 min easy, race 5:35–5:50/km, cool-down 10 min easy jog — total active time ~60 min, not 180 min.
-    Reason:   The 180-min duration block is likely a plan placeholder — actual race-day execution should total ~60 min of activity to avoid unnecessary fatigue that would impact the following week's training.
+    Current:  RACE: 10K Run Race, goal pace ~5:35–5:50/km, target sub-50min, 180min allocated
+    Proposed: Run the 10K race at a controlled effort — aim for even splits around 5:45–5:50/km rather than chasing sub-50min, treating it as a fitness test given no recent training data is available.
+    Reason:   With zero logged training over the past 4 weeks, an all-out race effort carries a high injury risk; a controlled time-trial approach gives useful benchmark data while protecting the Marathon block.
+
+  • 2026-11-14 [CYCLING]
+    Current:  Wk21 Long Ride: 100km @ 128–177W (Z2 Endurance), with optional 3x10min Z3 Tempo blocks
+    Proposed: Complete 80–90km strictly at Z2 (128–177W) only — skip the Z3 Tempo blocks entirely this week.
+    Reason:   Following the 10K race on Sunday and no logged training baseline, adding Tempo blocks in the first long ride back risks excessive cumulative fatigue heading into a building marathon block.
+
+  • 2026-11-15 [RUNNING]
+    Current:  Wk21 Long Run: 20.0km @ 6:15–6:45/km
+    Proposed: Reduce to 16–17km @ 6:30–6:45/km (top of the easy range), keeping it fully aerobic and cutting short if legs feel heavy from the race on Sunday.
+    Reason:   Running 20km the week after a 10K race with no recent training history logged is a large jump; a shorter aerobic long run reduces injury risk while still building the aerobic base needed for the Marathon.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).

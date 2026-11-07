@@ -1,30 +1,38 @@
 {
-  "summary": "Training data for the last 4 weeks shows only a single open-water swim session (5.2km, 153 min), with no cycling, running, or strength sessions logged and almost entirely absent wellness data \u2014 this is a very low training load heading into a busy upcoming block. The nearest priority race is the Marathon in 99 days, targeting sub-4h (5:45/km), which requires consistent multi-disciplinary volume and progressive run build starting now. With the 10K race on 2026-11-08 also imminent, the focus should be on arriving at that race fresh while rebuilding aerobic base across all three disciplines.",
+  "summary": "No training or wellness data has been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a Marathon 92 days away targeting sub-4h (5:45/km), this is a critical build period and consistency starting now is essential. The upcoming plan is well-structured, but the lack of any logged activity means we must assume a de-trained baseline and approach the next weeks with controlled, honest effort.",
   "suggestions": [
-    "Prioritise consistency across all three disciplines immediately \u2014 with only one session logged in four weeks, the biggest risk to both the 10K on 8 Nov and the Marathon is detraining; stick rigidly to the upcoming plan as written for the next two weeks.",
-    "For the 10K race on 8 November, treat the Wk20 long ride on 7 Nov as a relaxed, easy-effort spin rather than a full 60km effort \u2014 arriving at race day with fresh legs matters more than completing the full ride distance.",
-    "Begin incorporating marathon-specific aerobic run volume from Wk21 onward \u2014 the 20km long runs in the plan are excellent base work, but ensure pace stays honest (6:15\u20136:45/km) rather than creeping faster, as aerobic conditioning is the limiting factor right now.",
-    "Track sleep and body battery consistently \u2014 nearly all wellness data is missing across the entire 4-week window, making it impossible to assess recovery quality; even manual logging will help calibrate training load decisions.",
-    "The swim pace in the open-water session (29:26/km \u2248 ~2:57/100m) is above the pool target of \u22642:30/100m, so prioritise technique-focused pool sessions in Wk20 and Wk21 to close that gap ahead of the Ironman build later."
+    "Prioritise completing the 10K race on 2026-11-08 at a controlled, honest effort \u2014 use it as a fitness benchmark rather than an all-out race, since there is no recent training data to gauge current form.",
+    "With 92 days to the Marathon, your Tuesday and Thursday running sessions are your most important training touchpoints \u2014 treat the 6x800m intervals (Wk21, Wk22) as the primary quality sessions and don't sacrifice them for cycling or social commitments.",
+    "Begin logging sleep and body battery data consistently from this week onwards \u2014 without wellness metrics, it's impossible to detect overreaching or under-recovery before it becomes an injury or illness.",
+    "On the long Saturday rides (100\u2013115km), keep strictly to Z2 power (128\u2013177W) until you have at least 2\u20133 weeks of logged data; do not add the Z3 Tempo blocks until you can confirm recovery is adequate between sessions.",
+    "Given the Marathon target of sub-4h (5:45/km), ensure Sunday long runs are completed at the prescribed 6:15\u20136:45/km \u2014 running too fast on these aerobic sessions is the most common mistake at this stage of a marathon build and increases injury risk."
   ],
   "proposed_changes": [
     {
-      "date": "2026-11-07",
-      "discipline": "cycling",
-      "current_session": "Wk20 Long Ride: 60km @ 128\u2013177W (Z2 Endurance), 240 min",
-      "proposed_session": "Easy recovery spin: 30\u201340km @ 128\u2013150W (low Z2), 60\u201375 min only \u2014 keep it very relaxed the day before the 10K race.",
-      "change_type": "decrease",
-      "reason": "Riding 60km the day before the 10K race risks carrying fatigue into race day; reducing to a short, easy flush ride protects race-day freshness without losing the aerobic stimulus."
-    },
-    {
       "date": "2026-11-08",
       "discipline": "running",
-      "current_session": "Wk20 Race Day 10K: goal pace 5:35\u20135:50/km, target sub-50 min, 180 min block",
-      "proposed_session": "10K Race as planned: warm-up 10\u201315 min easy, race 5:35\u20135:50/km, cool-down 10 min easy jog \u2014 total active time ~60 min, not 180 min.",
+      "current_session": "RACE: 10K Run Race, goal pace ~5:35\u20135:50/km, target sub-50min, 180min allocated",
+      "proposed_session": "Run the 10K race at a controlled effort \u2014 aim for even splits around 5:45\u20135:50/km rather than chasing sub-50min, treating it as a fitness test given no recent training data is available.",
       "change_type": "decrease",
-      "reason": "The 180-min duration block is likely a plan placeholder \u2014 actual race-day execution should total ~60 min of activity to avoid unnecessary fatigue that would impact the following week's training."
+      "reason": "With zero logged training over the past 4 weeks, an all-out race effort carries a high injury risk; a controlled time-trial approach gives useful benchmark data while protecting the Marathon block."
+    },
+    {
+      "date": "2026-11-14",
+      "discipline": "cycling",
+      "current_session": "Wk21 Long Ride: 100km @ 128\u2013177W (Z2 Endurance), with optional 3x10min Z3 Tempo blocks",
+      "proposed_session": "Complete 80\u201390km strictly at Z2 (128\u2013177W) only \u2014 skip the Z3 Tempo blocks entirely this week.",
+      "change_type": "decrease",
+      "reason": "Following the 10K race on Sunday and no logged training baseline, adding Tempo blocks in the first long ride back risks excessive cumulative fatigue heading into a building marathon block."
+    },
+    {
+      "date": "2026-11-15",
+      "discipline": "running",
+      "current_session": "Wk21 Long Run: 20.0km @ 6:15\u20136:45/km",
+      "proposed_session": "Reduce to 16\u201317km @ 6:30\u20136:45/km (top of the easy range), keeping it fully aerobic and cutting short if legs feel heavy from the race on Sunday.",
+      "change_type": "decrease",
+      "reason": "Running 20km the week after a 10K race with no recent training history logged is a large jump; a shorter aerobic long run reduces injury risk while still building the aerobic base needed for the Marathon."
     }
   ],
-  "generated_at": "2026-10-31T16:59:54.612047+00:00",
+  "generated_at": "2026-11-07T05:13:26.990617+00:00",
   "weeks_analysed": 4
 }
