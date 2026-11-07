@@ -5,30 +5,25 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-No training or wellness data has been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a Marathon 92 days away targeting sub-4h (5:45/km), this is a critical build period and consistency starting now is essential. The upcoming plan is well-structured, but the lack of any logged activity means we must assume a de-trained baseline and approach the next weeks with controlled, honest effort.
+No training data or wellness metrics have been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or readiness objectively. With a Marathon 92 days away targeting sub-4 hours (~5:45/km), the immediate priority is establishing consistent training execution and capturing data going forward. The upcoming plan is well-structured for the marathon build, but the absence of any logged sessions suggests a potential gap between planned and actual training that needs addressing.
 
 COACHING SUGGESTIONS:
-  1. Prioritise completing the 10K race on 2026-11-08 at a controlled, honest effort — use it as a fitness benchmark rather than an all-out race, since there is no recent training data to gauge current form.
-  2. With 92 days to the Marathon, your Tuesday and Thursday running sessions are your most important training touchpoints — treat the 6x800m intervals (Wk21, Wk22) as the primary quality sessions and don't sacrifice them for cycling or social commitments.
-  3. Begin logging sleep and body battery data consistently from this week onwards — without wellness metrics, it's impossible to detect overreaching or under-recovery before it becomes an injury or illness.
-  4. On the long Saturday rides (100–115km), keep strictly to Z2 power (128–177W) until you have at least 2–3 weeks of logged data; do not add the Z3 Tempo blocks until you can confirm recovery is adequate between sessions.
-  5. Given the Marathon target of sub-4h (5:45/km), ensure Sunday long runs are completed at the prescribed 6:15–6:45/km — running too fast on these aerobic sessions is the most common mistake at this stage of a marathon build and increases injury risk.
+  1. Ensure your Garmin device is syncing correctly and capturing all sessions — without data, it's impossible to adjust load intelligently or detect overtraining before the marathon.
+  2. With the 10K race on 8 November (tomorrow), treat it as a controlled fitness test rather than an all-out effort; aim for the lower end of the 5:35–5:50/km target and use the result to validate your marathon pace strategy.
+  3. The marathon is 92 days away — your weekly long runs (20–21km) are well-timed, but ensure you are logging all sessions so progression can be tracked and the peak long run (~32–34km) can be safely scheduled 3–4 weeks out.
+  4. Prioritise the Saturday long ride (60km today) at a genuine Z2 effort (128–177W); without recent data, there's a risk of drifting too hard — use a power meter or HR cap to stay disciplined.
+  5. Begin logging sleep and body battery data consistently, as this is the earliest warning system for accumulated fatigue across a heavy swim-bike-run-strength week structure.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-11-08 [RUNNING]
-    Current:  RACE: 10K Run Race, goal pace ~5:35–5:50/km, target sub-50min, 180min allocated
-    Proposed: Run the 10K race at a controlled effort — aim for even splits around 5:45–5:50/km rather than chasing sub-50min, treating it as a fitness test given no recent training data is available.
-    Reason:   With zero logged training over the past 4 weeks, an all-out race effort carries a high injury risk; a controlled time-trial approach gives useful benchmark data while protecting the Marathon block.
-
-  • 2026-11-14 [CYCLING]
-    Current:  Wk21 Long Ride: 100km @ 128–177W (Z2 Endurance), with optional 3x10min Z3 Tempo blocks
-    Proposed: Complete 80–90km strictly at Z2 (128–177W) only — skip the Z3 Tempo blocks entirely this week.
-    Reason:   Following the 10K race on Sunday and no logged training baseline, adding Tempo blocks in the first long ride back risks excessive cumulative fatigue heading into a building marathon block.
+    Current:  RACE: 10K Run Race — goal pace ~5:35–5:50/km, target sub-50min, 180min block
+    Proposed: 10K Race: start at 5:50/km for the first 3km, build to 5:35/km if feeling strong from 5km onward — treat as a fitness benchmark rather than a peak performance, and cap effort at a hard but controlled RPE 8.
+    Reason:   With zero logged training data over the last 4 weeks, there is no evidence of readiness to execute a maximum-effort race; a controlled effort protects against injury and still yields useful marathon-pace data 92 days out.
 
   • 2026-11-15 [RUNNING]
-    Current:  Wk21 Long Run: 20.0km @ 6:15–6:45/km
-    Proposed: Reduce to 16–17km @ 6:30–6:45/km (top of the easy range), keeping it fully aerobic and cutting short if legs feel heavy from the race on Sunday.
-    Reason:   Running 20km the week after a 10K race with no recent training history logged is a large jump; a shorter aerobic long run reduces injury risk while still building the aerobic base needed for the Marathon.
+    Current:  Long Run 20.0km @ 6:15–6:45/km
+    Proposed: Long Run 18km @ 6:30–6:45/km — keep firmly at the easy end of the pace range the day after the 10K race effort, cutting 2km to allow for residual fatigue.
+    Reason:   Running a hard 10K on 8 November means the following Sunday long run should be slightly reduced in distance and held at the easier end of the aerobic pace range to avoid compounding fatigue with no wellness data to guide load decisions.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).

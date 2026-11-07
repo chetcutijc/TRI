@@ -5,43 +5,31 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-coaching-20261108-0@jean-tri
-DTSTAMP:20261107T051351Z
+DTSTAMP:20261107T173621Z
 DTSTART:20261108T070000
 DTEND:20261108T090000
-SUMMARY:[AI ADJUSTED] running — Run the 10K race at a controlled effort 
- — aim for even split
-DESCRIPTION:Run the 10K race at a controlled effort — aim for even splits
-  around 5:45–5:50/km rather than chasing sub-50min\, treating it as a fi
- tness test given no recent training data is available.\n\nReason: With zer
- o logged training over the past 4 weeks\, an all-out race effort carries a
-  high injury risk\; a controlled time-trial approach gives useful benchmar
- k data while protecting the Marathon block.\n\nAI coaching 2026-11-07
+SUMMARY:[AI ADJUSTED] running — 10K Race: start at 5:50/km for the first 
+ 3km\, build to 5:35/
+DESCRIPTION:10K Race: start at 5:50/km for the first 3km\, build to 5:35/km
+  if feeling strong from 5km onward — treat as a fitness benchmark rather
+  than a peak performance\, and cap effort at a hard but controlled RPE 8.\
+ n\nReason: With zero logged training data over the last 4 weeks\, there is
+  no evidence of readiness to execute a maximum-effort race\; a controlled 
+ effort protects against injury and still yields useful marathon-pace data 
+ 92 days out.\n\nAI coaching 2026-11-07
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261114-1@jean-tri
-DTSTAMP:20261107T051351Z
-DTSTART:20261114T070000
-DTEND:20261114T090000
-SUMMARY:[AI ADJUSTED] cycling — Complete 80–90km strictly at Z2 (128–
- 177W) only — skip the Z
-DESCRIPTION:Complete 80–90km strictly at Z2 (128–177W) only — skip th
- e Z3 Tempo blocks entirely this week.\n\nReason: Following the 10K race on
-  Sunday and no logged training baseline\, adding Tempo blocks in the first
-  long ride back risks excessive cumulative fatigue heading into a building
-  marathon block.\n\nAI coaching 2026-11-07
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261115-2@jean-tri
-DTSTAMP:20261107T051351Z
+UID:ai-coaching-20261115-1@jean-tri
+DTSTAMP:20261107T173621Z
 DTSTART:20261115T070000
 DTEND:20261115T090000
-SUMMARY:[AI ADJUSTED] running — Reduce to 16–17km @ 6:30–6:45/km (top
-  of the easy range)\, ke
-DESCRIPTION:Reduce to 16–17km @ 6:30–6:45/km (top of the easy range)\, 
- keeping it fully aerobic and cutting short if legs feel heavy from the rac
- e on Sunday.\n\nReason: Running 20km the week after a 10K race with no rec
- ent training history logged is a large jump\; a shorter aerobic long run r
- educes injury risk while still building the aerobic base needed for the Ma
- rathon.\n\nAI coaching 2026-11-07
+SUMMARY:[AI ADJUSTED] running — Long Run 18km @ 6:30–6:45/km — keep f
+ irmly at the easy end o
+DESCRIPTION:Long Run 18km @ 6:30–6:45/km — keep firmly at the easy end 
+ of the pace range the day after the 10K race effort\, cutting 2km to allow
+  for residual fatigue.\n\nReason: Running a hard 10K on 8 November means t
+ he following Sunday long run should be slightly reduced in distance and he
+ ld at the easier end of the aerobic pace range to avoid compounding fatigu
+ e with no wellness data to guide load decisions.\n\nAI coaching 2026-11-07
 END:VEVENT
 END:VCALENDAR
