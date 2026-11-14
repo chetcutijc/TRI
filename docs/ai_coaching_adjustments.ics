@@ -4,52 +4,56 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20261117-0@jean-tri
-DTSTAMP:20261114T053343Z
-DTSTART:20261117T070000
-DTEND:20261117T090000
-SUMMARY:[AI ADJUSTED] running — 4x800m @ 4:55–5:10/km\, 2min jog recove
- ry\, then 10min easy co
-DESCRIPTION:4x800m @ 4:55–5:10/km\, 2min jog recovery\, then 10min easy c
- ool-down — total ~40min running\n\nReason: No recent training data means
-  fitness is unknown\; reducing interval volume on the first quality sessio
- n protects against injury and allows a safe return-to-training benchmark b
- efore progressing to 6 reps.\n\nAI coaching 2026-11-14
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261122-1@jean-tri
-DTSTAMP:20261114T053343Z
+UID:ai-coaching-20261122-0@jean-tri
+DTSTAMP:20261114T174704Z
 DTSTART:20261122T070000
 DTEND:20261122T090000
-SUMMARY:[AI ADJUSTED] running — 20.6km long run @ 6:15–6:45/km with the
-  final 4km accelerati
-DESCRIPTION:20.6km long run @ 6:15–6:45/km with the final 4km acceleratin
- g to 5:45/km (marathon race pace)\n\nReason: With the marathon 85 days awa
- y\, introducing marathon-pace finishes to long runs from this week builds 
- race specificity without adding volume.\n\nAI coaching 2026-11-14
+SUMMARY:[AI ADJUSTED] running — 20.6km long run with final 4km at 5:45/km
+  marathon race pace
+DESCRIPTION:20.6km long run with final 4km at 5:45/km marathon race pace\, 
+ rest of run at 6:15–6:45/km\n\nReason: With the marathon 85 days away\, 
+ introducing a race-pace finish to the long run builds specific neuromuscul
+ ar and metabolic adaptation at target pace without adding volume stress.\n
+ \nAI coaching 2026-11-14
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261129-2@jean-tri
-DTSTAMP:20261114T053343Z
+UID:ai-coaching-20261129-1@jean-tri
+DTSTAMP:20261114T174704Z
 DTSTART:20261129T070000
 DTEND:20261129T090000
-SUMMARY:[AI ADJUSTED] running — 21.2km long run @ 6:15–6:45/km with the
-  final 5km at 5:45/km
-DESCRIPTION:21.2km long run @ 6:15–6:45/km with the final 5km at 5:45/km 
- (marathon race pace)\n\nReason: Progressive increase of marathon-pace volu
- me in the long run (from 4km to 5km the following week) builds race-specif
- ic endurance toward the sub-4h target.\n\nAI coaching 2026-11-14
+SUMMARY:[AI ADJUSTED] running — 21.2km long run with final 5km at 5:45/km
+  marathon race pace
+DESCRIPTION:21.2km long run with final 5km at 5:45/km marathon race pace\, 
+ rest of run at 6:15–6:45/km\n\nReason: Progressively increasing the race
+ -pace finish section week-on-week builds marathon-specific endurance and r
+ einforces the sub-4h target pace across increasing fatigue.\n\nAI coaching
+  2026-11-14
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261126-2@jean-tri
+DTSTAMP:20261114T174704Z
+DTSTART:20261126T070000
+DTEND:20261126T090000
+SUMMARY:[AI ADJUSTED] running — Tempo run 35min @ 5:40–5:50/km — deli
+ berately kept at the sl
+DESCRIPTION:Tempo run 35min @ 5:40–5:50/km — deliberately kept at the s
+ lower end of the tempo band to stay closer to marathon race pace rather th
+ an drifting too fast\n\nReason: Keeping Thursday tempo efforts at the mara
+ thon-adjacent pace band (vs. faster 5:35/km end) sharpens specificity for 
+ the sub-4h marathon without over-stressing the system mid-build.\n\nAI coa
+ ching 2026-11-14
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261206-3@jean-tri
-DTSTAMP:20261114T053343Z
+DTSTAMP:20261114T174704Z
 DTSTART:20261206T070000
 DTEND:20261206T090000
-SUMMARY:[AI ADJUSTED] running — 21.8km long run @ 6:15–6:45/km with the
-  final 6km at 5:45/km
-DESCRIPTION:21.8km long run @ 6:15–6:45/km with the final 6km at 5:45/km 
- (marathon race pace)\n\nReason: Continuing the marathon-pace progression (
- 6km at race pace) within the long run builds confidence and neuromuscular 
- readiness for the sub-4h goal.\n\nAI coaching 2026-11-14
+SUMMARY:[AI ADJUSTED] running — 21.8km long run with final 6km at 5:45/km
+  marathon race pace
+DESCRIPTION:21.8km long run with final 6km at 5:45/km marathon race pace\, 
+ rest of run at 6:15–6:45/km\n\nReason: Continuing the progressive race-p
+ ace finish pattern builds confidence and metabolic readiness for the marat
+ hon at 60 days out\, while the easy first portion protects overall weekly 
+ load.\n\nAI coaching 2026-11-14
 END:VEVENT
 END:VCALENDAR

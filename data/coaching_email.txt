@@ -5,35 +5,35 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-No training data or wellness metrics have been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a marathon 85 days away targeting sub-4h (5:45/km), the upcoming plan's long runs at 6:15–6:45/km are conservatively paced and appropriate as a base, but the lack of any recent activity data means fitness level is unknown. The priority now is to re-establish consistent training and introduce marathon-pace work progressively before the race.
+No training data or wellness metrics have been recorded over the past 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a Marathon 85 days away (target sub-4h at ~5:45/km), this is a critical build phase and the absence of logged activity is a concern that needs immediate attention. The upcoming plan is well-structured for Ironman base building, but marathon-specific pace work at 5:45/km should be woven in more deliberately given the race proximity.
 
 COACHING SUGGESTIONS:
-  1. With the marathon 85 days away, begin incorporating dedicated marathon-pace (5:45/km) segments within your long runs — start with the final 3–5km of each Sunday long run at race pace to build specificity without overloading.
-  2. Since no recent training data is visible, treat the first 1–2 weeks of the upcoming plan as a fitness assessment block — complete sessions as prescribed but monitor effort carefully and don't chase pace targets if they feel unusually hard.
-  3. The Tuesday interval session on 17 Nov (6x800m at 4:55–5:10/km) represents significant intensity with no recent training baseline; consider completing only 4 reps on the first week to gauge current fitness before committing to the full volume.
-  4. Swimming sessions (2km+ at ≤2:30/100m) will serve double duty for the Ironman build, but for the near-term marathon focus, treat them as low-impact active recovery — prioritise run quality over swim volume if fatigue accumulates.
-  5. Start logging sleep and wellness data immediately — with no body battery or sleep data available, you are flying blind on recovery, which is especially risky when ramping up long-run volume toward a marathon.
+  1. Start logging all sessions immediately — without data from your watch or manual entries, it's impossible to track fitness trends or catch early signs of overtraining or underrecovery ahead of your marathon in 85 days.
+  2. With the marathon 85 days away, your Tuesday interval session (6x800m @ 4:55–5:10/km on 17 Nov) is valuable, but add one weekly tempo run specifically at 5:35–5:50/km sustained for 30–40 min to build race-pace confidence at your 5:45/km marathon target.
+  3. Long run distances of 20–21km are appropriate for this phase, but aim to include the final 3–5km of each long run at or close to marathon pace (5:45/km) to practise negative-splitting and race-pace feel without adding extra volume.
+  4. Malta's November conditions are mild and runnable — take advantage of cooler morning temperatures for long runs to simulate more typical marathon race conditions and build heat tolerance awareness for Ironman Italy next June.
+  5. Prioritise sleep tracking — re-sync your Garmin device or manually log sleep scores so recovery can be properly monitored; with no wellness data available, there is no way to gauge readiness before hard sessions.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-11-17 [RUNNING]
-    Current:  6x800m intervals @ 4:55–5:10/km, 2min jog recovery, 45–55min total
-    Proposed: 4x800m @ 4:55–5:10/km, 2min jog recovery, then 10min easy cool-down — total ~40min running
-    Reason:   No recent training data means fitness is unknown; reducing interval volume on the first quality session protects against injury and allows a safe return-to-training benchmark before progressing to 6 reps.
-
   • 2026-11-22 [RUNNING]
-    Current:  20.6km long run @ 6:15–6:45/km, steady aerobic
-    Proposed: 20.6km long run @ 6:15–6:45/km with the final 4km accelerating to 5:45/km (marathon race pace)
-    Reason:   With the marathon 85 days away, introducing marathon-pace finishes to long runs from this week builds race specificity without adding volume.
+    Current:  20.6km @ 6:15–6:45/km steady aerobic long run
+    Proposed: 20.6km long run with final 4km at 5:45/km marathon race pace, rest of run at 6:15–6:45/km
+    Reason:   With the marathon 85 days away, introducing a race-pace finish to the long run builds specific neuromuscular and metabolic adaptation at target pace without adding volume stress.
 
   • 2026-11-29 [RUNNING]
-    Current:  21.2km long run @ 6:15–6:45/km, steady aerobic
-    Proposed: 21.2km long run @ 6:15–6:45/km with the final 5km at 5:45/km (marathon race pace)
-    Reason:   Progressive increase of marathon-pace volume in the long run (from 4km to 5km the following week) builds race-specific endurance toward the sub-4h target.
+    Current:  21.2km @ 6:15–6:45/km steady aerobic long run
+    Proposed: 21.2km long run with final 5km at 5:45/km marathon race pace, rest of run at 6:15–6:45/km
+    Reason:   Progressively increasing the race-pace finish section week-on-week builds marathon-specific endurance and reinforces the sub-4h target pace across increasing fatigue.
+
+  • 2026-11-26 [RUNNING]
+    Current:  Tempo run, 5:35–5:50/km, 30–40min continuous
+    Proposed: Tempo run 35min @ 5:40–5:50/km — deliberately kept at the slower end of the tempo band to stay closer to marathon race pace rather than drifting too fast
+    Reason:   Keeping Thursday tempo efforts at the marathon-adjacent pace band (vs. faster 5:35/km end) sharpens specificity for the sub-4h marathon without over-stressing the system mid-build.
 
   • 2026-12-06 [RUNNING]
-    Current:  21.8km long run @ 6:15–6:45/km, steady aerobic
-    Proposed: 21.8km long run @ 6:15–6:45/km with the final 6km at 5:45/km (marathon race pace)
-    Reason:   Continuing the marathon-pace progression (6km at race pace) within the long run builds confidence and neuromuscular readiness for the sub-4h goal.
+    Current:  21.8km @ 6:15–6:45/km steady aerobic long run
+    Proposed: 21.8km long run with final 6km at 5:45/km marathon race pace, rest of run at 6:15–6:45/km
+    Reason:   Continuing the progressive race-pace finish pattern builds confidence and metabolic readiness for the marathon at 60 days out, while the easy first portion protects overall weekly load.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
