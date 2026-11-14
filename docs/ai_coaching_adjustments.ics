@@ -4,32 +4,52 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20261108-0@jean-tri
-DTSTAMP:20261113T192240Z
-DTSTART:20261108T070000
-DTEND:20261108T090000
-SUMMARY:[AI ADJUSTED] running — 10K Race: start at 5:50/km for the first 
- 3km\, build to 5:35/
-DESCRIPTION:10K Race: start at 5:50/km for the first 3km\, build to 5:35/km
-  if feeling strong from 5km onward — treat as a fitness benchmark rather
-  than a peak performance\, and cap effort at a hard but controlled RPE 8.\
- n\nReason: With zero logged training data over the last 4 weeks\, there is
-  no evidence of readiness to execute a maximum-effort race\; a controlled 
- effort protects against injury and still yields useful marathon-pace data 
- 92 days out.\n\nAI coaching 2026-11-07
+UID:ai-coaching-20261117-0@jean-tri
+DTSTAMP:20261114T053343Z
+DTSTART:20261117T070000
+DTEND:20261117T090000
+SUMMARY:[AI ADJUSTED] running — 4x800m @ 4:55–5:10/km\, 2min jog recove
+ ry\, then 10min easy co
+DESCRIPTION:4x800m @ 4:55–5:10/km\, 2min jog recovery\, then 10min easy c
+ ool-down — total ~40min running\n\nReason: No recent training data means
+  fitness is unknown\; reducing interval volume on the first quality sessio
+ n protects against injury and allows a safe return-to-training benchmark b
+ efore progressing to 6 reps.\n\nAI coaching 2026-11-14
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261115-1@jean-tri
-DTSTAMP:20261113T192240Z
-DTSTART:20261115T070000
-DTEND:20261115T090000
-SUMMARY:[AI ADJUSTED] running — Long Run 18km @ 6:30–6:45/km — keep f
- irmly at the easy end o
-DESCRIPTION:Long Run 18km @ 6:30–6:45/km — keep firmly at the easy end 
- of the pace range the day after the 10K race effort\, cutting 2km to allow
-  for residual fatigue.\n\nReason: Running a hard 10K on 8 November means t
- he following Sunday long run should be slightly reduced in distance and he
- ld at the easier end of the aerobic pace range to avoid compounding fatigu
- e with no wellness data to guide load decisions.\n\nAI coaching 2026-11-07
+UID:ai-coaching-20261122-1@jean-tri
+DTSTAMP:20261114T053343Z
+DTSTART:20261122T070000
+DTEND:20261122T090000
+SUMMARY:[AI ADJUSTED] running — 20.6km long run @ 6:15–6:45/km with the
+  final 4km accelerati
+DESCRIPTION:20.6km long run @ 6:15–6:45/km with the final 4km acceleratin
+ g to 5:45/km (marathon race pace)\n\nReason: With the marathon 85 days awa
+ y\, introducing marathon-pace finishes to long runs from this week builds 
+ race specificity without adding volume.\n\nAI coaching 2026-11-14
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261129-2@jean-tri
+DTSTAMP:20261114T053343Z
+DTSTART:20261129T070000
+DTEND:20261129T090000
+SUMMARY:[AI ADJUSTED] running — 21.2km long run @ 6:15–6:45/km with the
+  final 5km at 5:45/km
+DESCRIPTION:21.2km long run @ 6:15–6:45/km with the final 5km at 5:45/km 
+ (marathon race pace)\n\nReason: Progressive increase of marathon-pace volu
+ me in the long run (from 4km to 5km the following week) builds race-specif
+ ic endurance toward the sub-4h target.\n\nAI coaching 2026-11-14
+END:VEVENT
+BEGIN:VEVENT
+UID:ai-coaching-20261206-3@jean-tri
+DTSTAMP:20261114T053343Z
+DTSTART:20261206T070000
+DTEND:20261206T090000
+SUMMARY:[AI ADJUSTED] running — 21.8km long run @ 6:15–6:45/km with the
+  final 6km at 5:45/km
+DESCRIPTION:21.8km long run @ 6:15–6:45/km with the final 6km at 5:45/km 
+ (marathon race pace)\n\nReason: Continuing the marathon-pace progression (
+ 6km at race pace) within the long run builds confidence and neuromuscular 
+ readiness for the sub-4h goal.\n\nAI coaching 2026-11-14
 END:VEVENT
 END:VCALENDAR

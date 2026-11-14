@@ -1,29 +1,39 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-11-07
-   86 days to Marathon  |  219 days to Ironman Italy Cervia
+   Generated: 2026-11-14
+   85 days to Marathon  |  218 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-No training data or wellness metrics have been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or readiness objectively. With a Marathon 92 days away targeting sub-4 hours (~5:45/km), the immediate priority is establishing consistent training execution and capturing data going forward. The upcoming plan is well-structured for the marathon build, but the absence of any logged sessions suggests a potential gap between planned and actual training that needs addressing.
+No training data or wellness metrics have been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a marathon 85 days away targeting sub-4h (5:45/km), the upcoming plan's long runs at 6:15–6:45/km are conservatively paced and appropriate as a base, but the lack of any recent activity data means fitness level is unknown. The priority now is to re-establish consistent training and introduce marathon-pace work progressively before the race.
 
 COACHING SUGGESTIONS:
-  1. Ensure your Garmin device is syncing correctly and capturing all sessions — without data, it's impossible to adjust load intelligently or detect overtraining before the marathon.
-  2. With the 10K race on 8 November (tomorrow), treat it as a controlled fitness test rather than an all-out effort; aim for the lower end of the 5:35–5:50/km target and use the result to validate your marathon pace strategy.
-  3. The marathon is 92 days away — your weekly long runs (20–21km) are well-timed, but ensure you are logging all sessions so progression can be tracked and the peak long run (~32–34km) can be safely scheduled 3–4 weeks out.
-  4. Prioritise the Saturday long ride (60km today) at a genuine Z2 effort (128–177W); without recent data, there's a risk of drifting too hard — use a power meter or HR cap to stay disciplined.
-  5. Begin logging sleep and body battery data consistently, as this is the earliest warning system for accumulated fatigue across a heavy swim-bike-run-strength week structure.
+  1. With the marathon 85 days away, begin incorporating dedicated marathon-pace (5:45/km) segments within your long runs — start with the final 3–5km of each Sunday long run at race pace to build specificity without overloading.
+  2. Since no recent training data is visible, treat the first 1–2 weeks of the upcoming plan as a fitness assessment block — complete sessions as prescribed but monitor effort carefully and don't chase pace targets if they feel unusually hard.
+  3. The Tuesday interval session on 17 Nov (6x800m at 4:55–5:10/km) represents significant intensity with no recent training baseline; consider completing only 4 reps on the first week to gauge current fitness before committing to the full volume.
+  4. Swimming sessions (2km+ at ≤2:30/100m) will serve double duty for the Ironman build, but for the near-term marathon focus, treat them as low-impact active recovery — prioritise run quality over swim volume if fatigue accumulates.
+  5. Start logging sleep and wellness data immediately — with no body battery or sleep data available, you are flying blind on recovery, which is especially risky when ramping up long-run volume toward a marathon.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-11-08 [RUNNING]
-    Current:  RACE: 10K Run Race — goal pace ~5:35–5:50/km, target sub-50min, 180min block
-    Proposed: 10K Race: start at 5:50/km for the first 3km, build to 5:35/km if feeling strong from 5km onward — treat as a fitness benchmark rather than a peak performance, and cap effort at a hard but controlled RPE 8.
-    Reason:   With zero logged training data over the last 4 weeks, there is no evidence of readiness to execute a maximum-effort race; a controlled effort protects against injury and still yields useful marathon-pace data 92 days out.
+  • 2026-11-17 [RUNNING]
+    Current:  6x800m intervals @ 4:55–5:10/km, 2min jog recovery, 45–55min total
+    Proposed: 4x800m @ 4:55–5:10/km, 2min jog recovery, then 10min easy cool-down — total ~40min running
+    Reason:   No recent training data means fitness is unknown; reducing interval volume on the first quality session protects against injury and allows a safe return-to-training benchmark before progressing to 6 reps.
 
-  • 2026-11-15 [RUNNING]
-    Current:  Long Run 20.0km @ 6:15–6:45/km
-    Proposed: Long Run 18km @ 6:30–6:45/km — keep firmly at the easy end of the pace range the day after the 10K race effort, cutting 2km to allow for residual fatigue.
-    Reason:   Running a hard 10K on 8 November means the following Sunday long run should be slightly reduced in distance and held at the easier end of the aerobic pace range to avoid compounding fatigue with no wellness data to guide load decisions.
+  • 2026-11-22 [RUNNING]
+    Current:  20.6km long run @ 6:15–6:45/km, steady aerobic
+    Proposed: 20.6km long run @ 6:15–6:45/km with the final 4km accelerating to 5:45/km (marathon race pace)
+    Reason:   With the marathon 85 days away, introducing marathon-pace finishes to long runs from this week builds race specificity without adding volume.
+
+  • 2026-11-29 [RUNNING]
+    Current:  21.2km long run @ 6:15–6:45/km, steady aerobic
+    Proposed: 21.2km long run @ 6:15–6:45/km with the final 5km at 5:45/km (marathon race pace)
+    Reason:   Progressive increase of marathon-pace volume in the long run (from 4km to 5km the following week) builds race-specific endurance toward the sub-4h target.
+
+  • 2026-12-06 [RUNNING]
+    Current:  21.8km long run @ 6:15–6:45/km, steady aerobic
+    Proposed: 21.8km long run @ 6:15–6:45/km with the final 6km at 5:45/km (marathon race pace)
+    Reason:   Continuing the marathon-pace progression (6km at race pace) within the long run builds confidence and neuromuscular readiness for the sub-4h goal.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).

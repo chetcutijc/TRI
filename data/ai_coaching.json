@@ -1,30 +1,46 @@
 {
-  "summary": "No training data or wellness metrics have been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or readiness objectively. With a Marathon 92 days away targeting sub-4 hours (~5:45/km), the immediate priority is establishing consistent training execution and capturing data going forward. The upcoming plan is well-structured for the marathon build, but the absence of any logged sessions suggests a potential gap between planned and actual training that needs addressing.",
+  "summary": "No training data or wellness metrics have been recorded over the last 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a marathon 85 days away targeting sub-4h (5:45/km), the upcoming plan's long runs at 6:15\u20136:45/km are conservatively paced and appropriate as a base, but the lack of any recent activity data means fitness level is unknown. The priority now is to re-establish consistent training and introduce marathon-pace work progressively before the race.",
   "suggestions": [
-    "Ensure your Garmin device is syncing correctly and capturing all sessions \u2014 without data, it's impossible to adjust load intelligently or detect overtraining before the marathon.",
-    "With the 10K race on 8 November (tomorrow), treat it as a controlled fitness test rather than an all-out effort; aim for the lower end of the 5:35\u20135:50/km target and use the result to validate your marathon pace strategy.",
-    "The marathon is 92 days away \u2014 your weekly long runs (20\u201321km) are well-timed, but ensure you are logging all sessions so progression can be tracked and the peak long run (~32\u201334km) can be safely scheduled 3\u20134 weeks out.",
-    "Prioritise the Saturday long ride (60km today) at a genuine Z2 effort (128\u2013177W); without recent data, there's a risk of drifting too hard \u2014 use a power meter or HR cap to stay disciplined.",
-    "Begin logging sleep and body battery data consistently, as this is the earliest warning system for accumulated fatigue across a heavy swim-bike-run-strength week structure."
+    "With the marathon 85 days away, begin incorporating dedicated marathon-pace (5:45/km) segments within your long runs \u2014 start with the final 3\u20135km of each Sunday long run at race pace to build specificity without overloading.",
+    "Since no recent training data is visible, treat the first 1\u20132 weeks of the upcoming plan as a fitness assessment block \u2014 complete sessions as prescribed but monitor effort carefully and don't chase pace targets if they feel unusually hard.",
+    "The Tuesday interval session on 17 Nov (6x800m at 4:55\u20135:10/km) represents significant intensity with no recent training baseline; consider completing only 4 reps on the first week to gauge current fitness before committing to the full volume.",
+    "Swimming sessions (2km+ at \u22642:30/100m) will serve double duty for the Ironman build, but for the near-term marathon focus, treat them as low-impact active recovery \u2014 prioritise run quality over swim volume if fatigue accumulates.",
+    "Start logging sleep and wellness data immediately \u2014 with no body battery or sleep data available, you are flying blind on recovery, which is especially risky when ramping up long-run volume toward a marathon."
   ],
   "proposed_changes": [
     {
-      "date": "2026-11-08",
+      "date": "2026-11-17",
       "discipline": "running",
-      "current_session": "RACE: 10K Run Race \u2014 goal pace ~5:35\u20135:50/km, target sub-50min, 180min block",
-      "proposed_session": "10K Race: start at 5:50/km for the first 3km, build to 5:35/km if feeling strong from 5km onward \u2014 treat as a fitness benchmark rather than a peak performance, and cap effort at a hard but controlled RPE 8.",
+      "current_session": "6x800m intervals @ 4:55\u20135:10/km, 2min jog recovery, 45\u201355min total",
+      "proposed_session": "4x800m @ 4:55\u20135:10/km, 2min jog recovery, then 10min easy cool-down \u2014 total ~40min running",
       "change_type": "decrease",
-      "reason": "With zero logged training data over the last 4 weeks, there is no evidence of readiness to execute a maximum-effort race; a controlled effort protects against injury and still yields useful marathon-pace data 92 days out."
+      "reason": "No recent training data means fitness is unknown; reducing interval volume on the first quality session protects against injury and allows a safe return-to-training benchmark before progressing to 6 reps."
     },
     {
-      "date": "2026-11-15",
+      "date": "2026-11-22",
       "discipline": "running",
-      "current_session": "Long Run 20.0km @ 6:15\u20136:45/km",
-      "proposed_session": "Long Run 18km @ 6:30\u20136:45/km \u2014 keep firmly at the easy end of the pace range the day after the 10K race effort, cutting 2km to allow for residual fatigue.",
-      "change_type": "decrease",
-      "reason": "Running a hard 10K on 8 November means the following Sunday long run should be slightly reduced in distance and held at the easier end of the aerobic pace range to avoid compounding fatigue with no wellness data to guide load decisions."
+      "current_session": "20.6km long run @ 6:15\u20136:45/km, steady aerobic",
+      "proposed_session": "20.6km long run @ 6:15\u20136:45/km with the final 4km accelerating to 5:45/km (marathon race pace)",
+      "change_type": "replace",
+      "reason": "With the marathon 85 days away, introducing marathon-pace finishes to long runs from this week builds race specificity without adding volume."
+    },
+    {
+      "date": "2026-11-29",
+      "discipline": "running",
+      "current_session": "21.2km long run @ 6:15\u20136:45/km, steady aerobic",
+      "proposed_session": "21.2km long run @ 6:15\u20136:45/km with the final 5km at 5:45/km (marathon race pace)",
+      "change_type": "replace",
+      "reason": "Progressive increase of marathon-pace volume in the long run (from 4km to 5km the following week) builds race-specific endurance toward the sub-4h target."
+    },
+    {
+      "date": "2026-12-06",
+      "discipline": "running",
+      "current_session": "21.8km long run @ 6:15\u20136:45/km, steady aerobic",
+      "proposed_session": "21.8km long run @ 6:15\u20136:45/km with the final 6km at 5:45/km (marathon race pace)",
+      "change_type": "replace",
+      "reason": "Continuing the marathon-pace progression (6km at race pace) within the long run builds confidence and neuromuscular readiness for the sub-4h goal."
     }
   ],
-  "generated_at": "2026-11-07T17:35:59.404817+00:00",
+  "generated_at": "2026-11-14T05:33:20.161602+00:00",
   "weeks_analysed": 4
 }
