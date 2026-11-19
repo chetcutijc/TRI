@@ -215,6 +215,14 @@ def main():
     print(f"Synced. {new_count} new activities. {len(store)} total stored. "
           f"Wellness updated for {len(fresh_wellness)} days.")
 
+    # Weight Tracker app: reuse this login to push private health metrics to Supabase.
+    # Never allowed to break the TRI sync.
+    try:
+        from push_health import push_health
+        push_health(client)
+    except Exception as e:
+        print(f"Weight tracker push skipped: {type(e).__name__}: {e}")
+
     _set_github_env(new_count > 0)
 
 
