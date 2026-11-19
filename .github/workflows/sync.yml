@@ -48,6 +48,10 @@ jobs:
         env:
           GARMIN_EMAIL: ${{ secrets.GARMIN_EMAIL }}
           GARMIN_PASSWORD: ${{ secrets.GARMIN_PASSWORD }}
+          # Weight Tracker app (private health metrics → Supabase, not this repo)
+          WT_SUPABASE_URL: https://tomzrvnvdywpffzjiesd.supabase.co
+          WT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.WT_SUPABASE_SERVICE_ROLE_KEY }}
+          WT_USER_ID: ${{ secrets.WT_USER_ID }}
         run: python scripts/fetch_garmin.py
 
       # ── AI Coaching — runs on Saturday syncs only ────────────────────────
