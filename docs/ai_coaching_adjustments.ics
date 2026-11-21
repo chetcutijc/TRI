@@ -4,56 +4,45 @@ PRODID:-//Jean Triathlon AI Coaching//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ai-coaching-20261122-0@jean-tri
-DTSTAMP:20261120T194554Z
-DTSTART:20261122T070000
-DTEND:20261122T090000
-SUMMARY:[AI ADJUSTED] running — 20.6km long run with final 4km at 5:45/km
-  marathon race pace
-DESCRIPTION:20.6km long run with final 4km at 5:45/km marathon race pace\, 
- rest of run at 6:15–6:45/km\n\nReason: With the marathon 85 days away\, 
- introducing a race-pace finish to the long run builds specific neuromuscul
- ar and metabolic adaptation at target pace without adding volume stress.\n
- \nAI coaching 2026-11-14
+UID:ai-coaching-20261121-0@jean-tri
+DTSTAMP:20261121T061240Z
+DTSTART:20261121T070000
+DTEND:20261121T090000
+SUMMARY:[AI ADJUSTED] cycling — Shortened Z2 ride — 60–75 min @ 128
+ –155W (lower Z2 only)\, no
+DESCRIPTION:Shortened Z2 ride — 60–75 min @ 128–155W (lower Z2 only)\
+ , no tempo blocks\, focus on movement and blood flow rather than load\n\nR
+ eason: Body battery peaked at just 7–12 on Nov 17 and Nov 21 respectivel
+ y\, indicating very poor recovery\; completing a 4-hour ride in this state
+  risks deepening fatigue and compromising the entire upcoming training wee
+ k.\n\nAI coaching 2026-11-21
 END:VEVENT
 BEGIN:VEVENT
-UID:ai-coaching-20261129-1@jean-tri
-DTSTAMP:20261120T194554Z
-DTSTART:20261129T070000
-DTEND:20261129T090000
-SUMMARY:[AI ADJUSTED] running — 21.2km long run with final 5km at 5:45/km
-  marathon race pace
-DESCRIPTION:21.2km long run with final 5km at 5:45/km marathon race pace\, 
- rest of run at 6:15–6:45/km\n\nReason: Progressively increasing the race
- -pace finish section week-on-week builds marathon-specific endurance and r
- einforces the sub-4h target pace across increasing fatigue.\n\nAI coaching
-  2026-11-14
+UID:ai-coaching-20261122-1@jean-tri
+DTSTAMP:20261121T061240Z
+DTSTART:20261122T070000
+DTEND:20261122T090000
+SUMMARY:[AI ADJUSTED] running — Easy aerobic run — 60–75 min @ 6:30
+ –7:00/km\, flat route\, HR-
+DESCRIPTION:Easy aerobic run — 60–75 min @ 6:30–7:00/km\, flat route\
+ , HR-capped at Z2\, cut short if fatigue persists from Saturday\n\nReason:
+  Stacking a 3-hour long run the day after even a reduced ride is high risk
+  given the documented low body battery\; a shorter aerobic stimulus still 
+ serves the Marathon base without the injury/burnout risk.\n\nAI coaching 2
+ 026-11-21
 END:VEVENT
 BEGIN:VEVENT
 UID:ai-coaching-20261126-2@jean-tri
-DTSTAMP:20261120T194554Z
+DTSTAMP:20261121T061240Z
 DTSTART:20261126T070000
 DTEND:20261126T090000
-SUMMARY:[AI ADJUSTED] running — Tempo run 35min @ 5:40–5:50/km — deli
- berately kept at the sl
-DESCRIPTION:Tempo run 35min @ 5:40–5:50/km — deliberately kept at the s
- lower end of the tempo band to stay closer to marathon race pace rather th
- an drifting too fast\n\nReason: Keeping Thursday tempo efforts at the mara
- thon-adjacent pace band (vs. faster 5:35/km end) sharpens specificity for 
- the sub-4h marathon without over-stressing the system mid-build.\n\nAI coa
- ching 2026-11-14
-END:VEVENT
-BEGIN:VEVENT
-UID:ai-coaching-20261206-3@jean-tri
-DTSTAMP:20261120T194554Z
-DTSTART:20261206T070000
-DTEND:20261206T090000
-SUMMARY:[AI ADJUSTED] running — 21.8km long run with final 6km at 5:45/km
-  marathon race pace
-DESCRIPTION:21.8km long run with final 6km at 5:45/km marathon race pace\, 
- rest of run at 6:15–6:45/km\n\nReason: Continuing the progressive race-p
- ace finish pattern builds confidence and metabolic readiness for the marat
- hon at 60 days out\, while the easy first portion protects overall weekly 
- load.\n\nAI coaching 2026-11-14
+SUMMARY:[AI ADJUSTED] running — Progression run — 40 min starting at 6:
+ 30/km\, building to 5:
+DESCRIPTION:Progression run — 40 min starting at 6:30/km\, building to 5:
+ 50/km in the final 10 min only\, then cool down\n\nReason: With no trainin
+ g data for the past 4 weeks and low recovery scores\, jumping straight int
+ o sustained tempo (5:35–5:50/km) in Week 23 carries injury risk — a pr
+ ogression format builds the same stimulus more safely and directly support
+ s Marathon pace adaptation.\n\nAI coaching 2026-11-21
 END:VEVENT
 END:VCALENDAR

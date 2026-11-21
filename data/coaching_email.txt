@@ -1,39 +1,34 @@
 ============================================================
 🤖 AI COACHING REPORT
-   Generated: 2026-11-14
-   79 days to Marathon  |  212 days to Ironman Italy Cervia
+   Generated: 2026-11-21
+   78 days to Marathon  |  211 days to Ironman Italy Cervia
 ============================================================
 
 OVERALL ASSESSMENT:
-No training data or wellness metrics have been recorded over the past 4 weeks, making it impossible to assess current fitness, fatigue, or adherence to the plan. With a Marathon 85 days away (target sub-4h at ~5:45/km), this is a critical build phase and the absence of logged activity is a concern that needs immediate attention. The upcoming plan is well-structured for Ironman base building, but marathon-specific pace work at 5:45/km should be woven in more deliberately given the race proximity.
+No training activity data has been recorded over the last 4 weeks, making it impossible to assess current fitness or accumulated fatigue from Garmin metrics. The limited body battery data available (Nov 17–21) shows very low values — peaking at just 7–49 — which suggests significant fatigue or low recovery, particularly concerning given today's planned 4-hour long ride. With the Marathon 78 days away (target sub-4h at 5:45/km), the immediate priority must be establishing consistent aerobic run volume while managing overall load carefully.
 
 COACHING SUGGESTIONS:
-  1. Start logging all sessions immediately — without data from your watch or manual entries, it's impossible to track fitness trends or catch early signs of overtraining or underrecovery ahead of your marathon in 85 days.
-  2. With the marathon 85 days away, your Tuesday interval session (6x800m @ 4:55–5:10/km on 17 Nov) is valuable, but add one weekly tempo run specifically at 5:35–5:50/km sustained for 30–40 min to build race-pace confidence at your 5:45/km marathon target.
-  3. Long run distances of 20–21km are appropriate for this phase, but aim to include the final 3–5km of each long run at or close to marathon pace (5:45/km) to practise negative-splitting and race-pace feel without adding extra volume.
-  4. Malta's November conditions are mild and runnable — take advantage of cooler morning temperatures for long runs to simulate more typical marathon race conditions and build heat tolerance awareness for Ironman Italy next June.
-  5. Prioritise sleep tracking — re-sync your Garmin device or manually log sleep scores so recovery can be properly monitored; with no wellness data available, there is no way to gauge readiness before hard sessions.
+  1. Given the critically low body battery readings (max 7–49) in the days leading into today's planned 240-min long ride, seriously consider reducing today's session to 60–90 minutes at easy Z2 power (128–155W) to avoid digging a deeper fatigue hole before the training week begins.
+  2. With the Marathon 78 days away and no recorded training visible, treat the next 4 weeks as a disciplined aerobic base rebuild — prioritise completing the planned long runs (20–22km) consistently at 6:15–6:45/km before adding any negative-split or tempo overlays.
+  3. Ensure the Thursday tempo runs (5:35–5:50/km, 30–40 min) are genuinely achievable at that pace before race day; if they feel forced, back off to 5:50–6:00/km — arriving at the Marathon undertrained but fresh beats arriving injured.
+  4. Start logging sleep and wellness data consistently — with no activity or wellness baseline for most of the past 4 weeks, it is impossible to make data-driven adjustments to load; even manual daily notes will help identify recovery patterns.
+  5. The swimming sessions (2km+ at ≤2:30/100m) are well below the Ironman Cervia swim requirement (3800m at 1:50/100m), but that race is 211 days away — keep swim sessions as planned for now and revisit volume and pace targets in January.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
-  • 2026-11-22 [RUNNING]
-    Current:  20.6km @ 6:15–6:45/km steady aerobic long run
-    Proposed: 20.6km long run with final 4km at 5:45/km marathon race pace, rest of run at 6:15–6:45/km
-    Reason:   With the marathon 85 days away, introducing a race-pace finish to the long run builds specific neuromuscular and metabolic adaptation at target pace without adding volume stress.
+  • 2026-11-21 [CYCLING]
+    Current:  Wk22 Long Ride — 105km @ 128–177W (Z2), 240 min
+    Proposed: Shortened Z2 ride — 60–75 min @ 128–155W (lower Z2 only), no tempo blocks, focus on movement and blood flow rather than load
+    Reason:   Body battery peaked at just 7–12 on Nov 17 and Nov 21 respectively, indicating very poor recovery; completing a 4-hour ride in this state risks deepening fatigue and compromising the entire upcoming training week.
 
-  • 2026-11-29 [RUNNING]
-    Current:  21.2km @ 6:15–6:45/km steady aerobic long run
-    Proposed: 21.2km long run with final 5km at 5:45/km marathon race pace, rest of run at 6:15–6:45/km
-    Reason:   Progressively increasing the race-pace finish section week-on-week builds marathon-specific endurance and reinforces the sub-4h target pace across increasing fatigue.
+  • 2026-11-22 [RUNNING]
+    Current:  Wk22 Long Run — 20.6km @ 6:15–6:45/km, 180 min
+    Proposed: Easy aerobic run — 60–75 min @ 6:30–7:00/km, flat route, HR-capped at Z2, cut short if fatigue persists from Saturday
+    Reason:   Stacking a 3-hour long run the day after even a reduced ride is high risk given the documented low body battery; a shorter aerobic stimulus still serves the Marathon base without the injury/burnout risk.
 
   • 2026-11-26 [RUNNING]
-    Current:  Tempo run, 5:35–5:50/km, 30–40min continuous
-    Proposed: Tempo run 35min @ 5:40–5:50/km — deliberately kept at the slower end of the tempo band to stay closer to marathon race pace rather than drifting too fast
-    Reason:   Keeping Thursday tempo efforts at the marathon-adjacent pace band (vs. faster 5:35/km end) sharpens specificity for the sub-4h marathon without over-stressing the system mid-build.
-
-  • 2026-12-06 [RUNNING]
-    Current:  21.8km @ 6:15–6:45/km steady aerobic long run
-    Proposed: 21.8km long run with final 6km at 5:45/km marathon race pace, rest of run at 6:15–6:45/km
-    Reason:   Continuing the progressive race-pace finish pattern builds confidence and metabolic readiness for the marathon at 60 days out, while the easy first portion protects overall weekly load.
+    Current:  Wk23 Evening session — Tempo run 5:35–5:50/km, 30–40 min continuous
+    Proposed: Progression run — 40 min starting at 6:30/km, building to 5:50/km in the final 10 min only, then cool down
+    Reason:   With no training data for the past 4 weeks and low recovery scores, jumping straight into sustained tempo (5:35–5:50/km) in Week 23 carries injury risk — a progression format builds the same stimulus more safely and directly supports Marathon pace adaptation.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
