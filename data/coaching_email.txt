@@ -5,30 +5,40 @@
 ============================================================
 
 OVERALL ASSESSMENT:
-No training activity data has been recorded over the last 4 weeks, making it impossible to assess current fitness or accumulated fatigue from Garmin metrics. The limited body battery data available (Nov 17–21) shows very low values — peaking at just 7–49 — which suggests significant fatigue or low recovery, particularly concerning given today's planned 4-hour long ride. With the Marathon 78 days away (target sub-4h at 5:45/km), the immediate priority must be establishing consistent aerobic run volume while managing overall load carefully.
+No training activity data has been recorded over the last 4 weeks, making it impossible to assess current fitness or fatigue trends objectively. The limited body battery data from 17–21 November suggests very low energy reserves (peaking at 7–49 on most days), which is a concern given today's demanding schedule — a 105km long ride and 20.6km long run on back-to-back days. With the Marathon 78 days away at a 5:45/km target pace, the priority must shift toward building consistent aerobic running volume and race-specific tempo work immediately.
 
 COACHING SUGGESTIONS:
-  1. Given the critically low body battery readings (max 7–49) in the days leading into today's planned 240-min long ride, seriously consider reducing today's session to 60–90 minutes at easy Z2 power (128–155W) to avoid digging a deeper fatigue hole before the training week begins.
-  2. With the Marathon 78 days away and no recorded training visible, treat the next 4 weeks as a disciplined aerobic base rebuild — prioritise completing the planned long runs (20–22km) consistently at 6:15–6:45/km before adding any negative-split or tempo overlays.
-  3. Ensure the Thursday tempo runs (5:35–5:50/km, 30–40 min) are genuinely achievable at that pace before race day; if they feel forced, back off to 5:50–6:00/km — arriving at the Marathon undertrained but fresh beats arriving injured.
-  4. Start logging sleep and wellness data consistently — with no activity or wellness baseline for most of the past 4 weeks, it is impossible to make data-driven adjustments to load; even manual daily notes will help identify recovery patterns.
-  5. The swimming sessions (2km+ at ≤2:30/100m) are well below the Ironman Cervia swim requirement (3800m at 1:50/100m), but that race is 211 days away — keep swim sessions as planned for now and revisit volume and pace targets in January.
+  1. Given the critically low body battery readings (max 7–49) in the days leading into this weekend, treat today's long ride and tomorrow's long run as flexible — if fatigue feels severe, reduce duration by 20–30% rather than pushing through and accumulating deeper fatigue debt.
+  2. With the Marathon 78 days away, ensure the Thursday tempo runs (5:35–5:50/km) are executed consistently over the next 6–8 weeks, as these are your most race-specific sessions for sub-4h marathon fitness.
+  3. Start logging sleep and wellness data consistently — the absence of 4 weeks of Garmin data means load management decisions must be made blind, which increases injury risk during a build phase.
+  4. As the Marathon falls within the 4–8 week race-awareness window for the later plan weeks, gradually increase the tempo run duration from 30 min toward 40–45 min continuous by weeks 25–26 to build the sustained pace endurance needed for 42.2km at 5:45/km.
+  5. Prioritise the Tuesday and Thursday running sessions each week over secondary cycling mid-week sessions if energy is limited — the Marathon is the near-term priority and bike fitness for Ironman Italy can be sustained with weekend long rides alone.
 
 PROPOSED PLAN ADJUSTMENTS (suggestions only — not auto-applied):
   • 2026-11-21 [CYCLING]
-    Current:  Wk22 Long Ride — 105km @ 128–177W (Z2), 240 min
-    Proposed: Shortened Z2 ride — 60–75 min @ 128–155W (lower Z2 only), no tempo blocks, focus on movement and blood flow rather than load
-    Reason:   Body battery peaked at just 7–12 on Nov 17 and Nov 21 respectively, indicating very poor recovery; completing a 4-hour ride in this state risks deepening fatigue and compromising the entire upcoming training week.
+    Current:  105km @ 128–177W (Z2), 240 min long ride
+    Proposed: 75–90 min easy spin at 128–155W (low Z2 only), ~45–50km, no tempo blocks
+    Reason:   Body battery peaked at just 12 today following a max of 49 yesterday, indicating severely depleted recovery — completing a 4-hour ride risks compounding fatigue ahead of tomorrow's long run.
 
   • 2026-11-22 [RUNNING]
-    Current:  Wk22 Long Run — 20.6km @ 6:15–6:45/km, 180 min
-    Proposed: Easy aerobic run — 60–75 min @ 6:30–7:00/km, flat route, HR-capped at Z2, cut short if fatigue persists from Saturday
-    Reason:   Stacking a 3-hour long run the day after even a reduced ride is high risk given the documented low body battery; a shorter aerobic stimulus still serves the Marathon base without the injury/burnout risk.
+    Current:  20.6km @ 6:15–6:45/km, 180 min long run
+    Proposed: 14–16km @ 6:30–6:45/km (easy end of range), 90–100 min, no negative split effort
+    Reason:   Back-to-back long sessions with critically low body battery readings this week warrant a reduced long run to protect recovery and avoid injury risk during a phase with no recorded training data to gauge fitness.
 
   • 2026-11-26 [RUNNING]
-    Current:  Wk23 Evening session — Tempo run 5:35–5:50/km, 30–40 min continuous
-    Proposed: Progression run — 40 min starting at 6:30/km, building to 5:50/km in the final 10 min only, then cool down
-    Reason:   With no training data for the past 4 weeks and low recovery scores, jumping straight into sustained tempo (5:35–5:50/km) in Week 23 carries injury risk — a progression format builds the same stimulus more safely and directly supports Marathon pace adaptation.
+    Current:  Tempo run, 5:35–5:50/km, 30–40 min continuous
+    Proposed: Tempo run, 5:45–5:55/km, 25–30 min continuous — slightly conservative pace to ease into structured quality after a disrupted block
+    Reason:   With no training data for 4 weeks, jumping straight into the upper end of tempo pace risks injury; easing in by 10 sec/km for the first tempo session is prudent before progressing in weeks 24–26.
+
+  • 2026-12-01 [RUNNING]
+    Current:  Tempo run, 5:35–5:50/km, 30–40 min continuous
+    Proposed: Tempo run, 5:40–5:50/km, 35–40 min continuous — progress from Wk23 tempo and hold upper range
+    Reason:   Marathon is 69 days away at this point; building tempo duration progressively toward 40 min at race-adjacent pace is the most direct preparation for sub-4h marathon fitness.
+
+  • 2026-12-10 [RUNNING]
+    Current:  Maintenance aerobic run, 6:30–6:50/km, 30–40 min, no intensity
+    Proposed: Aerobic run with 2x10 min marathon-pace inserts @ 5:45/km within easy run, total 40 min
+    Reason:   Replacing a plain maintenance run with race-pace inserts during week 25 builds marathon-specific neuromuscular efficiency without adding significant fatigue, directly serving the 78-day Marathon target.
 
   → Open the dashboard website to review the unified
     plan table (highlighted rows = AI proposals).
