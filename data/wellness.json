@@ -950,7 +950,13 @@
   "2026-11-21": {
     "sleep_duration_min": null,
     "sleep_score": null,
-    "body_battery_max": 12,
-    "body_battery_min": 41
+    "body_battery_max": 19,
+    "body_battery_min": 43
+  },
+  "2026-11-22": {
+    "sleep_duration_min": null,
+    "sleep_score": null,
+    "body_battery_max": 70,
+    "body_battery_min": 0
   }
 }
