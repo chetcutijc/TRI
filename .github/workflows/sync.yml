@@ -12,8 +12,6 @@ concurrency:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
   sync:
@@ -143,11 +141,6 @@ jobs:
           fi
           echo "EMAIL_ATTACHMENTS=$ATTACH" >> $GITHUB_ENV
 
-      - name: Upload Pages artifact (sign-in page only — the dashboard stays private)
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'site'
-
       - name: Email dashboard PDF
         if: env.SHOULD_EMAIL == 'true'
         uses: dawidd6/action-send-mail@v3
@@ -161,14 +154,3 @@ jobs:
           from: Garmin Dashboard Bot
           body_path: /tmp/email_body.txt
           attachments: ${{ env.EMAIL_ATTACHMENTS }}
-
-  deploy:
-    needs: sync
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
