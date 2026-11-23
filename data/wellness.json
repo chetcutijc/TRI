@@ -956,7 +956,13 @@
   "2026-11-22": {
     "sleep_duration_min": 572.0,
     "sleep_score": null,
-    "body_battery_max": 85,
-    "body_battery_min": 42
+    "body_battery_max": 89,
+    "body_battery_min": 57
+  },
+  "2026-11-23": {
+    "sleep_duration_min": 364.0,
+    "sleep_score": null,
+    "body_battery_max": 55,
+    "body_battery_min": 2
   }
 }
