@@ -35,7 +35,11 @@ KEY = os.environ.get("WT_SUPABASE_SERVICE_ROLE_KEY", "")
 
 
 def _req(method, path, body=None, headers=None, raw=False):
-    h = {"Authorization": f"Bearer {KEY}", "apikey": KEY}
+    # New secret keys (sb_secret_...) aren't JWTs and go only in the apikey
+    # header; the legacy service_role JWT also goes in Authorization.
+    h = {"apikey": KEY}
+    if not KEY.startswith("sb_"):
+        h["Authorization"] = f"Bearer {KEY}"
     h.update(headers or {})
     req = urllib.request.Request(f"{URL}/storage/v1/{path}", data=body, method=method, headers=h)
     with urllib.request.urlopen(req, timeout=60) as r:

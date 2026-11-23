@@ -82,7 +82,8 @@ def push_health(client):
         method="POST",
         headers={
             "apikey": key,
-            "Authorization": f"Bearer {key}",
+            # New sb_secret_ keys aren't JWTs: apikey header only
+            **({} if key.startswith("sb_") else {"Authorization": f"Bearer {key}"}),
             "Content-Type": "application/json",
             "Prefer": "resolution=merge-duplicates,return=minimal",
         },
