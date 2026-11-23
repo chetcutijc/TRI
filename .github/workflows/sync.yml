@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -32,6 +32,13 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
+
+      # Private data lives in a private Supabase bucket, not in this public repo.
+      - name: Pull private data from storage
+        env:
+          WT_SUPABASE_URL: https://tomzrvnvdywpffzjiesd.supabase.co
+          WT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.WT_SUPABASE_SERVICE_ROLE_KEY }}
+        run: python scripts/tri_store.py pull
 
       - name: Restore cached Garmin session
         uses: actions/cache@v4
@@ -122,20 +129,11 @@ jobs:
           Auto-synced from Garmin Connect (every 12h / Wed & Sat)
           EMAILEOF
 
-      - name: Commit and push
-        run: |
-          git config user.name "garmin-bot"
-          git config user.email "actions@github.com"
-          # Stage whole folders: an explicit file list fails ENTIRELY (stages nothing)
-          # if any listed file doesn't exist, e.g. the .ics when there are no suggestions.
-          git add -A data/ docs/
-          if ! git diff --quiet --cached; then
-            git commit -m "Auto-sync: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git pull origin main --no-rebase -X ours
-            git push
-          else
-            echo "No changes to commit."
-          fi
+      - name: Push private data and dashboard to storage
+        env:
+          WT_SUPABASE_URL: https://tomzrvnvdywpffzjiesd.supabase.co
+          WT_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.WT_SUPABASE_SERVICE_ROLE_KEY }}
+        run: python scripts/tri_store.py push
 
       - name: Determine email attachments
         run: |
@@ -145,10 +143,10 @@ jobs:
           fi
           echo "EMAIL_ATTACHMENTS=$ATTACH" >> $GITHUB_ENV
 
-      - name: Upload Pages artifact
+      - name: Upload Pages artifact (sign-in page only — the dashboard stays private)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs'
+          path: 'site'
 
       - name: Email dashboard PDF
         if: env.SHOULD_EMAIL == 'true'

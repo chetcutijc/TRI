@@ -1005,12 +1005,13 @@ function setRaceStatus(msg, colour) {{
     s.style.color = colour || "#9a9aaa";
 }}
 
-// Read races.json -> mutate -> write back -> trigger rebuild
+// Read races.json -> mutate -> write back -> trigger rebuild.
+// races.json lives in the private storage bucket (TRI_STORE is provided by the
+// sign-in page); the GitHub token is only used to start the rebuild.
 function updateRacesFile(mutator, successMsg) {{
+    if (!window.TRI_STORE) {{ setRaceStatus("Open the dashboard from its sign-in page to edit races.", "#FF7A59"); return; }}
     var token = getGhToken();
     if (!token) {{ setRaceStatus("No token provided.", "#FF7A59"); return; }}
-
-    var url = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/data/races.json";
     var headers = {{
         "Authorization": "Bearer " + token,
         "Accept": "application/vnd.github+json",
@@ -1019,47 +1020,25 @@ function updateRacesFile(mutator, successMsg) {{
 
     setRaceStatus("Saving...");
 
-    fetch(url, {{ headers: headers }})
-      .then(function(res) {{
-          if (res.status === 401 || res.status === 403) {{
-              localStorage.removeItem("gh_pat_apply_coaching");
-              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
-          }}
-          if (!res.ok) throw new Error("Could not read races.json (status " + res.status + ")");
-          return res.json();
-      }})
-      .then(function(file) {{
-          var races = JSON.parse(b64decodeUtf8(file.content));
-          var updated = mutator(races);
+    TRI_STORE.getJSON("races.json")
+      .then(function(races) {{
+          var updated = mutator(races || []);
           if (updated === null) return null;
           updated.sort(function(a, b) {{ return a.date < b.date ? -1 : 1; }});
-          return fetch(url, {{
-              method: "PUT",
-              headers: headers,
-              body: JSON.stringify({{
-                  message: "Update races via dashboard",
-                  content: b64encodeUtf8(JSON.stringify(updated, null, 2)),
-                  sha: file.sha
-              }})
-          }});
+          return TRI_STORE.putJSON("races.json", updated).then(function() {{ return true; }});
       }})
-      .then(function(res) {{
-          if (res === null) return;
-          if (res.status === 401 || res.status === 403) {{
-              localStorage.removeItem("gh_pat_apply_coaching");
-              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
-          }}
-          if (!res.ok) {{
-              return res.json().then(function(b) {{
-                  throw new Error(res.status + ": " + (b.message || "write failed"));
-              }});
-          }}
+      .then(function(saved) {{
+          if (!saved) return;
           setRaceStatus(successMsg + " Rebuilding dashboard...", "#00C2A8");
           // kick off a rebuild so the change shows up
           return fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
                        "/actions/workflows/sync.yml/dispatches", {{
               method: "POST", headers: headers, body: JSON.stringify({{ ref: "main" }})
-          }}).then(function() {{
+          }}).then(function(res) {{
+              if (res.status === 401 || res.status === 403) {{
+                  localStorage.removeItem("gh_pat_apply_coaching");
+                  throw new Error("Saved, but the rebuild couldn't start (" + res.status + "): token cleared, tap again to paste a new one.");
+              }}
               setRaceStatus(successMsg + " Dashboard rebuilding — refresh in ~2 min.", "#00C2A8");
           }});
       }})
@@ -1809,10 +1788,9 @@ function saveAthleteNote() {{
     var text = document.getElementById("an-text").value.trim();
     if (!text) {{ return; }}
     var status = document.getElementById("note-status");
+    if (!window.TRI_STORE) {{ status.textContent = "Open the dashboard from its sign-in page to add notes."; status.style.color = "#FF7A59"; return; }}
     var token = getGhToken();
     if (!token) {{ status.textContent = "No token provided."; status.style.color = "#FF7A59"; return; }}
-
-    var url = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/data/athlete_notes.json";
     var headers = {{
         "Authorization": "Bearer " + token,
         "Accept": "application/vnd.github+json",
@@ -1822,40 +1800,16 @@ function saveAthleteNote() {{
     status.textContent = "Saving...";
     status.style.color = "#9a9aaa";
 
-    fetch(url, {{ headers: headers }})
-      .then(function(res) {{
-          if (res.status === 401 || res.status === 403) {{
-              localStorage.removeItem("gh_pat_apply_coaching");
-              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
-          }}
-          if (!res.ok) throw new Error("Could not read athlete_notes.json (status " + res.status + ")");
-          return res.json();
-      }})
-      .then(function(file) {{
-          var data = JSON.parse(b64decodeUtf8(file.content));
+    // Notes live in the private storage bucket, not in the public repo.
+    TRI_STORE.getJSON("athlete_notes.json")
+      .then(function(data) {{
+          data = data || {{}};
           var today = new Date().toISOString().slice(0, 10);
           data.notes = data.notes || [];
           data.notes.push({{ date: today, text: text }});
-          return fetch(url, {{
-              method: "PUT",
-              headers: headers,
-              body: JSON.stringify({{
-                  message: "Add athlete note via dashboard",
-                  content: b64encodeUtf8(JSON.stringify(data, null, 2)),
-                  sha: file.sha
-              }})
-          }});
+          return TRI_STORE.putJSON("athlete_notes.json", data);
       }})
-      .then(function(res) {{
-          if (res.status === 401 || res.status === 403) {{
-              localStorage.removeItem("gh_pat_apply_coaching");
-              throw new Error(res.status + ": token cleared, tap the button again to paste a new one.");
-          }}
-          if (!res.ok) {{
-              return res.json().then(function(b) {{
-                  throw new Error(res.status + ": " + (b.message || "write failed"));
-              }});
-          }}
+      .then(function() {{
           document.getElementById("an-text").value = "";
           status.textContent = "\\u2705 Saved. Triggering Sync Now so AI Coaching picks it up...";
           status.style.color = "#00C2A8";
@@ -1864,7 +1818,11 @@ function saveAthleteNote() {{
               method: "POST", headers: headers, body: JSON.stringify({{ ref: "main" }})
           }});
       }})
-      .then(function() {{
+      .then(function(res) {{
+          if (res.status === 401 || res.status === 403) {{
+              localStorage.removeItem("gh_pat_apply_coaching");
+              throw new Error("Note saved, but Sync Now couldn't start (" + res.status + "): token cleared, tap again to paste a new one.");
+          }}
           status.textContent = "\\u2705 Saved and Sync Now triggered \\u2014 refresh in a few minutes.";
           status.style.color = "#00C2A8";
       }})

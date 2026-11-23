@@ -1,5 +1,13 @@
 # Garmin Training Dashboard
 
+## Privacy: where the data lives
+Training and health data are **not** stored in this public repo any more. Each workflow run
+pulls `data/` from a private Supabase Storage bucket (`tri`), syncs Garmin, rebuilds the
+dashboard, then pushes `data/` and the built dashboard back to the bucket
+(`scripts/tri_store.py`). GitHub Pages only publishes `site/index.html`, a sign-in page that
+downloads the dashboard from the bucket after you log in. "Tell Your Coach" notes and race
+edits are saved to the bucket too. `data/manual_log.json` is the one file still edited here.
+
 Auto-syncs Garmin Connect activity data every 6 hours via GitHub Actions, rebuilds a static dashboard, and optionally emails it to you.
 
 ## Setup
